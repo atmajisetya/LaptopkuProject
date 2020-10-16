@@ -2,7 +2,7 @@ package com.example.laptopku
 
 object LaptopTerbaruData {
     private val laptopNames= arrayOf("ASUS TUF FX506II",
-        "Lenovo Legion 5","ASUS COBA1", "ASUSCOBA2", "ASUSCOBA3")
+        "LENOVO LEIGION 5","ASUS COBA1", "ASUSCOBA2", "ASUSCOBA3")
 
     private val laptopPrices = arrayOf("Rp13.999.000",
         "Rp16.899.000","coba1", "coba2", "coba3")

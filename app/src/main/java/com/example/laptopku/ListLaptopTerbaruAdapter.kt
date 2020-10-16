@@ -7,7 +7,9 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.bumptech.glide.load.DecodeFormat
 import com.bumptech.glide.request.RequestOptions
+import com.bumptech.glide.request.target.Target
 
 class ListLaptopTerbaruAdapter(private val listLaptopTerbaru: ArrayList<LaptopTerbaru>) : RecyclerView.Adapter<ListLaptopTerbaruAdapter.ListViewHolder>() {
     inner class ListViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
@@ -30,7 +32,7 @@ class ListLaptopTerbaruAdapter(private val listLaptopTerbaru: ArrayList<LaptopTe
         //Glide digunakan untuk menampilkan gambar
         Glide.with(holder.itemView.context)
             .load(laptopTerbaru.photo)
-            .apply(RequestOptions().override(55,55))
+            .apply(RequestOptions().fitCenter().format(DecodeFormat.PREFER_ARGB_8888).override(Target.SIZE_ORIGINAL))
             .into(holder.imgPhoto)
 
         holder.tvName.text = laptopTerbaru.name
