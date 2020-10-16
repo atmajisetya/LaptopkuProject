@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">Laptopku</string>
+    <string name="cari_laptop">Cari Laptop</string>
+    <string name="rilis_terbaru">Rilis Terbaru</string>
+    <string name="kategori">Kategori</string>
+    <string name="gaming">Gaming</string>
+    <string name="pofesional">Pofesional</string>
+    <string name="pelajar">Pelajar</string>
+    <string name="workstation">Workstation</string>
+    <string name="brand">Brand</string>
+</resources>
