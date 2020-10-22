@@ -8,4 +8,7 @@
     <string name="pelajar">Pelajar</string>
     <string name="workstation">Workstation</string>
     <string name="brand">Brand</string>
+    <string name="telusuri">Telusuri</string>
+    <string name="rekomendasi">Rekomendasi</string>
+    <string name="bandingkan">Bandingkan</string>
 </resources>
