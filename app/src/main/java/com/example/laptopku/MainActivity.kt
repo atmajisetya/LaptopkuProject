@@ -1,12 +1,15 @@
 package com.example.laptopku
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
+import android.widget.ImageView
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(), View.OnClickListener {
     //inisiasi RecyclerView yang akan dipanggil/ditampilkan
     private lateinit var rvLaptop: RecyclerView
     //inisiasi recyclerview yang akan ditampilkan untuk section brand
@@ -38,6 +41,10 @@ class MainActivity : AppCompatActivity() {
         listBrand.addAll(BrandData.listData)
         showRecyclerGrid()
 
+        //digunakan untuk pindah ke tampilan telusuri
+        val imgMenuTelusuri: ImageView = findViewById(R.id.img_menu_telusuri)
+        imgMenuTelusuri.setOnClickListener(this)
+
     }
     //untuk menampilkan Recycler View Laptop Terbaru
     private fun showRecyclerList(){
@@ -53,5 +60,17 @@ class MainActivity : AppCompatActivity() {
 
     }
 
+    //fungsi untuk pindah tampilan ke telusuri
+    override fun onClick(v: View?){
+        when(v?.id){
+            R.id.img_menu_telusuri ->{
+                val moveIntent = Intent(this@MainActivity, TelusuriActivity::class.java)
+                startActivity(moveIntent)
+            }
+        }
+
+    }
+
 
 }
+
