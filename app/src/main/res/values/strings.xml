@@ -13,4 +13,9 @@
     <string name="bandingkan">Bandingkan</string>
     <string name="urutkan">Urutkan</string>
     <string name="filter">Filter</string>
+    <string name="berapa_budget_kamu">Berapa Budget Kamu?</string>
+    <string name="min">Min</string>
+    <string name="max">Max</string>
+    <string name="sebelumnya">Sebelumnya</string>
+
 </resources>

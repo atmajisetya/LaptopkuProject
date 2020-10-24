@@ -45,6 +45,14 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         val imgMenuTelusuri: ImageView = findViewById(R.id.img_menu_telusuri)
         imgMenuTelusuri.setOnClickListener(this)
 
+        //digunakan untuk pindah ke tampilan rekomendasi
+        val imgMenuRekomendasi: ImageView = findViewById(R.id.img_menu_rekomendasi)
+        imgMenuRekomendasi.setOnClickListener(this)
+
+        //digunakan untuk pindah ke tampilan rekomendasi
+        val imgMenuBandingkan: ImageView = findViewById(R.id.img_menu_bandingkan)
+        imgMenuBandingkan.setOnClickListener(this)
+
     }
     //untuk menampilkan Recycler View Laptop Terbaru
     private fun showRecyclerList(){
@@ -60,13 +68,22 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
 
     }
 
-    //fungsi untuk pindah tampilan ke telusuri
+    //fungsi untuk pindah tampilan ke telusuri rekomendasi bandingkan
     override fun onClick(v: View?){
         when(v?.id){
             R.id.img_menu_telusuri ->{
                 val moveIntent = Intent(this@MainActivity, TelusuriActivity::class.java)
                 startActivity(moveIntent)
             }
+            R.id.img_menu_rekomendasi ->{
+                val moveIntent = Intent(this@MainActivity, RekomendasiActivity::class.java)
+                startActivity(moveIntent)
+            }
+            R.id.img_menu_bandingkan ->{
+                val moveIntent = Intent(this@MainActivity, BandingkanActivity::class.java)
+                startActivity(moveIntent)
+            }
+
         }
 
     }
