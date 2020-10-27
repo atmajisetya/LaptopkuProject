@@ -12,282 +12,231 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-        <!-- buat rilis terbaru -->
-        <LinearLayout
+        <!-- panel biru beserta isinya -->
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="#330099"
-            android:orientation="vertical">
+            android:paddingHorizontal="16dp"
+            android:paddingVertical="8dp">
 
             <!-- search box dan logo favorite -->
-            <LinearLayout
-                android:layout_width="match_parent"
+            <EditText
+                android:id="@+id/cariLaptopEditText"
+                android:layout_width="280dp"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:gravity="center"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="8dp"
                 android:layout_marginBottom="8dp"
-                >
-
-                <EditText
-                    android:layout_width="300dp"
-                    android:layout_height="wrap_content"
-                    android:background="#FFFFFF"
-                    android:text="@string/cari_laptop"
-                    android:textSize="16sp"/>
-
-                <ImageView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/ic_icon_material_favorite"
-                    />
-
-            </LinearLayout>
-            <TextView
+                android:background="#FFFFFF"
+                android:text="@string/cari_laptop"
+                android:textSize="16sp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+            <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:text="@string/rilis_terbaru"
-                android:textSize="20sp"
-                android:textColor="#FFFFFF"/>
+                android:layout_marginLeft="18dp"
+                android:src="@drawable/ic_icon_material_favorite"
+                app:layout_constraintLeft_toRightOf="@id/cariLaptopEditText"
+                app:layout_constraintTop_toTopOf="parent" />
 
-            <!-- Untuk menampilkan laptop2 terbaru-->
-            <LinearLayout
+            <!-- Rilis Terbaru -->
+            <TextView
+                android:id="@+id/rilisTerbaruTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/rilis_terbaru"
+                android:textColor="#FFFFFF"
+                android:textSize="20sp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/cariLaptopEditText" />
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_laptop"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="8dp"
-                android:gravity="center">
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/rilisTerbaruTextView" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/rv_laptop"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
-            </LinearLayout>
-
-        </LinearLayout>
         <!-- section Kategori -->
-        <!-- Textview untuk teks Kategori -->
+        <!-- TextView untuk teks Kategori -->
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
-            android:text="@string/kategori"
-            android:textSize="20sp"
             android:layout_marginTop="8dp"
-            android:textColor="#000000" />
+            android:text="@string/kategori"
+            android:textColor="#000000"
+            android:textSize="20sp" />
+
         <!-- Untuk menampilkan 4 kategori-->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
             android:layout_marginStart="16dp"
             android:layout_marginTop="8dp"
-            >
+            android:orientation="horizontal">
 
-            <!-- Kategori gaming -->
+            <!-- kategori Gaming -->
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
                 android:gravity="center"
+                android:orientation="vertical"
                 android:padding="12dp">
-
                 <ImageView
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/ic_gamingkategori"
-                    />
+                    android:layout_height="40dp"
+                    android:src="@drawable/ic_gamingkategori" />
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-
                     android:text="@string/gaming"
-                    android:textSize="14sp"
-                    android:textColor="#000000"/>
-
+                    android:textColor="#000000"
+                    android:textSize="14sp" />
             </LinearLayout>
+
             <!-- Kategori Profesional -->
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
                 android:gravity="center"
+                android:orientation="vertical"
                 android:padding="12dp">
-
                 <ImageView
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/ic_profesionalkategori"
-                    />
+                    android:layout_height="40dp"
+                    android:src="@drawable/ic_profesionalkategori" />
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/pofesional"
-                    android:textSize="14sp"
-                    android:textColor="#000000"/>
-
+                    android:textColor="#000000"
+                    android:textSize="14sp" />
             </LinearLayout>
+
             <!-- Kategori Pelajar -->
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
                 android:gravity="center"
+                android:orientation="vertical"
                 android:padding="12dp">
-
                 <ImageView
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/ic_pelajarkategori"
-                    />
+                    android:layout_height="40dp"
+                    android:src="@drawable/ic_pelajarkategori" />
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-
                     android:text="@string/pelajar"
-                    android:textSize="14sp"
-                    android:textColor="#000000"/>
-
+                    android:textColor="#000000"
+                    android:textSize="14sp" />
             </LinearLayout>
+
             <!-- Kategori Workstation -->
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
                 android:gravity="center"
+                android:orientation="vertical"
                 android:padding="12dp">
-
                 <ImageView
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/ic_workstationkategori"
-                    />
+                    android:layout_height="40dp"
+                    android:src="@drawable/ic_workstationkategori" />
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/workstation"
-                    android:textSize="14sp"
-                    android:textColor="#000000"/>
-
+                    android:textColor="#000000"
+                    android:textSize="14sp" />
             </LinearLayout>
-            <!-- akhir dari section kategori -->
         </LinearLayout>
 
-        <!-- Section untuk brand -->
+        <!-- section Brand -->
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
             android:text="@string/brand"
-            android:textSize="20sp"
-            android:layout_marginTop="8dp"
-            android:textColor="#000000" />
+            android:textColor="#000000"
+            android:textSize="20sp" />
 
-        <!-- Untuk menampilkan brand -->
-        <LinearLayout
+        <!-- penampilan Brand -->
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_brand"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="8dp"
-            android:gravity="center">
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rv_brand"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-        </LinearLayout>
+            android:layout_height="wrap_content" />
 
         <!-- bottom menu -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
             android:layout_marginStart="16dp"
             android:layout_marginTop="10dp"
-            android:gravity="center">
+            android:gravity="center"
+            android:orientation="horizontal">
 
             <!-- Bottom menu telusuri -->
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
                 android:gravity="center"
-                android:padding="12dp"
-                >
-
+                android:orientation="vertical"
+                android:padding="12dp">
                 <ImageView
                     android:id="@+id/img_menu_telusuri"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:src="@drawable/ic_telusuri"
-                    />
+                    android:src="@drawable/ic_telusuri" />
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-
                     android:text="@string/telusuri"
-                    android:textSize="14sp"
-                    android:textColor="#000000"/>
-
+                    android:textColor="#000000"
+                    android:textSize="14sp" />
             </LinearLayout>
 
             <!-- Bottom menu rekomendasi -->
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
                 android:gravity="center"
+                android:orientation="vertical"
                 android:padding="12dp">
-
                 <ImageView
                     android:id="@+id/img_menu_rekomendasi"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:src="@drawable/ic_rekomendasi"
-                    />
+                    android:src="@drawable/ic_rekomendasi" />
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-
                     android:text="@string/rekomendasi"
-                    android:textSize="14sp"
-                    android:textColor="#000000"/>
-
+                    android:textColor="#000000"
+                    android:textSize="14sp" />
             </LinearLayout>
 
             <!-- Bottom menu bandingkan -->
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
                 android:gravity="center"
+                android:orientation="vertical"
                 android:padding="12dp">
-
                 <ImageView
                     android:id="@+id/img_menu_bandingkan"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:src="@drawable/ic_bandingkan"
-                    />
+                    android:src="@drawable/ic_bandingkan" />
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-
                     android:text="@string/bandingkan"
-                    android:textSize="14sp"
-                    android:textColor="#000000"/>
-
+                    android:textColor="#000000"
+                    android:textSize="14sp" />
             </LinearLayout>
-
         </LinearLayout>
-
-
-
-
-
-
     </LinearLayout>
-
 </ScrollView>
