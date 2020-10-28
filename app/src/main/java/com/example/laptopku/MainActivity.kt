@@ -4,16 +4,22 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import android.view.ViewGroup
+import android.widget.EditText
 import android.widget.ImageView
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 
 class MainActivity : AppCompatActivity(), View.OnClickListener {
-    //inisiasi RecyclerView yang akan dipanggil/ditampilkan
+    //inisiasi RecyclerView yang akan ditampilkan untuk rilis terbaru
     private lateinit var rvLaptop: RecyclerView
-    //inisiasi recyclerview yang akan ditampilkan untuk section brand
+    //inisiasi RecyclerView yang akan ditampilkan untuk section brand
     private lateinit var rvBrand: RecyclerView
+    //inisiasi EditText cari laptop
+    private lateinit var etCariLaptop: EditText
+    //inisiasi ImageView favorite
+    private lateinit var ivFavorite: ImageView
 
     //untuk laptop terbaru
     private val list: ArrayList<LaptopTerbaru> = arrayListOf()
@@ -25,7 +31,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        //ini juga inisiasi untuk  laptop terbaru
+        //ini juga inisiasi untuk laptop terbaru
         rvLaptop = findViewById(R.id.rv_laptop)
         rvLaptop.setHasFixedSize(true)
 
@@ -33,11 +39,18 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         rvBrand = findViewById(R.id.rv_brand)
         rvBrand.setHasFixedSize(true)
 
-        //manggil data yang ada di kelas LaptopTerbaruData
+        //inisiasi ImageView favorite
+        ivFavorite = findViewById(R.id.favoriteImageView)
+
+        //inisiasi EditText cari laptop
+        etCariLaptop = findViewById(R.id.cariLaptopEditText)
+        etCariLaptop.width = (rvLaptop.width - 1.5 * ivFavorite.width).toInt()
+
+        //memanggil data yang ada di kelas LaptopTerbaruData
         list.addAll(LaptopTerbaruData.listData)
         showRecyclerList()
 
-        //manggil data yang ada di kelas BrandData
+        //memanggil data yang ada di kelas BrandData
         listBrand.addAll(BrandData.listData)
         showRecyclerGrid()
 
@@ -63,13 +76,13 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         imgMenuBandingkan.setOnClickListener(this)
 
     }
-    //untuk menampilkan Recycler View Laptop Terbaru
+    //untuk menampilkan RecyclerView Laptop Terbaru
     private fun showRecyclerList(){
         rvLaptop.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
         val listLaptopTerbaruAdapter = ListLaptopTerbaruAdapter(list)
         rvLaptop.adapter = listLaptopTerbaruAdapter
     }
-    //Untuk menampilkan grid Recycler veiw Brand
+    //untuk menampilkan grid Recycler veiw Brand
     private fun showRecyclerGrid(){
         rvBrand.layoutManager = GridLayoutManager(this,4)
         val gridBrandAdapter = GridBrandAdapter(listBrand)
@@ -104,11 +117,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
                 val moveIntent = Intent(this@MainActivity, BandingkanActivity::class.java)
                 startActivity(moveIntent)
             }
-
         }
-
     }
-
-
 }
 
