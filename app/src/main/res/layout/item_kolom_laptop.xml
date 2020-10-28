@@ -18,13 +18,11 @@
         android:id="@+id/tv_item_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        tools:text="@string/Nama Laptop"/>
+        tools:text="Nama Laptop"/>
     <TextView
         android:id="@+id/tv_item_price"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        tools:text="@string/Dua Juta Rupiah" />
-
-
+        tools:text="Dua Juta Rupiah" />
 
 </LinearLayout>
