@@ -21,23 +21,23 @@
             android:paddingVertical="8dp">
 
             <!-- search box dan logo favorite -->
-            <EditText
-                android:id="@+id/cariLaptopEditText"
-                android:layout_width="280dp"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="8dp"
-                android:background="#FFFFFF"
-                android:text="@string/cari_laptop"
-                android:textSize="16sp"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="18dp"
-                android:src="@drawable/ic_icon_material_favorite"
-                app:layout_constraintLeft_toRightOf="@id/cariLaptopEditText"
-                app:layout_constraintTop_toTopOf="parent" />
+                <EditText
+                    android:id="@+id/cariLaptopEditText"
+                    android:layout_width="250dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
+                    android:background="#FFFFFF"
+                    android:text="@string/cari_laptop"
+                    android:textSize="16sp"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="18dp"
+                    android:src="@drawable/ic_icon_material_favorite"
+                    app:layout_constraintLeft_toRightOf="@id/cariLaptopEditText"
+                    app:layout_constraintTop_toTopOf="parent" />
 
             <!-- Rilis Terbaru -->
             <TextView
@@ -84,6 +84,7 @@
                 android:orientation="vertical"
                 android:padding="12dp">
                 <ImageView
+                    android:id="@+id/gamingImageView"
                     android:layout_width="wrap_content"
                     android:layout_height="40dp"
                     android:src="@drawable/ic_gamingkategori" />
@@ -103,6 +104,7 @@
                 android:orientation="vertical"
                 android:padding="12dp">
                 <ImageView
+                    android:id="@+id/profesionalImageView"
                     android:layout_width="wrap_content"
                     android:layout_height="40dp"
                     android:src="@drawable/ic_profesionalkategori" />
@@ -122,6 +124,7 @@
                 android:orientation="vertical"
                 android:padding="12dp">
                 <ImageView
+                    android:id="@+id/pelajarImageView"
                     android:layout_width="wrap_content"
                     android:layout_height="40dp"
                     android:src="@drawable/ic_pelajarkategori" />
@@ -141,6 +144,7 @@
                 android:orientation="vertical"
                 android:padding="12dp">
                 <ImageView
+                    android:id="@+id/workstationImageView"
                     android:layout_width="wrap_content"
                     android:layout_height="40dp"
                     android:src="@drawable/ic_workstationkategori" />

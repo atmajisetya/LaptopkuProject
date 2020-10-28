@@ -42,8 +42,17 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         showRecyclerGrid()
 
         //digunakan untuk pindah ke tampilan telusuri
-        val imgMenuTelusuri: ImageView = findViewById(R.id.img_menu_telusuri)
-        imgMenuTelusuri.setOnClickListener(this)
+        val gaming: ImageView = findViewById(R.id.gamingImageView)
+        gaming.setOnClickListener(this)
+
+        val profesional: ImageView = findViewById(R.id.profesionalImageView)
+        profesional.setOnClickListener(this)
+
+        val pelajar: ImageView = findViewById(R.id.pelajarImageView)
+        pelajar.setOnClickListener(this)
+
+        val workstation: ImageView = findViewById(R.id.workstationImageView)
+        workstation.setOnClickListener(this)
 
         //digunakan untuk pindah ke tampilan rekomendasi
         val imgMenuRekomendasi: ImageView = findViewById(R.id.img_menu_rekomendasi)
@@ -71,8 +80,20 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
     //fungsi untuk pindah tampilan ke telusuri rekomendasi bandingkan
     override fun onClick(v: View?){
         when(v?.id){
-            R.id.img_menu_telusuri ->{
-                val moveIntent = Intent(this@MainActivity, TelusuriActivity::class.java)
+            R.id.gamingImageView ->{
+                val moveIntent = Intent(this@MainActivity, HasilTelusuriActivity::class.java)
+                startActivity(moveIntent)
+            }
+            R.id.pelajarImageView ->{
+                val moveIntent = Intent(this@MainActivity, HasilTelusuriActivity::class.java)
+                startActivity(moveIntent)
+            }
+            R.id.profesionalImageView ->{
+                val moveIntent = Intent(this@MainActivity, HasilTelusuriActivity::class.java)
+                startActivity(moveIntent)
+            }
+            R.id.workstationImageView ->{
+                val moveIntent = Intent(this@MainActivity, HasilTelusuriActivity::class.java)
                 startActivity(moveIntent)
             }
             R.id.img_menu_rekomendasi ->{
