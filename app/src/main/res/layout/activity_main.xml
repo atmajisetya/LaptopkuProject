@@ -21,11 +21,9 @@
             android:paddingBottom="24dp">
 
             <!-- search box dan logo favorite -->
-            <!-- lebar EditText sudah diprogram agar -->
-            <!-- menyesuaikan layar pada MainActivity.kt -->
             <EditText
                 android:id="@+id/cariLaptopEditText"
-                android:layout_width="330dp"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:background="#FFFFFF"
                 android:text="@string/cari_laptop"
@@ -33,7 +31,8 @@
                 android:inputType="text"
                 android:importantForAutofill="no"
                 app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintTop_toTopOf="parent"/>
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintRight_toLeftOf="@id/favoriteImageView"/>
             <ImageView
                 android:id="@+id/favoriteImageView"
                 android:layout_width="wrap_content"
@@ -41,6 +40,7 @@
                 android:layout_marginLeft="18dp"
                 android:src="@drawable/ic_icon_material_favorite"
                 app:layout_constraintLeft_toRightOf="@id/cariLaptopEditText"
+                app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <!-- Rilis Terbaru -->

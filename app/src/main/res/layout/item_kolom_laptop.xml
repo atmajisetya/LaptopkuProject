@@ -4,16 +4,16 @@
     android:orientation="vertical"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:background="#ffffff"
-    android:gravity="center"
-    android:layout_marginEnd="5dp">
+    android:layout_marginEnd="16dp"
+    android:paddingHorizontal="8dp"
+    android:background="@drawable/item_kolom_laptop_bg"
+    android:gravity="center">
 
     <!-- image view buat nampilin gambar laptop di rilisan terbatu -->
     <ImageView
         android:id="@+id/img_item_photo"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        />
+        android:layout_height="wrap_content" />
     <TextView
         android:id="@+id/tv_item_name"
         android:layout_width="wrap_content"
@@ -24,5 +24,4 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         tools:text="Dua Juta Rupiah" />
-
 </LinearLayout>

@@ -16,10 +16,6 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
     private lateinit var rvLaptop: RecyclerView
     //inisiasi RecyclerView yang akan ditampilkan untuk section brand
     private lateinit var rvBrand: RecyclerView
-    //inisiasi EditText cari laptop
-    private lateinit var etCariLaptop: EditText
-    //inisiasi ImageView favorite
-    private lateinit var ivFavorite: ImageView
 
     //untuk laptop terbaru
     private val list: ArrayList<LaptopTerbaru> = arrayListOf()
@@ -38,13 +34,6 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         //inisiasi untuk brand
         rvBrand = findViewById(R.id.rv_brand)
         rvBrand.setHasFixedSize(true)
-
-        //inisiasi ImageView favorite
-        ivFavorite = findViewById(R.id.favoriteImageView)
-
-        //inisiasi EditText cari laptop
-        etCariLaptop = findViewById(R.id.cariLaptopEditText)
-        etCariLaptop.width = (rvLaptop.width - 1.5 * ivFavorite.width).toInt()
 
         //memanggil data yang ada di kelas LaptopTerbaruData
         list.addAll(LaptopTerbaruData.listData)
