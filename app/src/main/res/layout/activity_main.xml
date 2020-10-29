@@ -6,19 +6,21 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".MainActivity">
-    <LinearLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:layout_height="wrap_content">
         <!-- panel biru beserta isinya -->
         <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/rilisTerbaruConstraintLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/bg_rilis_terbaru"
             android:elevation="8dp"
             android:paddingHorizontal="16dp"
             android:paddingTop="16dp"
-            android:paddingBottom="32dp">
+            android:paddingBottom="32dp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent">
 
             <!-- search box dan logo favorite -->
             <EditText
@@ -64,294 +66,299 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <!-- section Kategori -->
-        <androidx.constraintlayout.widget.ConstraintLayout
+        <!-- TextView untuk teks Kategori -->
+        <TextView
+            android:id="@+id/kategoriTextView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingHorizontal="16dp"
-            android:paddingTop="24dp">
-            <!-- TextView untuk teks Kategori -->
-            <TextView
-                android:id="@+id/kategoriTextView"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/kategori"
-                android:textColor="#000000"
-                android:textSize="20sp"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintTop_toTopOf="parent"/>
-            <!-- Untuk menampilkan 4 kategori-->
-            <!-- kategori Gaming -->
-            <ImageView
-                android:id="@+id/gamingImageView"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content" android:src="@drawable/ic_gamingkategori"
-                android:layout_marginTop="8dp"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toLeftOf="@id/profesionalImageView"
-                app:layout_constraintTop_toBottomOf="@id/kategoriTextView"/>
-            <TextView
-                android:id="@+id/gamingTextView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/gaming"
-                android:textColor="#000000"
-                android:textSize="14sp"
-                app:layout_constraintTop_toBottomOf="@id/gamingImageView"
-                app:layout_constraintLeft_toLeftOf="@id/gamingImageView"
-                app:layout_constraintRight_toRightOf="@id/gamingImageView"/>
-            <!-- Kategori Profesional -->
-            <ImageView
-                android:id="@+id/profesionalImageView"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:src="@drawable/ic_profesionalkategori"
-                app:layout_constraintTop_toBottomOf="@id/kategoriTextView"
-                app:layout_constraintLeft_toRightOf="@id/gamingImageView"
-                app:layout_constraintRight_toLeftOf="@id/pelajarImageView"/>
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/profesional"
-                android:textColor="#000000"
-                android:textSize="14sp"
-                app:layout_constraintTop_toBottomOf="@id/profesionalImageView"
-                app:layout_constraintLeft_toLeftOf="@id/profesionalImageView"
-                app:layout_constraintRight_toRightOf="@id/profesionalImageView"/>
+            android:layout_marginTop="24dp"
+            android:layout_marginLeft="16dp"
+            android:text="@string/kategori"
+            android:textColor="#000000"
+            android:textSize="20sp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/rilisTerbaruConstraintLayout"/>
+        <!-- Untuk menampilkan 4 kategori-->
+        <!-- kategori Gaming -->
+        <ImageView
+            android:id="@+id/gamingImageView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content" android:src="@drawable/ic_gamingkategori"
+            android:layout_marginTop="8dp"
+            android:layout_marginLeft="16dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toLeftOf="@id/profesionalImageView"
+            app:layout_constraintTop_toBottomOf="@id/kategoriTextView"/>
+        <TextView
+            android:id="@+id/gamingTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/gaming"
+            android:textColor="#000000"
+            android:textSize="14sp"
+            app:layout_constraintTop_toBottomOf="@id/gamingImageView"
+            app:layout_constraintLeft_toLeftOf="@id/gamingImageView"
+            app:layout_constraintRight_toRightOf="@id/gamingImageView"/>
+        <!-- Kategori Profesional -->
+        <ImageView
+            android:id="@+id/profesionalImageView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:src="@drawable/ic_profesionalkategori"
+            app:layout_constraintTop_toBottomOf="@id/kategoriTextView"
+            app:layout_constraintLeft_toRightOf="@id/gamingImageView"
+            app:layout_constraintRight_toLeftOf="@id/pelajarImageView"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/profesional"
+            android:textColor="#000000"
+            android:textSize="14sp"
+            app:layout_constraintTop_toBottomOf="@id/profesionalImageView"
+            app:layout_constraintLeft_toLeftOf="@id/profesionalImageView"
+            app:layout_constraintRight_toRightOf="@id/profesionalImageView"/>
 
-            <!-- Kategori Pelajar -->
-            <ImageView
-                android:id="@+id/pelajarImageView"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:src="@drawable/ic_pelajarkategori"
-                app:layout_constraintTop_toBottomOf="@id/kategoriTextView"
-                app:layout_constraintLeft_toRightOf="@id/profesionalImageView"
-                app:layout_constraintRight_toLeftOf="@id/workstationImageView"/>
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/pelajar"
-                android:textColor="#000000"
-                android:textSize="14sp"
-                app:layout_constraintLeft_toLeftOf="@id/pelajarImageView"
-                app:layout_constraintRight_toRightOf="@id/pelajarImageView"
-                app:layout_constraintTop_toBottomOf="@id/pelajarImageView"/>
+        <!-- Kategori Pelajar -->
+        <ImageView
+            android:id="@+id/pelajarImageView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:src="@drawable/ic_pelajarkategori"
+            app:layout_constraintTop_toBottomOf="@id/kategoriTextView"
+            app:layout_constraintLeft_toRightOf="@id/profesionalImageView"
+            app:layout_constraintRight_toLeftOf="@id/workstationImageView"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/pelajar"
+            android:textColor="#000000"
+            android:textSize="14sp"
+            app:layout_constraintLeft_toLeftOf="@id/pelajarImageView"
+            app:layout_constraintRight_toRightOf="@id/pelajarImageView"
+            app:layout_constraintTop_toBottomOf="@id/pelajarImageView"/>
 
-            <!-- Kategori Workstation -->
-            <ImageView
-                android:id="@+id/workstationImageView"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:src="@drawable/ic_workstationkategori"
-                app:layout_constraintLeft_toRightOf="@id/pelajarImageView"
-                app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/kategoriTextView"/>
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/workstation"
-                android:textColor="#000000"
-                android:textSize="14sp"
-                app:layout_constraintTop_toBottomOf="@id/workstationImageView"
-                app:layout_constraintLeft_toLeftOf="@id/workstationImageView"
-                app:layout_constraintRight_toRightOf="@id/workstationImageView"/>
+        <!-- Kategori Workstation -->
+        <ImageView
+            android:id="@+id/workstationImageView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginRight="16dp"
+            android:src="@drawable/ic_workstationkategori"
+            app:layout_constraintLeft_toRightOf="@id/pelajarImageView"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/kategoriTextView"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/workstation"
+            android:textColor="#000000"
+            android:textSize="14sp"
+            app:layout_constraintTop_toBottomOf="@id/workstationImageView"
+            app:layout_constraintLeft_toLeftOf="@id/workstationImageView"
+            app:layout_constraintRight_toRightOf="@id/workstationImageView"/>
 
-            <!-- section Brand -->
-            <TextView
-                android:id="@+id/brandTextView"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="32dp"
-                android:text="@string/brand"
-                android:textColor="#000000"
-                android:textSize="20sp"
-                app:layout_constraintTop_toBottomOf="@id/gamingTextView"
-                app:layout_constraintLeft_toLeftOf="parent"/>
+        <!-- section Brand -->
+        <TextView
+            android:id="@+id/brandTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:layout_marginLeft="16dp"
+            android:text="@string/brand"
+            android:textColor="#000000"
+            android:textSize="20sp"
+            app:layout_constraintTop_toBottomOf="@id/gamingTextView"
+            app:layout_constraintLeft_toLeftOf="parent"/>
 
-            <!-- penampilan Brand -->
-            <!-- brand acer -->
-            <ImageView
-                android:id="@+id/acerImageView"
-                android:layout_width="0dp"
-                android:layout_height="48dp"
-                android:src="@drawable/ic_acer"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toLeftOf="@id/asusImageView"
-                app:layout_constraintTop_toBottomOf="@id/brandTextView"/>
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/acer"
-                android:textColor="#000000"
-                android:textSize="14sp"
-                app:layout_constraintLeft_toLeftOf="@id/acerImageView"
-                app:layout_constraintRight_toRightOf="@id/acerImageView"
-                app:layout_constraintTop_toBottomOf="@id/acerImageView"/>
+        <!-- penampilan Brand -->
+        <!-- brand acer -->
+        <ImageView
+            android:id="@+id/acerImageView"
+            android:layout_width="0dp"
+            android:layout_height="48dp"
+            android:layout_marginLeft="16dp"
+            android:src="@drawable/ic_acer"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toLeftOf="@id/asusImageView"
+            app:layout_constraintTop_toBottomOf="@id/brandTextView"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/acer"
+            android:textColor="#000000"
+            android:textSize="14sp"
+            app:layout_constraintLeft_toLeftOf="@id/acerImageView"
+            app:layout_constraintRight_toRightOf="@id/acerImageView"
+            app:layout_constraintTop_toBottomOf="@id/acerImageView"/>
 
-            <!-- brand asus -->
-            <ImageView
-                android:id="@+id/asusImageView"
-                android:layout_width="0dp"
-                android:layout_height="48dp"
-                android:src="@drawable/ic_asus"
-                app:layout_constraintLeft_toRightOf="@id/acerImageView"
-                app:layout_constraintTop_toBottomOf="@id/brandTextView"
-                app:layout_constraintRight_toLeftOf="@id/hpImageView"/>
-            <TextView
-                android:id="@+id/acerTextView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/asus"
-                android:textColor="#000000"
-                android:textSize="14sp"
-                app:layout_constraintLeft_toLeftOf="@id/asusImageView"
-                app:layout_constraintRight_toRightOf="@id/asusImageView"
-                app:layout_constraintTop_toBottomOf="@id/asusImageView"/>
+        <!-- brand asus -->
+        <ImageView
+            android:id="@+id/asusImageView"
+            android:layout_width="0dp"
+            android:layout_height="48dp"
+            android:src="@drawable/ic_asus"
+            app:layout_constraintLeft_toRightOf="@id/acerImageView"
+            app:layout_constraintTop_toBottomOf="@id/brandTextView"
+            app:layout_constraintRight_toLeftOf="@id/hpImageView"/>
+        <TextView
+            android:id="@+id/acerTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/asus"
+            android:textColor="#000000"
+            android:textSize="14sp"
+            app:layout_constraintLeft_toLeftOf="@id/asusImageView"
+            app:layout_constraintRight_toRightOf="@id/asusImageView"
+            app:layout_constraintTop_toBottomOf="@id/asusImageView"/>
 
-            <!-- brand hp -->
-            <ImageView
-                android:id="@+id/hpImageView"
-                android:layout_width="0dp"
-                android:layout_height="48dp"
-                android:src="@drawable/ic_hp"
-                app:layout_constraintLeft_toRightOf="@id/asusImageView"
-                app:layout_constraintRight_toLeftOf="@id/lenovoImageView"
-                app:layout_constraintTop_toBottomOf="@id/brandTextView"/>
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/hp"
-                android:textColor="#000000"
-                android:textSize="14sp"
-                app:layout_constraintLeft_toLeftOf="@id/hpImageView"
-                app:layout_constraintRight_toRightOf="@id/hpImageView"
-                app:layout_constraintTop_toBottomOf="@id/hpImageView"/>
+        <!-- brand hp -->
+        <ImageView
+            android:id="@+id/hpImageView"
+            android:layout_width="0dp"
+            android:layout_height="48dp"
+            android:src="@drawable/ic_hp"
+            app:layout_constraintLeft_toRightOf="@id/asusImageView"
+            app:layout_constraintRight_toLeftOf="@id/lenovoImageView"
+            app:layout_constraintTop_toBottomOf="@id/brandTextView"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/hp"
+            android:textColor="#000000"
+            android:textSize="14sp"
+            app:layout_constraintLeft_toLeftOf="@id/hpImageView"
+            app:layout_constraintRight_toRightOf="@id/hpImageView"
+            app:layout_constraintTop_toBottomOf="@id/hpImageView"/>
 
-            <!-- brand lenovo -->
-            <ImageView
-                android:id="@+id/lenovoImageView"
-                android:layout_width="0dp"
-                android:layout_height="48dp"
-                android:src="@drawable/ic_lenovo"
-                app:layout_constraintLeft_toRightOf="@id/hpImageView"
-                app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/brandTextView"/>
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/lenovo"
-                android:textColor="#000000"
-                android:textSize="14sp"
-                app:layout_constraintLeft_toLeftOf="@id/lenovoImageView"
-                app:layout_constraintRight_toRightOf="@id/lenovoImageView"
-                app:layout_constraintTop_toBottomOf="@id/lenovoImageView"/>
+        <!-- brand lenovo -->
+        <ImageView
+            android:id="@+id/lenovoImageView"
+            android:layout_width="0dp"
+            android:layout_height="48dp"
+            android:layout_marginRight="16dp"
+            android:src="@drawable/ic_lenovo"
+            app:layout_constraintLeft_toRightOf="@id/hpImageView"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/brandTextView"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/lenovo"
+            android:textColor="#000000"
+            android:textSize="14sp"
+            app:layout_constraintLeft_toLeftOf="@id/lenovoImageView"
+            app:layout_constraintRight_toRightOf="@id/lenovoImageView"
+            app:layout_constraintTop_toBottomOf="@id/lenovoImageView"/>
 
-            <!-- brand msi -->
-            <ImageView
-                android:id="@+id/msiImageView"
-                android:layout_width="0dp"
-                android:layout_height="48dp"
-                android:src="@drawable/ic_msi"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/acerTextView"
-                app:layout_constraintRight_toLeftOf="@id/dummyImageView1"/>
-            <TextView
-                android:id="@+id/msiTextView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/msi"
-                android:textColor="#000000"
-                android:textSize="14sp"
-                app:layout_constraintLeft_toLeftOf="@id/msiImageView"
-                app:layout_constraintRight_toRightOf="@id/msiImageView"
-                app:layout_constraintTop_toBottomOf="@id/msiImageView"/>
+        <!-- brand msi -->
+        <ImageView
+            android:id="@+id/msiImageView"
+            android:layout_width="0dp"
+            android:layout_height="48dp"
+            android:layout_marginLeft="16dp"
+            android:src="@drawable/ic_msi"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/acerTextView"
+            app:layout_constraintRight_toLeftOf="@id/dummyImageView1"/>
+        <TextView
+            android:id="@+id/msiTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/msi"
+            android:textColor="#000000"
+            android:textSize="14sp"
+            app:layout_constraintLeft_toLeftOf="@id/msiImageView"
+            app:layout_constraintRight_toRightOf="@id/msiImageView"
+            app:layout_constraintTop_toBottomOf="@id/msiImageView"/>
 
-            <!-- dummy brands -->
-            <ImageView
-                android:id="@+id/dummyImageView1"
-                android:layout_width="0dp"
-                android:layout_height="48dp"
-                app:layout_constraintLeft_toRightOf="@id/msiImageView"
-                app:layout_constraintRight_toLeftOf="@id/dummyImageView2"
-                app:layout_constraintTop_toBottomOf="@id/acerTextView"/>
-            <ImageView
-                android:id="@+id/dummyImageView2"
-                android:layout_width="0dp"
-                android:layout_height="48dp"
-                app:layout_constraintLeft_toRightOf="@id/dummyImageView1"
-                app:layout_constraintTop_toBottomOf="@id/acerTextView"
-                app:layout_constraintRight_toLeftOf="@id/dummyImageView3"/>
-            <ImageView
-                android:id="@+id/dummyImageView3"
-                android:layout_width="0dp"
-                android:layout_height="48dp"
-                app:layout_constraintLeft_toRightOf="@id/dummyImageView2"
-                app:layout_constraintTop_toBottomOf="@id/acerTextView"
-                app:layout_constraintRight_toRightOf="parent"/>
+        <!-- dummy brands -->
+        <ImageView
+            android:id="@+id/dummyImageView1"
+            android:layout_width="0dp"
+            android:layout_height="48dp"
+            app:layout_constraintLeft_toRightOf="@id/msiImageView"
+            app:layout_constraintRight_toLeftOf="@id/dummyImageView2"
+            app:layout_constraintTop_toBottomOf="@id/acerTextView"/>
+        <ImageView
+            android:id="@+id/dummyImageView2"
+            android:layout_width="0dp"
+            android:layout_height="48dp"
+            app:layout_constraintLeft_toRightOf="@id/dummyImageView1"
+            app:layout_constraintTop_toBottomOf="@id/acerTextView"
+            app:layout_constraintRight_toLeftOf="@id/dummyImageView3"/>
+        <ImageView
+            android:id="@+id/dummyImageView3"
+            android:layout_width="0dp"
+            android:layout_height="48dp"
+            android:layout_marginRight="16dp"
+            app:layout_constraintLeft_toRightOf="@id/dummyImageView2"
+            app:layout_constraintTop_toBottomOf="@id/acerTextView"
+            app:layout_constraintRight_toRightOf="parent"/>
 
-            <!-- bottom menu -->
-            <!-- bottom menu Telusuri -->
-            <ImageView
-                android:id="@+id/img_menu_telusuri"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:src="@drawable/ic_telusuri"
-                app:layout_constraintTop_toBottomOf="@id/msiTextView"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toLeftOf="@id/img_menu_rekomendasi"/>
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/telusuri"
-                android:textColor="#000000"
-                android:textSize="14sp"
-                app:layout_constraintTop_toBottomOf="@id/img_menu_telusuri"
-                app:layout_constraintLeft_toLeftOf="@id/img_menu_telusuri"
-                app:layout_constraintRight_toRightOf="@id/img_menu_telusuri"/>
+        <!-- bottom menu -->
+        <!-- bottom menu Telusuri -->
+        <ImageView
+            android:id="@+id/img_menu_telusuri"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginLeft="16dp"
+            android:src="@drawable/ic_telusuri"
+            app:layout_constraintTop_toBottomOf="@id/msiTextView"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toLeftOf="@id/img_menu_rekomendasi"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/telusuri"
+            android:textColor="#000000"
+            android:textSize="14sp"
+            app:layout_constraintTop_toBottomOf="@id/img_menu_telusuri"
+            app:layout_constraintLeft_toLeftOf="@id/img_menu_telusuri"
+            app:layout_constraintRight_toRightOf="@id/img_menu_telusuri"/>
 
-            <!-- bottom menu Rekomendasi -->
-            <ImageView
-                android:id="@+id/img_menu_rekomendasi"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:src="@drawable/ic_rekomendasi"
-                app:layout_constraintTop_toBottomOf="@id/msiTextView"
-                app:layout_constraintLeft_toRightOf="@id/img_menu_telusuri"
-                app:layout_constraintRight_toLeftOf="@id/img_menu_bandingkan"/>
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/rekomendasi"
-                android:textColor="#000000"
-                android:textSize="14sp"
-                app:layout_constraintTop_toBottomOf="@id/img_menu_rekomendasi"
-                app:layout_constraintLeft_toLeftOf="@id/img_menu_rekomendasi"
-                app:layout_constraintRight_toRightOf="@id/img_menu_rekomendasi"/>
+        <!-- bottom menu Rekomendasi -->
+        <ImageView
+            android:id="@+id/img_menu_rekomendasi"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:src="@drawable/ic_rekomendasi"
+            app:layout_constraintTop_toBottomOf="@id/msiTextView"
+            app:layout_constraintLeft_toRightOf="@id/img_menu_telusuri"
+            app:layout_constraintRight_toLeftOf="@id/img_menu_bandingkan"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/rekomendasi"
+            android:textColor="#000000"
+            android:textSize="14sp"
+            app:layout_constraintTop_toBottomOf="@id/img_menu_rekomendasi"
+            app:layout_constraintLeft_toLeftOf="@id/img_menu_rekomendasi"
+            app:layout_constraintRight_toRightOf="@id/img_menu_rekomendasi"/>
 
-            <!-- Bottom menu bandingkan -->
-            <ImageView
-                android:id="@+id/img_menu_bandingkan"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:src="@drawable/ic_bandingkan"
-                app:layout_constraintTop_toBottomOf="@id/msiTextView"
-                app:layout_constraintLeft_toRightOf="@id/img_menu_rekomendasi"
-                app:layout_constraintRight_toRightOf="parent"/>
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/bandingkan"
-                android:textColor="#000000"
-                android:textSize="14sp"
-                app:layout_constraintTop_toBottomOf="@id/img_menu_bandingkan"
-                app:layout_constraintLeft_toLeftOf="@id/img_menu_bandingkan"
-                app:layout_constraintRight_toRightOf="@id/img_menu_bandingkan"/>
-        </androidx.constraintlayout.widget.ConstraintLayout>
-    </LinearLayout>
+        <!-- Bottom menu bandingkan -->
+        <ImageView
+            android:id="@+id/img_menu_bandingkan"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginRight="16dp"
+            android:src="@drawable/ic_bandingkan"
+            app:layout_constraintTop_toBottomOf="@id/msiTextView"
+            app:layout_constraintLeft_toRightOf="@id/img_menu_rekomendasi"
+            app:layout_constraintRight_toRightOf="parent"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/bandingkan"
+            android:textColor="#000000"
+            android:textSize="14sp"
+            app:layout_constraintTop_toBottomOf="@id/img_menu_bandingkan"
+            app:layout_constraintLeft_toLeftOf="@id/img_menu_bandingkan"
+            app:layout_constraintRight_toRightOf="@id/img_menu_bandingkan"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>
