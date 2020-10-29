@@ -20,5 +20,10 @@
     <string name="asus_tuf_fx506ii">ASUS TUF FX506II</string>
     <string name="_1_7k">1.7k</string>
     <string name="spesifikasi">Spesifikasi</string>
+    <string name="acer">Acer</string>
+    <string name="asus">Asus</string>
+    <string name="hp">HP</string>
+    <string name="msi">MSI</string>
+    <string name="lenovo">Lenovo</string>
 
 </resources>

@@ -7,7 +7,7 @@
     android:layout_marginEnd="16dp"
     android:paddingHorizontal="8dp"
     android:paddingVertical="16dp"
-    android:background="@drawable/item_kolom_laptop_bg"
+    android:background="@drawable/bg_item_kolom_laptop"
     android:gravity="center">
 
     <!-- image view buat nampilin gambar laptop di rilisan terbatu -->

@@ -14,14 +14,9 @@ import androidx.recyclerview.widget.RecyclerView
 class MainActivity : AppCompatActivity(), View.OnClickListener {
     //inisiasi RecyclerView yang akan ditampilkan untuk rilis terbaru
     private lateinit var rvLaptop: RecyclerView
-    //inisiasi RecyclerView yang akan ditampilkan untuk section brand
-    private lateinit var rvBrand: RecyclerView
 
     //untuk laptop terbaru
     private val list: ArrayList<LaptopTerbaru> = arrayListOf()
-
-    //untuk brand
-    private val listBrand: ArrayList<Brand> = arrayListOf()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -31,17 +26,9 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         rvLaptop = findViewById(R.id.rv_laptop)
         rvLaptop.setHasFixedSize(true)
 
-        //inisiasi untuk brand
-        rvBrand = findViewById(R.id.rv_brand)
-        rvBrand.setHasFixedSize(true)
-
         //memanggil data yang ada di kelas LaptopTerbaruData
         list.addAll(LaptopTerbaruData.listData)
         showRecyclerList()
-
-        //memanggil data yang ada di kelas BrandData
-        listBrand.addAll(BrandData.listData)
-        showRecyclerGrid()
 
         //digunakan untuk pindah ke tampilan telusuri
         val gaming: ImageView = findViewById(R.id.gamingImageView)
@@ -70,13 +57,6 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         rvLaptop.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
         val listLaptopTerbaruAdapter = ListLaptopTerbaruAdapter(list)
         rvLaptop.adapter = listLaptopTerbaruAdapter
-    }
-    //untuk menampilkan grid Recycler veiw Brand
-    private fun showRecyclerGrid(){
-        rvBrand.layoutManager = GridLayoutManager(this,4)
-        val gridBrandAdapter = GridBrandAdapter(listBrand)
-        rvBrand.adapter = gridBrandAdapter
-
     }
 
     //fungsi untuk pindah tampilan ke telusuri rekomendasi bandingkan
