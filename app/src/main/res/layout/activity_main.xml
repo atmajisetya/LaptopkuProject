@@ -176,7 +176,7 @@
             <ImageView
                 android:id="@+id/acerImageView"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                android:layout_height="48dp"
                 android:src="@drawable/ic_acer"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toLeftOf="@id/asusImageView"
@@ -195,7 +195,7 @@
             <ImageView
                 android:id="@+id/asusImageView"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                android:layout_height="48dp"
                 android:src="@drawable/ic_asus"
                 app:layout_constraintLeft_toRightOf="@id/acerImageView"
                 app:layout_constraintTop_toBottomOf="@id/brandTextView"
@@ -215,7 +215,7 @@
             <ImageView
                 android:id="@+id/hpImageView"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                android:layout_height="48dp"
                 android:src="@drawable/ic_hp"
                 app:layout_constraintLeft_toRightOf="@id/asusImageView"
                 app:layout_constraintRight_toLeftOf="@id/lenovoImageView"
@@ -234,7 +234,7 @@
             <ImageView
                 android:id="@+id/lenovoImageView"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                android:layout_height="48dp"
                 android:src="@drawable/ic_lenovo"
                 app:layout_constraintLeft_toRightOf="@id/hpImageView"
                 app:layout_constraintRight_toRightOf="parent"
@@ -253,7 +253,7 @@
             <ImageView
                 android:id="@+id/msiImageView"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                android:layout_height="48dp"
                 android:src="@drawable/ic_msi"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/acerTextView"
@@ -273,21 +273,21 @@
             <ImageView
                 android:id="@+id/dummyImageView1"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                android:layout_height="48dp"
                 app:layout_constraintLeft_toRightOf="@id/msiImageView"
                 app:layout_constraintRight_toLeftOf="@id/dummyImageView2"
                 app:layout_constraintTop_toBottomOf="@id/acerTextView"/>
             <ImageView
                 android:id="@+id/dummyImageView2"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                android:layout_height="48dp"
                 app:layout_constraintLeft_toRightOf="@id/dummyImageView1"
                 app:layout_constraintTop_toBottomOf="@id/acerTextView"
                 app:layout_constraintRight_toLeftOf="@id/dummyImageView3"/>
             <ImageView
                 android:id="@+id/dummyImageView3"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                android:layout_height="48dp"
                 app:layout_constraintLeft_toRightOf="@id/dummyImageView2"
                 app:layout_constraintTop_toBottomOf="@id/acerTextView"
                 app:layout_constraintRight_toRightOf="parent"/>
