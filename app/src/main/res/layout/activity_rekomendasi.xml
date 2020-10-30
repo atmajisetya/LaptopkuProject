@@ -63,17 +63,29 @@
     <EditText
         android:id="@+id/minEditText"
         android:layout_width="132dp"
-        android:layout_height="35dp"
+        android:layout_height="wrap_content"
+        android:paddingStart="12dp"
+        android:paddingVertical="4dp"
         android:hint="@string/min"
+        android:textSize="18sp"
+        android:background="@drawable/bg_edit_text"
+        android:inputType="number"
+        android:importantForAutofill="no"
         app:layout_constraintTop_toBottomOf="@id/rekomendasiHeaderConstraintLayout"
         app:layout_constraintBottom_toTopOf="@id/rekomendasiFooterConstraintLayout"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toLeftOf="@id/maxEditText"/>
+        app:layout_constraintRight_toLeftOf="@id/maxEditText" />
     <EditText
         android:id="@+id/maxEditText"
         android:layout_width="132dp"
-        android:layout_height="35dp"
+        android:layout_height="wrap_content"
+        android:paddingStart="12dp"
+        android:paddingVertical="4dp"
         android:hint="@string/max"
+        android:textSize="18sp"
+        android:background="@drawable/bg_edit_text"
+        android:inputType="number"
+        android:importantForAutofill="no"
         app:layout_constraintTop_toBottomOf="@id/rekomendasiHeaderConstraintLayout"
         app:layout_constraintBottom_toTopOf="@id/rekomendasiFooterConstraintLayout"
         app:layout_constraintLeft_toRightOf="@id/minEditText"
@@ -86,10 +98,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="40dp"
-        android:paddingHorizontal="4dp"
+        android:paddingHorizontal="12dp"
         android:paddingVertical="4dp"
         android:orientation="horizontal"
-        android:background="#330099"
+        android:background="@drawable/bg_button"
         android:gravity="center"
         app:layout_constraintBottom_toTopOf="@id/rekomendasiFooterConstraintLayout"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -97,13 +109,14 @@
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/ic_kembali"/>
+            android:layout_marginRight="4dp"
+            android:src="@drawable/ic_sebelumnya"/>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/sebelumnya"
             android:textColor="#ffffff"
-            android:textSize="16sp"/>
+            android:textSize="18sp"/>
     </LinearLayout>
 
     <!-- untuk selanjutnya -->
@@ -112,10 +125,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="40dp"
-        android:paddingHorizontal="4dp"
+        android:paddingHorizontal="12dp"
         android:paddingVertical="4dp"
         android:orientation="horizontal"
-        android:background="#330099"
+        android:background="@drawable/bg_button"
         android:gravity="center"
         app:layout_constraintBottom_toTopOf="@id/rekomendasiFooterConstraintLayout"
         app:layout_constraintLeft_toRightOf="@id/sebelumnyaLinearLayout"
@@ -125,10 +138,11 @@
             android:layout_height="wrap_content"
             android:text="@string/selanjutnya"
             android:textColor="#ffffff"
-            android:textSize="16sp"/>
+            android:textSize="18sp"/>
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="4dp"
             android:src="@drawable/ic_selanjutnya"/>
     </LinearLayout>
 
