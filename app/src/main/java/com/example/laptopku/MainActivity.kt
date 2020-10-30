@@ -30,7 +30,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         list.addAll(LaptopTerbaruData.listData)
         showRecyclerList()
 
-        //digunakan untuk pindah ke tampilan telusuri
+        //digunakan untuk pindah ke tampilan hasil telusuri
         val gaming: ImageView = findViewById(R.id.gamingImageView)
         gaming.setOnClickListener(this)
 
@@ -47,7 +47,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         val imgMenuRekomendasi: ImageView = findViewById(R.id.telusuriFooterRekomendasiImageView)
         imgMenuRekomendasi.setOnClickListener(this)
 
-        //digunakan untuk pindah ke tampilan rekomendasi
+        //digunakan untuk pindah ke tampilan bandingkan
         val imgMenuBandingkan: ImageView = findViewById(R.id.telusuriFooterBandingkanImageView)
         imgMenuBandingkan.setOnClickListener(this)
 

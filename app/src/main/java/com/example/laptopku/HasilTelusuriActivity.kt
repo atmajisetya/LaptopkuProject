@@ -2,8 +2,9 @@ package com.example.laptopku
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 
-class HasilTelusuriActivity : AppCompatActivity() {
+class HasilTelusuriActivity : AppCompatActivity(), View.OnClickListener {
     //inisiasi TextView
     private lateinit var textView: android.widget.TextView
 
@@ -18,5 +19,27 @@ class HasilTelusuriActivity : AppCompatActivity() {
         textView = findViewById(R.id.filterTextView)
         textView.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_filter,0,0,0)
         textView.compoundDrawablePadding = 32
+
+        //digunakan untuk pindah ke tampilan rekomendasi
+        val rekomendasiImageView: android.widget.ImageView = findViewById(R.id.telusuriFooterRekomendasiImageView)
+        rekomendasiImageView.setOnClickListener(this)
+
+        //digunakan untuk pindah ke tampilan bandingkan
+        val bandingkanImageView: android.widget.ImageView = findViewById(R.id.telusuriFooterBandingkanImageView)
+        bandingkanImageView.setOnClickListener(this)
+    }
+
+    //fungsi untuk pindah ke tampilan rekomendasi dan bandingkan
+    override fun onClick(v: View?){
+        when(v?.id){
+            R.id.telusuriFooterRekomendasiImageView ->{
+                val moveIntent = android.content.Intent(this@HasilTelusuriActivity, RekomendasiActivity::class.java)
+                startActivity(moveIntent)
+            }
+            R.id.telusuriFooterBandingkanImageView ->{
+                val moveIntent = android.content.Intent(this@HasilTelusuriActivity, RekomendasiActivity::class.java)
+                startActivity(moveIntent)
+            }
+        }
     }
 }
