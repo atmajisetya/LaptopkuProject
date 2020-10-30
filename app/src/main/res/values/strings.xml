@@ -25,5 +25,18 @@
     <string name="hp">HP</string>
     <string name="msi">MSI</string>
     <string name="lenovo">Lenovo</string>
+    <string name="buka_laptop_favorit">Buka laptop favorit.</string>
+    <string name="buka_kategori_laptop_gaming">Buka kategori laptop gaming.</string>
+    <string name="buka_kategori_laptop_profesional">Buka kategori laptop profesional.</string>
+    <string name="buka_laptop_kategori_pelajar">Buka laptop kategori pelajar.</string>
+    <string name="buka_laptop_kategori_workstation">Buka laptop kategori workstation.</string>
+    <string name="buka_laptop_brand_acer">Buka laptop brand Acer.</string>
+    <string name="buka_laptop_brand_asus">Buka laptop brand Asus.</string>
+    <string name="buka_laptop_brand_hp">Buka laptop brand HP</string>
+    <string name="buka_laptop_brand_lenovo">Buka laptop brand Lenovo.</string>
+    <string name="buka_laptop_brand_msi">Buka laptop brand MSI.</string>
+    <string name="layar_telusuri">Layar telusuri.</string>
+    <string name="layar_rekomendasi">Layar rekomendasi.</string>
+    <string name="layar_bandingkan">Layar bandingkan.</string>
 
 </resources>

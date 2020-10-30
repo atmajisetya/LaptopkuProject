@@ -38,7 +38,7 @@
                     android:background="#FFFFFF"
                     android:importantForAutofill="no"
                     android:inputType="text"
-                    android:text="@string/cari_laptop"
+                    android:hint="@string/cari_laptop"
                     android:textSize="18sp"
                     app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintRight_toLeftOf="@id/favoriteImageView"
@@ -50,6 +50,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="18dp"
                     android:src="@drawable/ic_icon_material_favorite"
+                    android:contentDescription="@string/buka_laptop_favorit"
                     app:layout_constraintLeft_toRightOf="@id/cariLaptopEditText"
                     app:layout_constraintRight_toRightOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
@@ -96,6 +97,7 @@
                 android:layout_height="wrap_content" android:src="@drawable/ic_gamingkategori"
                 android:layout_marginTop="8dp"
                 android:layout_marginLeft="16dp"
+                android:contentDescription="@string/buka_kategori_laptop_gaming"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toLeftOf="@id/profesionalImageView"
                 app:layout_constraintTop_toBottomOf="@id/kategoriTextView"/>
@@ -116,6 +118,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:src="@drawable/ic_profesionalkategori"
+                android:contentDescription="@string/buka_kategori_laptop_profesional"
                 app:layout_constraintTop_toBottomOf="@id/kategoriTextView"
                 app:layout_constraintLeft_toRightOf="@id/gamingImageView"
                 app:layout_constraintRight_toLeftOf="@id/pelajarImageView"/>
@@ -136,6 +139,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:src="@drawable/ic_pelajarkategori"
+                android:contentDescription="@string/buka_laptop_kategori_pelajar"
                 app:layout_constraintTop_toBottomOf="@id/kategoriTextView"
                 app:layout_constraintLeft_toRightOf="@id/profesionalImageView"
                 app:layout_constraintRight_toLeftOf="@id/workstationImageView"/>
@@ -157,6 +161,7 @@
                 android:layout_marginTop="8dp"
                 android:layout_marginRight="16dp"
                 android:src="@drawable/ic_workstationkategori"
+                android:contentDescription="@string/buka_laptop_kategori_workstation"
                 app:layout_constraintLeft_toRightOf="@id/pelajarImageView"
                 app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/kategoriTextView"/>
@@ -191,6 +196,7 @@
                 android:layout_height="48dp"
                 android:layout_marginLeft="16dp"
                 android:src="@drawable/ic_acer"
+                android:contentDescription="@string/buka_laptop_brand_acer"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toLeftOf="@id/asusImageView"
                 app:layout_constraintTop_toBottomOf="@id/brandTextView"/>
@@ -210,6 +216,7 @@
                 android:layout_width="0dp"
                 android:layout_height="48dp"
                 android:src="@drawable/ic_asus"
+                android:contentDescription="@string/buka_laptop_brand_asus"
                 app:layout_constraintLeft_toRightOf="@id/acerImageView"
                 app:layout_constraintTop_toBottomOf="@id/brandTextView"
                 app:layout_constraintRight_toLeftOf="@id/hpImageView"/>
@@ -230,6 +237,7 @@
                 android:layout_width="0dp"
                 android:layout_height="48dp"
                 android:src="@drawable/ic_hp"
+                android:contentDescription="@string/buka_laptop_brand_hp"
                 app:layout_constraintLeft_toRightOf="@id/asusImageView"
                 app:layout_constraintRight_toLeftOf="@id/lenovoImageView"
                 app:layout_constraintTop_toBottomOf="@id/brandTextView"/>
@@ -250,6 +258,7 @@
                 android:layout_height="48dp"
                 android:layout_marginRight="16dp"
                 android:src="@drawable/ic_lenovo"
+                android:contentDescription="@string/buka_laptop_brand_lenovo"
                 app:layout_constraintLeft_toRightOf="@id/hpImageView"
                 app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/brandTextView"/>
@@ -270,6 +279,7 @@
                 android:layout_height="48dp"
                 android:layout_marginLeft="16dp"
                 android:src="@drawable/ic_msi"
+                android:contentDescription="@string/buka_laptop_brand_msi"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/acerTextView"
                 app:layout_constraintRight_toLeftOf="@id/dummyImageView1"/>
@@ -329,6 +339,7 @@
             android:layout_marginTop="8dp"
             android:layout_marginLeft="16dp"
             android:src="@drawable/ic_telusuri"
+            android:contentDescription="@string/layar_telusuri"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toLeftOf="@id/img_menu_rekomendasi"/>
@@ -349,6 +360,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:src="@drawable/ic_rekomendasi_abu"
+            android:contentDescription="@string/layar_rekomendasi"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintLeft_toRightOf="@id/img_menu_telusuri"
             app:layout_constraintRight_toLeftOf="@id/img_menu_bandingkan"/>
@@ -370,6 +382,7 @@
             android:layout_marginTop="8dp"
             android:layout_marginRight="16dp"
             android:src="@drawable/ic_bandingkan_abu"
+            android:contentDescription="@string/layar_bandingkan"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintLeft_toRightOf="@id/img_menu_rekomendasi"
             app:layout_constraintRight_toRightOf="parent"/>
