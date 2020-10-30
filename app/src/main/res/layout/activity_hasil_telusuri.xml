@@ -65,15 +65,6 @@
 
         <!-- bagian tengah : urutkan dan filter -->
         <!-- bagian urutkan -->
-        <ImageView
-            android:id="@+id/urutkanImageView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:src="@drawable/ic_urutkan"
-            app:layout_constraintTop_toBottomOf="@id/hasilTelusuriHeaderBiruConstraintLayout"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toLeftOf="@id/urutkanTextView"/>
         <TextView
             android:id="@+id/urutkanTextView"
             android:layout_width="wrap_content"
@@ -82,20 +73,12 @@
             android:textSize="18sp"
             android:textColor="#000000"
             android:text="@string/urutkan"
+            android:gravity="center"
             app:layout_constraintTop_toBottomOf="@id/hasilTelusuriHeaderBiruConstraintLayout"
-            app:layout_constraintLeft_toRightOf="@id/urutkanImageView"
-            app:layout_constraintRight_toLeftOf="@id/filterImageView"/>
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toLeftOf="@id/filterTextView"/>
 
         <!-- bagian filter -->
-        <ImageView
-            android:id="@+id/filterImageView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:src="@drawable/ic_filter"
-            app:layout_constraintTop_toBottomOf="@id/hasilTelusuriHeaderBiruConstraintLayout"
-            app:layout_constraintLeft_toRightOf="@id/urutkanTextView"
-            app:layout_constraintRight_toLeftOf="@id/filterTextView"/>
         <TextView
             android:id="@+id/filterTextView"
             android:layout_width="wrap_content"
@@ -104,8 +87,9 @@
             android:textSize="18sp"
             android:textColor="#000000"
             android:text="@string/filter"
+            android:gravity="center"
             app:layout_constraintTop_toBottomOf="@id/hasilTelusuriHeaderBiruConstraintLayout"
-            app:layout_constraintLeft_toRightOf="@id/filterImageView"
+            app:layout_constraintLeft_toRightOf="@id/urutkanTextView"
             app:layout_constraintRight_toRightOf="parent"/>
     </androidx.constraintlayout.widget.ConstraintLayout>
     <ScrollView
