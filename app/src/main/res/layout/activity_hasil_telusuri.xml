@@ -1,193 +1,197 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_width="match_parent"
     tools:context=".HasilTelusuriActivity">
 
-    <LinearLayout
+    <!-- header -->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/hasilTelusuriHeaderConstraintLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:background="#FFFFFF"
+        android:paddingBottom="8dp"
+        android:elevation="4dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/hasilTelusuriScrollView">
 
-        <!-- bagian paling atas yang ada tombol back search and favorite -->
-        <LinearLayout
+        <!-- header bagian biru -->
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/hasilTelusuriHeaderBiruConstraintLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:paddingVertical="16dp"
+            android:paddingHorizontal="24dp"
             android:background="#330099"
-            android:orientation="horizontal"
-            android:gravity="center">
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent">
 
             <ImageView
+                android:id="@+id/kembaliImageView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginRight="16dp"
                 android:src="@drawable/ic_kembali"
-                android:padding="20dp"/>
+                android:contentDescription="@string/kembali_ke_layar_sebelumnya"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toLeftOf="@id/cariLaptopHasilTelusuriEditText"
+                app:layout_constraintTop_toTopOf="parent"/>
             <EditText
-                android:layout_width="280dp"
+                android:id="@+id/cariLaptopHasilTelusuriEditText"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:background="#FFFFFF"
-                android:text="@string/cari_laptop"
-                android:textSize="16sp"
-                android:padding="20dp"/>
-
+                android:hint="@string/cari_laptop"
+                android:textSize="18sp"
+                android:importantForAutofill="no"
+                android:inputType="text"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintLeft_toRightOf="@id/kembaliImageView"
+                app:layout_constraintRight_toLeftOf="@id/favoriteHasilTelusuriImageView" />
             <ImageView
-                android:layout_width="match_parent"
+                android:id="@+id/favoriteHasilTelusuriImageView"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
                 android:src="@drawable/ic_icon_material_favorite"
-                />
-
-
-        </LinearLayout>
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintLeft_toRightOf="@id/cariLaptopHasilTelusuriEditText"
+                app:layout_constraintRight_toRightOf="parent"/>
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
         <!-- bagian tengah : urutkan dan filter -->
-        <LinearLayout
+        <!-- bagian urutkan -->
+        <ImageView
+            android:id="@+id/urutkanImageView"
             android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:orientation="horizontal"
-            android:gravity="center"
-            >
-
-            <!-- bagian urutkan -->
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:padding="10dp"
-                android:gravity="center">
-
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/ic_urutkan" />
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textSize="18dp"
-                    android:text="@string/urutkan" />
-
-            </LinearLayout>
-
-            <!-- bagian filter -->
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:padding="10dp">
-
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/ic_filter" />
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textSize="18dp"
-                    android:text="@string/filter" />
-
-            </LinearLayout>
-
-        </LinearLayout>
-        <!-- akhir dari bagian tengah -->
-
-        <!-- buat nampilin laptopnya -->
-        <LinearLayout
-            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
             android:layout_marginTop="8dp"
-            android:gravity="center">
+            android:src="@drawable/ic_urutkan"
+            app:layout_constraintTop_toBottomOf="@id/hasilTelusuriHeaderBiruConstraintLayout"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toLeftOf="@id/urutkanTextView"/>
+        <TextView
+            android:id="@+id/urutkanTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:textSize="18sp"
+            android:textColor="#000000"
+            android:text="@string/urutkan"
+            app:layout_constraintTop_toBottomOf="@id/hasilTelusuriHeaderBiruConstraintLayout"
+            app:layout_constraintLeft_toRightOf="@id/urutkanImageView"
+            app:layout_constraintRight_toLeftOf="@id/filterImageView"/>
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rv_telusuri_laptop"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-        </LinearLayout>
-
-        <!-- bottom menu -->
-        <LinearLayout
+        <!-- bagian filter -->
+        <ImageView
+            android:id="@+id/filterImageView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:src="@drawable/ic_filter"
+            app:layout_constraintTop_toBottomOf="@id/hasilTelusuriHeaderBiruConstraintLayout"
+            app:layout_constraintLeft_toRightOf="@id/urutkanTextView"
+            app:layout_constraintRight_toLeftOf="@id/filterTextView"/>
+        <TextView
+            android:id="@+id/filterTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:textSize="18sp"
+            android:textColor="#000000"
+            android:text="@string/filter"
+            app:layout_constraintTop_toBottomOf="@id/hasilTelusuriHeaderBiruConstraintLayout"
+            app:layout_constraintLeft_toRightOf="@id/filterImageView"
+            app:layout_constraintRight_toRightOf="parent"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+    <ScrollView
+        android:id="@+id/hasilTelusuriScrollView"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:paddingHorizontal="16dp"
+        android:paddingTop="16dp"
+        android:orientation="vertical"
+        app:layout_constraintTop_toBottomOf="@id/hasilTelusuriHeaderConstraintLayout"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/hasilTelusuriFooterConstraintLayout">
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_telusuri_laptop"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="350dp"
-            android:gravity="center">
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"/>
+    </ScrollView>
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/hasilTelusuriFooterConstraintLayout"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:paddingTop="4dp"
+        android:paddingBottom="2dp"
+        android:background="#FFFFFF"
+        android:elevation="24dp"
+        app:layout_constraintTop_toBottomOf="@id/hasilTelusuriScrollView"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent">
 
-            <!-- Bottom menu telusuri -->
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:gravity="center"
-                android:padding="12dp"
-                >
+        <!-- Bottom menu telusuri -->
+        <ImageView
+            android:id="@+id/telusuriImageView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_telusuri"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toLeftOf="@id/rekomendasiImageView"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/telusuri"
+            android:textSize="14sp"
+            android:textColor="#000000"
+            app:layout_constraintTop_toBottomOf="@id/telusuriImageView"
+            app:layout_constraintLeft_toLeftOf="@id/telusuriImageView"
+            app:layout_constraintRight_toRightOf="@id/telusuriImageView"/>
 
-                <ImageView
-                    android:id="@+id/img_menu_telusuri"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/ic_telusuri"
-                    />
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+        <!-- Bottom menu rekomendasi -->
+        <ImageView
+            android:id="@+id/rekomendasiImageView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_rekomendasi"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintLeft_toRightOf="@id/telusuriImageView"
+            app:layout_constraintRight_toLeftOf="@id/bandingkanImageView"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/rekomendasi"
+            android:textSize="14sp"
+            android:textColor="#000000"
+            app:layout_constraintLeft_toLeftOf="@id/rekomendasiImageView"
+            app:layout_constraintTop_toBottomOf="@id/rekomendasiImageView"
+            app:layout_constraintRight_toRightOf="@id/rekomendasiImageView"/>
 
-                    android:text="@string/telusuri"
-                    android:textSize="14sp"
-                    android:textColor="#000000"/>
-
-            </LinearLayout>
-
-            <!-- Bottom menu rekomendasi -->
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:gravity="center"
-                android:padding="12dp">
-
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/ic_rekomendasi"
-                    />
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-
-                    android:text="@string/rekomendasi"
-                    android:textSize="14sp"
-                    android:textColor="#000000"/>
-
-            </LinearLayout>
-
-            <!-- Bottom menu bandingkan -->
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:gravity="center"
-                android:padding="12dp">
-
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/ic_bandingkan"
-                    />
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-
-                    android:text="@string/bandingkan"
-                    android:textSize="14sp"
-                    android:textColor="#000000"/>
-
-            </LinearLayout>
-
-        </LinearLayout>
-
-
-
-
-    </LinearLayout>
-
-</ScrollView>
+        <!-- Bottom menu bandingkan -->
+        <ImageView
+            android:id="@+id/bandingkanImageView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_bandingkan"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintLeft_toRightOf="@id/rekomendasiImageView"
+            app:layout_constraintRight_toRightOf="parent"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/bandingkan"
+            android:textSize="14sp"
+            android:textColor="#000000"
+            app:layout_constraintTop_toBottomOf="@id/bandingkanImageView"
+            app:layout_constraintLeft_toLeftOf="@id/bandingkanImageView"
+            app:layout_constraintRight_toRightOf="@id/bandingkanImageView"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

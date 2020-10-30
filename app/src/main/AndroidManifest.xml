@@ -12,7 +12,9 @@
         <activity android:name=".DeskripsiLaptopActivity"></activity>
         <activity android:name=".BandingkanActivity" />
         <activity android:name=".RekomendasiActivity" />
-        <activity android:name=".HasilTelusuriActivity" />
+        <activity
+            android:name=".HasilTelusuriActivity"
+            android:windowSoftInputMode="stateAlwaysHidden|adjustPan"/>
         <activity
             android:name=".MainActivity"
             android:windowSoftInputMode="stateAlwaysHidden|adjustPan">
