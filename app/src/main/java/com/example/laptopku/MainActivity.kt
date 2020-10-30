@@ -44,11 +44,11 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         workstation.setOnClickListener(this)
 
         //digunakan untuk pindah ke tampilan rekomendasi
-        val imgMenuRekomendasi: ImageView = findViewById(R.id.img_menu_rekomendasi)
+        val imgMenuRekomendasi: ImageView = findViewById(R.id.telusuriFooterRekomendasiImageView)
         imgMenuRekomendasi.setOnClickListener(this)
 
         //digunakan untuk pindah ke tampilan rekomendasi
-        val imgMenuBandingkan: ImageView = findViewById(R.id.img_menu_bandingkan)
+        val imgMenuBandingkan: ImageView = findViewById(R.id.telusuriFooterBandingkanImageView)
         imgMenuBandingkan.setOnClickListener(this)
 
     }
@@ -78,11 +78,11 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
                 val moveIntent = Intent(this@MainActivity, HasilTelusuriActivity::class.java)
                 startActivity(moveIntent)
             }
-            R.id.img_menu_rekomendasi ->{
+            R.id.telusuriFooterRekomendasiImageView ->{
                 val moveIntent = Intent(this@MainActivity, RekomendasiActivity::class.java)
                 startActivity(moveIntent)
             }
-            R.id.img_menu_bandingkan ->{
+            R.id.telusuriFooterBandingkanImageView ->{
                 val moveIntent = Intent(this@MainActivity, BandingkanActivity::class.java)
                 startActivity(moveIntent)
             }
