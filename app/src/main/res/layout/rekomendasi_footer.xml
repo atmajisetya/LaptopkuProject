@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingTop="4dp"
+    android:paddingBottom="2dp"
+    android:background="#FFFFFF"
+    android:elevation="24dp">
+
+    <!-- menu Telusuri -->
+    <ImageView
+        android:id="@+id/rekomendasiFooterTelusuriImageView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginLeft="16dp"
+        android:src="@drawable/ic_telusuri_abu"
+        android:contentDescription="@string/layar_telusuri"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@id/rekomendasiFooterRekomendasiImageView"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/telusuri"
+        android:textColor="#969696"
+        android:textSize="14sp"
+        app:layout_constraintTop_toBottomOf="@id/rekomendasiFooterTelusuriImageView"
+        app:layout_constraintLeft_toLeftOf="@id/rekomendasiFooterTelusuriImageView"
+        app:layout_constraintRight_toRightOf="@id/rekomendasiFooterTelusuriImageView"/>
+
+    <!-- menu Rekomendasi -->
+    <ImageView
+        android:id="@+id/rekomendasiFooterRekomendasiImageView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:src="@drawable/ic_rekomendasi"
+        android:contentDescription="@string/layar_rekomendasi"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toRightOf="@id/rekomendasiFooterTelusuriImageView"
+        app:layout_constraintRight_toLeftOf="@id/rekomendasiFooterBandingkanImageView"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/rekomendasi"
+        android:textColor="#330099"
+        android:textSize="14sp"
+        app:layout_constraintTop_toBottomOf="@id/rekomendasiFooterRekomendasiImageView"
+        app:layout_constraintLeft_toLeftOf="@id/rekomendasiFooterRekomendasiImageView"
+        app:layout_constraintRight_toRightOf="@id/rekomendasiFooterRekomendasiImageView"/>
+
+    <!-- menu Bandingkan -->
+    <ImageView
+        android:id="@+id/rekomendasiFooterBandingkanImageView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginRight="16dp"
+        android:src="@drawable/ic_bandingkan_abu"
+        android:contentDescription="@string/layar_bandingkan"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toRightOf="@id/rekomendasiFooterRekomendasiImageView"
+        app:layout_constraintRight_toRightOf="parent"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/bandingkan"
+        android:textColor="#969696"
+        android:textSize="14sp"
+        app:layout_constraintTop_toBottomOf="@id/rekomendasiFooterBandingkanImageView"
+        app:layout_constraintLeft_toLeftOf="@id/rekomendasiFooterBandingkanImageView"
+        app:layout_constraintRight_toRightOf="@id/rekomendasiFooterBandingkanImageView"/>
+</androidx.constraintlayout.widget.ConstraintLayout>

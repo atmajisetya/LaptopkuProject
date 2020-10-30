@@ -31,17 +31,18 @@
             app:layout_constraintLeft_toLeftOf="parent">
 
             <ImageView
-                android:id="@+id/kembaliImageView"
+                android:id="@+id/hasilTelusuriKembaliImageView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="16dp"
                 android:src="@drawable/ic_kembali"
                 android:contentDescription="@string/kembali_ke_layar_sebelumnya"
                 app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toLeftOf="@id/cariLaptopHasilTelusuriEditText"
-                app:layout_constraintTop_toTopOf="parent"/>
+                app:layout_constraintRight_toLeftOf="@id/hasilTelusuriCariLaptopEditText"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"/>
             <EditText
-                android:id="@+id/cariLaptopHasilTelusuriEditText"
+                android:id="@+id/hasilTelusuriCariLaptopEditText"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:background="#FFFFFF"
@@ -50,17 +51,19 @@
                 android:importantForAutofill="no"
                 android:inputType="text"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintLeft_toRightOf="@id/kembaliImageView"
-                app:layout_constraintRight_toLeftOf="@id/favoriteHasilTelusuriImageView"/>
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toRightOf="@id/hasilTelusuriKembaliImageView"
+                app:layout_constraintRight_toLeftOf="@id/hasilTelusuriFavoriteImageView"/>
             <ImageView
-                android:id="@+id/favoriteHasilTelusuriImageView"
+                android:id="@+id/hasilTelusuriFavoriteImageView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="16dp"
                 android:src="@drawable/ic_icon_material_favorite"
                 android:contentDescription="@string/buka_laptop_favorit"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintLeft_toRightOf="@id/cariLaptopHasilTelusuriEditText"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toRightOf="@id/hasilTelusuriCariLaptopEditText"
                 app:layout_constraintRight_toRightOf="parent"/>
         </androidx.constraintlayout.widget.ConstraintLayout>
 

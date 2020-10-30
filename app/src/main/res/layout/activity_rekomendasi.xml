@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -7,205 +8,136 @@
     android:orientation="vertical"
     tools:context=".RekomendasiActivity">
 
-    <!-- bagian paling atas-->
-    <LinearLayout
+    <!-- header -->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/rekomendasiHeaderConstraintLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
         android:background="#330099"
-        android:gravity="center">
-
+        android:paddingVertical="16dp"
+        android:paddingHorizontal="24dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
         <ImageView
+            android:id="@+id/rekomendasiKembaliImageView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginEnd="24dp"
             android:src="@drawable/ic_kembali"
-            android:padding="20dp"
-            />
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toLeftOf="@id/rekomendasiTextView"/>
         <TextView
-            android:layout_width="wrap_content"
+            android:id="@+id/rekomendasiTextView"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:textColor="#ffffff"
             android:text="@string/rekomendasi"
             android:textSize="24sp"
-            android:layout_marginEnd="50dp"
-            android:padding="20dp"/>
-
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toRightOf="@id/rekomendasiKembaliImageView"
+            app:layout_constraintRight_toLeftOf="@id/rekomendasiFavoriteImageView"/>
         <ImageView
-            android:layout_width="match_parent"
+            android:id="@+id/rekomendasiFavoriteImageView"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/ic_icon_material_favorite"
-            android:padding="20dp"
-            />
-
-    </LinearLayout>
-
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toRightOf="@id/rekomendasiTextView"
+            app:layout_constraintRight_toRightOf="parent"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
     <TextView
+        android:id="@+id/berapaBudgetKamuTextView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="40dp"
         android:text="@string/berapa_budget_kamu"
         android:gravity="center"
         android:textSize="24sp"
         android:textColor="#000000"
-        android:layout_marginTop="100dp"/>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:gravity="center">
-
-        <EditText
-            android:id="@+id/editText_budget_min"
-            android:layout_width="132dp"
-            android:layout_height="35dp"
-            android:text="@string/min"
-            android:gravity="center"
-            android:padding="5dp"/>
-
-        <EditText
-            android:id="@+id/editText_budget_max"
-            android:layout_width="132dp"
-            android:layout_height="35dp"
-            android:text="@string/max"
-            android:padding="5dp"
-            android:gravity="center"/>
-
-    </LinearLayout>
+        app:layout_constraintBottom_toTopOf="@id/minEditText"
+        app:layout_constraintLeft_toLeftOf="parent"/>
+    <EditText
+        android:id="@+id/minEditText"
+        android:layout_width="132dp"
+        android:layout_height="35dp"
+        android:hint="@string/min"
+        app:layout_constraintTop_toBottomOf="@id/rekomendasiHeaderConstraintLayout"
+        app:layout_constraintBottom_toTopOf="@id/rekomendasiFooterConstraintLayout"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@id/maxEditText"/>
+    <EditText
+        android:id="@+id/maxEditText"
+        android:layout_width="132dp"
+        android:layout_height="35dp"
+        android:hint="@string/max"
+        app:layout_constraintTop_toBottomOf="@id/rekomendasiHeaderConstraintLayout"
+        app:layout_constraintBottom_toTopOf="@id/rekomendasiFooterConstraintLayout"
+        app:layout_constraintLeft_toRightOf="@id/minEditText"
+        app:layout_constraintRight_toRightOf="parent"/>
 
     <!-- bagian pertanyaan sebelum selanjutnya -->
+    <!-- untuk sebelumnya -->
     <LinearLayout
-        android:layout_width="match_parent"
+        android:id="@+id/sebelumnyaLinearLayout"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="40dp"
+        android:paddingHorizontal="4dp"
+        android:paddingVertical="4dp"
         android:orientation="horizontal"
+        android:background="#330099"
         android:gravity="center"
-        android:layout_marginTop="100dp">
-
-        <!-- untuk sebelumnya -->
-        <LinearLayout
+        app:layout_constraintBottom_toTopOf="@id/rekomendasiFooterConstraintLayout"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@id/selanjutnyaLinearLayout">
+        <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:background="#330099"
-            android:gravity="center"
-            android:layout_marginEnd="15dp">
-
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/ic_kembali"/>
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/sebelumnya"
-                android:textColor="#ffffff"
-                android:textSize="16sp"/>
-
-        </LinearLayout>
-
-        <!-- untuk selanjutnya -->
-        <LinearLayout
+            android:src="@drawable/ic_kembali"/>
+        <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:background="#330099"
-            android:gravity="center">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/sebelumnya"
-                android:textColor="#ffffff"
-                android:textSize="16sp"/>
-
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/ic_selanjutnya"/>
-
-        </LinearLayout>
-
+            android:text="@string/sebelumnya"
+            android:textColor="#ffffff"
+            android:textSize="16sp"/>
     </LinearLayout>
 
-    <!-- bottom menu -->
+    <!-- untuk selanjutnya -->
     <LinearLayout
+        android:id="@+id/selanjutnyaLinearLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="40dp"
+        android:paddingHorizontal="4dp"
+        android:paddingVertical="4dp"
+        android:orientation="horizontal"
+        android:background="#330099"
+        android:gravity="center"
+        app:layout_constraintBottom_toTopOf="@id/rekomendasiFooterConstraintLayout"
+        app:layout_constraintLeft_toRightOf="@id/sebelumnyaLinearLayout"
+        app:layout_constraintRight_toRightOf="parent">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/selanjutnya"
+            android:textColor="#ffffff"
+            android:textSize="16sp"/>
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_selanjutnya"/>
+    </LinearLayout>
+
+    <!-- footer -->
+    <include
+        layout="@layout/rekomendasi_footer"
+        android:id="@+id/rekomendasiFooterConstraintLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="100dp"
-        android:gravity="center">
-
-        <!-- Bottom menu telusuri -->
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:gravity="center"
-            android:padding="12dp"
-            >
-
-            <ImageView
-                android:id="@+id/img_menu_telusuri"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/ic_telusuri"
-                />
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-
-                android:text="@string/telusuri"
-                android:textSize="14sp"
-                android:textColor="#000000"/>
-
-        </LinearLayout>
-
-        <!-- Bottom menu rekomendasi -->
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:gravity="center"
-            android:padding="12dp">
-
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/ic_rekomendasi"
-                />
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-
-                android:text="@string/rekomendasi"
-                android:textSize="14sp"
-                android:textColor="#000000"/>
-
-        </LinearLayout>
-
-        <!-- Bottom menu bandingkan -->
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:gravity="center"
-            android:padding="12dp">
-
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/ic_bandingkan"
-                />
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-
-                android:text="@string/bandingkan"
-                android:textSize="14sp"
-                android:textColor="#000000"/>
-
-        </LinearLayout>
-
-    </LinearLayout>
-
-</LinearLayout>
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"/>
+</androidx.constraintlayout.widget.ConstraintLayout>
