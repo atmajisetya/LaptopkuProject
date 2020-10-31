@@ -27,6 +27,10 @@ class HasilTelusuriActivity : AppCompatActivity(), View.OnClickListener {
         //digunakan untuk pindah ke tampilan bandingkan
         val bandingkanImageView: android.widget.ImageView = findViewById(R.id.telusuriFooterBandingkanImageView)
         bandingkanImageView.setOnClickListener(this)
+
+        //digunakan untuk kembali ke tampilan sebelumnya
+        val kembaliImageView: android.widget.ImageView = findViewById(R.id.hasilTelusuriKembaliImageView)
+        kembaliImageView.setOnClickListener(this)
     }
 
     //fungsi untuk pindah ke tampilan rekomendasi dan bandingkan
@@ -40,6 +44,7 @@ class HasilTelusuriActivity : AppCompatActivity(), View.OnClickListener {
                 val moveIntent = android.content.Intent(this@HasilTelusuriActivity, BandingkanActivity::class.java)
                 startActivity(moveIntent)
             }
+            R.id.hasilTelusuriKembaliImageView -> finish()
         }
     }
 }
