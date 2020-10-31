@@ -5,7 +5,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:background="@drawable/bg_item_laptop_favorite"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:paddingVertical="24dp">
 
     <!-- ImageView penampil foto laptop -->
     <ImageView
@@ -14,8 +15,7 @@
         android:layout_height="wrap_content"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toLeftOf="@id/laptopFavoriteTextView"/>
+        app:layout_constraintLeft_toLeftOf="parent" />
 
     <!-- TextView penampil nama laptop -->
     <TextView
@@ -27,8 +27,8 @@
         tools:text="Nama Laptop Favorit"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toRightOf="@id/laptopFavoriteImageView"
-        app:layout_constraintRight_toLeftOf="@id/itemLaptopFavoriteBandingkanImageView"/>
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"/>
 
     <!-- ImageView penampil icon bandingkan -->
     <ImageView
@@ -39,6 +39,5 @@
         android:contentDescription="@string/bandingkan_laptop"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toRightOf="@id/laptopFavoriteTextView"
         app:layout_constraintRight_toRightOf="parent"/>
 </androidx.constraintlayout.widget.ConstraintLayout>
