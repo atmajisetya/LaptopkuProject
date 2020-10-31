@@ -37,7 +37,7 @@ class HasilTelusuriActivity : AppCompatActivity(), View.OnClickListener {
                 startActivity(moveIntent)
             }
             R.id.telusuriFooterBandingkanImageView ->{
-                val moveIntent = android.content.Intent(this@HasilTelusuriActivity, RekomendasiActivity::class.java)
+                val moveIntent = android.content.Intent(this@HasilTelusuriActivity, BandingkanActivity::class.java)
                 startActivity(moveIntent)
             }
         }
