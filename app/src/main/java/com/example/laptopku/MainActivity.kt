@@ -51,6 +51,9 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         val imgMenuBandingkan: ImageView = findViewById(R.id.telusuriFooterBandingkanImageView)
         imgMenuBandingkan.setOnClickListener(this)
 
+        //digunakan untuk pindah ke tampilan favorit
+        val favoriteImageView: ImageView = findViewById(R.id.mainActivityFavoriteImageView)
+        favoriteImageView.setOnClickListener(this)
     }
     //untuk menampilkan RecyclerView Laptop Terbaru
     private fun showRecyclerList(){
@@ -84,6 +87,10 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
             }
             R.id.telusuriFooterBandingkanImageView ->{
                 val moveIntent = Intent(this@MainActivity, BandingkanActivity::class.java)
+                startActivity(moveIntent)
+            }
+            R.id.mainActivityFavoriteImageView ->{
+                val moveIntent = Intent(this@MainActivity, FavoriteActivity::class.java)
                 startActivity(moveIntent)
             }
         }

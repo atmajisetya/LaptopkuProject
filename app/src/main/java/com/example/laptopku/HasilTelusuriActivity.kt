@@ -20,6 +20,10 @@ class HasilTelusuriActivity : AppCompatActivity(), View.OnClickListener {
         textView.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_filter,0,0,0)
         textView.compoundDrawablePadding = 32
 
+        //digunakan untuk pindah ke home (main activity)
+        val telusuriImageView: android.widget.ImageView = findViewById(R.id.telusuriFooterTelusuriImageView)
+        telusuriImageView.setOnClickListener(this)
+
         //digunakan untuk pindah ke tampilan rekomendasi
         val rekomendasiImageView: android.widget.ImageView = findViewById(R.id.telusuriFooterRekomendasiImageView)
         rekomendasiImageView.setOnClickListener(this)
@@ -27,6 +31,10 @@ class HasilTelusuriActivity : AppCompatActivity(), View.OnClickListener {
         //digunakan untuk pindah ke tampilan bandingkan
         val bandingkanImageView: android.widget.ImageView = findViewById(R.id.telusuriFooterBandingkanImageView)
         bandingkanImageView.setOnClickListener(this)
+
+        //digunakan untuk pindah ke tampilan favorit
+        val favoriteImageView: android.widget.ImageView = findViewById(R.id.hasilTelusuriFavoriteImageView)
+        favoriteImageView.setOnClickListener(this)
 
         //digunakan untuk kembali ke tampilan sebelumnya
         val kembaliImageView: android.widget.ImageView = findViewById(R.id.hasilTelusuriKembaliImageView)
@@ -36,12 +44,20 @@ class HasilTelusuriActivity : AppCompatActivity(), View.OnClickListener {
     //fungsi untuk pindah ke tampilan rekomendasi dan bandingkan
     override fun onClick(v: View?){
         when(v?.id){
+            R.id.telusuriFooterTelusuriImageView ->{
+                val moveIntent = android.content.Intent(this@HasilTelusuriActivity, MainActivity::class.java)
+                startActivity(moveIntent)
+            }
             R.id.telusuriFooterRekomendasiImageView ->{
                 val moveIntent = android.content.Intent(this@HasilTelusuriActivity, RekomendasiActivity::class.java)
                 startActivity(moveIntent)
             }
             R.id.telusuriFooterBandingkanImageView ->{
                 val moveIntent = android.content.Intent(this@HasilTelusuriActivity, BandingkanActivity::class.java)
+                startActivity(moveIntent)
+            }
+            R.id.hasilTelusuriFavoriteImageView ->{
+                val moveIntent = android.content.Intent(this@HasilTelusuriActivity, FavoriteActivity::class.java)
                 startActivity(moveIntent)
             }
             R.id.hasilTelusuriKembaliImageView -> finish()
