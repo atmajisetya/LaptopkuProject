@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.laptopku">
-
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -9,21 +8,27 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".DeskripsiLaptopActivity"></activity>
-        <activity android:name=".BandingkanActivity" />
-        <activity android:name=".RekomendasiActivity" />
+        <activity
+            android:name=".DeskripsiLaptopActivity"
+            android:screenOrientation="sensorPortrait"/>
+        <activity
+            android:name=".BandingkanActivity"
+            android:screenOrientation="sensorPortrait"/>
+        <activity
+            android:name=".RekomendasiActivity"
+            android:screenOrientation="sensorPortrait"/>
         <activity
             android:name=".HasilTelusuriActivity"
+            android:screenOrientation="sensorPortrait"
             android:windowSoftInputMode="stateAlwaysHidden|adjustPan"/>
         <activity
             android:name=".MainActivity"
+            android:screenOrientation="sensorPortrait"
             android:windowSoftInputMode="stateAlwaysHidden|adjustPan">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
     </application>
-
 </manifest>
