@@ -17,6 +17,10 @@ class BandingkanActivity : AppCompatActivity(), View.OnClickListener {
         val rekomendasiImageView: android.widget.ImageView = findViewById(R.id.bandingkanFooterRekomendasiImageView)
         rekomendasiImageView.setOnClickListener(this)
 
+        //digunakan untuk pindah ke tampilan favorit
+        val favoriteImageView: android.widget.ImageView = findViewById(R.id.bandingkanFavoriteImageView)
+        favoriteImageView.setOnClickListener(this)
+
         //digunakan untuk kembali ke tampilan sebelumnya
         val kembaliImageView: android.widget.ImageView = findViewById(R.id.bandingkanKembaliImageView)
         kembaliImageView.setOnClickListener(this)
@@ -30,6 +34,10 @@ class BandingkanActivity : AppCompatActivity(), View.OnClickListener {
             }
             R.id.bandingkanFooterRekomendasiImageView ->{
                 val moveIntent = android.content.Intent(this@BandingkanActivity, RekomendasiActivity::class.java)
+                startActivity(moveIntent)
+            }
+            R.id.bandingkanFavoriteImageView ->{
+                val moveIntent = android.content.Intent(this@BandingkanActivity, FavoriteActivity::class.java)
                 startActivity(moveIntent)
             }
             R.id.bandingkanKembaliImageView -> finish()
