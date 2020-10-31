@@ -1,176 +1,122 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     tools:context=".BandingkanActivity">
 
-    <!-- bagian paling atas-->
-    <LinearLayout
+    <!-- header -->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/bandingkanHeaderConstraintLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
         android:background="#330099"
-        android:gravity="center">
-
+        android:paddingVertical="16dp"
+        android:paddingHorizontal="24dp"
+        android:elevation="4dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
         <ImageView
+            android:id="@+id/bandingkanKembaliImageView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginEnd="24dp"
             android:src="@drawable/ic_kembali"
-            android:padding="20dp"
-            />
+            android:contentDescription="@string/kembali_ke_layar_sebelumnya"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toLeftOf="@id/bandingkanTextView"/>
         <TextView
-            android:layout_width="wrap_content"
+            android:id="@+id/bandingkanTextView"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:textColor="#ffffff"
             android:text="@string/bandingkan"
             android:textSize="24sp"
-            android:layout_marginEnd="50dp"
-            android:padding="20dp"/>
-
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toRightOf="@id/bandingkanKembaliImageView"
+            app:layout_constraintRight_toLeftOf="@id/bandingkanFavoriteImageView"/>
         <ImageView
-            android:layout_width="match_parent"
+            android:id="@+id/bandingkanFavoriteImageView"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/ic_icon_material_favorite"
-            android:padding="20dp"
-            />
+            android:contentDescription="@string/buka_laptop_favorit"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toRightOf="@id/bandingkanTextView"
+            app:layout_constraintRight_toRightOf="parent"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
-    </LinearLayout>
+        <LinearLayout
+            android:id="@+id/cariLaptopKiriLinearLayout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="40dp"
+            android:padding="2dp"
+            android:orientation="horizontal"
+            android:background="@drawable/bg_edit_text_stroke_abu"
+            app:layout_constraintTop_toBottomOf="@id/bandingkanHeaderConstraintLayout"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toLeftOf="@id/cariLaptopKananLinearLayout">
+            <EditText
+                android:id="@+id/cariLaptopKiriEditText"
+                android:layout_width="132dp"
+                android:layout_height="wrap_content"
+                android:paddingStart="12dp"
+                android:paddingVertical="4dp"
+                android:hint="@string/cari_laptop"
+                android:textSize="18sp"
+                android:background="#F3F3F3"
+                android:inputType="text"
+                android:importantForAutofill="no"
+                android:layout_gravity="center"/>
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_telusuri_abu"
+                android:layout_gravity="center"/>
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/cariLaptopKananLinearLayout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="40dp"
+            android:padding="2dp"
+            android:orientation="horizontal"
+            android:background="@drawable/bg_edit_text_stroke_abu"
+            app:layout_constraintTop_toBottomOf="@id/bandingkanHeaderConstraintLayout"
+            app:layout_constraintLeft_toRightOf="@id/cariLaptopKiriLinearLayout"
+            app:layout_constraintRight_toRightOf="parent">
+            <EditText
+                android:id="@+id/cariLaptopKananTextView"
+                android:layout_width="132dp"
+                android:layout_height="wrap_content"
+                android:paddingStart="12dp"
+                android:paddingVertical="4dp"
+                android:hint="@string/cari_laptop"
+                android:textSize="18sp"
+                android:background="#F3F3F3"
+                android:inputType="text"
+                android:importantForAutofill="no"
+                android:layout_gravity="center"/>
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_telusuri_abu"
+                android:layout_gravity="center"/>
+        </LinearLayout>
 
-    <LinearLayout
+    <!-- footer -->
+    <include
+        layout="@layout/footer_bandingkan"
+        android:id="@+id/bandingkanFooterConstraintLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:gravity="center"
-        android:layout_marginTop="30dp">
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:background="#F3F3F3"
-            >
-
-            <EditText
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/cari_laptop"
-                android:layout_gravity="center"/>
-
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/ic_telusuri_biru"
-                android:padding="10dp"
-                android:layout_gravity="center"/>
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:background="#F3F3F3"
-            android:layout_marginStart="10dp">
-
-            <EditText
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/cari_laptop"
-                android:layout_gravity="center"/>
-
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/ic_telusuri_biru"
-                android:padding="10dp"
-                android:layout_gravity="center"/>
-
-        </LinearLayout>
-    </LinearLayout>
-
-    <!-- bottom menu -->
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="100dp"
-        android:gravity="center">
-
-        <!-- Bottom menu telusuri -->
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:gravity="center"
-            android:padding="12dp"
-            >
-
-            <ImageView
-                android:id="@+id/img_menu_telusuri"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/ic_telusuri_biru"
-                />
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-
-                android:text="@string/telusuri"
-                android:textSize="14sp"
-                android:textColor="#000000"/>
-
-        </LinearLayout>
-
-        <!-- Bottom menu rekomendasi -->
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:gravity="center"
-            android:padding="12dp">
-
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/ic_rekomendasi_biru"
-                />
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-
-                android:text="@string/rekomendasi"
-                android:textSize="14sp"
-                android:textColor="#000000"/>
-
-        </LinearLayout>
-
-        <!-- Bottom menu bandingkan -->
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:gravity="center"
-            android:padding="12dp">
-
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/ic_bandingkan_biru"
-                />
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-
-                android:text="@string/bandingkan"
-                android:textSize="14sp"
-                android:textColor="#000000"/>
-
-        </LinearLayout>
-
-    </LinearLayout>
-
-</LinearLayout>
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"/>
+</androidx.constraintlayout.widget.ConstraintLayout>
