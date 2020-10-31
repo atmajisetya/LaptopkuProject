@@ -101,7 +101,7 @@
         android:paddingHorizontal="12dp"
         android:paddingVertical="4dp"
         android:orientation="horizontal"
-        android:background="@drawable/bg_button"
+        android:background="@drawable/bg_button_abu"
         android:gravity="center"
         app:layout_constraintBottom_toTopOf="@id/rekomendasiFooterConstraintLayout"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -128,7 +128,7 @@
         android:paddingHorizontal="12dp"
         android:paddingVertical="4dp"
         android:orientation="horizontal"
-        android:background="@drawable/bg_button"
+        android:background="@drawable/bg_button_biru"
         android:gravity="center"
         app:layout_constraintBottom_toTopOf="@id/rekomendasiFooterConstraintLayout"
         app:layout_constraintLeft_toRightOf="@id/sebelumnyaLinearLayout"
@@ -148,7 +148,7 @@
 
     <!-- footer -->
     <include
-        layout="@layout/rekomendasi_footer"
+        layout="@layout/footer_rekomendasi"
         android:id="@+id/rekomendasiFooterConstraintLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

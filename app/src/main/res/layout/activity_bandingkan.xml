@@ -62,7 +62,7 @@
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/ic_telusuri"
+                android:src="@drawable/ic_telusuri_biru"
                 android:padding="10dp"
                 android:layout_gravity="center"/>
 
@@ -84,7 +84,7 @@
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/ic_telusuri"
+                android:src="@drawable/ic_telusuri_biru"
                 android:padding="10dp"
                 android:layout_gravity="center"/>
 
@@ -113,7 +113,7 @@
                 android:id="@+id/img_menu_telusuri"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/ic_telusuri"
+                android:src="@drawable/ic_telusuri_biru"
                 />
             <TextView
                 android:layout_width="wrap_content"
@@ -136,7 +136,7 @@
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/ic_rekomendasi"
+                android:src="@drawable/ic_rekomendasi_biru"
                 />
             <TextView
                 android:layout_width="wrap_content"
@@ -159,7 +159,7 @@
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/ic_bandingkan"
+                android:src="@drawable/ic_bandingkan_biru"
                 />
             <TextView
                 android:layout_width="wrap_content"

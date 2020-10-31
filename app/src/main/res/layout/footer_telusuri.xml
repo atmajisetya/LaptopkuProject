@@ -10,50 +10,50 @@
 
     <!-- menu Telusuri -->
     <ImageView
-        android:id="@+id/rekomendasiFooterTelusuriImageView"
+        android:id="@+id/telusuriFooterTelusuriImageView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:layout_marginLeft="16dp"
-        android:src="@drawable/ic_telusuri_abu"
+        android:src="@drawable/ic_telusuri_biru"
         android:contentDescription="@string/layar_telusuri"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toLeftOf="@id/rekomendasiFooterRekomendasiImageView"/>
+        app:layout_constraintRight_toLeftOf="@id/telusuriFooterRekomendasiImageView"/>
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/telusuri"
-        android:textColor="#969696"
+        android:textColor="#330099"
         android:textSize="14sp"
-        app:layout_constraintTop_toBottomOf="@id/rekomendasiFooterTelusuriImageView"
-        app:layout_constraintLeft_toLeftOf="@id/rekomendasiFooterTelusuriImageView"
-        app:layout_constraintRight_toRightOf="@id/rekomendasiFooterTelusuriImageView"/>
+        app:layout_constraintTop_toBottomOf="@id/telusuriFooterTelusuriImageView"
+        app:layout_constraintLeft_toLeftOf="@id/telusuriFooterTelusuriImageView"
+        app:layout_constraintRight_toRightOf="@id/telusuriFooterTelusuriImageView"/>
 
     <!-- menu Rekomendasi -->
     <ImageView
-        android:id="@+id/rekomendasiFooterRekomendasiImageView"
+        android:id="@+id/telusuriFooterRekomendasiImageView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:src="@drawable/ic_rekomendasi"
+        android:src="@drawable/ic_rekomendasi_abu"
         android:contentDescription="@string/layar_rekomendasi"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintLeft_toRightOf="@id/rekomendasiFooterTelusuriImageView"
-        app:layout_constraintRight_toLeftOf="@id/rekomendasiFooterBandingkanImageView"/>
+        app:layout_constraintLeft_toRightOf="@id/telusuriFooterTelusuriImageView"
+        app:layout_constraintRight_toLeftOf="@id/telusuriFooterBandingkanImageView"/>
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/rekomendasi"
-        android:textColor="#330099"
+        android:textColor="#969696"
         android:textSize="14sp"
-        app:layout_constraintTop_toBottomOf="@id/rekomendasiFooterRekomendasiImageView"
-        app:layout_constraintLeft_toLeftOf="@id/rekomendasiFooterRekomendasiImageView"
-        app:layout_constraintRight_toRightOf="@id/rekomendasiFooterRekomendasiImageView"/>
+        app:layout_constraintTop_toBottomOf="@id/telusuriFooterRekomendasiImageView"
+        app:layout_constraintLeft_toLeftOf="@id/telusuriFooterRekomendasiImageView"
+        app:layout_constraintRight_toRightOf="@id/telusuriFooterRekomendasiImageView"/>
 
     <!-- menu Bandingkan -->
     <ImageView
-        android:id="@+id/rekomendasiFooterBandingkanImageView"
+        android:id="@+id/telusuriFooterBandingkanImageView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
@@ -61,7 +61,7 @@
         android:src="@drawable/ic_bandingkan_abu"
         android:contentDescription="@string/layar_bandingkan"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintLeft_toRightOf="@id/rekomendasiFooterRekomendasiImageView"
+        app:layout_constraintLeft_toRightOf="@id/telusuriFooterRekomendasiImageView"
         app:layout_constraintRight_toRightOf="parent"/>
     <TextView
         android:layout_width="wrap_content"
@@ -69,7 +69,7 @@
         android:text="@string/bandingkan"
         android:textColor="#969696"
         android:textSize="14sp"
-        app:layout_constraintTop_toBottomOf="@id/rekomendasiFooterBandingkanImageView"
-        app:layout_constraintLeft_toLeftOf="@id/rekomendasiFooterBandingkanImageView"
-        app:layout_constraintRight_toRightOf="@id/rekomendasiFooterBandingkanImageView"/>
+        app:layout_constraintTop_toBottomOf="@id/telusuriFooterBandingkanImageView"
+        app:layout_constraintLeft_toLeftOf="@id/telusuriFooterBandingkanImageView"
+        app:layout_constraintRight_toRightOf="@id/telusuriFooterBandingkanImageView"/>
 </androidx.constraintlayout.widget.ConstraintLayout>
