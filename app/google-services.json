@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "405845888863",
+    "firebase_url": "https://laptopku-7f54a.firebaseio.com",
+    "project_id": "laptopku-7f54a",
+    "storage_bucket": "laptopku-7f54a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:405845888863:android:8f5417234026c7a52830ea",
+        "android_client_info": {
+          "package_name": "com.example.laptopku"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "405845888863-qi4eil9v2ujsjdrimn3vsgrsf9er40sn.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyASVDjAq4KDHS1BwEFL4zJSE6bhyfjaDCE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "405845888863-qi4eil9v2ujsjdrimn3vsgrsf9er40sn.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
