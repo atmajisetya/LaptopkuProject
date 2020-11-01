@@ -1,5 +1,7 @@
 package com.example.laptopku
 
+import android.content.Context
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,8 +12,10 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.load.DecodeFormat
 import com.bumptech.glide.request.RequestOptions
 import com.bumptech.glide.request.target.Target
+import kotlinx.android.synthetic.main.item_kolom_laptop.view.*
 
-class ListLaptopTerbaruAdapter(private val listLaptopTerbaru: ArrayList<LaptopTerbaru>) : RecyclerView.Adapter<ListLaptopTerbaruAdapter.ListViewHolder>() {
+class ListLaptopTerbaruAdapter(private val context: Context?, private val listLaptopTerbaru: ArrayList<LaptopTerbaru>) : RecyclerView.Adapter<ListLaptopTerbaruAdapter.ListViewHolder>() {
+
     inner class ListViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         //inisilasisasi view yang ada di dalam layout item_kolom_laptop
         var tvName: TextView = itemView.findViewById(R.id.tv_item_name)
@@ -37,6 +41,19 @@ class ListLaptopTerbaruAdapter(private val listLaptopTerbaru: ArrayList<LaptopTe
 
         holder.tvName.text = laptopTerbaru.name
         holder.tvPrice.text = laptopTerbaru.price
+
+        val data = LaptopTerbaru(
+            laptopTerbaru.name,
+            laptopTerbaru.price,
+            laptopTerbaru.photo
+        )
+
+        //IKI DINGGO PINDAH NENG DETAIL ACTIVITY BERDASARKAN ITEM YANG DIKLIK
+        holder.itemView.img_item_photo.setOnClickListener{
+            val intent = Intent(context, DeskripsiLaptopActivity::class.java)
+            intent.putExtra("laptopTerbaru", data)
+            context?.startActivity(intent)
+        }
     }
 
     override fun getItemCount(): Int {
