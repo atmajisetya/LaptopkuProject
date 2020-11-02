@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.Query
+import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity(), View.OnClickListener {
     //inisiasi RecyclerView yang akan ditampilkan untuk rilis terbaru
@@ -16,7 +17,6 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
 
     //untuk laptop terbaru
     private val listTerbaru: ArrayList<LaptopTerbaru> = arrayListOf()
-    //private lateinit var laptopTerbaruAdapter: ListLaptopTerbaruAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -26,9 +26,11 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         rvLaptop = findViewById(R.id.rv_laptop)
         rvLaptop.setHasFixedSize(true)
 
+        //menampilkan progress bar
+        rilisTerbaruProgressBar.visibility = View.VISIBLE
+
         //memanggil data yang ada di firebase bar kui dipancal (ditampilke)
         loadLaptopTerbaru()
-        showRecyclerList()
 
         //digunakan untuk pindah ke tampilan hasil telusuri
         val gaming: ImageView = findViewById(R.id.gamingImageView)
@@ -58,6 +60,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
 
     //fungsi untuk mengambil data dari database firestore
     private fun loadLaptopTerbaru(){
+        // listTerbaru.clear()
         val db = FirebaseFirestore.getInstance()
         db.collection("spekLaptop")
             .orderBy("tanggalRilis", Query.Direction.DESCENDING)
@@ -68,6 +71,12 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
                         document.getString("hargaLaptop")!!,
                         document.getString("gambar")!!))
                 }
+                if(listTerbaru.isNotEmpty()){
+                    showRecyclerList()
+                    rilisTerbaruProgressBar.visibility = View.GONE
+                }
+                else
+                    loadLaptopTerbaru()
             }
     }
     //untuk menampilkan RecyclerView Laptop Terbaru
