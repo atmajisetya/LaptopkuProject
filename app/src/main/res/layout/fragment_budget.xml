@@ -49,7 +49,7 @@
     <!-- button sebelum dan selanjutnya -->
     <!-- untuk sebelumnya -->
     <LinearLayout
-        android:id="@+id/sebelumnyaLinearLayout"
+        android:id="@+id/budgetFragmentSebelumnyaButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="40dp"
@@ -60,7 +60,7 @@
         android:gravity="center"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toLeftOf="@id/selanjutnyaLinearLayout">
+        app:layout_constraintRight_toLeftOf="@id/budgetFragmentSelanjutnyaButton">
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -76,7 +76,7 @@
 
     <!-- untuk selanjutnya -->
     <LinearLayout
-        android:id="@+id/selanjutnyaLinearLayout"
+        android:id="@+id/budgetFragmentSelanjutnyaButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="40dp"
@@ -86,7 +86,7 @@
         android:background="@drawable/bg_button_biru"
         android:gravity="center"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toRightOf="@id/sebelumnyaLinearLayout"
+        app:layout_constraintLeft_toRightOf="@id/budgetFragmentSebelumnyaButton"
         app:layout_constraintRight_toRightOf="parent">
         <TextView
             android:layout_width="wrap_content"

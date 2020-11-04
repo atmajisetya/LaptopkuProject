@@ -51,9 +51,8 @@
             app:layout_constraintLeft_toRightOf="@id/rekomendasiTextView"
             app:layout_constraintRight_toRightOf="parent"/>
     </androidx.constraintlayout.widget.ConstraintLayout>
-    <fragment
-        android:name="com.example.laptopku.BudgetFragment"
-        android:id="@+id/budgetFragment"
+    <FrameLayout
+        android:id="@+id/rekomendasiFrameLayout"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         app:layout_constraintLeft_toLeftOf="parent"
