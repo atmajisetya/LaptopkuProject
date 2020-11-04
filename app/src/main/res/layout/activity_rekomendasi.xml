@@ -57,7 +57,62 @@
         android:layout_height="0dp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toBottomOf="@id/rekomendasiHeaderConstraintLayout"
-        app:layout_constraintBottom_toTopOf="@id/rekomendasiFooterConstraintLayout" />
+        app:layout_constraintBottom_toTopOf="@id/sebelumnyaButton" />
+
+    <!-- button sebelum dan selanjutnya -->
+    <!-- untuk sebelumnya -->
+    <LinearLayout
+        android:id="@+id/sebelumnyaButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="40dp"
+        android:paddingHorizontal="12dp"
+        android:paddingVertical="4dp"
+        android:orientation="horizontal"
+        android:background="@drawable/bg_button_abu"
+        android:gravity="center"
+        app:layout_constraintBottom_toTopOf="@id/rekomendasiFooterConstraintLayout"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@id/selanjutnyaButton">
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="4dp"
+            android:src="@drawable/ic_sebelumnya"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/sebelumnya"
+            android:textColor="#ffffff"
+            android:textSize="18sp"/>
+    </LinearLayout>
+
+    <!-- untuk selanjutnya -->
+    <LinearLayout
+        android:id="@+id/selanjutnyaButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="40dp"
+        android:paddingHorizontal="12dp"
+        android:paddingVertical="4dp"
+        android:orientation="horizontal"
+        android:background="@drawable/bg_button_biru"
+        android:gravity="center"
+        app:layout_constraintBottom_toTopOf="@id/rekomendasiFooterConstraintLayout"
+        app:layout_constraintLeft_toRightOf="@id/sebelumnyaButton"
+        app:layout_constraintRight_toRightOf="parent">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/selanjutnya"
+            android:textColor="#ffffff"
+            android:textSize="18sp"/>
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="4dp"
+            android:src="@drawable/ic_selanjutnya"/>
+    </LinearLayout>
 
     <!-- footer -->
     <include

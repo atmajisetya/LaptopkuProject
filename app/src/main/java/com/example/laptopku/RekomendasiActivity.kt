@@ -32,10 +32,8 @@ class RekomendasiActivity : AppCompatActivity(), View.OnClickListener {
         favoriteImageView.setOnClickListener(this)
 
         //digunakan untuk pindah ke fragment keperluan
-        val budgetSelanjutnyaButton: android.widget.LinearLayout? = findViewById(R.id.budgetFragmentSelanjutnyaButton)
-        if (budgetSelanjutnyaButton != null) {
-            budgetSelanjutnyaButton.setOnClickListener(this)
-        }
+        val budgetSelanjutnyaButton: android.widget.LinearLayout = findViewById(R.id.selanjutnyaButton)
+        budgetSelanjutnyaButton.setOnClickListener(this)
 
         //digunakan untuk kembali ke tampilan sebelumnya
         val kembaliImageView: android.widget.ImageView = findViewById(R.id.rekomendasiKembaliImageView)
@@ -56,7 +54,7 @@ class RekomendasiActivity : AppCompatActivity(), View.OnClickListener {
                 val moveIntent = android.content.Intent(this@RekomendasiActivity, FavoriteActivity::class.java)
                 startActivity(moveIntent)
             }
-            R.id.budgetFragmentSelanjutnyaButton ->{
+            R.id.selanjutnyaButton ->{
                 transaction = fragmentManager.beginTransaction()
                 transaction.replace(R.id.rekomendasiFrameLayout, KeperluanFragment())
                 transaction.addToBackStack(null)
