@@ -51,52 +51,18 @@
             app:layout_constraintLeft_toRightOf="@id/rekomendasiTextView"
             app:layout_constraintRight_toRightOf="parent"/>
     </androidx.constraintlayout.widget.ConstraintLayout>
-    <TextView
-        android:id="@+id/berapaBudgetKamuTextView"
+    <FrameLayout
+        android:id="@+id/rekomendasiFrameLayout"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="40dp"
-        android:text="@string/berapa_budget_kamu"
-        android:gravity="center"
-        android:textSize="24sp"
-        android:textColor="#000000"
-        app:layout_constraintBottom_toTopOf="@id/minEditText"
-        app:layout_constraintLeft_toLeftOf="parent"/>
-    <EditText
-        android:id="@+id/minEditText"
-        android:layout_width="132dp"
-        android:layout_height="wrap_content"
-        android:paddingStart="12dp"
-        android:paddingVertical="4dp"
-        android:hint="@string/min"
-        android:textSize="18sp"
-        android:background="@drawable/bg_edit_text_stroke_biru"
-        android:inputType="number"
-        android:importantForAutofill="no"
-        app:layout_constraintTop_toBottomOf="@id/rekomendasiHeaderConstraintLayout"
-        app:layout_constraintBottom_toTopOf="@id/rekomendasiFooterConstraintLayout"
+        android:layout_height="0dp"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toLeftOf="@id/maxEditText" />
-    <EditText
-        android:id="@+id/maxEditText"
-        android:layout_width="132dp"
-        android:layout_height="wrap_content"
-        android:paddingStart="12dp"
-        android:paddingVertical="4dp"
-        android:hint="@string/max"
-        android:textSize="18sp"
-        android:background="@drawable/bg_edit_text_stroke_biru"
-        android:inputType="number"
-        android:importantForAutofill="no"
         app:layout_constraintTop_toBottomOf="@id/rekomendasiHeaderConstraintLayout"
-        app:layout_constraintBottom_toTopOf="@id/rekomendasiFooterConstraintLayout"
-        app:layout_constraintLeft_toRightOf="@id/minEditText"
-        app:layout_constraintRight_toRightOf="parent"/>
+        app:layout_constraintBottom_toTopOf="@id/sebelumnyaButton" />
 
-    <!-- bagian pertanyaan sebelum selanjutnya -->
+    <!-- button sebelum dan selanjutnya -->
     <!-- untuk sebelumnya -->
     <LinearLayout
-        android:id="@+id/sebelumnyaLinearLayout"
+        android:id="@+id/sebelumnyaButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="40dp"
@@ -107,7 +73,7 @@
         android:gravity="center"
         app:layout_constraintBottom_toTopOf="@id/rekomendasiFooterConstraintLayout"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toLeftOf="@id/selanjutnyaLinearLayout">
+        app:layout_constraintRight_toLeftOf="@id/selanjutnyaButton">
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -123,7 +89,7 @@
 
     <!-- untuk selanjutnya -->
     <LinearLayout
-        android:id="@+id/selanjutnyaLinearLayout"
+        android:id="@+id/selanjutnyaButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="40dp"
@@ -133,7 +99,7 @@
         android:background="@drawable/bg_button_biru"
         android:gravity="center"
         app:layout_constraintBottom_toTopOf="@id/rekomendasiFooterConstraintLayout"
-        app:layout_constraintLeft_toRightOf="@id/sebelumnyaLinearLayout"
+        app:layout_constraintLeft_toRightOf="@id/sebelumnyaButton"
         app:layout_constraintRight_toRightOf="parent">
         <TextView
             android:layout_width="wrap_content"

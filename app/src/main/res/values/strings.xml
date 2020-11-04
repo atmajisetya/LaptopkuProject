@@ -42,5 +42,12 @@
     <string name="selanjutnya">Selanjutnya</string>
     <string name="favorit">Favorit</string>
     <string name="bandingkan_laptop">Bandingkan laptop.</string>
+    <string name="apa_keperluan_kamu">Apa Keperluan Kamu?</string>
+    <string name="membuat_grafis_2d">Membuat grafis 2D</string>
+    <string name="melakukan_kalkulasi_rumit">Melakukan kalkulasi rumit</string>
+    <string name="bermain_game_berat">Bermain game berat</string>
+    <string name="membuat_grafis_3d">Membuat grafis 3D</string>
+    <string name="editing_video_animasi">Editing video/animasi</string>
+    <string name="pekerjaan_ringan_saja">Pekerjaan ringan saja</string>
 
 </resources>
