@@ -51,102 +51,14 @@
             app:layout_constraintLeft_toRightOf="@id/rekomendasiTextView"
             app:layout_constraintRight_toRightOf="parent"/>
     </androidx.constraintlayout.widget.ConstraintLayout>
-    <TextView
-        android:id="@+id/berapaBudgetKamuTextView"
+    <fragment
+        android:name="com.example.laptopku.BudgetFragment"
+        android:id="@+id/budgetFragment"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="40dp"
-        android:text="@string/berapa_budget_kamu"
-        android:gravity="center"
-        android:textSize="24sp"
-        android:textColor="#000000"
-        app:layout_constraintBottom_toTopOf="@id/minEditText"
-        app:layout_constraintLeft_toLeftOf="parent"/>
-    <EditText
-        android:id="@+id/minEditText"
-        android:layout_width="132dp"
-        android:layout_height="wrap_content"
-        android:paddingStart="12dp"
-        android:paddingVertical="4dp"
-        android:hint="@string/min"
-        android:textSize="18sp"
-        android:background="@drawable/bg_edit_text_stroke_biru"
-        android:inputType="number"
-        android:importantForAutofill="no"
-        app:layout_constraintTop_toBottomOf="@id/rekomendasiHeaderConstraintLayout"
-        app:layout_constraintBottom_toTopOf="@id/rekomendasiFooterConstraintLayout"
+        android:layout_height="0dp"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toLeftOf="@id/maxEditText" />
-    <EditText
-        android:id="@+id/maxEditText"
-        android:layout_width="132dp"
-        android:layout_height="wrap_content"
-        android:paddingStart="12dp"
-        android:paddingVertical="4dp"
-        android:hint="@string/max"
-        android:textSize="18sp"
-        android:background="@drawable/bg_edit_text_stroke_biru"
-        android:inputType="number"
-        android:importantForAutofill="no"
         app:layout_constraintTop_toBottomOf="@id/rekomendasiHeaderConstraintLayout"
-        app:layout_constraintBottom_toTopOf="@id/rekomendasiFooterConstraintLayout"
-        app:layout_constraintLeft_toRightOf="@id/minEditText"
-        app:layout_constraintRight_toRightOf="parent"/>
-
-    <!-- bagian pertanyaan sebelum selanjutnya -->
-    <!-- untuk sebelumnya -->
-    <LinearLayout
-        android:id="@+id/sebelumnyaLinearLayout"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="40dp"
-        android:paddingHorizontal="12dp"
-        android:paddingVertical="4dp"
-        android:orientation="horizontal"
-        android:background="@drawable/bg_button_abu"
-        android:gravity="center"
-        app:layout_constraintBottom_toTopOf="@id/rekomendasiFooterConstraintLayout"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toLeftOf="@id/selanjutnyaLinearLayout">
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginRight="4dp"
-            android:src="@drawable/ic_sebelumnya"/>
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/sebelumnya"
-            android:textColor="#ffffff"
-            android:textSize="18sp"/>
-    </LinearLayout>
-
-    <!-- untuk selanjutnya -->
-    <LinearLayout
-        android:id="@+id/selanjutnyaLinearLayout"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="40dp"
-        android:paddingHorizontal="12dp"
-        android:paddingVertical="4dp"
-        android:orientation="horizontal"
-        android:background="@drawable/bg_button_biru"
-        android:gravity="center"
-        app:layout_constraintBottom_toTopOf="@id/rekomendasiFooterConstraintLayout"
-        app:layout_constraintLeft_toRightOf="@id/sebelumnyaLinearLayout"
-        app:layout_constraintRight_toRightOf="parent">
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/selanjutnya"
-            android:textColor="#ffffff"
-            android:textSize="18sp"/>
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="4dp"
-            android:src="@drawable/ic_selanjutnya"/>
-    </LinearLayout>
+        app:layout_constraintBottom_toTopOf="@id/rekomendasiFooterConstraintLayout" />
 
     <!-- footer -->
     <include
