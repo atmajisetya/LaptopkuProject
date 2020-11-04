@@ -24,6 +24,7 @@
         android:text="@string/bermain_game_berat"
         android:textColor="#000000"
         android:textSize="18sp"
+        android:buttonTint="@color/colorCheckBox"
         app:layout_constraintBottom_toTopOf="@id/melakukanKalkulasiRumitCheckBox"
         app:layout_constraintLeft_toLeftOf="@id/melakukanKalkulasiRumitCheckBox"/>
     <CheckBox
@@ -34,6 +35,7 @@
         android:text="@string/melakukan_kalkulasi_rumit"
         android:textColor="#000000"
         android:textSize="18sp"
+        android:buttonTint="@color/colorCheckBox"
         app:layout_constraintBottom_toTopOf="@id/membuatGrafis2DCheckBox"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"/>
@@ -44,6 +46,7 @@
         android:text="@string/membuat_grafis_2d"
         android:textColor="#000000"
         android:textSize="18sp"
+        android:buttonTint="@color/colorCheckBox"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="@id/melakukanKalkulasiRumitCheckBox"/>
@@ -55,6 +58,7 @@
         android:text="@string/membuat_grafis_3d"
         android:textColor="#000000"
         android:textSize="18sp"
+        android:buttonTint="@color/colorCheckBox"
         app:layout_constraintLeft_toLeftOf="@id/melakukanKalkulasiRumitCheckBox"
         app:layout_constraintTop_toBottomOf="@id/membuatGrafis2DCheckBox"/>
     <CheckBox
@@ -65,6 +69,7 @@
         android:text="@string/editing_video_animasi"
         android:textColor="#000000"
         android:textSize="18sp"
+        android:buttonTint="@color/colorCheckBox"
         app:layout_constraintLeft_toLeftOf="@id/melakukanKalkulasiRumitCheckBox"
         app:layout_constraintTop_toBottomOf="@id/membuatGrafis3DCheckBox" />
     <CheckBox
@@ -75,6 +80,7 @@
         android:text="@string/pekerjaan_ringan_saja"
         android:textColor="#000000"
         android:textSize="18sp"
+        android:buttonTint="@color/colorCheckBox"
         app:layout_constraintLeft_toLeftOf="@id/melakukanKalkulasiRumitCheckBox"
         app:layout_constraintTop_toBottomOf="@id/editingVideoAnimasiCheckBox"/>
 </androidx.constraintlayout.widget.ConstraintLayout>
