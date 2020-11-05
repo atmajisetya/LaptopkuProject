@@ -76,6 +76,13 @@ class RekomendasiActivity : AppCompatActivity(), View.OnClickListener {
                     currentFragment = "prioritas"
                 }
                 else if (currentFragment == "prioritas"){
+                    transaction = fragmentManager.beginTransaction()
+                    transaction.replace(R.id.rekomendasiFrameLayout, BrandFragment())
+                    transaction.addToBackStack(null)
+                    transaction.commit()
+                    currentFragment = "brand"
+                }
+                else if (currentFragment == "brand"){
 
                 }
             }
@@ -90,6 +97,8 @@ class RekomendasiActivity : AppCompatActivity(), View.OnClickListener {
                     }
                     else if (currentFragment == "prioritas")
                         currentFragment = "keperluan"
+                    else if (currentFragment == "brand")
+                        currentFragment = "prioritas"
                 }
             }
         }
