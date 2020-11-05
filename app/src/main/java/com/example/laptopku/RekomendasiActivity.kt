@@ -69,16 +69,27 @@ class RekomendasiActivity : AppCompatActivity(), View.OnClickListener {
                     sebelumnyaButton.setBackgroundResource(R.drawable.bg_button_biru)
                 }
                 else if (currentFragment == "keperluan"){
-                    
+                    transaction = fragmentManager.beginTransaction()
+                    transaction.replace(R.id.rekomendasiFrameLayout, PrioritasFragment())
+                    transaction.addToBackStack(null)
+                    transaction.commit()
+                    currentFragment = "prioritas"
+                }
+                else if (currentFragment == "prioritas"){
+
                 }
             }
             R.id.rekomendasiKembaliImageView, R.id.sebelumnyaButton -> {
                 if (currentFragment == "budget")
                     finish()
-                else if (currentFragment == "keperluan") {
+                else {
                     fragmentManager.popBackStack()
-                    currentFragment = "budget"
-                    sebelumnyaButton.setBackgroundResource(R.drawable.bg_button_abu)
+                    if (currentFragment == "keperluan"){
+                        currentFragment = "budget"
+                        sebelumnyaButton.setBackgroundResource(R.drawable.bg_button_abu)
+                    }
+                    else if (currentFragment == "prioritas")
+                        currentFragment = "keperluan"
                 }
             }
         }

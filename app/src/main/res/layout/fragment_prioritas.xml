@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <TextView
+        android:id="@+id/prioritasTextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="40dp"
+        android:text="@string/apa_prioritas_laptop_nyang_kamu_mau"
+        android:gravity="center"
+        android:textSize="24sp"
+        android:textColor="#000000"
+        app:layout_constraintBottom_toTopOf="@id/prioritasRadioGroup"
+        app:layout_constraintLeft_toLeftOf="parent"/>
+    <RadioGroup
+        android:id="@+id/prioritasRadioGroup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent">
+        <RadioButton
+            android:id="@+id/performaRadioButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:buttonTint="@color/colorTint"
+            android:text="@string/utamakan_performa_n_mungkin_lebih_berat_dan_tebal"
+            android:textSize="18sp"/>
+        <RadioButton
+            android:id="@+id/portabilitasRadioButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:buttonTint="@color/colorTint"
+            android:text="@string/utamakan_portabilitas_n_mungkin_lebih_ringan_dan_tipis"
+            android:textSize="18sp"/>
+    </RadioGroup>
+</androidx.constraintlayout.widget.ConstraintLayout>
