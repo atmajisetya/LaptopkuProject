@@ -12,113 +12,62 @@
         android:id="@+id/hasilTelusuriHeaderConstraintLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#FFFFFF"
-        android:paddingBottom="8dp"
+        android:paddingVertical="16dp"
+        android:paddingHorizontal="24dp"
+        android:background="#330099"
         android:elevation="4dp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/hasilTelusuriScrollView">
-
-        <!-- header bagian biru -->
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/hasilTelusuriHeaderBiruConstraintLayout"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:paddingVertical="16dp"
-            android:paddingHorizontal="24dp"
-            android:background="#330099"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintLeft_toLeftOf="parent">
-
-            <ImageView
-                android:id="@+id/hasilTelusuriKembaliImageView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginRight="16dp"
-                android:src="@drawable/ic_kembali"
-                android:contentDescription="@string/kembali_ke_layar_sebelumnya"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toLeftOf="@id/hasilTelusuriCariLaptopEditText"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent"/>
-            <EditText
-                android:id="@+id/hasilTelusuriCariLaptopEditText"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:background="#FFFFFF"
-                android:hint="@string/cari_laptop"
-                android:textSize="18sp"
-                android:importantForAutofill="no"
-                android:inputType="text"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintLeft_toRightOf="@id/hasilTelusuriKembaliImageView"
-                app:layout_constraintRight_toLeftOf="@id/hasilTelusuriFavoriteImageView"/>
-            <ImageView
-                android:id="@+id/hasilTelusuriFavoriteImageView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="16dp"
-                android:src="@drawable/ic_icon_material_favorite"
-                android:contentDescription="@string/buka_laptop_favorit"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintLeft_toRightOf="@id/hasilTelusuriCariLaptopEditText"
-                app:layout_constraintRight_toRightOf="parent"/>
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
-        <!-- bagian tengah : urutkan dan filter -->
-        <!-- bagian urutkan -->
-        <TextView
-            android:id="@+id/urutkanTextView"
+        app:layout_constraintBottom_toTopOf="@id/hasilTelusuriFrameLayout">
+        <ImageView
+            android:id="@+id/hasilTelusuriKembaliImageView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:textSize="18sp"
-            android:textColor="#000000"
-            android:text="@string/urutkan"
-            android:gravity="center"
-            app:layout_constraintTop_toBottomOf="@id/hasilTelusuriHeaderBiruConstraintLayout"
+            android:layout_marginRight="16dp"
+            android:src="@drawable/ic_kembali"
+            android:contentDescription="@string/kembali_ke_layar_sebelumnya"
             app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toLeftOf="@id/filterTextView"/>
-
-        <!-- bagian filter -->
-        <TextView
-            android:id="@+id/filterTextView"
+            app:layout_constraintRight_toLeftOf="@id/hasilTelusuriCariLaptopEditText"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+        <EditText
+            android:id="@+id/hasilTelusuriCariLaptopEditText"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="#FFFFFF"
+            android:hint="@string/cari_laptop"
+            android:textSize="18sp"
+            android:importantForAutofill="no"
+            android:inputType="text"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toRightOf="@id/hasilTelusuriKembaliImageView"
+            app:layout_constraintRight_toLeftOf="@id/hasilTelusuriFavoriteImageView"/>
+        <ImageView
+            android:id="@+id/hasilTelusuriFavoriteImageView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:textSize="18sp"
-            android:textColor="#000000"
-            android:text="@string/filter"
-            android:gravity="center"
-            app:layout_constraintTop_toBottomOf="@id/hasilTelusuriHeaderBiruConstraintLayout"
-            app:layout_constraintLeft_toRightOf="@id/urutkanTextView"
+            android:layout_marginLeft="16dp"
+            android:src="@drawable/ic_icon_material_favorite"
+            android:contentDescription="@string/buka_laptop_favorit"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toRightOf="@id/hasilTelusuriCariLaptopEditText"
             app:layout_constraintRight_toRightOf="parent"/>
     </androidx.constraintlayout.widget.ConstraintLayout>
-    <ScrollView
-        android:id="@+id/hasilTelusuriScrollView"
+    <FrameLayout
+        android:id="@+id/hasilTelusuriFrameLayout"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:paddingHorizontal="16dp"
-        android:paddingTop="16dp"
-        android:orientation="vertical"
         app:layout_constraintTop_toBottomOf="@id/hasilTelusuriHeaderConstraintLayout"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/hasilTelusuriFooterConstraintLayout">
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rv_telusuri_laptop"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintLeft_toLeftOf="parent"/>
-    </ScrollView>
+        app:layout_constraintBottom_toTopOf="@id/hasilTelusuriFooterConstraintLayout"
+        app:layout_constraintLeft_toLeftOf="parent"/>
     <include
         layout="@layout/footer_telusuri"
         android:id="@+id/hasilTelusuriFooterConstraintLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/hasilTelusuriScrollView"
+        app:layout_constraintTop_toBottomOf="@id/hasilTelusuriFrameLayout"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

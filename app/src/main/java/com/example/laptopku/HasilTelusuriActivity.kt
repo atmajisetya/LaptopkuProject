@@ -3,22 +3,24 @@ package com.example.laptopku
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.Query
+import kotlinx.android.synthetic.main.activity_main.*
 
 class HasilTelusuriActivity : AppCompatActivity(), View.OnClickListener {
-    //inisiasi TextView
-    private lateinit var textView: android.widget.TextView
+    //ArrayList untuk grid laptop
+    private val listLaptop: ArrayList<LaptopTerbaru> = arrayListOf()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_hasil_telusuri)
 
-        //ini juga inisiasi untuk TextView
-        textView = findViewById(R.id.urutkanTextView)
-        textView.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_urutkan,0,0,0)
-        textView.compoundDrawablePadding = 32
-        textView = findViewById(R.id.filterTextView)
-        textView.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_filter,0,0,0)
-        textView.compoundDrawablePadding = 32
+        val transaction = supportFragmentManager.beginTransaction()
+        transaction.add(R.id.hasilTelusuriFrameLayout, HasilFragment())
+        transaction.commit()
 
         //digunakan untuk pindah ke home (main activity)
         val telusuriImageView: android.widget.ImageView = findViewById(R.id.telusuriFooterTelusuriImageView)
