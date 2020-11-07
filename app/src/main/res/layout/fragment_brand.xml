@@ -23,7 +23,6 @@
         android:text="@string/acer"
         android:textColor="#000000"
         android:textSize="18sp"
-        android:buttonTint="@color/colorTint"
         app:layout_constraintBottom_toTopOf="@id/asusCheckBox"
         app:layout_constraintLeft_toLeftOf="@id/lenovoCheckBox"/>
     <CheckBox
@@ -33,7 +32,6 @@
         android:text="@string/asus"
         android:textColor="#000000"
         android:textSize="18sp"
-        android:buttonTint="@color/colorTint"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="@id/lenovoCheckBox"/>
@@ -45,7 +43,6 @@
         android:text="@string/hp"
         android:textColor="#000000"
         android:textSize="18sp"
-        android:buttonTint="@color/colorTint"
         app:layout_constraintLeft_toLeftOf="@id/lenovoCheckBox"
         app:layout_constraintTop_toBottomOf="@id/asusCheckBox"/>
     <CheckBox
@@ -56,7 +53,6 @@
         android:text="@string/lenovo"
         android:textColor="#000000"
         android:textSize="18sp"
-        android:buttonTint="@color/colorTint"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@id/hpCheckBox" />
@@ -68,7 +64,6 @@
         android:text="@string/msi"
         android:textColor="#000000"
         android:textSize="18sp"
-        android:buttonTint="@color/colorTint"
         app:layout_constraintLeft_toLeftOf="@id/lenovoCheckBox"
         app:layout_constraintTop_toBottomOf="@id/lenovoCheckBox"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

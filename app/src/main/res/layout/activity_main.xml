@@ -79,7 +79,7 @@
                     android:layout_width="70dp"
                     android:layout_height="70dp"
                     android:layout_gravity="center"
-                    android:color="#FFFFFF"
+                    android:indeterminateTint="#FFFFFF"
                     android:visibility="visible"
                     app:layout_constraintTop_toTopOf="@id/rv_laptop"
                     app:layout_constraintBottom_toBottomOf="@id/rv_laptop"

@@ -29,14 +29,12 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="8dp"
-            android:buttonTint="@color/colorTint"
             android:text="@string/utamakan_performa_n_mungkin_lebih_berat_dan_tebal"
             android:textSize="18sp"/>
         <RadioButton
             android:id="@+id/portabilitasRadioButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:buttonTint="@color/colorTint"
             android:text="@string/utamakan_portabilitas_n_mungkin_lebih_ringan_dan_tipis"
             android:textSize="18sp"/>
     </RadioGroup>
