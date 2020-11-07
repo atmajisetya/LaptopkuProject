@@ -60,8 +60,8 @@ class RekomendasiActivity : AppCompatActivity(), View.OnClickListener {
                 startActivity(moveIntent)
             }
             R.id.selanjutnyaButton ->{
+                transaction = fragmentManager.beginTransaction()
                 if (currentFragment == "budget"){
-                    transaction = fragmentManager.beginTransaction()
                     transaction.replace(R.id.rekomendasiFrameLayout, KeperluanFragment())
                     transaction.addToBackStack(null)
                     transaction.commit()
@@ -69,21 +69,24 @@ class RekomendasiActivity : AppCompatActivity(), View.OnClickListener {
                     sebelumnyaButton.setBackgroundResource(R.drawable.bg_button_biru)
                 }
                 else if (currentFragment == "keperluan"){
-                    transaction = fragmentManager.beginTransaction()
                     transaction.replace(R.id.rekomendasiFrameLayout, PrioritasFragment())
                     transaction.addToBackStack(null)
                     transaction.commit()
                     currentFragment = "prioritas"
                 }
                 else if (currentFragment == "prioritas"){
-                    transaction = fragmentManager.beginTransaction()
                     transaction.replace(R.id.rekomendasiFrameLayout, BrandFragment())
                     transaction.addToBackStack(null)
                     transaction.commit()
                     currentFragment = "brand"
                 }
                 else if (currentFragment == "brand"){
-
+                    transaction.replace(R.id.rekomendasiFrameLayout, HasilFragment())
+                    transaction.addToBackStack(null)
+                    transaction.commit()
+                    sebelumnyaButton.visibility = View.GONE
+                    selanjutnyaButton.visibility = View.GONE
+                    currentFragment = "hasil"
                 }
             }
             R.id.rekomendasiKembaliImageView, R.id.sebelumnyaButton -> {
@@ -99,6 +102,11 @@ class RekomendasiActivity : AppCompatActivity(), View.OnClickListener {
                         currentFragment = "keperluan"
                     else if (currentFragment == "brand")
                         currentFragment = "prioritas"
+                    else if (currentFragment == "hasil"){
+                        sebelumnyaButton.visibility = View.VISIBLE
+                        selanjutnyaButton.visibility = View.VISIBLE
+                        currentFragment = "brand"
+                    }
                 }
             }
         }
