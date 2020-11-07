@@ -8,7 +8,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="40dp"
-        android:text="@string/apa_keperluan_kamu"
+        android:text="@string/brand_apa_yang_kamu_mau"
         android:gravity="center"
         android:textSize="24sp"
         android:textColor="#000000"

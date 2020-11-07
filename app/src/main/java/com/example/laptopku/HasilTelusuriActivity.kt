@@ -11,12 +11,6 @@ import com.google.firebase.firestore.Query
 import kotlinx.android.synthetic.main.activity_main.*
 
 class HasilTelusuriActivity : AppCompatActivity(), View.OnClickListener {
-    //inisiasi TextView
-    private lateinit var textView: android.widget.TextView
-
-    //inisiasi RecyclerView yang akan ditampilkan untuk grid laptop
-    private lateinit var rvTelusuriLaptop: RecyclerView
-
     //ArrayList untuk grid laptop
     private val listLaptop: ArrayList<LaptopTerbaru> = arrayListOf()
 
@@ -24,20 +18,9 @@ class HasilTelusuriActivity : AppCompatActivity(), View.OnClickListener {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_hasil_telusuri)
 
-        //ini juga inisiasi untuk TextView
-        textView = findViewById(R.id.urutkanTextView)
-        textView.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_urutkan,0,0,0)
-        textView.compoundDrawablePadding = 32
-        textView = findViewById(R.id.filterTextView)
-        textView.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_filter,0,0,0)
-        textView.compoundDrawablePadding = 32
-
-        //ini juga inisiasi untuk RecyclerView
-        rvTelusuriLaptop = findViewById(R.id.rv_telusuri_laptop)
-        rvTelusuriLaptop.setHasFixedSize(true)
-
-        //memanggil data yang ada di firebase bar kui dipancal (ditampilke)
-        loadLaptopTerbaru()
+        val transaction = supportFragmentManager.beginTransaction()
+        transaction.add(R.id.hasilTelusuriFrameLayout, HasilFragment())
+        transaction.commit()
 
         //digunakan untuk pindah ke home (main activity)
         val telusuriImageView: android.widget.ImageView = findViewById(R.id.telusuriFooterTelusuriImageView)
@@ -60,31 +43,6 @@ class HasilTelusuriActivity : AppCompatActivity(), View.OnClickListener {
         kembaliImageView.setOnClickListener(this)
     }
 
-    //fungsi untuk mengambil data dari database firestore
-    private fun loadLaptopTerbaru(){
-        // listTerbaru.clear()
-        val db = FirebaseFirestore.getInstance()
-        db.collection("spekLaptop")
-            .orderBy("tanggalRilis", Query.Direction.DESCENDING)
-            .get()
-            .addOnSuccessListener {result ->
-                for (document in result){
-                    listLaptop.add(LaptopTerbaru(document.getString("namaLaptop")!!,
-                        document.getString("hargaLaptop")!!,
-                        document.getString("gambar")!!))
-                }
-                if(listLaptop.isNotEmpty())
-                    showRecyclerList()
-                else
-                    loadLaptopTerbaru()
-            }
-    }
-    //untuk menampilkan RecyclerView Laptop Terbaru
-    private fun showRecyclerList(){
-        rvTelusuriLaptop.layoutManager = GridLayoutManager(this, 2)
-        val listLaptopTerbaruAdapter = ListLaptopTerbaruAdapter(applicationContext, listLaptop)
-        rvTelusuriLaptop.adapter = listLaptopTerbaruAdapter
-    }
     //fungsi untuk pindah ke tampilan rekomendasi dan bandingkan
     override fun onClick(v: View?){
         when(v?.id){
