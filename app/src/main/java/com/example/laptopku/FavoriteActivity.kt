@@ -7,7 +7,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.Query
-import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.activity_favorite.*
 
 class FavoriteActivity : AppCompatActivity(), View.OnClickListener {
     //inisiasi RecyclerView yang akan ditampilkan untuk laptop favorit
@@ -23,6 +23,9 @@ class FavoriteActivity : AppCompatActivity(), View.OnClickListener {
         //ini juga inisiasi untuk laptop favorit
         rvFavorite = findViewById(R.id.rv_favorite)
         rvFavorite.setHasFixedSize(true)
+
+        //menampilkan progress bar
+        favoriteProgressBar.visibility = View.VISIBLE
 
         //memanggil data yang ada di firebase bar kui dipancal (ditampilke)
         loadLaptopFavorite()
@@ -58,7 +61,7 @@ class FavoriteActivity : AppCompatActivity(), View.OnClickListener {
                 }
                 if(listFavorite.isNotEmpty()){
                     showRecyclerList()
-                    // rilisTerbaruProgressBar.visibility = View.GONE
+                    favoriteProgressBar.visibility = View.GONE
                 }
                 else
                     loadLaptopFavorite()
