@@ -32,6 +32,7 @@ class HasilFragment() : Fragment() {
         this.extraType = extraType
         this.extra = extra
     }
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
