@@ -45,6 +45,21 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         val workstation: ImageView = findViewById(R.id.workstationImageView)
         workstation.setOnClickListener(this)
 
+        val acer: ImageView = findViewById(R.id.acerImageView)
+        acer.setOnClickListener(this)
+
+        val asus: ImageView = findViewById(R.id.asusImageView)
+        asus.setOnClickListener(this)
+
+        val hp: ImageView = findViewById(R.id.hpImageView)
+        hp.setOnClickListener(this)
+
+        val lenovo: ImageView = findViewById(R.id.lenovoImageView)
+        lenovo.setOnClickListener(this)
+
+        val msi: ImageView = findViewById(R.id.msiImageView)
+        msi.setOnClickListener(this)
+
         //digunakan untuk pindah ke tampilan rekomendasi
         val imgMenuRekomendasi: ImageView = findViewById(R.id.telusuriFooterRekomendasiImageView)
         imgMenuRekomendasi.setOnClickListener(this)
@@ -102,6 +117,26 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
                 startActivity(moveIntent)
             }
             R.id.workstationImageView ->{
+                val moveIntent = Intent(this@MainActivity, HasilTelusuriActivity::class.java)
+                startActivity(moveIntent)
+            }
+            R.id.acerImageView ->{
+                val moveIntent = Intent(this@MainActivity, HasilTelusuriActivity::class.java)
+                startActivity(moveIntent)
+            }
+            R.id.asusImageView ->{
+                val moveIntent = Intent(this@MainActivity, HasilTelusuriActivity::class.java)
+                startActivity(moveIntent)
+            }
+            R.id.hpImageView ->{
+                val moveIntent = Intent(this@MainActivity, HasilTelusuriActivity::class.java)
+                startActivity(moveIntent)
+            }
+            R.id.lenovoImageView ->{
+                val moveIntent = Intent(this@MainActivity, HasilTelusuriActivity::class.java)
+                startActivity(moveIntent)
+            }
+            R.id.msiImageView ->{
                 val moveIntent = Intent(this@MainActivity, HasilTelusuriActivity::class.java)
                 startActivity(moveIntent)
             }
