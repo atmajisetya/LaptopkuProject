@@ -5,13 +5,16 @@ import android.os.Bundle
 import android.view.View
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.Query
+import kotlinx.android.synthetic.main.activity_main.*
 
 class FavoriteActivity : AppCompatActivity(), View.OnClickListener {
     //inisiasi RecyclerView yang akan ditampilkan untuk laptop favorit
     private lateinit var rvFavorite: RecyclerView
 
     //untuk laptop favorit
-    private val list: ArrayList<LaptopFavorite> = arrayListOf()
+    private val listFavorite: ArrayList<LaptopFavorite> = arrayListOf()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -21,9 +24,8 @@ class FavoriteActivity : AppCompatActivity(), View.OnClickListener {
         rvFavorite = findViewById(R.id.rv_favorite)
         rvFavorite.setHasFixedSize(true)
 
-        //memanggil data yang ada di kelas LaptopFavoriteData
-        list.addAll(LaptopFavoriteData.listData)
-        showRecyclerList()
+        //memanggil data yang ada di firebase bar kui dipancal (ditampilke)
+        loadLaptopFavorite()
 
         //digunakan untuk pindah ke tampilan telusuri
         val telusuriImageView: android.widget.ImageView = findViewById(R.id.telusuriFooterTelusuriImageView)
@@ -42,10 +44,31 @@ class FavoriteActivity : AppCompatActivity(), View.OnClickListener {
         kembaliImageView.setOnClickListener(this)
     }
 
+    //fungsi untuk mengambil data dari database firestore
+    private fun loadLaptopFavorite(){
+        // listTerbaru.clear()
+        val db = FirebaseFirestore.getInstance()
+        db.collection("spekLaptop")
+            .orderBy("tanggalRilis", Query.Direction.DESCENDING)
+            .get()
+            .addOnSuccessListener {result ->
+                for (document in result){
+                    listFavorite.add(LaptopFavorite(document.getString("namaLaptop")!!,
+                        document.getString("gambar")!!))
+                }
+                if(listFavorite.isNotEmpty()){
+                    showRecyclerList()
+                    // rilisTerbaruProgressBar.visibility = View.GONE
+                }
+                else
+                    loadLaptopFavorite()
+            }
+    }
+
     //untuk menampilkan RecyclerView Laptop Favorit
     private fun showRecyclerList(){
         rvFavorite.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
-        val listLaptopFavoriteAdapter = ListLaptopFavoriteAdapter(list)
+        val listLaptopFavoriteAdapter = ListLaptopFavoriteAdapter(listFavorite)
         rvFavorite.adapter = listLaptopFavoriteAdapter
     }
 

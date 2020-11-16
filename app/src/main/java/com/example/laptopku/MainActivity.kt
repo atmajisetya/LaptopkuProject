@@ -101,7 +101,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         rvLaptop.adapter = listLaptopTerbaruAdapter
     }
 
-    //fungsi untuk pindah tampilan ke telusuri rekomendasi bandingkan
+    //fungsi untuk pindah tampilan-tampilan lain
     override fun onClick(v: View?){
         when(v?.id){
             R.id.gamingImageView ->{
