@@ -71,7 +71,7 @@ class FavoriteActivity : AppCompatActivity(), View.OnClickListener {
     //untuk menampilkan RecyclerView Laptop Favorit
     private fun showRecyclerList(){
         rvFavorite.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
-        val listLaptopFavoriteAdapter = ListLaptopFavoriteAdapter(listFavorite)
+        val listLaptopFavoriteAdapter = ListLaptopFavoriteAdapter(applicationContext, listFavorite)
         rvFavorite.adapter = listLaptopFavoriteAdapter
     }
 
