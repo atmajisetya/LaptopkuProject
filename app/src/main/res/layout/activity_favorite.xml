@@ -57,6 +57,16 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"/>
     </ScrollView>
+    <ProgressBar
+        android:id="@+id/favoriteProgressBar"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_gravity="center"
+        android:visibility="visible"
+        app:layout_constraintTop_toBottomOf="@id/favoriteHeaderConstraintLayout"
+        app:layout_constraintBottom_toTopOf="@id/favoriteFooterConstraintLayout"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"/>
     <!-- footer -->
     <include
         layout="@layout/footer_telusuri"
