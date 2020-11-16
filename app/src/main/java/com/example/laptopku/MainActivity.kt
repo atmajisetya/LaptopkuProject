@@ -122,22 +122,27 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
             }
             R.id.acerImageView ->{
                 val moveIntent = Intent(this@MainActivity, HasilTelusuriActivity::class.java)
+                moveIntent.putExtra("brand", "Acer")
                 startActivity(moveIntent)
             }
             R.id.asusImageView ->{
                 val moveIntent = Intent(this@MainActivity, HasilTelusuriActivity::class.java)
+                moveIntent.putExtra("brand", "Asus")
                 startActivity(moveIntent)
             }
             R.id.hpImageView ->{
                 val moveIntent = Intent(this@MainActivity, HasilTelusuriActivity::class.java)
+                moveIntent.putExtra("brand", "HP")
                 startActivity(moveIntent)
             }
             R.id.lenovoImageView ->{
                 val moveIntent = Intent(this@MainActivity, HasilTelusuriActivity::class.java)
+                moveIntent.putExtra("brand", "Lenovo")
                 startActivity(moveIntent)
             }
             R.id.msiImageView ->{
                 val moveIntent = Intent(this@MainActivity, HasilTelusuriActivity::class.java)
+                moveIntent.putExtra("brand", "MSI")
                 startActivity(moveIntent)
             }
             R.id.telusuriFooterRekomendasiImageView ->{
