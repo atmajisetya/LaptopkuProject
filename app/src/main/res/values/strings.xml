@@ -53,5 +53,6 @@
     <string name="utamakan_portabilitas_n_mungkin_lebih_ringan_dan_tipis">Utamakan portabilitas\n(Mungkin lebih ringan dan tipis)</string>
     <string name="apa_prioritas_laptop_nyang_kamu_mau">Apa prioritas laptop\nyang kamu mau?</string>
     <string name="brand_apa_yang_kamu_mau">Brand apa yang kamu mau?</string>
+    <string name="cpu">CPU</string>
 
 </resources>

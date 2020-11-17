@@ -46,7 +46,26 @@ class ListLaptopTerbaruAdapter(private val context: Context?, private val listLa
         val data = LaptopTerbaru(
             laptopTerbaru.name,
             laptopTerbaru.price,
-            laptopTerbaru.photo
+            laptopTerbaru.photo,
+            laptopTerbaru.acadapter,
+            laptopTerbaru.audio,
+            laptopTerbaru.baterai,
+            laptopTerbaru.berat,
+            laptopTerbaru.brand,
+            laptopTerbaru.chipset,
+            laptopTerbaru.cpu,
+            laptopTerbaru.dimensi,
+            laptopTerbaru.grafis,
+            laptopTerbaru.io,
+            laptopTerbaru.kategori,
+            laptopTerbaru.keyboard,
+            laptopTerbaru.komunikasi,
+            laptopTerbaru.layar,
+            laptopTerbaru.memori,
+            laptopTerbaru.os,
+            laptopTerbaru.penyimpanan,
+            laptopTerbaru.tanggalRilis,
+            laptopTerbaru.webcam
         )
 
         // Mendaftarkan event klik pada masing-masing laptop untuk pindah ke Activity DeskripsiLaptop

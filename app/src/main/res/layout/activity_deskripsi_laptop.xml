@@ -46,6 +46,7 @@
         </LinearLayout>
         <!-- gambar laptop -->
         <ImageView
+            android:id="@+id/img_laptop"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/ic_asustuf" />
@@ -65,13 +66,13 @@
                 android:background="#330099">
 
                 <TextView
-                    android:id="@+id/id_namaLaptop"
+                    android:id="@+id/tv_namaLaptop"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:textSize="24sp"
                     android:text="@string/asus_tuf_fx506ii"/>
                 <TextView
-                    android:id="@+id/id_hargaLaptop"
+                    android:id="@+id/tv_hargaLaptop"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:textSize="20sp"
@@ -134,10 +135,341 @@
 
         </LinearLayout>
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rv_spek_laptop"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="match_parent"
+                android:text="@string/cpu"
+                tools:text="Nama Spek"/>
+
+            <TextView
+                android:id="@+id/tv_cpu"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:background="#F3F3F3"
+                android:layout_height="match_parent"
+                tools:text="Isi Spek"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="match_parent"
+                android:text="OS"
+                tools:text="Nama Spek"/>
+
+            <TextView
+                android:id="@+id/tv_os"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:background="#F3F3F3"
+                android:layout_height="match_parent"
+                tools:text="Isi Spek"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="match_parent"
+                android:text="Layar" />
+
+            <TextView
+                android:id="@+id/tv_layar"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:background="#F3F3F3"
+                android:layout_height="match_parent"
+                tools:text="Isi Spek"/>
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="match_parent"
+                android:text="Chipset" />
+
+            <TextView
+                android:id="@+id/tv_chipset"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:background="#F3F3F3"
+                android:layout_height="match_parent"
+                tools:text="Isi Spek"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="match_parent"
+                android:text="Grafis" />
+
+            <TextView
+                android:id="@+id/tv_grafis"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:background="#F3F3F3"
+                android:layout_height="match_parent"
+                tools:text="Isi Spek"/>
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="match_parent"
+                android:text="Memori" />
+
+            <TextView
+                android:id="@+id/tv_memori"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:background="#F3F3F3"
+                android:layout_height="match_parent"
+                tools:text="Isi Spek"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="match_parent"
+                android:text="Penyimpanan" />
+
+            <TextView
+                android:id="@+id/tv_penyimpanan"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:background="#F3F3F3"
+                android:layout_height="match_parent"
+                tools:text="Isi Spek"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="match_parent"
+                android:text="Webcam" />
+
+            <TextView
+                android:id="@+id/tv_webcam"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:background="#F3F3F3"
+                android:layout_height="match_parent"
+                tools:text="Isi Spek"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="match_parent"
+                android:text="Keyboard" />
+
+            <TextView
+                android:id="@+id/tv_keyboard"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:background="#F3F3F3"
+                android:layout_height="match_parent"
+                tools:text="Isi Spek"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="match_parent"
+                android:text="Komunikasi" />
+
+            <TextView
+                android:id="@+id/tv_komunikasi"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:background="#F3F3F3"
+                android:layout_height="match_parent"
+                tools:text="Isi Spek"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="match_parent"
+                android:text="Audio" />
+
+            <TextView
+                android:id="@+id/tv_audio"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:background="#F3F3F3"
+                android:layout_height="match_parent"
+                tools:text="Isi Spek"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="match_parent"
+                android:text="I/O Ports" />
+
+            <TextView
+                android:id="@+id/tv_io"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:background="#F3F3F3"
+                android:layout_height="match_parent"
+                tools:text="Isi Spek"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="match_parent"
+                android:text="Baterai" />
+
+            <TextView
+                android:id="@+id/tv_baterai"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:background="#F3F3F3"
+                android:layout_height="match_parent"
+                tools:text="Isi Spek"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="match_parent"
+                android:text="AC Adapter" />
+
+            <TextView
+                android:id="@+id/tv_acAdapter"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:background="#F3F3F3"
+                android:layout_height="match_parent"
+                tools:text="Isi Spek"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="match_parent"
+                android:text="Dimensi" />
+
+            <TextView
+                android:id="@+id/tv_dimensi"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:background="#F3F3F3"
+                android:layout_height="match_parent"
+                tools:text="Isi Spek"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="match_parent"
+                android:text="Berat" />
+
+            <TextView
+                android:id="@+id/tv_berat"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:background="#F3F3F3"
+                android:layout_height="match_parent"
+                tools:text="Isi Spek"/>
+
+        </LinearLayout>
 
     </LinearLayout>
 
