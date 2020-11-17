@@ -94,20 +94,37 @@ class RekomendasiActivity : AppCompatActivity(), View.OnClickListener {
                     finish()
                 else {
                     fragmentManager.popBackStack()
-                    if (currentFragment == "keperluan"){
-                        currentFragment = "budget"
-                        sebelumnyaButton.setBackgroundResource(R.drawable.bg_button_abu)
-                    }
-                    else if (currentFragment == "prioritas")
-                        currentFragment = "keperluan"
-                    else if (currentFragment == "brand")
-                        currentFragment = "prioritas"
-                    else if (currentFragment == "hasil"){
-                        sebelumnyaButton.visibility = View.VISIBLE
-                        selanjutnyaButton.visibility = View.VISIBLE
-                        currentFragment = "brand"
+                    when (currentFragment) {
+                        "keperluan" -> {
+                            currentFragment = "budget"
+                            sebelumnyaButton.setBackgroundResource(R.drawable.bg_button_abu)
+                        }
+                        "prioritas" -> currentFragment = "keperluan"
+                        "brand" -> currentFragment = "prioritas"
+                        "hasil" -> {
+                            sebelumnyaButton.visibility = View.VISIBLE
+                            selanjutnyaButton.visibility = View.VISIBLE
+                            currentFragment = "brand"
+                        }
                     }
                 }
+            }
+        }
+    }
+
+    override fun onBackPressed(){
+        super.onBackPressed()
+        when (currentFragment) {
+            "keperluan" -> {
+                currentFragment = "budget"
+                sebelumnyaButton.setBackgroundResource(R.drawable.bg_button_abu)
+            }
+            "prioritas" -> currentFragment = "keperluan"
+            "brand" -> currentFragment = "prioritas"
+            "hasil" -> {
+                sebelumnyaButton.visibility = View.VISIBLE
+                selanjutnyaButton.visibility = View.VISIBLE
+                currentFragment = "brand"
             }
         }
     }

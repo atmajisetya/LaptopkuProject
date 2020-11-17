@@ -10,7 +10,11 @@ import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.Query
 import kotlinx.android.synthetic.main.activity_main.*
 
-class HasilFragment : Fragment() {
+class HasilFragment() : Fragment() {
+    //inisiasi extra
+    private var extraType = "none"
+    private var extra = "all"
+
     //inisiasi untuk urutkan dan filter
     private lateinit var textView: android.widget.TextView
 
@@ -22,6 +26,12 @@ class HasilFragment : Fragment() {
 
     //ArrayList untuk grid laptop
     private val listLaptop: ArrayList<LaptopTerbaru> = arrayListOf()
+
+    //Secondary Constructor
+    constructor(extraType: String, extra: String) : this(){
+        this.extraType = extraType
+        this.extra = extra
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -54,24 +64,41 @@ class HasilFragment : Fragment() {
 
     //fungsi untuk mengambil data dari database firestore
     private fun loadLaptop(){
-        // listTerbaru.clear()
         val db = FirebaseFirestore.getInstance()
-        db.collection("spekLaptop")
-            .orderBy("tanggalRilis", Query.Direction.DESCENDING)
-            .get()
-            .addOnSuccessListener {result ->
-                for (document in result){
-                    listLaptop.add(LaptopTerbaru(document.getString("namaLaptop")!!,
-                        document.getString("hargaLaptop")!!,
-                        document.getString("gambar")!!))
+        if (extraType == "none")
+            db.collection("spekLaptop")
+                .orderBy("tanggalRilis", Query.Direction.DESCENDING)
+                .get()
+                .addOnSuccessListener {result ->
+                    for (document in result){
+                        listLaptop.add(LaptopTerbaru(document.getString("namaLaptop")!!,
+                            document.getString("hargaLaptop")!!,
+                            document.getString("gambar")!!))
+                    }
+                    if(listLaptop.isNotEmpty()){
+                        showRecyclerList()
+                        progressBar.visibility = View.GONE
+                    }
+                    else
+                        loadLaptop()
                 }
-                if(listLaptop.isNotEmpty()){
-                    showRecyclerList()
-                    progressBar.visibility = View.GONE
+        else if (extraType == "brand")
+            db.collection("spekLaptop")
+                .whereEqualTo("brand", extra)
+                .get()
+                .addOnSuccessListener {result ->
+                    for (document in result){
+                        listLaptop.add(LaptopTerbaru(document.getString("namaLaptop")!!,
+                            document.getString("hargaLaptop")!!,
+                            document.getString("gambar")!!))
+                    }
+                    if(listLaptop.isNotEmpty()){
+                        showRecyclerList()
+                        progressBar.visibility = View.GONE
+                    }
+                    else
+                        loadLaptop()
                 }
-                else
-                    loadLaptop()
-            }
     }
     //untuk menampilkan RecyclerView Laptop Terbaru
     private fun showRecyclerList(){

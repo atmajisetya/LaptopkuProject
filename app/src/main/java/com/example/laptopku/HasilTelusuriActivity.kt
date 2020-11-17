@@ -11,15 +11,22 @@ import com.google.firebase.firestore.Query
 import kotlinx.android.synthetic.main.activity_main.*
 
 class HasilTelusuriActivity : AppCompatActivity(), View.OnClickListener {
-    //ArrayList untuk grid laptop
-    private val listLaptop: ArrayList<LaptopTerbaru> = arrayListOf()
+    //inisiasi brand
+    private var brand: String? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_hasil_telusuri)
 
+        //memanggil Fragment Hasil
+        brand = intent.getStringExtra("brand")
         val transaction = supportFragmentManager.beginTransaction()
-        transaction.add(R.id.hasilTelusuriFrameLayout, HasilFragment())
+        //jika Activity dipanggil dari ImageView brand: menampilkan brand tertentu
+        if (brand != null)
+            transaction.add(R.id.hasilTelusuriFrameLayout, HasilFragment("brand", brand!!))
+        //jika Activity dipanggil biasa: menampilkan semua laptop
+        else
+            transaction.add(R.id.hasilTelusuriFrameLayout, HasilFragment())
         transaction.commit()
 
         //digunakan untuk pindah ke home (main activity)
