@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     tools:context=".RekomendasiActivity">
 
-    <!-- header -->
+    <!-- Header -->
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/rekomendasiHeaderConstraintLayout"
         android:layout_width="match_parent"
@@ -59,8 +59,8 @@
         app:layout_constraintTop_toBottomOf="@id/rekomendasiHeaderConstraintLayout"
         app:layout_constraintBottom_toTopOf="@id/sebelumnyaButton" />
 
-    <!-- button sebelum dan selanjutnya -->
-    <!-- untuk sebelumnya -->
+    <!-- Button Sebelum dan Selanjutnya -->
+    <!-- Button Sebelumnya -->
     <LinearLayout
         android:id="@+id/sebelumnyaButton"
         android:layout_width="wrap_content"
@@ -87,7 +87,7 @@
             android:textSize="18sp"/>
     </LinearLayout>
 
-    <!-- untuk selanjutnya -->
+    <!-- Button Selanjutnya -->
     <LinearLayout
         android:id="@+id/selanjutnyaButton"
         android:layout_width="wrap_content"
@@ -114,7 +114,7 @@
             android:src="@drawable/ic_selanjutnya"/>
     </LinearLayout>
 
-    <!-- footer -->
+    <!-- Footer -->
     <include
         layout="@layout/footer_rekomendasi"
         android:id="@+id/rekomendasiFooterConstraintLayout"

@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     tools:context=".FavoriteActivity">
 
-    <!-- header -->
+    <!-- Header -->
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/favoriteHeaderConstraintLayout"
         android:layout_width="match_parent"
@@ -67,7 +67,7 @@
         app:layout_constraintBottom_toTopOf="@id/favoriteFooterConstraintLayout"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"/>
-    <!-- footer -->
+    <!-- Footer -->
     <include
         layout="@layout/footer_telusuri"
         android:id="@+id/favoriteFooterConstraintLayout"

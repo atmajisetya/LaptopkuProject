@@ -7,7 +7,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
-    <!-- ImageView penampil foto laptop -->
+    <!-- ImageView Penampil Foto Laptop -->
     <ImageView
         android:id="@+id/laptopFavoriteImageView"
         android:layout_width="100dp"
@@ -16,7 +16,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent" />
 
-    <!-- TextView penampil nama laptop -->
+    <!-- TextView Penampil Nama Laptop -->
     <TextView
         android:id="@+id/laptopFavoriteTextView"
         android:layout_width="wrap_content"
@@ -29,7 +29,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toRightOf="@id/laptopFavoriteImageView" />
 
-    <!-- ImageView penampil icon bandingkan -->
+    <!-- ImageView Penampil Icon Bandingkan -->
     <ImageView
         android:id="@+id/itemLaptopFavoriteBandingkanImageView"
         android:layout_width="40dp"

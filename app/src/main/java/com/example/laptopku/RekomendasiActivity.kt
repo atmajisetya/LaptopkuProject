@@ -22,23 +22,23 @@ class RekomendasiActivity : AppCompatActivity(), View.OnClickListener {
         transaction.add(R.id.rekomendasiFrameLayout, BudgetFragment())
         transaction.commit()
 
-        //digunakan untuk pindah ke tampilan telusuri
+        // Digunakan untuk pindah ke tampilan telusuri
         val telusuriImageView: android.widget.ImageView = findViewById(R.id.rekomendasiFooterTelusuriImageView)
         telusuriImageView.setOnClickListener(this)
 
-        //digunakan untuk pindah ke tampilan bandingkan
+        // Digunakan untuk pindah ke tampilan bandingkan
         val bandingkanImageView: android.widget.ImageView = findViewById(R.id.rekomendasiFooterBandingkanImageView)
         bandingkanImageView.setOnClickListener(this)
 
-        //digunakan untuk pindah ke tampilan favorit
+        // Digunakan untuk pindah ke tampilan favorit
         val favoriteImageView: android.widget.ImageView = findViewById(R.id.rekomendasiFavoriteImageView)
         favoriteImageView.setOnClickListener(this)
 
-        //digunakan untuk pindah ke fragment selanjutnya
+        // Digunakan untuk pindah ke fragment selanjutnya
         selanjutnyaButton = findViewById(R.id.selanjutnyaButton)
         selanjutnyaButton.setOnClickListener(this)
 
-        //digunakan untuk kembali ke tampilan atau fragment sebelumnya
+        // Digunakan untuk kembali ke tampilan atau fragment sebelumnya
         sebelumnyaButton = findViewById(R.id.sebelumnyaButton)
         sebelumnyaButton.setOnClickListener(this)
         val kembaliImageView: android.widget.ImageView = findViewById(R.id.rekomendasiKembaliImageView)
