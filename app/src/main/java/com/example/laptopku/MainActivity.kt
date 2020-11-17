@@ -84,7 +84,29 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
                 for (document in result){
                     listTerbaru.add(LaptopTerbaru(document.getString("namaLaptop")!!,
                         document.getString("hargaLaptop")!!,
-                        document.getString("gambar")!!))
+                        document.getString("gambar")!!,
+                        document.getString("acadapter")!!,
+                        document.getString("audio")!!,
+                        document.getString("baterai")!!,
+                        document.getString("berat")!!,
+                        document.getString("brand")!!,
+                        document.getString("chipset")!!,
+                        document.getString("cpu")!!,
+                        document.getString("dimensi")!!,
+                        document.get("grafis")!! as ArrayList<String>,
+                        document.get("io")!! as ArrayList<String>,
+                        document.getString("kategori")!!,
+                        document.getString("keyboard")!!,
+                        document.get("komunikasi")!! as ArrayList<String>,
+                        document.getString("layar")!!,
+                        document.getString("memori")!!,
+                        document.getString("os")!!,
+                        document.getString("penyimpanan")!!,
+                        document.getString("tanggalRilis")!!,
+                        document.getString("webcam")!!,
+                    )
+
+                        )
                 }
                 if(listTerbaru.isNotEmpty()){
                     showRecyclerList()

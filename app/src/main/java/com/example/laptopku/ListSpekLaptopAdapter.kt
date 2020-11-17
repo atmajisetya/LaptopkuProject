@@ -13,16 +13,24 @@ class ListSpekLaptopAdapter(private val listSpekLaptop: ArrayList<SpekLaptop>): 
         var tvIsiSpek: TextView = itemView.findViewById(R.id.tv_isiSpek_laptop)
     }
 
+    //private var laptopTerbaru : LaptopTerbaru? = null
+    val arrayNamaSpek: ArrayList<String> = arrayListOf("CPU", "OS", "Layar", "Chipset","Grafis", "Memori",
+        "Penyimpanan", "Webcam", "Keyboard", "Komunikasi", "Audio", "I/O Ports", "Baterai", "AC Adapter", "Dimensi", "Berat")
+
+    val arrayIsiSpek: ArrayList<String> = arrayListOf()
     //dinggo menampilkan layout item_spek_laptop
     override fun onCreateViewHolder(viewGroup: ViewGroup, i: Int): ListViewHolder {
         val view: View = LayoutInflater.from(viewGroup.context).inflate(R.layout.item_spek_laptop, viewGroup, false)
         return ListViewHolder(view)
+
+
+        //laptopTerbaru = intent.getParcelableExtra<LaptopTerbaru>("laptopTerbaru")
     }
 
     override fun onBindViewHolder(holder: ListViewHolder, position: Int) {
         val spekLaptop = listSpekLaptop[position]
 
-        //holder.tvNamaSpek.text = spekLaptop.namaSpek
+        //holder.tvNamaSpek.text = spekLaptop.
         //holder.tvIsiSpek.text = spekLaptop.isiSpek
     }
 

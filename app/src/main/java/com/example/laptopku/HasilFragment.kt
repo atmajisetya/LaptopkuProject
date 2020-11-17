@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.GridLayoutManager
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.Query
 import kotlinx.android.synthetic.main.activity_main.*
+import java.sql.Timestamp
 
 class HasilFragment() : Fragment() {
     //inisiasi extra
@@ -73,7 +74,28 @@ class HasilFragment() : Fragment() {
                     for (document in result){
                         listLaptop.add(LaptopTerbaru(document.getString("namaLaptop")!!,
                             document.getString("hargaLaptop")!!,
-                            document.getString("gambar")!!))
+                            document.getString("gambar")!!,
+                            document.getString("acadapter")!!,
+                            document.getString("audio")!!,
+                            document.getString("baterai")!!,
+                            document.getString("berat")!!,
+                            document.getString("brand")!!,
+                            document.getString("chipset")!!,
+                            document.getString("cpu")!!,
+                            document.getString("dimensi")!!,
+                            document.get("grafis")!! as ArrayList<String>,
+                            document.get("io")!! as ArrayList<String>,
+                            document.getString("kategori")!!,
+                            document.getString("keyboard")!!,
+                            document.get("komunikasi")!! as ArrayList<String>,
+                            document.getString("layar")!!,
+                            document.getString("memori")!!,
+                            document.getString("os")!!,
+                            document.getString("penyimpanan")!!,
+                            document.getString("tanggalRilis")!!,
+                            document.getString("webcam")!!
+                        ))
+
                     }
                     if(listLaptop.isNotEmpty()){
                         showRecyclerList()
@@ -90,7 +112,26 @@ class HasilFragment() : Fragment() {
                     for (document in result){
                         listLaptop.add(LaptopTerbaru(document.getString("namaLaptop")!!,
                             document.getString("hargaLaptop")!!,
-                            document.getString("gambar")!!))
+                            document.getString("gambar")!!,
+                            document.getString("acadapter")!!,
+                            document.getString("audio")!!,
+                            document.getString("baterai")!!,
+                            document.getString("berat")!!,
+                            document.getString("brand")!!,
+                            document.getString("chipset")!!,
+                            document.getString("cpu")!!,
+                            document.getString("dimensi")!!,
+                            document.get("grafis")!! as ArrayList<String>,
+                            document.get("io")!! as ArrayList<String>,
+                            document.getString("kategori")!!,
+                            document.getString("keyboard")!!,
+                            document.get("komunikasi")!! as ArrayList<String>,
+                            document.getString("layar")!!,
+                            document.getString("memori")!!,
+                            document.getString("os")!!,
+                            document.getString("penyimpanan")!!,
+                            document.getString("tanggalRilis")!!,
+                            document.getString("webcam")!!))
                     }
                     if(listLaptop.isNotEmpty()){
                         showRecyclerList()
