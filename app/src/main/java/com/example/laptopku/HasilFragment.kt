@@ -10,24 +10,25 @@ import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.Query
 import kotlinx.android.synthetic.main.activity_main.*
 
+// Konstruktor primer dipanggil ketika ingin menampilkan semua laptop
 class HasilFragment() : Fragment() {
-    //inisiasi extra
+    // Inisiasi variabel agar Fragment mengetahui laptop bagaimana yang diminta
     private var extraType = "none"
     private var extra = "all"
 
-    //inisiasi untuk urutkan dan filter
+    // Inisiasi variabel untuk menampilkan icon urutkan dan filter
     private lateinit var textView: android.widget.TextView
 
-    //inisiasi RecyclerView yang akan ditampilkan untuk grid laptop
+    // Inisiasi variabel RecyclerView yang akan menampilkan grid laptop
     private lateinit var hasilRecyclerView: androidx.recyclerview.widget.RecyclerView
 
-    //inisiasi ProgressBar
+    // Inisiasi variabel ProgressBar
     private lateinit var progressBar: android.widget.ProgressBar
 
-    //ArrayList untuk grid laptop
+    // Inisiasi ArrayList untuk menampung data laptop yang diminta
     private val listLaptop: ArrayList<LaptopTerbaru> = arrayListOf()
 
-    //Secondary Constructor
+    // Konstruktor sekunder dipanggil ketika pengguna meminta brand atau kategori tertentu
     constructor(extraType: String, extra: String) : this(){
         this.extraType = extraType
         this.extra = extra
@@ -42,7 +43,7 @@ class HasilFragment() : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        //ini juga inisiasi urutkan dan filter
+        // Menampilkan icon urutkan dan filter
         textView = view.findViewById(R.id.urutkanTextView)
         textView.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_urutkan,0,0,0)
         textView.compoundDrawablePadding = 32
@@ -50,21 +51,22 @@ class HasilFragment() : Fragment() {
         textView.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_filter,0,0,0)
         textView.compoundDrawablePadding = 32
 
-        //ini juga inisiasi untuk RecyclerView
+        // Menghubungkan variabel RecyclerView dengan RecyclerView sesungguhnya
         hasilRecyclerView = view.findViewById(R.id.hasilRecyclerView)
         hasilRecyclerView.setHasFixedSize(true)
 
-        //menampilkan progress bar
+        // Membuat progress bar menjadi nampak
         progressBar = view.findViewById(R.id.hasilProgressBar)
         progressBar.visibility = View.VISIBLE
 
-        //memanggil data yang ada di firebase bar kui dipancal (ditampilke)
+        // Memanggil data yang diminta dari Firestore sekaligus ditampilkan
         loadLaptop()
     }
 
-    //fungsi untuk mengambil data dari database firestore
+    // Memanggil data yang diminta dari Firestore sekaligus ditampilkan
     private fun loadLaptop(){
         val db = FirebaseFirestore.getInstance()
+        // Menampilkan semua laptop
         if (extraType == "none")
             db.collection("spekLaptop")
                 .orderBy("tanggalRilis", Query.Direction.DESCENDING)
@@ -82,6 +84,7 @@ class HasilFragment() : Fragment() {
                     else
                         loadLaptop()
                 }
+        // Menampilkan brand atau kategori tertentu saja
         else if (extraType == "brand")
             db.collection("spekLaptop")
                 .whereEqualTo("brand", extra)
@@ -100,7 +103,8 @@ class HasilFragment() : Fragment() {
                         loadLaptop()
                 }
     }
-    //untuk menampilkan RecyclerView Laptop Terbaru
+
+    // Menampilkan laptop-laptop yang diminta pada RecyclerView
     private fun showRecyclerList(){
         hasilRecyclerView.layoutManager = GridLayoutManager(activity, 2)
         val listLaptopTerbaruAdapter = ListLaptopTerbaruAdapter(activity, listLaptop)

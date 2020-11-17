@@ -11,46 +11,46 @@ import com.google.firebase.firestore.Query
 import kotlinx.android.synthetic.main.activity_main.*
 
 class HasilTelusuriActivity : AppCompatActivity(), View.OnClickListener {
-    //inisiasi brand
+    // Inisiasi variabel brand untuk menerima operan dari Main Activity (bila ada)
     private var brand: String? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_hasil_telusuri)
 
-        //memanggil Fragment Hasil
+        // Memanggil Fragment Hasil
         brand = intent.getStringExtra("brand")
         val transaction = supportFragmentManager.beginTransaction()
-        //jika Activity dipanggil dari ImageView brand: menampilkan brand tertentu
+        // Jika Activity dipanggil dari ImageView Brand: menampilkan brand tertentu
         if (brand != null)
             transaction.add(R.id.hasilTelusuriFrameLayout, HasilFragment("brand", brand!!))
-        //jika Activity dipanggil biasa: menampilkan semua laptop
+        // Jika Activity dipanggil biasa: menampilkan semua laptop
         else
             transaction.add(R.id.hasilTelusuriFrameLayout, HasilFragment())
         transaction.commit()
 
-        //digunakan untuk pindah ke home (main activity)
+        // Mendaftarkan event klik untuk pindah Main Activity
         val telusuriImageView: android.widget.ImageView = findViewById(R.id.telusuriFooterTelusuriImageView)
         telusuriImageView.setOnClickListener(this)
 
-        //digunakan untuk pindah ke tampilan rekomendasi
+        // Mendaftarkan event klik untuk pindah ke Activity Rekomendasi
         val rekomendasiImageView: android.widget.ImageView = findViewById(R.id.telusuriFooterRekomendasiImageView)
         rekomendasiImageView.setOnClickListener(this)
 
-        //digunakan untuk pindah ke tampilan bandingkan
+        //  Mendaftarkan event klik untuk pindah ke Activity Bandingkan
         val bandingkanImageView: android.widget.ImageView = findViewById(R.id.telusuriFooterBandingkanImageView)
         bandingkanImageView.setOnClickListener(this)
 
-        //digunakan untuk pindah ke tampilan favorit
+        //  Mendaftarkan event klik untuk pindah ke Activity Favorit
         val favoriteImageView: android.widget.ImageView = findViewById(R.id.hasilTelusuriFavoriteImageView)
         favoriteImageView.setOnClickListener(this)
 
-        //digunakan untuk kembali ke tampilan sebelumnya
+        //  Mendaftarkan event klik untuk kembali ke Activity sebelumnya
         val kembaliImageView: android.widget.ImageView = findViewById(R.id.hasilTelusuriKembaliImageView)
         kembaliImageView.setOnClickListener(this)
     }
 
-    //fungsi untuk pindah ke tampilan rekomendasi dan bandingkan
+    // Isi semua event klik
     override fun onClick(v: View?){
         when(v?.id){
             R.id.telusuriFooterTelusuriImageView ->{

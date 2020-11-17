@@ -12,10 +12,10 @@ import com.google.firebase.firestore.Query
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity(), View.OnClickListener {
-    //inisiasi RecyclerView yang akan ditampilkan untuk rilis terbaru
+    // Inisiasi variabel RecyclerView untuk menampilkan laptop rilis terbaru
     private lateinit var rvLaptop: RecyclerView
 
-    //untuk laptop terbaru
+    // Inisiasi list untuk menampung data laptop rilis terbaru
     private val listTerbaru: ArrayList<LaptopTerbaru> = arrayListOf()
 
     override fun onCreate(savedInstanceState: Bundle?) {

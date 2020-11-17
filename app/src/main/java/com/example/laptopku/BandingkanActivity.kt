@@ -6,36 +6,37 @@ import android.view.View
 import kotlinx.android.synthetic.main.activity_bandingkan.*
 
 class BandingkanActivity : AppCompatActivity(), View.OnClickListener {
-    //inisiasi laptopFavorite
+    // Variabel untuk menerima operan dari Activity Favorite (bila ada operan)
     private var laptopFavorite: LaptopFavorite? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_bandingkan)
 
-        //memindahkan nama laptopFavorite ke EditText cari laptop yang kiri
+        // Memunculkan nama laptopFavorite ke EditText cari laptop yang kiri
         laptopFavorite = intent.getParcelableExtra("laptopFavorite")
         if(laptopFavorite != null){
             cariLaptopKiriEditText.setText(laptopFavorite!!.name)
         }
 
-        //digunakan untuk pindah ke tampilan telusuri
+        // Mendaftarkan event klik untuk pindah ke Activity Telusuri
         val telusuriImageView: android.widget.ImageView = findViewById(R.id.bandingkanFooterTelusuriImageView)
         telusuriImageView.setOnClickListener(this)
 
-        //digunakan untuk pindah ke tampilan rekomendasi
+        // Mendaftarkan event klik untuk pindah ke Activity Rekomendasi
         val rekomendasiImageView: android.widget.ImageView = findViewById(R.id.bandingkanFooterRekomendasiImageView)
         rekomendasiImageView.setOnClickListener(this)
 
-        //digunakan untuk pindah ke tampilan favorit
+        // Mendaftarkan event klik untuk pindah ke Activity Favorit
         val favoriteImageView: android.widget.ImageView = findViewById(R.id.bandingkanFavoriteImageView)
         favoriteImageView.setOnClickListener(this)
 
-        //digunakan untuk kembali ke tampilan sebelumnya
+        // Mendaftarkan event klik untuk kembali ke activity sebelumnya
         val kembaliImageView: android.widget.ImageView = findViewById(R.id.bandingkanKembaliImageView)
         kembaliImageView.setOnClickListener(this)
     }
 
+    // Semua event klik
     override fun onClick(v: View?) {
         when(v?.id){
             R.id.bandingkanFooterTelusuriImageView ->{
