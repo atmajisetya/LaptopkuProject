@@ -11,22 +11,27 @@ import com.google.firebase.firestore.Query
 import kotlinx.android.synthetic.main.activity_main.*
 
 class HasilTelusuriActivity : AppCompatActivity(), View.OnClickListener {
-    // Inisiasi variabel brand untuk menerima operan dari Main Activity (bila ada)
+    // Inisiasi variabel brand dan kategori untuk menerima operan dari Main Activity (bila ada)
     private var brand: String? = null
+    private var kategori: String? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_hasil_telusuri)
 
         // Memanggil Fragment Hasil
+        // Assignment variabel operan
         brand = intent.getStringExtra("brand")
+        kategori = intent.getStringExtra("kategori")
         val transaction = supportFragmentManager.beginTransaction()
-        // Jika Activity dipanggil dari ImageView Brand: menampilkan brand tertentu
-        if (brand != null)
-            transaction.add(R.id.hasilTelusuriFrameLayout, HasilFragment("brand", brand!!))
-        // Jika Activity dipanggil biasa: menampilkan semua laptop
-        else
-            transaction.add(R.id.hasilTelusuriFrameLayout, HasilFragment())
+        when {
+            // Jika Activity dipanggil dari ImageView Kategori: menampilkan kategori tertentu
+            kategori != null -> transaction.add(R.id.hasilTelusuriFrameLayout, HasilFragment("kategori", kategori!!))
+            // Jika Activity dipanggil dari ImageView Brand: menampilkan brand tertentu
+            brand != null -> transaction.add(R.id.hasilTelusuriFrameLayout, HasilFragment("brand", brand!!))
+            // Jika Activity dipanggil biasa: menampilkan semua laptop
+            else -> transaction.add(R.id.hasilTelusuriFrameLayout, HasilFragment())
+        }
         transaction.commit()
 
         // Mendaftarkan event klik untuk pindah Main Activity

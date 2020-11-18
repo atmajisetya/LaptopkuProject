@@ -61,88 +61,131 @@ class HasilFragment() : Fragment() {
         progressBar.visibility = View.VISIBLE
 
         // Memanggil data yang diminta dari Firestore sekaligus ditampilkan
-        loadLaptop()
+        when (extraType) {
+            "none" -> loadLaptopSemua()
+            "brand" -> loadLaptopBrand()
+            "kategori" -> loadLaptopKategori()
+        }
     }
 
-    // Memanggil data yang diminta dari Firestore sekaligus ditampilkan
-    private fun loadLaptop(){
+    // Memanggil data semua laptop dari Firestore sekaligus ditampilkan
+    private fun loadLaptopSemua(){
         val db = FirebaseFirestore.getInstance()
-        // Menampilkan semua laptop
-        if (extraType == "none")
-            db.collection("spekLaptop")
-                .orderBy("tanggalRilis", Query.Direction.DESCENDING)
-                .get()
-                .addOnSuccessListener {result ->
-                    for (document in result){
-                        listLaptop.add(LaptopTerbaru(document.getString("namaLaptop")!!,
-                            document.getString("hargaLaptop")!!,
-                            document.getString("gambar")!!,
-                            document.getString("acadapter")!!,
-                            document.getString("audio")!!,
-                            document.getString("baterai")!!,
-                            document.getString("berat")!!,
-                            document.getString("brand")!!,
-                            document.getString("chipset")!!,
-                            document.getString("cpu")!!,
-                            document.getString("dimensi")!!,
-                            document.get("grafis")!! as ArrayList<String>,
-                            document.get("io")!! as ArrayList<String>,
-                            document.get("kategori")!! as ArrayList<String>,
-                            document.getString("keyboard")!!,
-                            document.get("komunikasi")!! as ArrayList<String>,
-                            document.getString("layar")!!,
-                            document.getString("memori")!!,
-                            document.getString("os")!!,
-                            document.getString("penyimpanan")!!,
-                            document.getString("tanggalRilis")!!,
-                            document.getString("webcam")!!
-                        ))
+        db.collection("spekLaptop")
+            .get()
+            .addOnSuccessListener {result ->
+                for (document in result){
+                    listLaptop.add(LaptopTerbaru(document.getString("namaLaptop")!!,
+                        document.getString("hargaLaptop")!!,
+                        document.getString("gambar")!!,
+                        document.getString("acadapter")!!,
+                        document.getString("audio")!!,
+                        document.getString("baterai")!!,
+                        document.getString("berat")!!,
+                        document.getString("brand")!!,
+                        document.getString("chipset")!!,
+                        document.getString("cpu")!!,
+                        document.getString("dimensi")!!,
+                        document.get("grafis")!! as ArrayList<String>,
+                        document.get("io")!! as ArrayList<String>,
+                        document.get("kategori")!! as ArrayList<String>,
+                        document.getString("keyboard")!!,
+                        document.get("komunikasi")!! as ArrayList<String>,
+                        document.getString("layar")!!,
+                        document.getString("memori")!!,
+                        document.getString("os")!!,
+                        document.getString("penyimpanan")!!,
+                        document.getString("tanggalRilis")!!,
+                        document.getString("webcam")!!
+                    ))
+                }
+                if(listLaptop.isNotEmpty()){
+                    showRecyclerList()
+                    progressBar.visibility = View.GONE
+                }
+                else
+                    loadLaptopSemua()
+            }
+    }
 
-                    }
-                    if(listLaptop.isNotEmpty()){
-                        showRecyclerList()
-                        progressBar.visibility = View.GONE
-                    }
-                    else
-                        loadLaptop()
+    // Memanggil data laptop dengan brand tertentu dari Firestore sekaligus ditampilkan
+    private fun loadLaptopBrand(){
+        val db = FirebaseFirestore.getInstance()
+        db.collection("spekLaptop")
+            .whereEqualTo("brand", extra)
+            .get()
+            .addOnSuccessListener {result ->
+                for (document in result){
+                    listLaptop.add(LaptopTerbaru(document.getString("namaLaptop")!!,
+                        document.getString("hargaLaptop")!!,
+                        document.getString("gambar")!!,
+                        document.getString("acadapter")!!,
+                        document.getString("audio")!!,
+                        document.getString("baterai")!!,
+                        document.getString("berat")!!,
+                        document.getString("brand")!!,
+                        document.getString("chipset")!!,
+                        document.getString("cpu")!!,
+                        document.getString("dimensi")!!,
+                        document.get("grafis")!! as ArrayList<String>,
+                        document.get("io")!! as ArrayList<String>,
+                        document.get("kategori")!! as ArrayList<String>,
+                        document.getString("keyboard")!!,
+                        document.get("komunikasi")!! as ArrayList<String>,
+                        document.getString("layar")!!,
+                        document.getString("memori")!!,
+                        document.getString("os")!!,
+                        document.getString("penyimpanan")!!,
+                        document.getString("tanggalRilis")!!,
+                        document.getString("webcam")!!))
                 }
-        // Menampilkan brand atau kategori tertentu saja
-        else if (extraType == "brand")
-            db.collection("spekLaptop")
-                .whereEqualTo("brand", extra)
-                .get()
-                .addOnSuccessListener {result ->
-                    for (document in result){
-                        listLaptop.add(LaptopTerbaru(document.getString("namaLaptop")!!,
-                            document.getString("hargaLaptop")!!,
-                            document.getString("gambar")!!,
-                            document.getString("acadapter")!!,
-                            document.getString("audio")!!,
-                            document.getString("baterai")!!,
-                            document.getString("berat")!!,
-                            document.getString("brand")!!,
-                            document.getString("chipset")!!,
-                            document.getString("cpu")!!,
-                            document.getString("dimensi")!!,
-                            document.get("grafis")!! as ArrayList<String>,
-                            document.get("io")!! as ArrayList<String>,
-                            document.get("kategori")!! as ArrayList<String>,
-                            document.getString("keyboard")!!,
-                            document.get("komunikasi")!! as ArrayList<String>,
-                            document.getString("layar")!!,
-                            document.getString("memori")!!,
-                            document.getString("os")!!,
-                            document.getString("penyimpanan")!!,
-                            document.getString("tanggalRilis")!!,
-                            document.getString("webcam")!!))
-                    }
-                    if(listLaptop.isNotEmpty()){
-                        showRecyclerList()
-                        progressBar.visibility = View.GONE
-                    }
-                    else
-                        loadLaptop()
+                if(listLaptop.isNotEmpty()){
+                    showRecyclerList()
+                    progressBar.visibility = View.GONE
                 }
+                else
+                    loadLaptopBrand()
+            }
+    }
+
+    // Memanggil data laptop dengan brand tertentu dari Firestore sekaligus ditampilkan
+    private fun loadLaptopKategori(){
+        val db = FirebaseFirestore.getInstance()
+        db.collection("spekLaptop")
+            .whereArrayContains("kategori", extra)
+            .get()
+            .addOnSuccessListener {result ->
+                for (document in result){
+                    listLaptop.add(LaptopTerbaru(document.getString("namaLaptop")!!,
+                        document.getString("hargaLaptop")!!,
+                        document.getString("gambar")!!,
+                        document.getString("acadapter")!!,
+                        document.getString("audio")!!,
+                        document.getString("baterai")!!,
+                        document.getString("berat")!!,
+                        document.getString("brand")!!,
+                        document.getString("chipset")!!,
+                        document.getString("cpu")!!,
+                        document.getString("dimensi")!!,
+                        document.get("grafis")!! as ArrayList<String>,
+                        document.get("io")!! as ArrayList<String>,
+                        document.get("kategori")!! as ArrayList<String>,
+                        document.getString("keyboard")!!,
+                        document.get("komunikasi")!! as ArrayList<String>,
+                        document.getString("layar")!!,
+                        document.getString("memori")!!,
+                        document.getString("os")!!,
+                        document.getString("penyimpanan")!!,
+                        document.getString("tanggalRilis")!!,
+                        document.getString("webcam")!!))
+                }
+                if(listLaptop.isNotEmpty()){
+                    showRecyclerList()
+                    progressBar.visibility = View.GONE
+                }
+                else
+                    loadLaptopKategori()
+            }
     }
 
     // Menampilkan laptop-laptop yang diminta pada RecyclerView
