@@ -54,5 +54,20 @@
     <string name="apa_prioritas_laptop_nyang_kamu_mau">Apa prioritas laptop\nyang kamu mau?</string>
     <string name="brand_apa_yang_kamu_mau">Brand apa yang kamu mau?</string>
     <string name="cpu">CPU</string>
+    <string name="os">OS</string>
+    <string name="layar">Layar</string>
+    <string name="chipset">Chipset</string>
+    <string name="grafis">Grafis</string>
+    <string name="memori">Memori</string>
+    <string name="penyimpanan">Penyimpanan</string>
+    <string name="webcam">Webcam</string>
+    <string name="keyboard">Keyboard</string>
+    <string name="komunikasi">Komunikasi</string>
+    <string name="audio">Audio</string>
+    <string name="i_o_ports">I/O Ports</string>
+    <string name="baterai">Baterai</string>
+    <string name="ac_adapter">AC Adapter</string>
+    <string name="dimensi">Dimensi</string>
+    <string name="berat">Berat</string>
 
 </resources>
