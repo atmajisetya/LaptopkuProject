@@ -1,523 +1,546 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context=".DeskripsiLaptopActivity">
-    <LinearLayout
+    android:layout_width="match_parent"
+    tools:context=".HasilTelusuriActivity">
+
+    <!-- Header -->
+    <include
+        layout="@layout/header_cari_laptop"
+        android:id="@+id/deskripsiLaptopHeaderConstraintLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/deskripsiLaptopScrollView"/>
+
+    <ScrollView
+        android:id="@+id/deskripsiLaptopScrollView"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
         android:orientation="vertical"
-        android:gravity="center"
-        android:background="#ffffff">
-
-        <!-- Header -->
-        <include
-            layout="@layout/header_cari_laptop"
-            android:id="@+id/deskripsiLaptopHeaderConstraintLayout"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
-
-        <!-- Foto Laptop -->
-        <ImageView
-            android:id="@+id/img_laptop"
-            android:layout_width="244dp"
-            android:layout_height="183dp"
-            android:src="@drawable/ic_asustuf" />
-
+        app:layout_constraintTop_toBottomOf="@id/deskripsiLaptopHeaderConstraintLayout"
+        app:layout_constraintBottom_toTopOf="@id/deskripsiLaptopFooterConstraintLayout"
+        app:layout_constraintLeft_toLeftOf="parent">
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:gravity="center">
-            <!-- Panel Biru -->
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_height="wrap_content"
-                android:paddingVertical="8dp"
-                android:paddingLeft="18dp"
-                android:orientation="vertical"
-                android:background="#330099">
-                <!-- Nama Laptop -->
-                <TextView
-                    android:id="@+id/tv_namaLaptop"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:textSize="24sp"
-                    android:text="@string/asus_tuf_fx506ii"
-                    android:textColor="#ffffff"/>
-                <!-- Harga Laptop -->
-                <TextView
-                    android:id="@+id/tv_hargaLaptop"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:textSize="20sp"
-                    tools:text="Rp 13.999.000"
-                    android:textColor="#ffffff"
-                    android:textStyle="bold"/>
-            </LinearLayout>
+            android:orientation="vertical"
+            android:gravity="center"
+            android:background="#ffffff">
 
-            <!-- Panel tambahkan ke favorit -->
+            <!-- Foto Laptop -->
+            <ImageView
+                android:id="@+id/img_laptop"
+                android:layout_width="244dp"
+                android:layout_height="183dp"
+                android:src="@drawable/ic_asustuf" />
+
             <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:orientation="vertical"
-                android:background="#E7E7E7"
-                android:paddingHorizontal="24dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
                 android:gravity="center">
-                <ImageView
-                    android:layout_width="wrap_content"
+                <!-- Panel Biru -->
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="4dp"
-                    android:src="@drawable/ic_favorite_abu"/>
+                    android:paddingVertical="8dp"
+                    android:paddingLeft="18dp"
+                    android:orientation="vertical"
+                    android:background="#330099">
+                    <!-- Nama Laptop -->
+                    <TextView
+                        android:id="@+id/tv_namaLaptop"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:textSize="24sp"
+                        android:text="@string/asus_tuf_fx506ii"
+                        android:textColor="#ffffff"/>
+                    <!-- Harga Laptop -->
+                    <TextView
+                        android:id="@+id/tv_hargaLaptop"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:textSize="20sp"
+                        tools:text="Rp 13.999.000"
+                        android:textColor="#ffffff"
+                        android:textStyle="bold"/>
+                </LinearLayout>
+
+                <!-- Panel tambahkan ke favorit -->
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:background="#E7E7E7"
+                    android:paddingHorizontal="24dp"
+                    android:gravity="center">
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="4dp"
+                        android:src="@drawable/ic_favorite_abu"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="#969696"
+                        android:text="@string/_1_7k"/>
+                </LinearLayout>
+            </LinearLayout>
+
+            <!-- ViewGroup untuk Spesifikasi dan Bandingkan -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="24dp"
+                android:paddingBottom="8dp"
+                android:paddingHorizontal="8dp"
+                android:orientation="horizontal"
+                android:gravity="center">
+
+                <!-- Spesifikasi -->
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textColor="#969696"
-                    android:text="@string/_1_7k"/>
+                    android:text="@string/spesifikasi"
+                    android:textColor="#000000"
+                    android:textSize="20sp"
+                    android:textStyle="bold"/>
+
+                <!-- Bandingkan -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="8dp"
+                    android:orientation="horizontal"
+                    android:gravity="right">
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/ic_bandingkan_biru"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/bandingkan"
+                        android:textSize="14sp"
+                        android:textColor="#330099"/>
+                </LinearLayout>
             </LinearLayout>
-        </LinearLayout>
 
-        <!-- ViewGroup untuk Spesifikasi dan Bandingkan -->
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:paddingTop="24dp"
-            android:paddingBottom="8dp"
-            android:paddingHorizontal="8dp"
-            android:orientation="horizontal"
-            android:gravity="center">
-
-            <!-- Spesifikasi -->
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/spesifikasi"
-                android:textColor="#000000"
-                android:textSize="20sp"
-                android:textStyle="bold"/>
-
-            <!-- Bandingkan -->
+            <!-- CPU -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:paddingLeft="8dp"
-                android:orientation="horizontal"
-                android:gravity="right">
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/ic_bandingkan_biru"/>
+                android:orientation="horizontal">
                 <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/bandingkan"
+                    android:layout_width="150dp"
+                    android:layout_height="match_parent"
+                    android:text="@string/cpu"
                     android:textSize="14sp"
-                    android:textColor="#330099"/>
+                    android:textColor="#000000"/>
+                <TextView
+                    android:id="@+id/tv_cpu"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/bg_spesifikasi_laptop"
+                    android:layout_height="match_parent"
+                    android:paddingVertical="4dp"
+                    android:paddingLeft="8dp"
+                    tools:text="AMD Ryzen 5 4600H"
+                    android:textSize="14sp"
+                    android:textColor="#000000"/>
+            </LinearLayout>
+
+            <!-- OS -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="8dp"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="150dp"
+                    android:layout_height="match_parent"
+                    android:text="@string/os"
+                    android:textSize="14sp"
+                    android:textColor="#000000"/>
+                <TextView
+                    android:id="@+id/tv_os"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/bg_spesifikasi_laptop"
+                    android:layout_height="match_parent"
+                    android:paddingVertical="4dp"
+                    android:paddingLeft="8dp"
+                    tools:text="Windows 10"
+                    android:textSize="14sp"
+                    android:textColor="#000000"/>
+            </LinearLayout>
+
+            <!-- Layar -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="8dp"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="150dp"
+                    android:layout_height="match_parent"
+                    android:text="@string/layar"
+                    android:textSize="14sp"
+                    android:textColor="#000000"/>
+                <TextView
+                    android:id="@+id/tv_layar"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/bg_spesifikasi_laptop"
+                    android:layout_height="match_parent"
+                    android:paddingVertical="4dp"
+                    android:paddingLeft="8dp"
+                    tools:text="15,6 FHD, 144 Hz"
+                    android:textSize="14sp"
+                    android:textColor="#000000"/>
+            </LinearLayout>
+
+            <!-- Chipset -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="8dp"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="150dp"
+                    android:layout_height="match_parent"
+                    android:text="@string/chipset"
+                    android:textSize="14sp"
+                    android:textColor="#000000"/>
+                <TextView
+                    android:id="@+id/tv_chipset"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/bg_spesifikasi_laptop"
+                    android:layout_height="match_parent"
+                    android:paddingVertical="4dp"
+                    android:paddingLeft="8dp"
+                    tools:text="integrated"
+                    android:textSize="14sp"
+                    android:textColor="#000000"/>
+            </LinearLayout>
+
+            <!-- Grafis -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="8dp"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="150dp"
+                    android:layout_height="match_parent"
+                    android:text="@string/grafis"
+                    android:textSize="14sp"
+                    android:textColor="#000000"/>
+                <TextView
+                    android:id="@+id/tv_grafis"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/bg_spesifikasi_laptop"
+                    android:layout_height="match_parent"
+                    android:paddingVertical="4dp"
+                    android:paddingLeft="8dp"
+                    tools:text="AMD Radeon"
+                    android:textSize="14sp"
+                    android:textColor="#000000"/>
+            </LinearLayout>
+
+            <!-- Memori -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="8dp"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="150dp"
+                    android:layout_height="match_parent"
+                    android:text="@string/memori"
+                    android:textSize="14sp"
+                    android:textColor="#000000"/>
+                <TextView
+                    android:id="@+id/tv_memori"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/bg_spesifikasi_laptop"
+                    android:layout_height="match_parent"
+                    android:paddingVertical="4dp"
+                    android:paddingLeft="8dp"
+                    tools:text="8GB DDR4 3200 MHz"
+                    android:textSize="14sp"
+                    android:textColor="#000000"/>
+            </LinearLayout>
+
+            <!-- Penyimpanan -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="8dp"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="150dp"
+                    android:layout_height="match_parent"
+                    android:text="@string/penyimpanan"
+                    android:textSize="14sp"
+                    android:textColor="#000000"/>
+                <TextView
+                    android:id="@+id/tv_penyimpanan"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/bg_spesifikasi_laptop"
+                    android:layout_height="match_parent"
+                    android:paddingVertical="4dp"
+                    android:paddingLeft="8dp"
+                    tools:text="512 GB SSD NVMe"
+                    android:textSize="14sp"
+                    android:textColor="#000000"/>
+            </LinearLayout>
+
+            <!-- Webcam -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="8dp"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="150dp"
+                    android:layout_height="match_parent"
+                    android:text="@string/webcam"
+                    android:textSize="14sp"
+                    android:textColor="#000000"/>
+                <TextView
+                    android:id="@+id/tv_webcam"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/bg_spesifikasi_laptop"
+                    android:layout_height="match_parent"
+                    android:paddingVertical="4dp"
+                    android:paddingLeft="8dp"
+                    tools:text="HD 720p CMOS Module"
+                    android:textSize="14sp"
+                    android:textColor="#000000"/>
+            </LinearLayout>
+
+            <!-- Keyboard -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="8dp"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="150dp"
+                    android:layout_height="match_parent"
+                    android:text="@string/keyboard"
+                    android:textSize="14sp"
+                    android:textColor="#000000"/>
+                <TextView
+                    android:id="@+id/tv_keyboard"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/bg_spesifikasi_laptop"
+                    android:layout_height="match_parent"
+                    android:paddingVertical="4dp"
+                    android:paddingLeft="8dp"
+                    tools:text="RGB Backlight"
+                    android:textSize="14sp"
+                    android:textColor="#000000"/>
+            </LinearLayout>
+
+            <!-- Komunikasi -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="8dp"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="150dp"
+                    android:layout_height="match_parent"
+                    android:text="@string/komunikasi"
+                    android:textSize="14sp"
+                    android:textColor="#000000"/>
+                <TextView
+                    android:id="@+id/tv_komunikasi"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/bg_spesifikasi_laptop"
+                    android:layout_height="match_parent"
+                    android:paddingVertical="4dp"
+                    android:paddingLeft="8dp"
+                    tools:text="Wifi 802. 11ac"
+                    android:textSize="14sp"
+                    android:textColor="#000000"/>
+            </LinearLayout>
+
+            <!-- Audio -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="8dp"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="150dp"
+                    android:layout_height="match_parent"
+                    android:text="@string/audio"
+                    android:textSize="14sp"
+                    android:textColor="#000000"/>
+                <TextView
+                    android:id="@+id/tv_audio"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/bg_spesifikasi_laptop"
+                    android:layout_height="match_parent"
+                    android:paddingVertical="4dp"
+                    android:paddingLeft="8dp"
+                    tools:text="DTS:X Ultra"
+                    android:textSize="14sp"
+                    android:textColor="#000000"/>
+            </LinearLayout>
+
+            <!-- I/O Ports -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="8dp"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="150dp"
+                    android:layout_height="match_parent"
+                    android:text="@string/i_o_ports"
+                    android:textSize="14sp"
+                    android:textColor="#000000"/>
+                <TextView
+                    android:id="@+id/tv_io"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/bg_spesifikasi_laptop"
+                    android:layout_height="match_parent"
+                    android:paddingVertical="4dp"
+                    android:paddingLeft="8dp"
+                    tools:text="1x Combo Audio Jack2x"
+                    android:textSize="14sp"
+                    android:textColor="#000000"/>
+            </LinearLayout>
+
+            <!-- Baterai -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="8dp"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="150dp"
+                    android:layout_height="match_parent"
+                    android:text="@string/baterai"
+                    android:textSize="14sp"
+                    android:textColor="#000000"/>
+                <TextView
+                    android:id="@+id/tv_baterai"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/bg_spesifikasi_laptop"
+                    android:layout_height="match_parent"
+                    android:paddingVertical="4dp"
+                    android:paddingLeft="8dp"
+                    tools:text="DTS X Ultra"
+                    android:textSize="14sp"
+                    android:textColor="#000000"/>
+            </LinearLayout>
+
+            <!-- AC Adapter -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="8dp"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="150dp"
+                    android:layout_height="match_parent"
+                    android:text="@string/ac_adapter"
+                    android:textSize="14sp"
+                    android:textColor="#000000"/>
+                <TextView
+                    android:id="@+id/tv_acAdapter"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/bg_spesifikasi_laptop"
+                    android:layout_height="match_parent"
+                    android:paddingVertical="4dp"
+                    android:paddingLeft="8dp"
+                    tools:text="180 W"
+                    android:textSize="14sp"
+                    android:textColor="#000000"/>
+            </LinearLayout>
+
+            <!-- Dimensi -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="8dp"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="150dp"
+                    android:layout_height="match_parent"
+                    android:text="@string/dimensi"
+                    android:textSize="14sp"
+                    android:textColor="#000000"/>
+                <TextView
+                    android:id="@+id/tv_dimensi"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/bg_spesifikasi_laptop"
+                    android:layout_height="match_parent"
+                    android:paddingVertical="4dp"
+                    android:paddingLeft="8dp"
+                    tools:text="Dimensi"
+                    android:textSize="14sp"
+                    android:textColor="#000000"/>
+            </LinearLayout>
+
+            <!-- Header -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="8dp"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="150dp"
+                    android:layout_height="match_parent"
+                    android:text="@string/berat"
+                    android:textSize="14sp"
+                    android:textColor="#000000"/>
+                <TextView
+                    android:id="@+id/tv_berat"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/bg_spesifikasi_laptop"
+                    android:layout_height="match_parent"
+                    android:paddingVertical="4dp"
+                    android:paddingLeft="8dp"
+                    tools:text="2 3 Kg"
+                    android:textSize="14sp"
+                    android:textColor="#000000"/>
             </LinearLayout>
         </LinearLayout>
+    </ScrollView>
 
-        <!-- CPU -->
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:paddingLeft="8dp"
-            android:orientation="horizontal">
-            <TextView
-                android:layout_width="150dp"
-                android:layout_height="match_parent"
-                android:text="@string/cpu"
-                android:textSize="14sp"
-                android:textColor="#000000"/>
-            <TextView
-                android:id="@+id/tv_cpu"
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:background="@drawable/bg_spesifikasi_laptop"
-                android:layout_height="match_parent"
-                android:paddingVertical="4dp"
-                android:paddingLeft="8dp"
-                tools:text="AMD Ryzen 5 4600H"
-                android:textSize="14sp"
-                android:textColor="#000000"/>
-        </LinearLayout>
-
-        <!-- OS -->
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:paddingLeft="8dp"
-            android:orientation="horizontal">
-            <TextView
-                android:layout_width="150dp"
-                android:layout_height="match_parent"
-                android:text="@string/os"
-                android:textSize="14sp"
-                android:textColor="#000000"/>
-            <TextView
-                android:id="@+id/tv_os"
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:background="@drawable/bg_spesifikasi_laptop"
-                android:layout_height="match_parent"
-                android:paddingVertical="4dp"
-                android:paddingLeft="8dp"
-                tools:text="Windows 10"
-                android:textSize="14sp"
-                android:textColor="#000000"/>
-        </LinearLayout>
-
-        <!-- Layar -->
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:paddingLeft="8dp"
-            android:orientation="horizontal">
-            <TextView
-                android:layout_width="150dp"
-                android:layout_height="match_parent"
-                android:text="@string/layar"
-                android:textSize="14sp"
-                android:textColor="#000000"/>
-            <TextView
-                android:id="@+id/tv_layar"
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:background="@drawable/bg_spesifikasi_laptop"
-                android:layout_height="match_parent"
-                android:paddingVertical="4dp"
-                android:paddingLeft="8dp"
-                tools:text="15,6 FHD, 144 Hz"
-                android:textSize="14sp"
-                android:textColor="#000000"/>
-        </LinearLayout>
-
-        <!-- Chipset -->
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:paddingLeft="8dp"
-            android:orientation="horizontal">
-            <TextView
-                android:layout_width="150dp"
-                android:layout_height="match_parent"
-                android:text="@string/chipset"
-                android:textSize="14sp"
-                android:textColor="#000000"/>
-            <TextView
-                android:id="@+id/tv_chipset"
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:background="@drawable/bg_spesifikasi_laptop"
-                android:layout_height="match_parent"
-                android:paddingVertical="4dp"
-                android:paddingLeft="8dp"
-                tools:text="integrated"
-                android:textSize="14sp"
-                android:textColor="#000000"/>
-        </LinearLayout>
-
-        <!-- Grafis -->
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:paddingLeft="8dp"
-            android:orientation="horizontal">
-            <TextView
-                android:layout_width="150dp"
-                android:layout_height="match_parent"
-                android:text="@string/grafis"
-                android:textSize="14sp"
-                android:textColor="#000000"/>
-            <TextView
-                android:id="@+id/tv_grafis"
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:background="@drawable/bg_spesifikasi_laptop"
-                android:layout_height="match_parent"
-                android:paddingVertical="4dp"
-                android:paddingLeft="8dp"
-                tools:text="AMD Radeon"
-                android:textSize="14sp"
-                android:textColor="#000000"/>
-        </LinearLayout>
-
-        <!-- Memori -->
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:paddingLeft="8dp"
-            android:orientation="horizontal">
-            <TextView
-                android:layout_width="150dp"
-                android:layout_height="match_parent"
-                android:text="@string/memori"
-                android:textSize="14sp"
-                android:textColor="#000000"/>
-            <TextView
-                android:id="@+id/tv_memori"
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:background="@drawable/bg_spesifikasi_laptop"
-                android:layout_height="match_parent"
-                android:paddingVertical="4dp"
-                android:paddingLeft="8dp"
-                tools:text="8GB DDR4 3200 MHz"
-                android:textSize="14sp"
-                android:textColor="#000000"/>
-        </LinearLayout>
-
-        <!-- Penyimpanan -->
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:paddingLeft="8dp"
-            android:orientation="horizontal">
-            <TextView
-                android:layout_width="150dp"
-                android:layout_height="match_parent"
-                android:text="@string/penyimpanan"
-                android:textSize="14sp"
-                android:textColor="#000000"/>
-            <TextView
-                android:id="@+id/tv_penyimpanan"
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:background="@drawable/bg_spesifikasi_laptop"
-                android:layout_height="match_parent"
-                android:paddingVertical="4dp"
-                android:paddingLeft="8dp"
-                tools:text="512 GB SSD NVMe"
-                android:textSize="14sp"
-                android:textColor="#000000"/>
-        </LinearLayout>
-
-        <!-- Webcam -->
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:paddingLeft="8dp"
-            android:orientation="horizontal">
-            <TextView
-                android:layout_width="150dp"
-                android:layout_height="match_parent"
-                android:text="@string/webcam"
-                android:textSize="14sp"
-                android:textColor="#000000"/>
-            <TextView
-                android:id="@+id/tv_webcam"
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:background="@drawable/bg_spesifikasi_laptop"
-                android:layout_height="match_parent"
-                android:paddingVertical="4dp"
-                android:paddingLeft="8dp"
-                tools:text="HD 720p CMOS Module"
-                android:textSize="14sp"
-                android:textColor="#000000"/>
-        </LinearLayout>
-
-        <!-- Keyboard -->
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:paddingLeft="8dp"
-            android:orientation="horizontal">
-            <TextView
-                android:layout_width="150dp"
-                android:layout_height="match_parent"
-                android:text="@string/keyboard"
-                android:textSize="14sp"
-                android:textColor="#000000"/>
-            <TextView
-                android:id="@+id/tv_keyboard"
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:background="@drawable/bg_spesifikasi_laptop"
-                android:layout_height="match_parent"
-                android:paddingVertical="4dp"
-                android:paddingLeft="8dp"
-                tools:text="RGB Backlight"
-                android:textSize="14sp"
-                android:textColor="#000000"/>
-        </LinearLayout>
-
-        <!-- Komunikasi -->
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:paddingLeft="8dp"
-            android:orientation="horizontal">
-            <TextView
-                android:layout_width="150dp"
-                android:layout_height="match_parent"
-                android:text="@string/komunikasi"
-                android:textSize="14sp"
-                android:textColor="#000000"/>
-            <TextView
-                android:id="@+id/tv_komunikasi"
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:background="@drawable/bg_spesifikasi_laptop"
-                android:layout_height="match_parent"
-                android:paddingVertical="4dp"
-                android:paddingLeft="8dp"
-                tools:text="Wifi 802. 11ac"
-                android:textSize="14sp"
-                android:textColor="#000000"/>
-        </LinearLayout>
-
-        <!-- Audio -->
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:paddingLeft="8dp"
-            android:orientation="horizontal">
-            <TextView
-                android:layout_width="150dp"
-                android:layout_height="match_parent"
-                android:text="@string/audio"
-                android:textSize="14sp"
-                android:textColor="#000000"/>
-            <TextView
-                android:id="@+id/tv_audio"
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:background="@drawable/bg_spesifikasi_laptop"
-                android:layout_height="match_parent"
-                android:paddingVertical="4dp"
-                android:paddingLeft="8dp"
-                tools:text="DTS:X Ultra"
-                android:textSize="14sp"
-                android:textColor="#000000"/>
-        </LinearLayout>
-
-        <!-- I/O Ports -->
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:paddingLeft="8dp"
-            android:orientation="horizontal">
-            <TextView
-                android:layout_width="150dp"
-                android:layout_height="match_parent"
-                android:text="@string/i_o_ports"
-                android:textSize="14sp"
-                android:textColor="#000000"/>
-            <TextView
-                android:id="@+id/tv_io"
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:background="@drawable/bg_spesifikasi_laptop"
-                android:layout_height="match_parent"
-                android:paddingVertical="4dp"
-                android:paddingLeft="8dp"
-                tools:text="1x Combo Audio Jack2x"
-                android:textSize="14sp"
-                android:textColor="#000000"/>
-        </LinearLayout>
-
-        <!-- Baterai -->
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:paddingLeft="8dp"
-            android:orientation="horizontal">
-            <TextView
-                android:layout_width="150dp"
-                android:layout_height="match_parent"
-                android:text="@string/baterai"
-                android:textSize="14sp"
-                android:textColor="#000000"/>
-            <TextView
-                android:id="@+id/tv_baterai"
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:background="@drawable/bg_spesifikasi_laptop"
-                android:layout_height="match_parent"
-                android:paddingVertical="4dp"
-                android:paddingLeft="8dp"
-                tools:text="DTS X Ultra"
-                android:textSize="14sp"
-                android:textColor="#000000"/>
-        </LinearLayout>
-
-        <!-- -->
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:paddingLeft="8dp"
-            android:orientation="horizontal">
-            <TextView
-                android:layout_width="150dp"
-                android:layout_height="match_parent"
-                android:text="@string/ac_adapter"
-                android:textSize="14sp"
-                android:textColor="#000000"/>
-            <TextView
-                android:id="@+id/tv_acAdapter"
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:background="@drawable/bg_spesifikasi_laptop"
-                android:layout_height="match_parent"
-                android:paddingVertical="4dp"
-                android:paddingLeft="8dp"
-                tools:text="180 W"
-                android:textSize="14sp"
-                android:textColor="#000000"/>
-        </LinearLayout>
-
-        <!-- Dimensi -->
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:paddingLeft="8dp"
-            android:orientation="horizontal">
-            <TextView
-                android:layout_width="150dp"
-                android:layout_height="match_parent"
-                android:text="@string/dimensi"
-                android:textSize="14sp"
-                android:textColor="#000000"/>
-            <TextView
-                android:id="@+id/tv_dimensi"
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:background="@drawable/bg_spesifikasi_laptop"
-                android:layout_height="match_parent"
-                android:paddingVertical="4dp"
-                android:paddingLeft="8dp"
-                tools:text="Dimensi"
-                android:textSize="14sp"
-                android:textColor="#000000"/>
-        </LinearLayout>
-
-        <!-- Header -->
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:paddingLeft="8dp"
-            android:orientation="horizontal">
-            <TextView
-                android:layout_width="150dp"
-                android:layout_height="match_parent"
-                android:text="@string/berat"
-                android:textSize="14sp"
-                android:textColor="#000000"/>
-            <TextView
-                android:id="@+id/tv_berat"
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:background="@drawable/bg_spesifikasi_laptop"
-                android:layout_height="match_parent"
-                android:paddingVertical="4dp"
-                android:paddingLeft="8dp"
-                tools:text="2 3 Kg"
-                android:textSize="14sp"
-                android:textColor="#000000"/>
-        </LinearLayout>
-    </LinearLayout>
-</ScrollView>
+    <!-- Footer -->
+    <include
+        layout="@layout/footer_telusuri"
+        android:id="@+id/deskripsiLaptopFooterConstraintLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/deskripsiLaptopScrollView"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"/>
+</androidx.constraintlayout.widget.ConstraintLayout>
