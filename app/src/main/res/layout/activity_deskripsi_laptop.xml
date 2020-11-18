@@ -56,7 +56,8 @@
                     android:layout_height="match_parent"
                     android:textSize="20sp"
                     tools:text="Rp 13.999.000"
-                    android:textColor="#ffffff"/>
+                    android:textColor="#ffffff"
+                    android:textStyle="bold"/>
             </LinearLayout>
 
             <!-- Panel tambahkan ke favorit -->
@@ -126,10 +127,10 @@
             android:paddingLeft="8dp"
             android:orientation="horizontal">
             <TextView
-                android:layout_width="0dp"
-                android:layout_weight="1"
+                android:layout_width="150dp"
                 android:layout_height="match_parent"
                 android:text="@string/cpu"
+                android:textSize="14sp"
                 android:textColor="#000000"/>
             <TextView
                 android:id="@+id/tv_cpu"
@@ -139,7 +140,9 @@
                 android:layout_height="match_parent"
                 android:paddingVertical="4dp"
                 android:paddingLeft="8dp"
-                tools:text="AMD Ryzen 5 4600H"/>
+                tools:text="AMD Ryzen 5 4600H"
+                android:textSize="14sp"
+                android:textColor="#000000"/>
         </LinearLayout>
 
         <!-- OS -->
@@ -149,10 +152,10 @@
             android:paddingLeft="8dp"
             android:orientation="horizontal">
             <TextView
-                android:layout_width="0dp"
-                android:layout_weight="1"
+                android:layout_width="150dp"
                 android:layout_height="match_parent"
                 android:text="@string/os"
+                android:textSize="14sp"
                 android:textColor="#000000"/>
             <TextView
                 android:id="@+id/tv_os"
@@ -162,7 +165,9 @@
                 android:layout_height="match_parent"
                 android:paddingVertical="4dp"
                 android:paddingLeft="8dp"
-                tools:text="Windows 10"/>
+                tools:text="Windows 10"
+                android:textSize="14sp"
+                android:textColor="#000000"/>
         </LinearLayout>
 
         <!-- Layar -->
@@ -172,10 +177,11 @@
             android:paddingLeft="8dp"
             android:orientation="horizontal">
             <TextView
-                android:layout_width="0dp"
-                android:layout_weight="1"
+                android:layout_width="150dp"
                 android:layout_height="match_parent"
-                android:text="@string/layar"/>
+                android:text="@string/layar"
+                android:textSize="14sp"
+                android:textColor="#000000"/>
             <TextView
                 android:id="@+id/tv_layar"
                 android:layout_width="0dp"
@@ -184,7 +190,9 @@
                 android:layout_height="match_parent"
                 android:paddingVertical="4dp"
                 android:paddingLeft="8dp"
-                tools:text="15,6 FHD, 144 Hz"/>
+                tools:text="15,6 FHD, 144 Hz"
+                android:textSize="14sp"
+                android:textColor="#000000"/>
         </LinearLayout>
 
         <!-- Chipset -->
@@ -194,10 +202,11 @@
             android:paddingLeft="8dp"
             android:orientation="horizontal">
             <TextView
-                android:layout_width="0dp"
-                android:layout_weight="1"
+                android:layout_width="150dp"
                 android:layout_height="match_parent"
-                android:text="@string/chipset"/>
+                android:text="@string/chipset"
+                android:textSize="14sp"
+                android:textColor="#000000"/>
             <TextView
                 android:id="@+id/tv_chipset"
                 android:layout_width="0dp"
@@ -206,7 +215,9 @@
                 android:layout_height="match_parent"
                 android:paddingVertical="4dp"
                 android:paddingLeft="8dp"
-                tools:text="integrated"/>
+                tools:text="integrated"
+                android:textSize="14sp"
+                android:textColor="#000000"/>
         </LinearLayout>
 
         <!-- Grafis -->
@@ -216,10 +227,11 @@
             android:paddingLeft="8dp"
             android:orientation="horizontal">
             <TextView
-                android:layout_width="0dp"
-                android:layout_weight="1"
+                android:layout_width="150dp"
                 android:layout_height="match_parent"
-                android:text="@string/grafis"/>
+                android:text="@string/grafis"
+                android:textSize="14sp"
+                android:textColor="#000000"/>
             <TextView
                 android:id="@+id/tv_grafis"
                 android:layout_width="0dp"
@@ -228,7 +240,9 @@
                 android:layout_height="match_parent"
                 android:paddingVertical="4dp"
                 android:paddingLeft="8dp"
-                tools:text="AMD Radeon"/>
+                tools:text="AMD Radeon"
+                android:textSize="14sp"
+                android:textColor="#000000"/>
         </LinearLayout>
 
         <!-- Memori -->
@@ -238,10 +252,11 @@
             android:paddingLeft="8dp"
             android:orientation="horizontal">
             <TextView
-                android:layout_width="0dp"
-                android:layout_weight="1"
+                android:layout_width="150dp"
                 android:layout_height="match_parent"
-                android:text="@string/memori"/>
+                android:text="@string/memori"
+                android:textSize="14sp"
+                android:textColor="#000000"/>
             <TextView
                 android:id="@+id/tv_memori"
                 android:layout_width="0dp"
@@ -250,7 +265,9 @@
                 android:layout_height="match_parent"
                 android:paddingVertical="4dp"
                 android:paddingLeft="8dp"
-                tools:text="8GB DDR4 3200 MHz"/>
+                tools:text="8GB DDR4 3200 MHz"
+                android:textSize="14sp"
+                android:textColor="#000000"/>
         </LinearLayout>
 
         <!-- Penyimpanan -->
@@ -260,10 +277,11 @@
             android:paddingLeft="8dp"
             android:orientation="horizontal">
             <TextView
-                android:layout_width="0dp"
-                android:layout_weight="1"
+                android:layout_width="150dp"
                 android:layout_height="match_parent"
-                android:text="@string/penyimpanan"/>
+                android:text="@string/penyimpanan"
+                android:textSize="14sp"
+                android:textColor="#000000"/>
             <TextView
                 android:id="@+id/tv_penyimpanan"
                 android:layout_width="0dp"
@@ -272,7 +290,9 @@
                 android:layout_height="match_parent"
                 android:paddingVertical="4dp"
                 android:paddingLeft="8dp"
-                tools:text="512 GB SSD NVMe"/>
+                tools:text="512 GB SSD NVMe"
+                android:textSize="14sp"
+                android:textColor="#000000"/>
         </LinearLayout>
 
         <!-- Webcam -->
@@ -282,10 +302,11 @@
             android:paddingLeft="8dp"
             android:orientation="horizontal">
             <TextView
-                android:layout_width="0dp"
-                android:layout_weight="1"
+                android:layout_width="150dp"
                 android:layout_height="match_parent"
-                android:text="@string/webcam"/>
+                android:text="@string/webcam"
+                android:textSize="14sp"
+                android:textColor="#000000"/>
             <TextView
                 android:id="@+id/tv_webcam"
                 android:layout_width="0dp"
@@ -294,7 +315,9 @@
                 android:layout_height="match_parent"
                 android:paddingVertical="4dp"
                 android:paddingLeft="8dp"
-                tools:text="HD 720p CMOS Module"/>
+                tools:text="HD 720p CMOS Module"
+                android:textSize="14sp"
+                android:textColor="#000000"/>
         </LinearLayout>
 
         <!-- Keyboard -->
@@ -304,10 +327,11 @@
             android:paddingLeft="8dp"
             android:orientation="horizontal">
             <TextView
-                android:layout_width="0dp"
-                android:layout_weight="1"
+                android:layout_width="150dp"
                 android:layout_height="match_parent"
-                android:text="@string/keyboard"/>
+                android:text="@string/keyboard"
+                android:textSize="14sp"
+                android:textColor="#000000"/>
             <TextView
                 android:id="@+id/tv_keyboard"
                 android:layout_width="0dp"
@@ -316,7 +340,9 @@
                 android:layout_height="match_parent"
                 android:paddingVertical="4dp"
                 android:paddingLeft="8dp"
-                tools:text="RGB Backlight"/>
+                tools:text="RGB Backlight"
+                android:textSize="14sp"
+                android:textColor="#000000"/>
         </LinearLayout>
 
         <!-- Komunikasi -->
@@ -326,10 +352,11 @@
             android:paddingLeft="8dp"
             android:orientation="horizontal">
             <TextView
-                android:layout_width="0dp"
-                android:layout_weight="1"
+                android:layout_width="150dp"
                 android:layout_height="match_parent"
-                android:text="@string/komunikasi"/>
+                android:text="@string/komunikasi"
+                android:textSize="14sp"
+                android:textColor="#000000"/>
             <TextView
                 android:id="@+id/tv_komunikasi"
                 android:layout_width="0dp"
@@ -338,7 +365,9 @@
                 android:layout_height="match_parent"
                 android:paddingVertical="4dp"
                 android:paddingLeft="8dp"
-                tools:text="Wifi 802. 11ac"/>
+                tools:text="Wifi 802. 11ac"
+                android:textSize="14sp"
+                android:textColor="#000000"/>
         </LinearLayout>
 
         <!-- Audio -->
@@ -348,10 +377,11 @@
             android:paddingLeft="8dp"
             android:orientation="horizontal">
             <TextView
-                android:layout_width="0dp"
-                android:layout_weight="1"
+                android:layout_width="150dp"
                 android:layout_height="match_parent"
-                android:text="@string/audio"/>
+                android:text="@string/audio"
+                android:textSize="14sp"
+                android:textColor="#000000"/>
             <TextView
                 android:id="@+id/tv_audio"
                 android:layout_width="0dp"
@@ -360,7 +390,9 @@
                 android:layout_height="match_parent"
                 android:paddingVertical="4dp"
                 android:paddingLeft="8dp"
-                tools:text="DTS:X Ultra"/>
+                tools:text="DTS:X Ultra"
+                android:textSize="14sp"
+                android:textColor="#000000"/>
         </LinearLayout>
 
         <!-- I/O Ports -->
@@ -370,10 +402,11 @@
             android:paddingLeft="8dp"
             android:orientation="horizontal">
             <TextView
-                android:layout_width="0dp"
-                android:layout_weight="1"
+                android:layout_width="150dp"
                 android:layout_height="match_parent"
-                android:text="@string/i_o_ports"/>
+                android:text="@string/i_o_ports"
+                android:textSize="14sp"
+                android:textColor="#000000"/>
             <TextView
                 android:id="@+id/tv_io"
                 android:layout_width="0dp"
@@ -382,7 +415,9 @@
                 android:layout_height="match_parent"
                 android:paddingVertical="4dp"
                 android:paddingLeft="8dp"
-                tools:text="1x Combo Audio Jack2x"/>
+                tools:text="1x Combo Audio Jack2x"
+                android:textSize="14sp"
+                android:textColor="#000000"/>
         </LinearLayout>
 
         <!-- Baterai -->
@@ -392,10 +427,11 @@
             android:paddingLeft="8dp"
             android:orientation="horizontal">
             <TextView
-                android:layout_width="0dp"
-                android:layout_weight="1"
+                android:layout_width="150dp"
                 android:layout_height="match_parent"
-                android:text="@string/baterai"/>
+                android:text="@string/baterai"
+                android:textSize="14sp"
+                android:textColor="#000000"/>
             <TextView
                 android:id="@+id/tv_baterai"
                 android:layout_width="0dp"
@@ -404,7 +440,9 @@
                 android:layout_height="match_parent"
                 android:paddingVertical="4dp"
                 android:paddingLeft="8dp"
-                tools:text="Isi Spek"/>
+                tools:text="DTS X Ultra"
+                android:textSize="14sp"
+                android:textColor="#000000"/>
         </LinearLayout>
 
         <!-- -->
@@ -414,10 +452,11 @@
             android:paddingLeft="8dp"
             android:orientation="horizontal">
             <TextView
-                android:layout_width="0dp"
-                android:layout_weight="1"
+                android:layout_width="150dp"
                 android:layout_height="match_parent"
-                android:text="@string/ac_adapter"/>
+                android:text="@string/ac_adapter"
+                android:textSize="14sp"
+                android:textColor="#000000"/>
             <TextView
                 android:id="@+id/tv_acAdapter"
                 android:layout_width="0dp"
@@ -426,7 +465,9 @@
                 android:layout_height="match_parent"
                 android:paddingVertical="4dp"
                 android:paddingLeft="8dp"
-                tools:text="180 W"/>
+                tools:text="180 W"
+                android:textSize="14sp"
+                android:textColor="#000000"/>
         </LinearLayout>
 
         <!-- Dimensi -->
@@ -436,10 +477,11 @@
             android:paddingLeft="8dp"
             android:orientation="horizontal">
             <TextView
-                android:layout_width="0dp"
-                android:layout_weight="1"
+                android:layout_width="150dp"
                 android:layout_height="match_parent"
-                android:text="@string/dimensi"/>
+                android:text="@string/dimensi"
+                android:textSize="14sp"
+                android:textColor="#000000"/>
             <TextView
                 android:id="@+id/tv_dimensi"
                 android:layout_width="0dp"
@@ -448,7 +490,9 @@
                 android:layout_height="match_parent"
                 android:paddingVertical="4dp"
                 android:paddingLeft="8dp"
-                tools:text="Dimensi"/>
+                tools:text="Dimensi"
+                android:textSize="14sp"
+                android:textColor="#000000"/>
         </LinearLayout>
 
         <!-- Header -->
@@ -458,10 +502,11 @@
             android:paddingLeft="8dp"
             android:orientation="horizontal">
             <TextView
-                android:layout_width="0dp"
-                android:layout_weight="1"
+                android:layout_width="150dp"
                 android:layout_height="match_parent"
-                android:text="@string/berat"/>
+                android:text="@string/berat"
+                android:textSize="14sp"
+                android:textColor="#000000"/>
             <TextView
                 android:id="@+id/tv_berat"
                 android:layout_width="0dp"
@@ -470,7 +515,9 @@
                 android:layout_height="match_parent"
                 android:paddingVertical="4dp"
                 android:paddingLeft="8dp"
-                tools:text="Isi Spek"/>
+                tools:text="2 3 Kg"
+                android:textSize="14sp"
+                android:textColor="#000000"/>
         </LinearLayout>
     </LinearLayout>
 </ScrollView>
