@@ -20,7 +20,7 @@
             android:orientation="horizontal"
             android:background="#330099">
 
-            <!-- search box dan logo favorite -->
+            <!-- Search Box dan Logo Favorite -->
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -44,7 +44,7 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
         </LinearLayout>
-        <!-- gambar laptop -->
+        <!-- Gambar Laptop -->
         <ImageView
             android:id="@+id/img_laptop"
             android:layout_width="wrap_content"
@@ -57,7 +57,7 @@
             android:orientation="horizontal"
             android:gravity="center">
 
-            <!-- nama laptop dan harga -->
+            <!-- Nama Laptop dan Harga -->
             <LinearLayout
                 android:layout_width="0dp"
                 android:layout_weight="1"
@@ -101,7 +101,7 @@
 
         </LinearLayout>
 
-        <!-- Untuk spesifikasi dan bandingkan -->
+        <!-- Untuk Spesifikasi dan Bandingkan -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

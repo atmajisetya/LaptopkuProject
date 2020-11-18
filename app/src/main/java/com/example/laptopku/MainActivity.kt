@@ -12,27 +12,27 @@ import com.google.firebase.firestore.Query
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity(), View.OnClickListener {
-    //inisiasi RecyclerView yang akan ditampilkan untuk rilis terbaru
+    // Inisiasi variabel RecyclerView untuk menampilkan laptop rilis terbaru
     private lateinit var rvLaptop: RecyclerView
 
-    //untuk laptop terbaru
+    // Inisiasi list untuk menampung data laptop rilis terbaru
     private val listTerbaru: ArrayList<LaptopTerbaru> = arrayListOf()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        //ini juga inisiasi untuk laptop terbaru
+        // Menghubungkan variabel RecyclerView dengan RecyclerView sesungguhnya
         rvLaptop = findViewById(R.id.rv_laptop)
         rvLaptop.setHasFixedSize(true)
 
-        //menampilkan progress bar
+        // Membuat progress bar menjadi nampak
         rilisTerbaruProgressBar.visibility = View.VISIBLE
 
-        //memanggil data yang ada di firebase bar kui dipancal (ditampilke)
+        // Memanggil data laptop rilis terbaru dari Firestore sekaligus ditampilkan
         loadLaptopTerbaru()
 
-        //digunakan untuk pindah ke tampilan hasil telusuri
+        // Mendaftarkan event klik untuk pindah ke Activity HasilTelusuri
         val gaming: ImageView = findViewById(R.id.gamingImageView)
         gaming.setOnClickListener(this)
 
@@ -60,20 +60,20 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         val msi: ImageView = findViewById(R.id.msiImageView)
         msi.setOnClickListener(this)
 
-        //digunakan untuk pindah ke tampilan rekomendasi
+        // Mendaftarkan event klik untuk pindah ke Activity Rekomendasi
         val imgMenuRekomendasi: ImageView = findViewById(R.id.telusuriFooterRekomendasiImageView)
         imgMenuRekomendasi.setOnClickListener(this)
 
-        //digunakan untuk pindah ke tampilan bandingkan
+        // Mendaftarkan event klik untuk pindah ke Activity Bandingkan
         val imgMenuBandingkan: ImageView = findViewById(R.id.telusuriFooterBandingkanImageView)
         imgMenuBandingkan.setOnClickListener(this)
 
-        //digunakan untuk pindah ke tampilan favorit
+        // Mendaftarkan event klik untuk pindah ke Activity Favorit
         val favoriteImageView: ImageView = findViewById(R.id.mainActivityFavoriteImageView)
         favoriteImageView.setOnClickListener(this)
     }
 
-    //fungsi untuk mengambil data dari database firestore
+    // Memanggil data laptop rilis terbaru dari Firestore sekaligus ditampilkan
     private fun loadLaptopTerbaru(){
         // listTerbaru.clear()
         val db = FirebaseFirestore.getInstance()
@@ -95,7 +95,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
                         document.getString("dimensi")!!,
                         document.get("grafis")!! as ArrayList<String>,
                         document.get("io")!! as ArrayList<String>,
-                        document.getString("kategori")!!,
+                        document.get("kategori")!! as ArrayList<String>,
                         document.getString("keyboard")!!,
                         document.get("komunikasi")!! as ArrayList<String>,
                         document.getString("layar")!!,
@@ -103,10 +103,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
                         document.getString("os")!!,
                         document.getString("penyimpanan")!!,
                         document.getString("tanggalRilis")!!,
-                        document.getString("webcam")!!,
-                    )
-
-                        )
+                        document.getString("webcam")!!))
                 }
                 if(listTerbaru.isNotEmpty()){
                     showRecyclerList()
@@ -116,30 +113,34 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
                     loadLaptopTerbaru()
             }
     }
-    //untuk menampilkan RecyclerView Laptop Terbaru
+    // Menampilkan laptop rilis terbaru pada RecyclerView
     private fun showRecyclerList(){
         rvLaptop.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
         val listLaptopTerbaruAdapter = ListLaptopTerbaruAdapter(applicationContext, listTerbaru)
         rvLaptop.adapter = listLaptopTerbaruAdapter
     }
 
-    //fungsi untuk pindah tampilan-tampilan lain
+    // Semua event klik
     override fun onClick(v: View?){
         when(v?.id){
             R.id.gamingImageView ->{
                 val moveIntent = Intent(this@MainActivity, HasilTelusuriActivity::class.java)
+                moveIntent.putExtra("kategori", "Gaming")
                 startActivity(moveIntent)
             }
             R.id.pelajarImageView ->{
                 val moveIntent = Intent(this@MainActivity, HasilTelusuriActivity::class.java)
+                moveIntent.putExtra("kategori", "Pelajar")
                 startActivity(moveIntent)
             }
             R.id.profesionalImageView ->{
                 val moveIntent = Intent(this@MainActivity, HasilTelusuriActivity::class.java)
+                moveIntent.putExtra("kategori", "Profesional")
                 startActivity(moveIntent)
             }
             R.id.workstationImageView ->{
                 val moveIntent = Intent(this@MainActivity, HasilTelusuriActivity::class.java)
+                moveIntent.putExtra("kategori", "Workstation")
                 startActivity(moveIntent)
             }
             R.id.acerImageView ->{

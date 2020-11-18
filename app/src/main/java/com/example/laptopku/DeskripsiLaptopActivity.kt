@@ -12,13 +12,11 @@ import com.bumptech.glide.request.target.Target
 import kotlinx.android.synthetic.main.activity_deskripsi_laptop.*
 
 class DeskripsiLaptopActivity : AppCompatActivity() {
-    //inisiasi RecyclerView yang akan ditampilkan untuk spesifikasi laptop
+    // Inisiasi RecyclerView yang akan ditampilkan untuk spesifikasi laptop
     private lateinit var rvSpekLaptop: RecyclerView
-    //untuk spesifikasi laptop
+    // Untuk spesifikasi laptop
     private val listSpekLaptop: ArrayList<SpekLaptop> = arrayListOf()
     private var laptopTerbaru : LaptopTerbaru? = null
-
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -50,7 +48,7 @@ class DeskripsiLaptopActivity : AppCompatActivity() {
         tv_penyimpanan.text = laptopTerbaru?.penyimpanan
         tv_webcam.text = laptopTerbaru?.webcam
         tv_keyboard.text = laptopTerbaru?.keyboard
-        //komunikasi
+        // Komunikasi
         tv_dimensi.text = laptopTerbaru?.keyboard
         tv_berat.text = laptopTerbaru?.berat
 

@@ -26,6 +26,5 @@ data class SpekLaptop(
     var acAdapter: String="",
     var dimensi: String="",
     var berat: String=""
-
-     */
+    */
 ):Parcelable

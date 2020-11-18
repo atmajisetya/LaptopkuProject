@@ -30,7 +30,7 @@
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintTop_toTopOf="parent">
 
-                <!-- search box dan logo favorite -->
+                <!-- Search Box dan Logo Favorite -->
                 <EditText
                     android:id="@+id/cariLaptopEditText"
                     android:layout_width="0dp"
@@ -87,8 +87,8 @@
                     app:layout_constraintRight_toRightOf="@id/rv_laptop"/>
             </androidx.constraintlayout.widget.ConstraintLayout>
 
-            <!-- section Kategori -->
-            <!-- TextView untuk teks Kategori -->
+            <!-- Section Kategori -->
+            <!-- TextView untuk Teks Kategori -->
             <TextView
                 android:id="@+id/kategoriTextView"
                 android:layout_width="match_parent"
@@ -100,8 +100,8 @@
                 android:textSize="20sp"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/rilisTerbaruConstraintLayout"/>
-            <!-- Untuk menampilkan 4 kategori-->
-            <!-- kategori Gaming -->
+            <!-- Untuk Menampilkan 4 Kategori-->
+            <!-- Kategori Gaming -->
             <ImageView
                 android:id="@+id/gamingImageView"
                 android:layout_width="0dp"
@@ -186,7 +186,7 @@
                 app:layout_constraintLeft_toLeftOf="@id/workstationImageView"
                 app:layout_constraintRight_toRightOf="@id/workstationImageView"/>
 
-            <!-- section Brand -->
+            <!-- Section Brand -->
             <TextView
                 android:id="@+id/brandTextView"
                 android:layout_width="match_parent"
@@ -199,8 +199,8 @@
                 app:layout_constraintTop_toBottomOf="@id/gamingTextView"
                 app:layout_constraintLeft_toLeftOf="parent"/>
 
-            <!-- penampilan Brand -->
-            <!-- brand acer -->
+            <!-- Penampilan Brand -->
+            <!-- Brand Acer -->
             <ImageView
                 android:id="@+id/acerImageView"
                 android:layout_width="0dp"
@@ -221,7 +221,7 @@
                 app:layout_constraintRight_toRightOf="@id/acerImageView"
                 app:layout_constraintTop_toBottomOf="@id/acerImageView"/>
 
-            <!-- brand asus -->
+            <!-- Brand Asus -->
             <ImageView
                 android:id="@+id/asusImageView"
                 android:layout_width="0dp"
@@ -242,7 +242,7 @@
                 app:layout_constraintRight_toRightOf="@id/asusImageView"
                 app:layout_constraintTop_toBottomOf="@id/asusImageView"/>
 
-            <!-- brand hp -->
+            <!-- Brand Hp -->
             <ImageView
                 android:id="@+id/hpImageView"
                 android:layout_width="0dp"
@@ -262,7 +262,7 @@
                 app:layout_constraintRight_toRightOf="@id/hpImageView"
                 app:layout_constraintTop_toBottomOf="@id/hpImageView"/>
 
-            <!-- brand lenovo -->
+            <!-- Brand Lenovo -->
             <ImageView
                 android:id="@+id/lenovoImageView"
                 android:layout_width="0dp"
@@ -283,7 +283,7 @@
                 app:layout_constraintRight_toRightOf="@id/lenovoImageView"
                 app:layout_constraintTop_toBottomOf="@id/lenovoImageView"/>
 
-            <!-- brand msi -->
+            <!-- Brand Msi -->
             <ImageView
                 android:id="@+id/msiImageView"
                 android:layout_width="0dp"
@@ -305,7 +305,7 @@
                 app:layout_constraintRight_toRightOf="@id/msiImageView"
                 app:layout_constraintTop_toBottomOf="@id/msiImageView"/>
 
-            <!-- dummy brands -->
+            <!-- Brand kosongan agar Msi sejajar dengan Acer -->
             <ImageView
                 android:id="@+id/dummyImageView1"
                 android:layout_width="0dp"

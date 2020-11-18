@@ -8,7 +8,7 @@
     android:background="#FFFFFF"
     android:elevation="24dp">
 
-    <!-- menu Telusuri -->
+    <!-- Menu Telusuri -->
     <ImageView
         android:id="@+id/rekomendasiFooterTelusuriImageView"
         android:layout_width="wrap_content"
@@ -29,7 +29,7 @@
         app:layout_constraintLeft_toLeftOf="@id/rekomendasiFooterTelusuriImageView"
         app:layout_constraintRight_toRightOf="@id/rekomendasiFooterTelusuriImageView"/>
 
-    <!-- menu Rekomendasi -->
+    <!-- Menu Rekomendasi -->
     <ImageView
         android:id="@+id/rekomendasiFooterRekomendasiImageView"
         android:layout_width="wrap_content"
@@ -51,7 +51,7 @@
         app:layout_constraintLeft_toLeftOf="@id/rekomendasiFooterRekomendasiImageView"
         app:layout_constraintRight_toRightOf="@id/rekomendasiFooterRekomendasiImageView"/>
 
-    <!-- menu Bandingkan -->
+    <!-- Menu Bandingkan -->
     <ImageView
         android:id="@+id/rekomendasiFooterBandingkanImageView"
         android:layout_width="wrap_content"

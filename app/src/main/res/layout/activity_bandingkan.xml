@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     tools:context=".BandingkanActivity">
 
-    <!-- header -->
+    <!-- Header -->
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/bandingkanHeaderConstraintLayout"
         android:layout_width="match_parent"
@@ -111,7 +111,7 @@
                 android:layout_gravity="center"/>
         </LinearLayout>
 
-    <!-- footer -->
+    <!-- Footer -->
     <include
         layout="@layout/footer_bandingkan"
         android:id="@+id/bandingkanFooterConstraintLayout"
