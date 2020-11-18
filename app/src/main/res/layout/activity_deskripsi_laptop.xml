@@ -37,6 +37,8 @@
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:layout_height="wrap_content"
+                android:paddingVertical="8dp"
+                android:paddingLeft="18dp"
                 android:orientation="vertical"
                 android:background="#330099">
                 <!-- Nama Laptop -->
@@ -60,19 +62,20 @@
             <!-- Panel tambahkan ke favorit -->
             <LinearLayout
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:orientation="vertical"
                 android:background="#E7E7E7"
-                android:padding="10dp"
+                android:paddingHorizontal="24dp"
                 android:gravity="center">
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:src="@drawable/ic_icon_material_favoritegrey"/>
+                    android:layout_marginBottom="4dp"
+                    android:src="@drawable/ic_favorite_abu"/>
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:background="#969696"
+                    android:textColor="#969696"
                     android:text="@string/_1_7k"/>
             </LinearLayout>
         </LinearLayout>
@@ -81,7 +84,11 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:paddingTop="24dp"
+            android:paddingBottom="8dp"
+            android:paddingHorizontal="8dp"
+            android:orientation="horizontal"
+            android:gravity="center">
 
             <!-- Spesifikasi -->
             <TextView
@@ -89,12 +96,14 @@
                 android:layout_height="wrap_content"
                 android:text="@string/spesifikasi"
                 android:textColor="#000000"
-                android:textSize="20sp"/>
+                android:textSize="20sp"
+                android:textStyle="bold"/>
 
             <!-- Bandingkan -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:paddingLeft="8dp"
                 android:orientation="horizontal"
                 android:gravity="right">
                 <ImageView
@@ -114,6 +123,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:paddingLeft="8dp"
             android:orientation="horizontal">
             <TextView
                 android:layout_width="0dp"
@@ -126,6 +136,7 @@
                 android:layout_weight="1"
                 android:background="#F3F3F3"
                 android:layout_height="match_parent"
+                android:paddingVertical="4dp"
                 tools:text="AMD Ryzen 5 4600H"/>
         </LinearLayout>
 
@@ -133,6 +144,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:paddingLeft="8dp"
             android:orientation="horizontal">
             <TextView
                 android:layout_width="0dp"
@@ -145,6 +157,7 @@
                 android:layout_weight="1"
                 android:background="#F3F3F3"
                 android:layout_height="match_parent"
+                android:paddingVertical="4dp"
                 tools:text="Windows 10"/>
         </LinearLayout>
 
@@ -152,6 +165,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:paddingLeft="8dp"
             android:orientation="horizontal">
             <TextView
                 android:layout_width="0dp"
@@ -164,6 +178,7 @@
                 android:layout_weight="1"
                 android:background="#F3F3F3"
                 android:layout_height="match_parent"
+                android:paddingVertical="4dp"
                 tools:text="15,6 FHD, 144 Hz"/>
         </LinearLayout>
 
@@ -171,6 +186,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:paddingLeft="8dp"
             android:orientation="horizontal">
             <TextView
                 android:layout_width="0dp"
@@ -183,6 +199,7 @@
                 android:layout_weight="1"
                 android:background="#F3F3F3"
                 android:layout_height="match_parent"
+                android:paddingVertical="4dp"
                 tools:text="integrated"/>
         </LinearLayout>
 
@@ -190,6 +207,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:paddingLeft="8dp"
             android:orientation="horizontal">
             <TextView
                 android:layout_width="0dp"
@@ -202,6 +220,7 @@
                 android:layout_weight="1"
                 android:background="#F3F3F3"
                 android:layout_height="match_parent"
+                android:paddingVertical="4dp"
                 tools:text="AMD Radeon"/>
         </LinearLayout>
 
@@ -209,6 +228,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:paddingLeft="8dp"
             android:orientation="horizontal">
             <TextView
                 android:layout_width="0dp"
@@ -221,6 +241,7 @@
                 android:layout_weight="1"
                 android:background="#F3F3F3"
                 android:layout_height="match_parent"
+                android:paddingVertical="4dp"
                 tools:text="8GB DDR4 3200 MHz"/>
         </LinearLayout>
 
@@ -228,6 +249,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:paddingLeft="8dp"
             android:orientation="horizontal">
             <TextView
                 android:layout_width="0dp"
@@ -240,6 +262,7 @@
                 android:layout_weight="1"
                 android:background="#F3F3F3"
                 android:layout_height="match_parent"
+                android:paddingVertical="4dp"
                 tools:text="512 GB SSD NVMe"/>
         </LinearLayout>
 
@@ -247,6 +270,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:paddingLeft="8dp"
             android:orientation="horizontal">
             <TextView
                 android:layout_width="0dp"
@@ -257,8 +281,9 @@
                 android:id="@+id/tv_webcam"
                 android:layout_width="0dp"
                 android:layout_weight="1"
-                android:background="#F3F3F3"
                 android:layout_height="match_parent"
+                android:paddingVertical="4dp"
+                android:background="#F3F3F3"
                 tools:text="HD 720p CMOS Module"/>
         </LinearLayout>
 
@@ -266,6 +291,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:paddingLeft="8dp"
             android:orientation="horizontal">
             <TextView
                 android:layout_width="0dp"
@@ -278,6 +304,7 @@
                 android:layout_weight="1"
                 android:background="#F3F3F3"
                 android:layout_height="match_parent"
+                android:paddingVertical="4dp"
                 tools:text="RGB Backlight"/>
         </LinearLayout>
 
@@ -285,6 +312,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:paddingLeft="8dp"
             android:orientation="horizontal">
             <TextView
                 android:layout_width="0dp"
@@ -297,6 +325,7 @@
                 android:layout_weight="1"
                 android:background="#F3F3F3"
                 android:layout_height="match_parent"
+                android:paddingVertical="4dp"
                 tools:text="Wifi 802. 11ac"/>
         </LinearLayout>
 
@@ -304,6 +333,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:paddingLeft="8dp"
             android:orientation="horizontal">
             <TextView
                 android:layout_width="0dp"
@@ -316,6 +346,7 @@
                 android:layout_weight="1"
                 android:background="#F3F3F3"
                 android:layout_height="match_parent"
+                android:paddingVertical="4dp"
                 tools:text="DTS:X Ultra"/>
         </LinearLayout>
 
@@ -323,6 +354,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:paddingLeft="8dp"
             android:orientation="horizontal">
             <TextView
                 android:layout_width="0dp"
@@ -335,6 +367,7 @@
                 android:layout_weight="1"
                 android:background="#F3F3F3"
                 android:layout_height="match_parent"
+                android:paddingVertical="4dp"
                 tools:text="1x Combo Audio Jack2x"/>
         </LinearLayout>
 
@@ -342,6 +375,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:paddingLeft="8dp"
             android:orientation="horizontal">
             <TextView
                 android:layout_width="0dp"
@@ -354,6 +388,7 @@
                 android:layout_weight="1"
                 android:background="#F3F3F3"
                 android:layout_height="match_parent"
+                android:paddingVertical="4dp"
                 tools:text="Isi Spek"/>
         </LinearLayout>
 
@@ -361,6 +396,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:paddingLeft="8dp"
             android:orientation="horizontal">
             <TextView
                 android:layout_width="0dp"
@@ -373,6 +409,7 @@
                 android:layout_weight="1"
                 android:background="#F3F3F3"
                 android:layout_height="match_parent"
+                android:paddingVertical="4dp"
                 tools:text="180 W"/>
         </LinearLayout>
 
@@ -380,6 +417,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:paddingLeft="8dp"
             android:orientation="horizontal">
             <TextView
                 android:layout_width="0dp"
@@ -392,6 +430,7 @@
                 android:layout_weight="1"
                 android:background="#F3F3F3"
                 android:layout_height="match_parent"
+                android:paddingVertical="4dp"
                 tools:text="Dimensi"/>
         </LinearLayout>
 
@@ -399,6 +438,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:paddingLeft="8dp"
             android:orientation="horizontal">
             <TextView
                 android:layout_width="0dp"
@@ -411,6 +451,7 @@
                 android:layout_weight="1"
                 android:background="#F3F3F3"
                 android:layout_height="match_parent"
+                android:paddingVertical="4dp"
                 tools:text="Isi Spek"/>
         </LinearLayout>
     </LinearLayout>

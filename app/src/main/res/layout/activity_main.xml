@@ -49,7 +49,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="18dp"
-                    android:src="@drawable/ic_icon_material_favorite"
+                    android:src="@drawable/ic_favorite_putih"
                     android:contentDescription="@string/buka_laptop_favorit"
                     app:layout_constraintLeft_toRightOf="@id/cariLaptopEditText"
                     app:layout_constraintRight_toRightOf="parent"
