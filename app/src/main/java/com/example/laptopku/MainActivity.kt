@@ -125,18 +125,22 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         when(v?.id){
             R.id.gamingImageView ->{
                 val moveIntent = Intent(this@MainActivity, HasilTelusuriActivity::class.java)
+                moveIntent.putExtra("kategori", "Gaming")
                 startActivity(moveIntent)
             }
             R.id.pelajarImageView ->{
                 val moveIntent = Intent(this@MainActivity, HasilTelusuriActivity::class.java)
+                moveIntent.putExtra("kategori", "Pelajar")
                 startActivity(moveIntent)
             }
             R.id.profesionalImageView ->{
                 val moveIntent = Intent(this@MainActivity, HasilTelusuriActivity::class.java)
+                moveIntent.putExtra("kategori", "Profesional")
                 startActivity(moveIntent)
             }
             R.id.workstationImageView ->{
                 val moveIntent = Intent(this@MainActivity, HasilTelusuriActivity::class.java)
+                moveIntent.putExtra("kategori", "Workstation")
                 startActivity(moveIntent)
             }
             R.id.acerImageView ->{
