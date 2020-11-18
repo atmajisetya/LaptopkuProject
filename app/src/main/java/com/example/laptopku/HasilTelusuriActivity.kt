@@ -47,11 +47,11 @@ class HasilTelusuriActivity : AppCompatActivity(), View.OnClickListener {
         bandingkanImageView.setOnClickListener(this)
 
         //  Mendaftarkan event klik untuk pindah ke Activity Favorit
-        val favoriteImageView: android.widget.ImageView = findViewById(R.id.hasilTelusuriFavoriteImageView)
+        val favoriteImageView: android.widget.ImageView = findViewById(R.id.headerFavoriteImageView)
         favoriteImageView.setOnClickListener(this)
 
         //  Mendaftarkan event klik untuk kembali ke Activity sebelumnya
-        val kembaliImageView: android.widget.ImageView = findViewById(R.id.hasilTelusuriKembaliImageView)
+        val kembaliImageView: android.widget.ImageView = findViewById(R.id.headerKembaliImageView)
         kembaliImageView.setOnClickListener(this)
     }
 
@@ -70,11 +70,11 @@ class HasilTelusuriActivity : AppCompatActivity(), View.OnClickListener {
                 val moveIntent = android.content.Intent(this@HasilTelusuriActivity, BandingkanActivity::class.java)
                 startActivity(moveIntent)
             }
-            R.id.hasilTelusuriFavoriteImageView ->{
+            R.id.headerFavoriteImageView ->{
                 val moveIntent = android.content.Intent(this@HasilTelusuriActivity, FavoriteActivity::class.java)
                 startActivity(moveIntent)
             }
-            R.id.hasilTelusuriKembaliImageView -> finish()
+            R.id.headerKembaliImageView -> finish()
         }
     }
 }
