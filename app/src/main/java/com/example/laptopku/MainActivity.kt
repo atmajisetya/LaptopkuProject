@@ -95,7 +95,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
                         document.getString("dimensi")!!,
                         document.get("grafis")!! as ArrayList<String>,
                         document.get("io")!! as ArrayList<String>,
-                        document.getString("kategori")!!,
+                        document.get("kategori")!! as ArrayList<String>,
                         document.getString("keyboard")!!,
                         document.get("komunikasi")!! as ArrayList<String>,
                         document.getString("layar")!!,

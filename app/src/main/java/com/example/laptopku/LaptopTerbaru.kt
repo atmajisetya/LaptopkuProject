@@ -19,7 +19,7 @@ data class LaptopTerbaru(
     var dimensi: String="",
     var grafis: ArrayList<String>,
     var io: ArrayList<String>,
-    var kategori: String="",
+    var kategori: ArrayList<String>,
     var keyboard: String="",
     var komunikasi: ArrayList<String>,
     var layar: String="",
