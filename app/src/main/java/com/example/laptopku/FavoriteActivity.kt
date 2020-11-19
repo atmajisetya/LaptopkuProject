@@ -14,7 +14,7 @@ class FavoriteActivity : AppCompatActivity(), View.OnClickListener {
     private lateinit var rvFavorite: RecyclerView
 
     // List untuk menampung laptop favorit
-    private val listFavorite: ArrayList<LaptopFavorite> = arrayListOf()
+    private val listFavorite: ArrayList<LaptopTerbaru> = arrayListOf()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -56,8 +56,28 @@ class FavoriteActivity : AppCompatActivity(), View.OnClickListener {
             .get()
             .addOnSuccessListener {result ->
                 for (document in result){
-                    listFavorite.add(LaptopFavorite(document.getString("namaLaptop")!!,
-                        document.getString("gambar")!!))
+                    listFavorite.add(LaptopTerbaru(document.getString("namaLaptop")!!,
+                        document.getString("hargaLaptop")!!,
+                        document.getString("gambar")!!,
+                        document.getString("acadapter")!!,
+                        document.getString("audio")!!,
+                        document.getString("baterai")!!,
+                        document.getString("berat")!!,
+                        document.getString("brand")!!,
+                        document.getString("chipset")!!,
+                        document.getString("cpu")!!,
+                        document.getString("dimensi")!!,
+                        document.get("grafis")!! as ArrayList<String>,
+                        document.get("io")!! as ArrayList<String>,
+                        document.get("kategori")!! as ArrayList<String>,
+                        document.getString("keyboard")!!,
+                        document.get("komunikasi")!! as ArrayList<String>,
+                        document.getString("layar")!!,
+                        document.getString("memori")!!,
+                        document.getString("os")!!,
+                        document.getString("penyimpanan")!!,
+                        document.getString("tanggalRilis")!!,
+                        document.getString("webcam")!!))
                 }
                 if(listFavorite.isNotEmpty()){
                     showRecyclerList()

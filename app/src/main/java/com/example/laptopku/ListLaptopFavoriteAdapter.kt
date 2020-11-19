@@ -14,7 +14,7 @@ import com.bumptech.glide.request.RequestOptions
 import com.bumptech.glide.request.target.Target
 import kotlinx.android.synthetic.main.item_laptop_favorite.view.*
 
-class ListLaptopFavoriteAdapter(private val context: Context?, private val listLaptopFavorite: ArrayList<LaptopFavorite>) : RecyclerView.Adapter<ListLaptopFavoriteAdapter.ListViewHolder>() {
+class ListLaptopFavoriteAdapter(private val context: Context?, private val listLaptopFavorite: ArrayList<LaptopTerbaru>) : RecyclerView.Adapter<ListLaptopFavoriteAdapter.ListViewHolder>() {
     inner class ListViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         // Inisiasi view yang ada di layout item_laptop_favorite
         var laptopFavoriteImageView : ImageView = itemView.findViewById(R.id.laptopFavoriteImageView)
@@ -39,9 +39,29 @@ class ListLaptopFavoriteAdapter(private val context: Context?, private val listL
         holder.laptopFavoriteTextView.text = laptopFavorite.name
 
         // Data yang akan dioper ke Activity Bandingkan
-        val data = LaptopFavorite(
+        val data = LaptopTerbaru(
             laptopFavorite.name,
-            laptopFavorite.photo
+            laptopFavorite.price,
+            laptopFavorite.photo,
+            laptopFavorite.acadapter,
+            laptopFavorite.audio,
+            laptopFavorite.baterai,
+            laptopFavorite.berat,
+            laptopFavorite.brand,
+            laptopFavorite.chipset,
+            laptopFavorite.cpu,
+            laptopFavorite.dimensi,
+            laptopFavorite.grafis,
+            laptopFavorite.io,
+            laptopFavorite.kategori,
+            laptopFavorite.keyboard,
+            laptopFavorite.komunikasi,
+            laptopFavorite.layar,
+            laptopFavorite.memori,
+            laptopFavorite.os,
+            laptopFavorite.penyimpanan,
+            laptopFavorite.tanggalRilis,
+            laptopFavorite.webcam
         )
 
         // Mendaftarkan event klik untuk membandingkan laptop favorit tertentu

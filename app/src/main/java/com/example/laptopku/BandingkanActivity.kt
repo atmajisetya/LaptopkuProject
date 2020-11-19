@@ -7,7 +7,7 @@ import kotlinx.android.synthetic.main.activity_bandingkan.*
 
 class BandingkanActivity : AppCompatActivity(), View.OnClickListener {
     // Variabel untuk menerima operan dari Activity Favorite (bila ada operan)
-    private var laptopFavorite: LaptopFavorite? = null
+    private var laptopFavorite: LaptopTerbaru? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
