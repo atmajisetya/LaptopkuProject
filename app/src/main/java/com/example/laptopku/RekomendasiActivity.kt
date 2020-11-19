@@ -7,10 +7,19 @@ import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentTransaction
 
 class RekomendasiActivity : AppCompatActivity(), View.OnClickListener {
+    // fragmentManager beserta transaction untuk mengatur pergantian fragment
     private lateinit var fragmentManager: FragmentManager
     private lateinit var transaction: FragmentTransaction
+
+    // Inisiasi variabel untuk mengakses Button Selanjutnya dan Sebelumnya
     private lateinit var selanjutnyaButton: android.widget.LinearLayout
     private lateinit var sebelumnyaButton: android.widget.LinearLayout
+
+    // Inisiasi variabel untuk menyimpan fragment
+    val budgetFragment = BudgetFragment()
+    private lateinit var keperluanFragment: KeperluanFragment
+
+    // Variabel agar Activity dapat mengenali sedang memuat fragment yang mana
     private var currentFragment = "budget"
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -19,7 +28,7 @@ class RekomendasiActivity : AppCompatActivity(), View.OnClickListener {
 
         fragmentManager = supportFragmentManager
         transaction = fragmentManager.beginTransaction()
-        transaction.add(R.id.rekomendasiFrameLayout, BudgetFragment())
+        transaction.add(R.id.rekomendasiFrameLayout, budgetFragment)
         transaction.commit()
 
         // Digunakan untuk pindah ke tampilan telusuri
@@ -61,32 +70,43 @@ class RekomendasiActivity : AppCompatActivity(), View.OnClickListener {
             }
             R.id.selanjutnyaButton ->{
                 transaction = fragmentManager.beginTransaction()
-                if (currentFragment == "budget"){
-                    transaction.replace(R.id.rekomendasiFrameLayout, KeperluanFragment())
-                    transaction.addToBackStack(null)
-                    transaction.commit()
-                    currentFragment = "keperluan"
-                    sebelumnyaButton.setBackgroundResource(R.drawable.bg_button_biru)
-                }
-                else if (currentFragment == "keperluan"){
-                    transaction.replace(R.id.rekomendasiFrameLayout, PrioritasFragment())
-                    transaction.addToBackStack(null)
-                    transaction.commit()
-                    currentFragment = "prioritas"
-                }
-                else if (currentFragment == "prioritas"){
-                    transaction.replace(R.id.rekomendasiFrameLayout, BrandFragment())
-                    transaction.addToBackStack(null)
-                    transaction.commit()
-                    currentFragment = "brand"
-                }
-                else if (currentFragment == "brand"){
-                    transaction.replace(R.id.rekomendasiFrameLayout, HasilFragment())
-                    transaction.addToBackStack(null)
-                    transaction.commit()
-                    sebelumnyaButton.visibility = View.GONE
-                    selanjutnyaButton.visibility = View.GONE
-                    currentFragment = "hasil"
+                when (currentFragment) {
+                    "budget" -> {
+                        if(budgetFragment.minEditText.text.isNullOrBlank() || budgetFragment.maxEditText.text.isNullOrBlank()){
+                            showToast("Budget minimal dan budget maximal tidak boleh kosong.")
+                        }
+                        else if(budgetFragment.min > budgetFragment.max){
+                            showToast("Budget minimal harus lebih kecil dari budget maximal.")
+                        }
+                        else{
+                            keperluanFragment = KeperluanFragment(budgetFragment.min, budgetFragment.max)
+                            transaction.replace(R.id.rekomendasiFrameLayout, keperluanFragment)
+                            transaction.addToBackStack(null)
+                            transaction.commit()
+                            currentFragment = "keperluan"
+                            sebelumnyaButton.setBackgroundResource(R.drawable.bg_button_biru)
+                        }
+                    }
+                    "keperluan" -> {
+                        transaction.replace(R.id.rekomendasiFrameLayout, PrioritasFragment())
+                        transaction.addToBackStack(null)
+                        transaction.commit()
+                        currentFragment = "prioritas"
+                    }
+                    "prioritas" -> {
+                        transaction.replace(R.id.rekomendasiFrameLayout, BrandFragment())
+                        transaction.addToBackStack(null)
+                        transaction.commit()
+                        currentFragment = "brand"
+                    }
+                    "brand" -> {
+                        transaction.replace(R.id.rekomendasiFrameLayout, HasilFragment())
+                        transaction.addToBackStack(null)
+                        transaction.commit()
+                        sebelumnyaButton.visibility = View.GONE
+                        selanjutnyaButton.visibility = View.GONE
+                        currentFragment = "hasil"
+                    }
                 }
             }
             R.id.rekomendasiKembaliImageView, R.id.sebelumnyaButton -> {
@@ -103,6 +123,14 @@ class RekomendasiActivity : AppCompatActivity(), View.OnClickListener {
     override fun onBackPressed(){
         super.onBackPressed()
         sesuaikanCurrentFragmentKetikaKembali()
+    }
+
+    fun showToast(text: String){
+        val toast = android.widget.Toast.makeText(applicationContext,
+            text,
+            android.widget.Toast.LENGTH_LONG)
+        toast.setGravity(android.view.Gravity.BOTTOM,0,130)
+        toast.show()
     }
 
     fun sesuaikanCurrentFragmentKetikaKembali(){
