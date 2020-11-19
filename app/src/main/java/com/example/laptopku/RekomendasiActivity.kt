@@ -94,19 +94,7 @@ class RekomendasiActivity : AppCompatActivity(), View.OnClickListener {
                     finish()
                 else {
                     fragmentManager.popBackStack()
-                    when (currentFragment) {
-                        "keperluan" -> {
-                            currentFragment = "budget"
-                            sebelumnyaButton.setBackgroundResource(R.drawable.bg_button_abu)
-                        }
-                        "prioritas" -> currentFragment = "keperluan"
-                        "brand" -> currentFragment = "prioritas"
-                        "hasil" -> {
-                            sebelumnyaButton.visibility = View.VISIBLE
-                            selanjutnyaButton.visibility = View.VISIBLE
-                            currentFragment = "brand"
-                        }
-                    }
+                    sesuaikanCurrentFragmentKetikaKembali()
                 }
             }
         }
@@ -114,6 +102,10 @@ class RekomendasiActivity : AppCompatActivity(), View.OnClickListener {
 
     override fun onBackPressed(){
         super.onBackPressed()
+        sesuaikanCurrentFragmentKetikaKembali()
+    }
+
+    fun sesuaikanCurrentFragmentKetikaKembali(){
         when (currentFragment) {
             "keperluan" -> {
                 currentFragment = "budget"
