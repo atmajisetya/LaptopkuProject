@@ -18,6 +18,7 @@ class RekomendasiActivity : AppCompatActivity(), View.OnClickListener {
     // Inisiasi variabel untuk menyimpan fragment
     val budgetFragment = BudgetFragment()
     private lateinit var keperluanFragment: KeperluanFragment
+    private lateinit var prioritasFragment: PrioritasFragment
 
     // Variabel agar Activity dapat mengenali sedang memuat fragment yang mana
     private var currentFragment = "budget"
@@ -54,6 +55,7 @@ class RekomendasiActivity : AppCompatActivity(), View.OnClickListener {
         kembaliImageView.setOnClickListener(this)
     }
 
+    // Isi semua event klik
     override fun onClick(v: View?) {
         when(v?.id){
             R.id.rekomendasiFooterTelusuriImageView ->{
@@ -79,19 +81,44 @@ class RekomendasiActivity : AppCompatActivity(), View.OnClickListener {
                             showToast("Budget minimal harus lebih kecil dari budget maximal.")
                         }
                         else{
-                            keperluanFragment = KeperluanFragment(budgetFragment.min, budgetFragment.max)
+                            keperluanFragment = KeperluanFragment()
                             transaction.replace(R.id.rekomendasiFrameLayout, keperluanFragment)
                             transaction.addToBackStack(null)
                             transaction.commit()
-                            currentFragment = "keperluan"
                             sebelumnyaButton.setBackgroundResource(R.drawable.bg_button_biru)
+                            currentFragment = "keperluan"
+                            // START DEBUGGING
+                            showToast("min: " + budgetFragment.min.toString() + ", max: " + budgetFragment.max.toString())
+                            // END DEBUGGING
                         }
                     }
                     "keperluan" -> {
-                        transaction.replace(R.id.rekomendasiFrameLayout, PrioritasFragment())
-                        transaction.addToBackStack(null)
-                        transaction.commit()
-                        currentFragment = "prioritas"
+                        if (!keperluanFragment.gameBerat && !keperluanFragment.kalkulasiRumit && !keperluanFragment.grafis2D &&
+                                !keperluanFragment.grafis3D && !keperluanFragment.editingVideo && !keperluanFragment.pekerjaanRingan)
+                            showToast("Harus ada minimal satu keperluan yang dipilih.")
+                        else{
+                            prioritasFragment = PrioritasFragment()
+                            transaction.replace(R.id.rekomendasiFrameLayout, prioritasFragment)
+                            transaction.addToBackStack(null)
+                            transaction.commit()
+                            currentFragment = "prioritas"
+                            // START DEBUGGING
+                            var keperluan = "keperluan: "
+                            if (keperluanFragment.gameBerat)
+                                keperluan += "game berat, "
+                            if (keperluanFragment.kalkulasiRumit)
+                                keperluan += "kalkulasi rumit, "
+                            if (keperluanFragment.grafis2D)
+                                keperluan += "grafis 2D, "
+                            if (keperluanFragment.grafis3D)
+                                keperluan += "grafis 3D, "
+                            if (keperluanFragment.editingVideo)
+                                keperluan += "editing video, "
+                            if (keperluanFragment.pekerjaanRingan)
+                                keperluan += "pekerjaan ringan."
+                            showToast(keperluan)
+                            // END DEBUGGING
+                        }
                     }
                     "prioritas" -> {
                         transaction.replace(R.id.rekomendasiFrameLayout, BrandFragment())
