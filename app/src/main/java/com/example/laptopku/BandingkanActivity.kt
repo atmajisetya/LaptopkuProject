@@ -6,17 +6,17 @@ import android.view.View
 import kotlinx.android.synthetic.main.activity_bandingkan.*
 
 class BandingkanActivity : AppCompatActivity(), View.OnClickListener {
-    // Variabel untuk menerima operan dari Activity Favorite (bila ada operan)
-    private var laptopFavorite: LaptopTerbaru? = null
+    // Variabel untuk menerima operan dari Activity Favorite atau Acitivy Deskripsi Laptop (bila ada operan)
+    private var laptopKiri: LaptopTerbaru? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_bandingkan)
 
         // Memunculkan nama laptopFavorite ke EditText cari laptop yang kiri
-        laptopFavorite = intent.getParcelableExtra("laptopFavorite")
-        if(laptopFavorite != null){
-            cariLaptopKiriEditText.setText(laptopFavorite!!.name)
+        laptopKiri = intent.getParcelableExtra("laptopKiri")
+        if(laptopKiri != null){
+            cariLaptopKiriEditText.setText(laptopKiri!!.name)
         }
 
         // Mendaftarkan event klik untuk pindah ke Activity Telusuri

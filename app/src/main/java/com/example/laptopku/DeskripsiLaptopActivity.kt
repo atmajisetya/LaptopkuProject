@@ -18,6 +18,10 @@ class DeskripsiLaptopActivity : AppCompatActivity(), View.OnClickListener {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_deskripsi_laptop)
 
+        // Menampilkan icon bandingkan
+        val bandingkanTextView: TextView = findViewById(R.id.deskripsiLaptopBandingkanTextView)
+        bandingkanTextView.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_bandingkan_biru,0,0,0)
+
         // Assignment variabel laptopTerbaru
         laptopTerbaru = intent.getParcelableExtra("laptopTerbaru")
 
@@ -85,6 +89,7 @@ class DeskripsiLaptopActivity : AppCompatActivity(), View.OnClickListener {
         rekomendasiImageView.setOnClickListener(this)
 
         //  Mendaftarkan event klik untuk pindah ke Activity Bandingkan
+        bandingkanTextView.setOnClickListener(this)
         val bandingkanImageView: android.widget.ImageView = findViewById(R.id.telusuriFooterBandingkanImageView)
         bandingkanImageView.setOnClickListener(this)
 
@@ -109,6 +114,11 @@ class DeskripsiLaptopActivity : AppCompatActivity(), View.OnClickListener {
             }
             R.id.telusuriFooterBandingkanImageView ->{
                 val moveIntent = android.content.Intent(this@DeskripsiLaptopActivity, BandingkanActivity::class.java)
+                startActivity(moveIntent)
+            }
+            R.id.deskripsiLaptopBandingkanTextView ->{
+                val moveIntent = android.content.Intent(this@DeskripsiLaptopActivity, BandingkanActivity::class.java)
+                moveIntent.putExtra("laptopKiri", laptopTerbaru)
                 startActivity(moveIntent)
             }
             R.id.headerFavoriteImageView ->{

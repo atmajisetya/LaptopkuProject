@@ -67,7 +67,7 @@ class ListLaptopFavoriteAdapter(private val context: Context?, private val listL
         // Mendaftarkan event klik untuk membandingkan laptop favorit tertentu
         holder.itemView.itemLaptopFavoriteBandingkanImageView.setOnClickListener{
             val intent = Intent(context, BandingkanActivity::class.java)
-            intent.putExtra("laptopFavorite", data)
+            intent.putExtra("laptopKiri", data)
             context?.startActivity(intent)
         }
     }
