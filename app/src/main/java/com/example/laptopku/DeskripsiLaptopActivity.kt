@@ -2,16 +2,15 @@ package com.example.laptopku
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import android.widget.TextView
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.DecodeFormat
 import com.bumptech.glide.request.RequestOptions
 import com.bumptech.glide.request.target.Target
 import kotlinx.android.synthetic.main.activity_deskripsi_laptop.*
 
-class DeskripsiLaptopActivity : AppCompatActivity() {
+class DeskripsiLaptopActivity : AppCompatActivity(), View.OnClickListener {
     // Variabel untuk menerima operan data spesifikasi laptop dari Activity sebelumnya
     private var laptopTerbaru : LaptopTerbaru? = null
 
@@ -75,6 +74,48 @@ class DeskripsiLaptopActivity : AppCompatActivity() {
             else{
                 tv_komunikasi.append(laptopTerbaru!!.komunikasi[i])
             }
+        }
+
+        // Mendaftarkan event klik untuk pindah Main Activity
+        val telusuriImageView: android.widget.ImageView = findViewById(R.id.telusuriFooterTelusuriImageView)
+        telusuriImageView.setOnClickListener(this)
+
+        // Mendaftarkan event klik untuk pindah ke Activity Rekomendasi
+        val rekomendasiImageView: android.widget.ImageView = findViewById(R.id.telusuriFooterRekomendasiImageView)
+        rekomendasiImageView.setOnClickListener(this)
+
+        //  Mendaftarkan event klik untuk pindah ke Activity Bandingkan
+        val bandingkanImageView: android.widget.ImageView = findViewById(R.id.telusuriFooterBandingkanImageView)
+        bandingkanImageView.setOnClickListener(this)
+
+        //  Mendaftarkan event klik untuk pindah ke Activity Favorit
+        val favoriteImageView: android.widget.ImageView = findViewById(R.id.headerFavoriteImageView)
+        favoriteImageView.setOnClickListener(this)
+
+        //  Mendaftarkan event klik untuk kembali ke Activity sebelumnya
+        val kembaliImageView: android.widget.ImageView = findViewById(R.id.headerKembaliImageView)
+        kembaliImageView.setOnClickListener(this)
+    }
+
+    override fun onClick(v: View?) {
+        when(v?.id){
+            R.id.telusuriFooterTelusuriImageView ->{
+                val moveIntent = android.content.Intent(this@DeskripsiLaptopActivity, MainActivity::class.java)
+                startActivity(moveIntent)
+            }
+            R.id.telusuriFooterRekomendasiImageView ->{
+                val moveIntent = android.content.Intent(this@DeskripsiLaptopActivity, RekomendasiActivity::class.java)
+                startActivity(moveIntent)
+            }
+            R.id.telusuriFooterBandingkanImageView ->{
+                val moveIntent = android.content.Intent(this@DeskripsiLaptopActivity, BandingkanActivity::class.java)
+                startActivity(moveIntent)
+            }
+            R.id.headerFavoriteImageView ->{
+                val moveIntent = android.content.Intent(this@DeskripsiLaptopActivity, FavoriteActivity::class.java)
+                startActivity(moveIntent)
+            }
+            R.id.headerKembaliImageView -> finish()
         }
     }
 }
