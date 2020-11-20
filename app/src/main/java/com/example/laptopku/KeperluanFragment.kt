@@ -17,12 +17,12 @@ class KeperluanFragment : Fragment() {
     internal var pekerjaanRingan = false
 
     // Variabel untuk merujuk CheckBoxes
-    internal lateinit var gameBeratCheckBox: CheckBox
-    internal lateinit var kalkulasiRumitCheckBox: CheckBox
-    internal lateinit var grafis2DCheckBox: CheckBox
-    internal lateinit var grafis3DCheckBox: CheckBox
-    internal lateinit var editingVideoCheckBox: CheckBox
-    internal lateinit var pekerjaanRinganCheckBox: CheckBox
+    private lateinit var gameBeratCheckBox: CheckBox
+    private lateinit var kalkulasiRumitCheckBox: CheckBox
+    private lateinit var grafis2DCheckBox: CheckBox
+    private lateinit var grafis3DCheckBox: CheckBox
+    private lateinit var editingVideoCheckBox: CheckBox
+    private lateinit var pekerjaanRinganCheckBox: CheckBox
 
     override fun onCreateView(
         inflater: LayoutInflater,

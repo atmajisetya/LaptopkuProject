@@ -16,9 +16,10 @@ class RekomendasiActivity : AppCompatActivity(), View.OnClickListener {
     private lateinit var sebelumnyaButton: android.widget.LinearLayout
 
     // Inisiasi variabel untuk menyimpan fragment
-    val budgetFragment = BudgetFragment()
+    private val budgetFragment = BudgetFragment()
     private lateinit var keperluanFragment: KeperluanFragment
     private lateinit var prioritasFragment: PrioritasFragment
+    private lateinit var brandFragment: BrandFragment
 
     // Variabel agar Activity dapat mengenali sedang memuat fragment yang mana
     private var currentFragment = "budget"
@@ -121,18 +122,38 @@ class RekomendasiActivity : AppCompatActivity(), View.OnClickListener {
                         }
                     }
                     "prioritas" -> {
-                        transaction.replace(R.id.rekomendasiFrameLayout, BrandFragment())
+                        brandFragment = BrandFragment()
+                        transaction.replace(R.id.rekomendasiFrameLayout, brandFragment)
                         transaction.addToBackStack(null)
                         transaction.commit()
                         currentFragment = "brand"
                     }
                     "brand" -> {
-                        transaction.replace(R.id.rekomendasiFrameLayout, HasilFragment())
-                        transaction.addToBackStack(null)
-                        transaction.commit()
-                        sebelumnyaButton.visibility = View.GONE
-                        selanjutnyaButton.visibility = View.GONE
-                        currentFragment = "hasil"
+                        if (!brandFragment.isAcer && !brandFragment.isAsus && !brandFragment.isHp &&
+                            !brandFragment.isLenovo && !brandFragment.isMsi)
+                            showToast("Harus ada minimal satu keperluan yang dipilih.")
+                        else{
+                            transaction.replace(R.id.rekomendasiFrameLayout, HasilFragment())
+                            transaction.addToBackStack(null)
+                            transaction.commit()
+                            sebelumnyaButton.visibility = View.GONE
+                            selanjutnyaButton.visibility = View.GONE
+                            currentFragment = "hasil"
+                            // START DEBUGGING
+                            var brand = "keperluan: "
+                            if (brandFragment.isAcer)
+                                brand += "Acer, "
+                            if (brandFragment.isAsus)
+                                brand += "Asus, "
+                            if (brandFragment.isHp)
+                                brand += "HP, "
+                            if (brandFragment.isLenovo)
+                                brand += "Lenovo, "
+                            if (brandFragment.isMsi)
+                                brand += "MSI."
+                            showToast(brand)
+                            // END DEBUGGING
+                        }
                     }
                 }
             }
