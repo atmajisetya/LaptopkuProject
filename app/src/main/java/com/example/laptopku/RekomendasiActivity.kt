@@ -122,11 +122,21 @@ class RekomendasiActivity : AppCompatActivity(), View.OnClickListener {
                         }
                     }
                     "prioritas" -> {
-                        brandFragment = BrandFragment()
-                        transaction.replace(R.id.rekomendasiFrameLayout, brandFragment)
-                        transaction.addToBackStack(null)
-                        transaction.commit()
-                        currentFragment = "brand"
+                        if (!prioritasFragment.isPerforma && !prioritasFragment.isPortabilitas)
+                            showToast("Mohon pilih jawaban terlebih dahulu.")
+                        else{
+                            brandFragment = BrandFragment()
+                            transaction.replace(R.id.rekomendasiFrameLayout, brandFragment)
+                            transaction.addToBackStack(null)
+                            transaction.commit()
+                            currentFragment = "brand"
+                            // START DEBUGGING
+                            if (prioritasFragment.isPerforma)
+                                showToast("Performa")
+                            else
+                                showToast("Portabilitas")
+                            // END DEBUGGING
+                        }
                     }
                     "brand" -> {
                         if (!brandFragment.isAcer && !brandFragment.isAsus && !brandFragment.isHp &&
