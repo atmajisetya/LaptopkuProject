@@ -2,7 +2,6 @@ package com.example.laptopku
 
 import android.os.Parcelable
 import kotlinx.android.parcel.Parcelize
-import java.sql.Timestamp
 
 @Parcelize
 data class LaptopTerbaru(
@@ -28,5 +27,4 @@ data class LaptopTerbaru(
     var penyimpanan: String="",
     var tanggalRilis: String="",
     var webcam: String=""
-
 ):Parcelable

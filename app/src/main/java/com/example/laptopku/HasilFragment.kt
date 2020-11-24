@@ -16,6 +16,20 @@ class HasilFragment() : Fragment() {
     // Inisiasi variabel agar Fragment mengetahui laptop bagaimana yang diminta
     private var extraType = "none"
     private var extra = "all"
+    private var min = 0
+    private var max = 99999999
+    private var gameBerat = true
+    private var kalkulasiRumit = true
+    private var grafis2D = true
+    private var grafis3D = true
+    private var editingVideo = true
+    private var pekerjaanRingan = true
+    private var isPerforma = false
+    private var isAcer = true
+    private var isAsus = true
+    private var isHp = true
+    private var isLenovo = true
+    private var isMsi = true
 
     // Inisiasi variabel untuk menampilkan icon urutkan dan filter
     private lateinit var textView: android.widget.TextView
@@ -33,6 +47,26 @@ class HasilFragment() : Fragment() {
     constructor(extraType: String, extra: String) : this(){
         this.extraType = extraType
         this.extra = extra
+    }
+
+    // Konstruktor sekunder dipanggil ketika fragment dipanggil melalui Activity Rekomendasi
+    constructor(min: Int, max: Int, gameBerat: Boolean, kalkulasiRumit: Boolean, grafis2D: Boolean,
+        grafis3D: Boolean, editingVideo: Boolean, pekerjaanRingan: Boolean, isPerforma: Boolean,
+        isAcer: Boolean, isAsus: Boolean, isHp: Boolean, isLenovo: Boolean, isMsi: Boolean) : this(){
+        this.min = min
+        this.max = max
+        this.gameBerat = gameBerat
+        this.kalkulasiRumit = kalkulasiRumit
+        this.grafis2D = grafis2D
+        this.grafis3D = grafis3D
+        this.editingVideo = editingVideo
+        this.pekerjaanRingan = pekerjaanRingan
+        this.isPerforma = isPerforma
+        this.isAcer = isAcer
+        this.isAsus = isAsus
+        this.isHp = isHp
+        this.isLenovo = isLenovo
+        this.isMsi = isMsi
     }
 
     override fun onCreateView(
