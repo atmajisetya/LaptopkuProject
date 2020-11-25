@@ -42,6 +42,7 @@ class HasilFragment() : Fragment() {
 
     // Inisiasi ArrayList untuk menampung data laptop yang diminta
     private val listLaptop: ArrayList<LaptopTerbaru> = arrayListOf()
+    private val rekomenLaptop: ArrayList<RekomenLaptop> = arrayListOf()
 
     // Konstruktor sekunder dipanggil ketika pengguna meminta brand atau kategori tertentu
     constructor(extraType: String, extra: String) : this(){
@@ -53,6 +54,7 @@ class HasilFragment() : Fragment() {
     constructor(min: Int, max: Int, gameBerat: Boolean, kalkulasiRumit: Boolean, grafis2D: Boolean,
         grafis3D: Boolean, editingVideo: Boolean, pekerjaanRingan: Boolean, isPerforma: Boolean,
         isAcer: Boolean, isAsus: Boolean, isHp: Boolean, isLenovo: Boolean, isMsi: Boolean) : this(){
+        this.extraType = "rekomendasi"
         this.min = min
         this.max = max
         this.gameBerat = gameBerat
@@ -99,6 +101,7 @@ class HasilFragment() : Fragment() {
             "none" -> loadLaptopSemua()
             "brand" -> loadLaptopBrand()
             "kategori" -> loadLaptopKategori()
+            "rekomendasi" -> loadLaptopRekomendasi()
         }
     }
 
@@ -222,6 +225,132 @@ class HasilFragment() : Fragment() {
             }
     }
 
+    // Memanggil data-laptop-sesuai-masukan-pengguna dari Firestore sekaligus ditampilkan
+    private fun loadLaptopRekomendasi(){
+        getRekomenLaptop()
+        // Filter berdasar budget
+        rekomenLaptop.filter {r: RekomenLaptop -> r.harga < min || r.harga > max }
+            .forEach { rekomenLaptop.remove(it) }
+        // Filter berdasar keperluan
+        if (gameBerat || kalkulasiRumit || grafis2D || grafis3D || editingVideo){
+            if (gameBerat)
+                rekomenLaptop.filter { r: RekomenLaptop -> !r.gaming }
+                    .forEach { rekomenLaptop.remove(it) }
+            if (kalkulasiRumit)
+                rekomenLaptop.filter { r: RekomenLaptop -> !r.kalkulasi }
+                    .forEach { rekomenLaptop.remove(it) }
+            if (grafis2D)
+                rekomenLaptop.filter { r: RekomenLaptop -> !r.grafis2D }
+                    .forEach { rekomenLaptop.remove(it) }
+            if (grafis3D)
+                rekomenLaptop.filter { r: RekomenLaptop -> !r.grafis3D }
+                    .forEach { rekomenLaptop.remove(it) }
+            if (editingVideo)
+                rekomenLaptop.filter { r: RekomenLaptop -> !r.video }
+                    .forEach { rekomenLaptop.remove(it) }
+        }
+        else
+            rekomenLaptop.filter { r: RekomenLaptop -> !r.ringan }
+                .forEach { rekomenLaptop.remove(it) }
+        // Filter berdasar brand
+        if (!isAcer)
+            rekomenLaptop.filter { r: RekomenLaptop -> r.brand == "Acer"}
+                .forEach { rekomenLaptop.remove(it) }
+        if (!isAsus)
+            rekomenLaptop.filter { r: RekomenLaptop -> r.brand == "Asus" }
+                .forEach { rekomenLaptop.remove(it) }
+        if (!isHp)
+            rekomenLaptop.filter { r: RekomenLaptop -> r.brand == "HP" }
+                .forEach { rekomenLaptop.remove(it) }
+        if (!isLenovo)
+            rekomenLaptop.filter {r: RekomenLaptop -> r.brand == "Lenovo"}
+                .forEach { rekomenLaptop.remove(it) }
+        if (!isMsi)
+            rekomenLaptop.filter {r: RekomenLaptop -> r.brand == "MSI"}
+                .forEach { rekomenLaptop.remove(it) }
+        rekomenLaptop.trimToSize()
+        // Jika tidak ditemukan laptop sesuai masukan pengguna
+        if (rekomenLaptop.isEmpty()){
+            progressBar.visibility = View.GONE
+            val toast = android.widget.Toast.makeText(activity,
+                "Tidak ditemukan laptop sesuai masukan Anda pada basis data kami.",
+                android.widget.Toast.LENGTH_LONG)
+            toast.setGravity(android.view.Gravity.BOTTOM,0,130)
+            toast.show()
+        }
+        else{
+            rekomenLaptop.forEach{ listLaptop.add(getLaptop(it.nama)) }
+            progressBar.visibility = View.GONE
+            showRecyclerList()
+        }
+    }
+
+    // Memanggil semua data rekomenLaptop dari Firestore
+    private fun getRekomenLaptop(){
+        val db = FirebaseFirestore.getInstance()
+        db.collection("rekomenLaptop")
+            .get()
+            .addOnSuccessListener {result ->
+                for (document in result){
+                    rekomenLaptop.add(RekomenLaptop(document.getBoolean("2d")!!,
+                        document.getBoolean("3d")!!,
+                        document.getString("brand")!!,
+                        document.getBoolean("gaming")!!,
+                        document.getLong("harga")!!.toInt(),
+                        document.getBoolean("kalkulasi")!!,
+                        document.getString("nama")!!,
+                        document.getLong("performa")!!.toInt(),
+                        document.getLong("portabilitas")!!.toInt(),
+                        document.getBoolean("ringan")!!,
+                        document.getBoolean("video")!!
+                    ))
+                }
+                if (rekomenLaptop.isEmpty())
+                    getRekomenLaptop()
+            }
+    }
+
+    // Memanggil data satu laptop
+    private fun getLaptop(namaLaptop: String): LaptopTerbaru{
+        var laptop = LaptopTerbaru("","","","","",
+            "","","","","","",arrayListOf(),
+            arrayListOf(),arrayListOf(),"",arrayListOf(),"","",
+            "","","","")
+        val db = FirebaseFirestore.getInstance()
+        db.collection("spekLaptop")
+            .whereEqualTo("namaLaptop", namaLaptop)
+            .get()
+            .addOnSuccessListener { result ->
+                for (document in result) {
+                    laptop = LaptopTerbaru(namaLaptop,
+                        document.getString("hargaLaptop")!!,
+                        document.getString("gambar")!!,
+                        document.getString("acadapter")!!,
+                        document.getString("audio")!!,
+                        document.getString("baterai")!!,
+                        document.getString("berat")!!,
+                        document.getString("brand")!!,
+                        document.getString("chipset")!!,
+                        document.getString("cpu")!!,
+                        document.getString("dimensi")!!,
+                        document.get("grafis")!! as ArrayList<String>,
+                        document.get("io")!! as ArrayList<String>,
+                        document.get("kategori")!! as ArrayList<String>,
+                        document.getString("keyboard")!!,
+                        document.get("komunikasi")!! as ArrayList<String>,
+                        document.getString("layar")!!,
+                        document.getString("memori")!!,
+                        document.getString("os")!!,
+                        document.getString("penyimpanan")!!,
+                        document.getString("tanggalRilis")!!,
+                        document.getString("webcam")!!)
+                }
+            }
+        return if (laptop.name != "")
+            laptop
+        else
+            getLaptop(namaLaptop)
+    }
     // Menampilkan laptop-laptop yang diminta pada RecyclerView
     private fun showRecyclerList(){
         hasilRecyclerView.layoutManager = GridLayoutManager(activity, 2)
