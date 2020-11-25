@@ -227,66 +227,6 @@ class HasilFragment() : Fragment() {
 
     // Memanggil data-laptop-sesuai-masukan-pengguna dari Firestore sekaligus ditampilkan
     private fun loadLaptopRekomendasi(){
-        getRekomenLaptop()
-        // Filter berdasar budget
-        rekomenLaptop.filter {r: RekomenLaptop -> r.harga < min || r.harga > max }
-            .forEach { rekomenLaptop.remove(it) }
-        // Filter berdasar keperluan
-        if (gameBerat || kalkulasiRumit || grafis2D || grafis3D || editingVideo){
-            if (gameBerat)
-                rekomenLaptop.filter { r: RekomenLaptop -> !r.gaming }
-                    .forEach { rekomenLaptop.remove(it) }
-            if (kalkulasiRumit)
-                rekomenLaptop.filter { r: RekomenLaptop -> !r.kalkulasi }
-                    .forEach { rekomenLaptop.remove(it) }
-            if (grafis2D)
-                rekomenLaptop.filter { r: RekomenLaptop -> !r.grafis2D }
-                    .forEach { rekomenLaptop.remove(it) }
-            if (grafis3D)
-                rekomenLaptop.filter { r: RekomenLaptop -> !r.grafis3D }
-                    .forEach { rekomenLaptop.remove(it) }
-            if (editingVideo)
-                rekomenLaptop.filter { r: RekomenLaptop -> !r.video }
-                    .forEach { rekomenLaptop.remove(it) }
-        }
-        else
-            rekomenLaptop.filter { r: RekomenLaptop -> !r.ringan }
-                .forEach { rekomenLaptop.remove(it) }
-        // Filter berdasar brand
-        if (!isAcer)
-            rekomenLaptop.filter { r: RekomenLaptop -> r.brand == "Acer"}
-                .forEach { rekomenLaptop.remove(it) }
-        if (!isAsus)
-            rekomenLaptop.filter { r: RekomenLaptop -> r.brand == "Asus" }
-                .forEach { rekomenLaptop.remove(it) }
-        if (!isHp)
-            rekomenLaptop.filter { r: RekomenLaptop -> r.brand == "HP" }
-                .forEach { rekomenLaptop.remove(it) }
-        if (!isLenovo)
-            rekomenLaptop.filter {r: RekomenLaptop -> r.brand == "Lenovo"}
-                .forEach { rekomenLaptop.remove(it) }
-        if (!isMsi)
-            rekomenLaptop.filter {r: RekomenLaptop -> r.brand == "MSI"}
-                .forEach { rekomenLaptop.remove(it) }
-        rekomenLaptop.trimToSize()
-        // Jika tidak ditemukan laptop sesuai masukan pengguna
-        if (rekomenLaptop.isEmpty()){
-            progressBar.visibility = View.GONE
-            val toast = android.widget.Toast.makeText(activity,
-                "Tidak ditemukan laptop sesuai masukan Anda pada basis data kami.",
-                android.widget.Toast.LENGTH_LONG)
-            toast.setGravity(android.view.Gravity.BOTTOM,0,130)
-            toast.show()
-        }
-        else{
-            rekomenLaptop.forEach{ listLaptop.add(getLaptop(it.nama)) }
-            progressBar.visibility = View.GONE
-            showRecyclerList()
-        }
-    }
-
-    // Memanggil semua data rekomenLaptop dari Firestore
-    private fun getRekomenLaptop(){
         val db = FirebaseFirestore.getInstance()
         db.collection("rekomenLaptop")
             .get()
@@ -306,12 +246,76 @@ class HasilFragment() : Fragment() {
                     ))
                 }
                 if (rekomenLaptop.isEmpty())
-                    getRekomenLaptop()
+                    loadLaptopRekomendasi()
+                else{
+                    // Filter berdasar budget
+                    rekomenLaptop.filter {r: RekomenLaptop -> r.harga < min || r.harga > max }
+                        .forEach { rekomenLaptop.remove(it) }
+                    // Filter berdasar keperluan
+                    if (gameBerat || kalkulasiRumit || grafis2D || grafis3D || editingVideo){
+                        if (gameBerat)
+                            rekomenLaptop.filter { r: RekomenLaptop -> !r.gaming }
+                                .forEach { rekomenLaptop.remove(it) }
+                        if (kalkulasiRumit)
+                            rekomenLaptop.filter { r: RekomenLaptop -> !r.kalkulasi }
+                                .forEach { rekomenLaptop.remove(it) }
+                        if (grafis2D)
+                            rekomenLaptop.filter { r: RekomenLaptop -> !r.grafis2D }
+                                .forEach { rekomenLaptop.remove(it) }
+                        if (grafis3D)
+                            rekomenLaptop.filter { r: RekomenLaptop -> !r.grafis3D }
+                                .forEach { rekomenLaptop.remove(it) }
+                        if (editingVideo)
+                            rekomenLaptop.filter { r: RekomenLaptop -> !r.video }
+                                .forEach { rekomenLaptop.remove(it) }
+                    }
+                    else
+                        rekomenLaptop.filter { r: RekomenLaptop -> !r.ringan }
+                            .forEach { rekomenLaptop.remove(it) }
+                    // Filter berdasar brand
+                    if (!isAcer)
+                        rekomenLaptop.filter { r: RekomenLaptop -> r.brand == "Acer"}
+                            .forEach { rekomenLaptop.remove(it) }
+                    if (!isAsus)
+                        rekomenLaptop.filter { r: RekomenLaptop -> r.brand == "Asus" }
+                            .forEach { rekomenLaptop.remove(it) }
+                    if (!isHp)
+                        rekomenLaptop.filter { r: RekomenLaptop -> r.brand == "HP" }
+                            .forEach { rekomenLaptop.remove(it) }
+                    if (!isLenovo)
+                        rekomenLaptop.filter {r: RekomenLaptop -> r.brand == "Lenovo"}
+                            .forEach { rekomenLaptop.remove(it) }
+                    if (!isMsi)
+                        rekomenLaptop.filter {r: RekomenLaptop -> r.brand == "MSI"}
+                            .forEach { rekomenLaptop.remove(it) }
+                    rekomenLaptop.trimToSize()
+                    // Jika tidak ditemukan laptop sesuai masukan pengguna
+                    if (rekomenLaptop.isEmpty()){
+                        progressBar.visibility = View.GONE
+                        val toast = android.widget.Toast.makeText(activity,
+                            "Tidak ditemukan laptop sesuai masukan Anda pada basis data kami.",
+                            android.widget.Toast.LENGTH_LONG)
+                        toast.setGravity(android.view.Gravity.BOTTOM,0,130)
+                        toast.show()
+                    }
+                    // Jika ditemukan laptop sesuai masukan pengguna
+                    else
+                        rekomenLaptop.forEach{ getLaptop(it.nama) }
+                    // START DEBUGGING
+                    /*var text = "get"
+                    rekomenLaptop.forEach{ text += it.nama + ", " }
+                    val toast = android.widget.Toast.makeText(activity,
+                        text,
+                        android.widget.Toast.LENGTH_LONG)
+                    toast.setGravity(android.view.Gravity.BOTTOM,0,130)
+                    toast.show()*/
+                    // END DEBUGGING
+                }
             }
     }
 
     // Memanggil data satu laptop
-    private fun getLaptop(namaLaptop: String): LaptopTerbaru{
+    private fun getLaptop(namaLaptop: String){
         var laptop = LaptopTerbaru("","","","","",
             "","","","","","",arrayListOf(),
             arrayListOf(),arrayListOf(),"",arrayListOf(),"","",
@@ -345,11 +349,14 @@ class HasilFragment() : Fragment() {
                         document.getString("tanggalRilis")!!,
                         document.getString("webcam")!!)
                 }
+                if (laptop.name != ""){
+                    listLaptop.add(laptop)
+                    progressBar.visibility = View.GONE
+                    showRecyclerList()
+                }
+                else
+                    getLaptop(namaLaptop)
             }
-        return if (laptop.name != "")
-            laptop
-        else
-            getLaptop(namaLaptop)
     }
     // Menampilkan laptop-laptop yang diminta pada RecyclerView
     private fun showRecyclerList(){

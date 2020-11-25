@@ -143,7 +143,11 @@ class RekomendasiActivity : AppCompatActivity(), View.OnClickListener {
                             !brandFragment.isLenovo && !brandFragment.isMsi)
                             showToast("Harus ada minimal satu keperluan yang dipilih.")
                         else{
-                            transaction.replace(R.id.rekomendasiFrameLayout, HasilFragment())
+                            transaction.replace(R.id.rekomendasiFrameLayout, HasilFragment(budgetFragment.min,
+                                budgetFragment.max, keperluanFragment.gameBerat, keperluanFragment.kalkulasiRumit,
+                                keperluanFragment.grafis2D, keperluanFragment.grafis3D, keperluanFragment.editingVideo,
+                                keperluanFragment.pekerjaanRingan, prioritasFragment.isPerforma, brandFragment.isAcer,
+                                brandFragment.isAsus, brandFragment.isHp, brandFragment.isLenovo, brandFragment.isMsi))
                             transaction.addToBackStack(null)
                             transaction.commit()
                             sebelumnyaButton.visibility = View.GONE
