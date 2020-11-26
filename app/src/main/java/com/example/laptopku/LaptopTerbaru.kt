@@ -26,5 +26,7 @@ data class LaptopTerbaru(
     var os: String="",
     var penyimpanan: String="",
     var tanggalRilis: String="",
-    var webcam: String=""
+    var webcam: String="",
+    var performa: Int = 1,
+    var portabilitas: Int = 1
 ):Parcelable

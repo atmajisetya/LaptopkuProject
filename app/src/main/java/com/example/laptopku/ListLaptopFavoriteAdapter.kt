@@ -61,7 +61,9 @@ class ListLaptopFavoriteAdapter(private val context: Context?, private val listL
             laptopFavorite.os,
             laptopFavorite.penyimpanan,
             laptopFavorite.tanggalRilis,
-            laptopFavorite.webcam
+            laptopFavorite.webcam,
+            laptopFavorite.performa,
+            laptopFavorite.portabilitas
         )
 
         // Mendaftarkan event klik untuk membandingkan laptop favorit tertentu

@@ -65,7 +65,9 @@ class ListLaptopTerbaruAdapter(private val context: Context?, private val listLa
             laptopTerbaru.os,
             laptopTerbaru.penyimpanan,
             laptopTerbaru.tanggalRilis,
-            laptopTerbaru.webcam
+            laptopTerbaru.webcam,
+            laptopTerbaru.performa,
+            laptopTerbaru.portabilitas
         )
 
         // Mendaftarkan event klik pada masing-masing laptop untuk pindah ke Activity DeskripsiLaptop

@@ -174,7 +174,9 @@ class HasilFragment() : Fragment() {
                         document.getString("os")!!,
                         document.getString("penyimpanan")!!,
                         document.getString("tanggalRilis")!!,
-                        document.getString("webcam")!!))
+                        document.getString("webcam")!!,
+                        document.getLong("performa")!!.toInt(),
+                        document.getLong("portabilitas")!!.toInt()))
                 }
                 if(listLaptop.isNotEmpty()){
                     showRecyclerList()
@@ -214,7 +216,9 @@ class HasilFragment() : Fragment() {
                         document.getString("os")!!,
                         document.getString("penyimpanan")!!,
                         document.getString("tanggalRilis")!!,
-                        document.getString("webcam")!!))
+                        document.getString("webcam")!!,
+                        document.getLong("performa")!!.toInt(),
+                        document.getLong("portabilitas")!!.toInt()))
                 }
                 if(listLaptop.isNotEmpty()){
                     showRecyclerList()
@@ -239,8 +243,6 @@ class HasilFragment() : Fragment() {
                         document.getLong("harga")!!.toInt(),
                         document.getBoolean("kalkulasi")!!,
                         document.getString("nama")!!,
-                        document.getLong("performa")!!.toInt(),
-                        document.getLong("portabilitas")!!.toInt(),
                         document.getBoolean("ringan")!!,
                         document.getBoolean("video")!!
                     ))
@@ -347,7 +349,9 @@ class HasilFragment() : Fragment() {
                         document.getString("os")!!,
                         document.getString("penyimpanan")!!,
                         document.getString("tanggalRilis")!!,
-                        document.getString("webcam")!!)
+                        document.getString("webcam")!!,
+                        document.getLong("performa")!!.toInt(),
+                        document.getLong("portabilitas")!!.toInt())
                 }
                 if (laptop.name != ""){
                     listLaptop.add(laptop)
