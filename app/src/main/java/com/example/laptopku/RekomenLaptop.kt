@@ -12,8 +12,6 @@ data class RekomenLaptop(
     var harga: Int= 2000000,
     var kalkulasi: Boolean = false,
     var nama: String = "",
-    var performa: Int = 1,
-    var portabilitas: Int = 1,
     var ringan: Boolean = false,
     var video: Boolean=false,
 ):Parcelable

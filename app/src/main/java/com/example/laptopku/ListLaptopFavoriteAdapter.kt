@@ -28,6 +28,7 @@ class ListLaptopFavoriteAdapter(private val context: Context?, private val listL
     }
 
     override fun onBindViewHolder(holder: ListLaptopFavoriteAdapter.ListViewHolder, position: Int) {
+        // Data yang akan dioper ke Activity Bandingkan
         val laptopFavorite = listLaptopFavorite[position]
 
         // Glide digunakan untuk menampilkan gambar
@@ -38,36 +39,10 @@ class ListLaptopFavoriteAdapter(private val context: Context?, private val listL
 
         holder.laptopFavoriteTextView.text = laptopFavorite.name
 
-        // Data yang akan dioper ke Activity Bandingkan
-        val data = LaptopTerbaru(
-            laptopFavorite.name,
-            laptopFavorite.price,
-            laptopFavorite.photo,
-            laptopFavorite.acadapter,
-            laptopFavorite.audio,
-            laptopFavorite.baterai,
-            laptopFavorite.berat,
-            laptopFavorite.brand,
-            laptopFavorite.chipset,
-            laptopFavorite.cpu,
-            laptopFavorite.dimensi,
-            laptopFavorite.grafis,
-            laptopFavorite.io,
-            laptopFavorite.kategori,
-            laptopFavorite.keyboard,
-            laptopFavorite.komunikasi,
-            laptopFavorite.layar,
-            laptopFavorite.memori,
-            laptopFavorite.os,
-            laptopFavorite.penyimpanan,
-            laptopFavorite.tanggalRilis,
-            laptopFavorite.webcam
-        )
-
         // Mendaftarkan event klik untuk membandingkan laptop favorit tertentu
         holder.itemView.itemLaptopFavoriteBandingkanImageView.setOnClickListener{
             val intent = Intent(context, BandingkanActivity::class.java)
-            intent.putExtra("laptopKiri", data)
+            intent.putExtra("laptopKiri", laptopFavorite)
             context?.startActivity(intent)
         }
     }

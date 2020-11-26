@@ -174,7 +174,9 @@ class HasilFragment() : Fragment() {
                         document.getString("os")!!,
                         document.getString("penyimpanan")!!,
                         document.getString("tanggalRilis")!!,
-                        document.getString("webcam")!!))
+                        document.getString("webcam")!!,
+                        document.getLong("performa")!!.toInt(),
+                        document.getLong("portabilitas")!!.toInt()))
                 }
                 if(listLaptop.isNotEmpty()){
                     showRecyclerList()
@@ -214,7 +216,9 @@ class HasilFragment() : Fragment() {
                         document.getString("os")!!,
                         document.getString("penyimpanan")!!,
                         document.getString("tanggalRilis")!!,
-                        document.getString("webcam")!!))
+                        document.getString("webcam")!!,
+                        document.getLong("performa")!!.toInt(),
+                        document.getLong("portabilitas")!!.toInt()))
                 }
                 if(listLaptop.isNotEmpty()){
                     showRecyclerList()
@@ -239,8 +243,6 @@ class HasilFragment() : Fragment() {
                         document.getLong("harga")!!.toInt(),
                         document.getBoolean("kalkulasi")!!,
                         document.getString("nama")!!,
-                        document.getLong("performa")!!.toInt(),
-                        document.getLong("portabilitas")!!.toInt(),
                         document.getBoolean("ringan")!!,
                         document.getBoolean("video")!!
                     ))
@@ -289,6 +291,15 @@ class HasilFragment() : Fragment() {
                         rekomenLaptop.filter {r: RekomenLaptop -> r.brand == "MSI"}
                             .forEach { rekomenLaptop.remove(it) }
                     rekomenLaptop.trimToSize()
+                    // START DEBUGGING
+                    /*var text = "get"
+                    rekomenLaptop.forEach{ text += it.nama + ", " }
+                    val toast = android.widget.Toast.makeText(activity,
+                        text,
+                        android.widget.Toast.LENGTH_LONG)
+                    toast.setGravity(android.view.Gravity.BOTTOM,0,130)
+                    toast.show()*/
+                    // END DEBUGGING
                     // Jika tidak ditemukan laptop sesuai masukan pengguna
                     if (rekomenLaptop.isEmpty()){
                         progressBar.visibility = View.GONE
@@ -301,15 +312,6 @@ class HasilFragment() : Fragment() {
                     // Jika ditemukan laptop sesuai masukan pengguna
                     else
                         rekomenLaptop.forEach{ getLaptop(it.nama) }
-                    // START DEBUGGING
-                    /*var text = "get"
-                    rekomenLaptop.forEach{ text += it.nama + ", " }
-                    val toast = android.widget.Toast.makeText(activity,
-                        text,
-                        android.widget.Toast.LENGTH_LONG)
-                    toast.setGravity(android.view.Gravity.BOTTOM,0,130)
-                    toast.show()*/
-                    // END DEBUGGING
                 }
             }
     }
@@ -347,12 +349,20 @@ class HasilFragment() : Fragment() {
                         document.getString("os")!!,
                         document.getString("penyimpanan")!!,
                         document.getString("tanggalRilis")!!,
-                        document.getString("webcam")!!)
+                        document.getString("webcam")!!,
+                        document.getLong("performa")!!.toInt(),
+                        document.getLong("portabilitas")!!.toInt())
                 }
                 if (laptop.name != ""){
                     listLaptop.add(laptop)
-                    progressBar.visibility = View.GONE
-                    showRecyclerList()
+                    if (listLaptop.count() == rekomenLaptop.count()){
+                        if (isPerforma)
+                            listLaptop.sortByDescending{ it.performa }
+                        else
+                            listLaptop.sortByDescending{ it.portabilitas }
+                        progressBar.visibility = View.GONE
+                        showRecyclerList()
+                    }
                 }
                 else
                     getLaptop(namaLaptop)

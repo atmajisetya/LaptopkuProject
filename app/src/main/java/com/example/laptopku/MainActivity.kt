@@ -103,7 +103,9 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
                         document.getString("os")!!,
                         document.getString("penyimpanan")!!,
                         document.getString("tanggalRilis")!!,
-                        document.getString("webcam")!!))
+                        document.getString("webcam")!!,
+                        document.getLong("performa")!!.toInt(),
+                        document.getLong("portabilitas")!!.toInt()))
                 }
                 if(listTerbaru.isNotEmpty()){
                     showRecyclerList()
