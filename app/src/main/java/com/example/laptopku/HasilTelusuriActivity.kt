@@ -3,17 +3,14 @@ package com.example.laptopku
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
-import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
-import com.google.firebase.firestore.FirebaseFirestore
-import com.google.firebase.firestore.Query
-import kotlinx.android.synthetic.main.activity_main.*
+import android.widget.TextView
+import kotlinx.android.synthetic.main.header_cari_laptop.*
 
 class HasilTelusuriActivity : AppCompatActivity(), View.OnClickListener {
     // Inisiasi variabel brand dan kategori untuk menerima operan dari Main Activity (bila ada)
     private var brand: String? = null
     private var kategori: String? = null
+    private var cari: String? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -23,14 +20,18 @@ class HasilTelusuriActivity : AppCompatActivity(), View.OnClickListener {
         // Assignment variabel operan
         brand = intent.getStringExtra("brand")
         kategori = intent.getStringExtra("kategori")
+        cari = intent.getStringExtra("cari")
         val transaction = supportFragmentManager.beginTransaction()
         when {
             // Jika Activity dipanggil dari ImageView Kategori: menampilkan kategori tertentu
             kategori != null -> transaction.add(R.id.hasilTelusuriFrameLayout, HasilFragment("kategori", kategori!!))
             // Jika Activity dipanggil dari ImageView Brand: menampilkan brand tertentu
             brand != null -> transaction.add(R.id.hasilTelusuriFrameLayout, HasilFragment("brand", brand!!))
-            // Jika Activity dipanggil biasa: menampilkan semua laptop
-            else -> transaction.add(R.id.hasilTelusuriFrameLayout, HasilFragment())
+            // Jika Activity dipanggil dari EditText Cari Laptop: menampilkan laptop yang dicari pengguna
+            cari != null -> {
+                headerCariLaptopEditText.setText(cari, TextView.BufferType.EDITABLE)
+                transaction.add(R.id.hasilTelusuriFrameLayout, HasilFragment("cari", cari!!))
+            }
         }
         transaction.commit()
 

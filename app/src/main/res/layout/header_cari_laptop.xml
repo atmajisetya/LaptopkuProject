@@ -28,6 +28,7 @@
         android:id="@+id/headerCariLaptopEditText"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:paddingLeft="3dp"
         android:background="#FFFFFF"
         android:hint="@string/cari_laptop"
         android:textSize="18sp"

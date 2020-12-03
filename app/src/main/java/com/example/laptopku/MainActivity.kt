@@ -4,7 +4,9 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import android.view.inputmethod.EditorInfo
 import android.widget.ImageView
+import android.widget.TextView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.firestore.FirebaseFirestore
@@ -31,6 +33,17 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
 
         // Memanggil data laptop rilis terbaru dari Firestore sekaligus ditampilkan
         loadLaptopTerbaru()
+
+        // Membuat event enter pada EditText Cari Laptop
+        cariLaptopEditText.setOnEditorActionListener(TextView.OnEditorActionListener { v, actionId, event ->
+            if (actionId == EditorInfo.IME_ACTION_SEARCH){
+                val moveIntent = Intent(this@MainActivity, HasilTelusuriActivity::class.java)
+                moveIntent.putExtra("cari", cariLaptopEditText.text.toString())
+                startActivity(moveIntent)
+                return@OnEditorActionListener true
+            }
+            false
+        })
 
         // Mendaftarkan event klik untuk pindah ke Activity HasilTelusuri
         val gaming: ImageView = findViewById(R.id.gamingImageView)
