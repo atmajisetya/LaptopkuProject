@@ -1,9 +1,13 @@
 package com.example.laptopku
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import android.view.inputmethod.EditorInfo
 import android.widget.TextView
+import androidx.fragment.app.FragmentTransaction
+import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.header_cari_laptop.*
 
 class HasilTelusuriActivity : AppCompatActivity(), View.OnClickListener {
@@ -11,6 +15,9 @@ class HasilTelusuriActivity : AppCompatActivity(), View.OnClickListener {
     private var brand: String? = null
     private var kategori: String? = null
     private var cari: String? = null
+
+    // Variabel transaksi fragment
+    private lateinit var transaction: FragmentTransaction
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -21,7 +28,7 @@ class HasilTelusuriActivity : AppCompatActivity(), View.OnClickListener {
         brand = intent.getStringExtra("brand")
         kategori = intent.getStringExtra("kategori")
         cari = intent.getStringExtra("cari")
-        val transaction = supportFragmentManager.beginTransaction()
+        transaction = supportFragmentManager.beginTransaction()
         when {
             // Jika Activity dipanggil dari ImageView Kategori: menampilkan kategori tertentu
             kategori != null -> transaction.add(R.id.hasilTelusuriFrameLayout, HasilFragment("kategori", kategori!!))
@@ -34,6 +41,21 @@ class HasilTelusuriActivity : AppCompatActivity(), View.OnClickListener {
             }
         }
         transaction.commit()
+
+        // Membuat event-event pada EditText Cari Laptop
+        headerCariLaptopEditText.isCursorVisible = false
+        headerCariLaptopEditText.setOnClickListener{
+            headerCariLaptopEditText.isCursorVisible = true
+        }
+        headerCariLaptopEditText.setOnEditorActionListener(TextView.OnEditorActionListener { v, actionId, event ->
+            if (actionId == EditorInfo.IME_ACTION_SEARCH){
+                transaction = supportFragmentManager.beginTransaction()
+                transaction.replace(R.id.hasilTelusuriFrameLayout, HasilFragment("cari", headerCariLaptopEditText.text.toString()))
+                transaction.commit()
+                return@OnEditorActionListener true
+            }
+            false
+        })
 
         // Mendaftarkan event klik untuk pindah Main Activity
         val telusuriImageView: android.widget.ImageView = findViewById(R.id.telusuriFooterTelusuriImageView)
