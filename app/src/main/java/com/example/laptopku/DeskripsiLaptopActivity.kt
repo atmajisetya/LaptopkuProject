@@ -1,14 +1,19 @@
 package com.example.laptopku
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import android.view.inputmethod.EditorInfo
 import android.widget.TextView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.DecodeFormat
 import com.bumptech.glide.request.RequestOptions
 import com.bumptech.glide.request.target.Target
 import kotlinx.android.synthetic.main.activity_deskripsi_laptop.*
+import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.activity_main.cariLaptopEditText
+import kotlinx.android.synthetic.main.header_cari_laptop.*
 
 class DeskripsiLaptopActivity : AppCompatActivity(), View.OnClickListener {
     // Variabel untuk menerima operan data spesifikasi laptop dari Activity sebelumnya
@@ -79,6 +84,21 @@ class DeskripsiLaptopActivity : AppCompatActivity(), View.OnClickListener {
                 tv_komunikasi.append(laptopTerbaru!!.komunikasi[i])
             }
         }
+
+        // Membuat event-event EditText Cari Laptop
+        headerCariLaptopEditText.isCursorVisible = false
+        headerCariLaptopEditText.setOnClickListener{
+            headerCariLaptopEditText.isCursorVisible = true
+        }
+        headerCariLaptopEditText.setOnEditorActionListener(TextView.OnEditorActionListener { v, actionId, event ->
+            if (actionId == EditorInfo.IME_ACTION_SEARCH){
+                val moveIntent = Intent(this@DeskripsiLaptopActivity, HasilTelusuriActivity::class.java)
+                moveIntent.putExtra("cari", headerCariLaptopEditText.text.toString())
+                startActivity(moveIntent)
+                return@OnEditorActionListener true
+            }
+            false
+        })
 
         // Mendaftarkan event klik untuk pindah Main Activity
         val telusuriImageView: android.widget.ImageView = findViewById(R.id.telusuriFooterTelusuriImageView)

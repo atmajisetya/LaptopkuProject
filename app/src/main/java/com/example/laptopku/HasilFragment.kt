@@ -7,9 +7,6 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
 import com.google.firebase.firestore.FirebaseFirestore
-import com.google.firebase.firestore.Query
-import kotlinx.android.synthetic.main.activity_main.*
-import java.sql.Timestamp
 
 // Konstruktor primer dipanggil ketika ingin menampilkan semua laptop
 class HasilFragment() : Fragment() {
@@ -98,7 +95,7 @@ class HasilFragment() : Fragment() {
 
         // Memanggil data yang diminta dari Firestore sekaligus ditampilkan
         when (extraType) {
-            "none" -> loadLaptopSemua()
+            "cari" -> loadLaptopCari()
             "brand" -> loadLaptopBrand()
             "kategori" -> loadLaptopKategori()
             "rekomendasi" -> loadLaptopRekomendasi()
@@ -106,7 +103,7 @@ class HasilFragment() : Fragment() {
     }
 
     // Memanggil data semua laptop dari Firestore sekaligus ditampilkan
-    private fun loadLaptopSemua(){
+    private fun loadLaptopCari(){
         val db = FirebaseFirestore.getInstance()
         db.collection("spekLaptop")
             .get()
@@ -137,11 +134,24 @@ class HasilFragment() : Fragment() {
                     ))
                 }
                 if(listLaptop.isNotEmpty()){
-                    showRecyclerList()
-                    progressBar.visibility = View.GONE
+                    listLaptop.filter {l: LaptopTerbaru -> !l.name.contains(extra, true) }
+                        .forEach { listLaptop.remove(it) }
+                    // Jika tidak ditemukan laptop sesuai masukan pengguna
+                    if (listLaptop.isEmpty()){
+                        progressBar.visibility = View.GONE
+                        val toast = android.widget.Toast.makeText(activity,
+                            "Tidak ditemukan laptop sesuai masukan Anda pada basis data kami.",
+                            android.widget.Toast.LENGTH_LONG)
+                        toast.setGravity(android.view.Gravity.BOTTOM,0,130)
+                        toast.show()
+                    }
+                    else{
+                        showRecyclerList()
+                        progressBar.visibility = View.GONE
+                    }
                 }
                 else
-                    loadLaptopSemua()
+                    loadLaptopCari()
             }
     }
 
@@ -291,15 +301,6 @@ class HasilFragment() : Fragment() {
                         rekomenLaptop.filter {r: RekomenLaptop -> r.brand == "MSI"}
                             .forEach { rekomenLaptop.remove(it) }
                     rekomenLaptop.trimToSize()
-                    // START DEBUGGING
-                    /*var text = "get"
-                    rekomenLaptop.forEach{ text += it.nama + ", " }
-                    val toast = android.widget.Toast.makeText(activity,
-                        text,
-                        android.widget.Toast.LENGTH_LONG)
-                    toast.setGravity(android.view.Gravity.BOTTOM,0,130)
-                    toast.show()*/
-                    // END DEBUGGING
                     // Jika tidak ditemukan laptop sesuai masukan pengguna
                     if (rekomenLaptop.isEmpty()){
                         progressBar.visibility = View.GONE
