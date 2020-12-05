@@ -402,6 +402,7 @@ class HasilFragment() : Fragment() {
 
     // Menampilkan overlay urutkan
     private fun tampilkanOverlayUrutkan(){
+        urutkanTextView.setBackgroundColor(0xFF969696.toInt())
         urutkanConstraintLayout.visibility = View.VISIBLE
         hitamTransparanLinearLayout.visibility = View.VISIBLE
         isOverlayUrutkan = true
@@ -409,6 +410,7 @@ class HasilFragment() : Fragment() {
 
     // Menampilkan overlay filter
     private fun tampilkanOverlayFilter(){
+        filterTextView.setBackgroundColor(0xFF969696.toInt())
         filterConstraintLayout.visibility = View.VISIBLE
         hitamTransparanLinearLayout.visibility = View.VISIBLE
         isOverlayFilter = true
@@ -416,6 +418,7 @@ class HasilFragment() : Fragment() {
 
     // Menyembunyikan overlay urutkan
     internal fun sembunyikanOverlayUrutkan(){
+        urutkanTextView.setBackgroundColor(0xFFFFFFFF.toInt())
         urutkanConstraintLayout.visibility = View.GONE
         hitamTransparanLinearLayout.visibility = View.GONE
         isOverlayUrutkan = false
@@ -423,6 +426,7 @@ class HasilFragment() : Fragment() {
 
     // Menyembunyikan overlay filter
     internal fun sembunyikanOverlayFilter(){
+        filterTextView.setBackgroundColor(0xFFFFFFFF.toInt())
         filterConstraintLayout.visibility = View.GONE
         hitamTransparanLinearLayout.visibility = View.GONE
         isOverlayFilter = false
