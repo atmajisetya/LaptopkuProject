@@ -105,19 +105,21 @@ class HasilTelusuriActivity : AppCompatActivity(), View.OnClickListener {
                 startActivity(moveIntent)
             }
             R.id.headerKembaliImageView -> {
-                if (hasilFragment.isOverlayUrutkan)
-                    hasilFragment.sembunyikanOverlayUrutkan()
-                else
-                    finish()
+                when {
+                    hasilFragment.isOverlayUrutkan -> hasilFragment.sembunyikanOverlayUrutkan()
+                    hasilFragment.isOverlayFilter -> hasilFragment.sembunyikanOverlayFilter()
+                    else -> finish()
+                }
             }
         }
     }
 
     // Override event tombol back
     override fun onBackPressed(){
-        if (hasilFragment.isOverlayUrutkan)
-            hasilFragment.sembunyikanOverlayUrutkan()
-        else
-            super.onBackPressed()
+        when {
+            hasilFragment.isOverlayUrutkan -> hasilFragment.sembunyikanOverlayUrutkan()
+            hasilFragment.isOverlayFilter -> hasilFragment.sembunyikanOverlayFilter()
+            else -> super.onBackPressed()
+        }
     }
 }

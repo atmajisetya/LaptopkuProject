@@ -112,12 +112,6 @@ class RekomendasiActivity : AppCompatActivity(), View.OnClickListener {
                             transaction.addToBackStack(null)
                             transaction.commit()
                             currentFragment = "brand"
-                            // START DEBUGGING
-                            /*if (prioritasFragment.isPerforma)
-                                showToast("Performa")
-                            else
-                                showToast("Portabilitas")*/
-                            // END DEBUGGING
                         }
                     }
                     "brand" -> {
@@ -144,11 +138,13 @@ class RekomendasiActivity : AppCompatActivity(), View.OnClickListener {
                 if (currentFragment == "budget")
                     finish()
                 else {
-                    if (hasilFragment.isOverlayUrutkan)
-                        hasilFragment.sembunyikanOverlayUrutkan()
-                    else{
-                        fragmentManager.popBackStack()
-                        sesuaikanCurrentFragmentKetikaKembali()
+                    when {
+                        hasilFragment.isOverlayUrutkan -> hasilFragment.sembunyikanOverlayUrutkan()
+                        hasilFragment.isOverlayFilter -> hasilFragment.sembunyikanOverlayFilter()
+                        else -> {
+                            fragmentManager.popBackStack()
+                            sesuaikanCurrentFragmentKetikaKembali()
+                        }
                     }
                 }
             }
@@ -156,11 +152,13 @@ class RekomendasiActivity : AppCompatActivity(), View.OnClickListener {
     }
 
     override fun onBackPressed(){
-        if (hasilFragment.isOverlayUrutkan)
-            hasilFragment.sembunyikanOverlayUrutkan()
-        else{
-            super.onBackPressed()
-            sesuaikanCurrentFragmentKetikaKembali()
+        when {
+            hasilFragment.isOverlayUrutkan -> hasilFragment.sembunyikanOverlayUrutkan()
+            hasilFragment.isOverlayFilter -> hasilFragment.sembunyikanOverlayFilter()
+            else -> {
+                super.onBackPressed()
+                sesuaikanCurrentFragmentKetikaKembali()
+            }
         }
     }
 

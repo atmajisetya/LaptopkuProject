@@ -21,7 +21,7 @@ class HasilFragment() : Fragment() {
     private var grafis2D = true
     private var grafis3D = true
     private var editingVideo = true
-    private var pekerjaanRingan = true
+    private var pekerjaanRingan = false
     private var isPerforma = false
     private var isAcer = true
     private var isAsus = true
@@ -41,6 +41,7 @@ class HasilFragment() : Fragment() {
 
     // Boolean untuk mengetahui apakah overlay sedang tampil
     internal var isOverlayUrutkan = false
+    internal var isOverlayFilter = false
 
     // Konstruktor sekunder dipanggil ketika pengguna meminta brand atau kategori tertentu
     constructor(extraType: String, extra: String) : this(){
@@ -104,12 +105,24 @@ class HasilFragment() : Fragment() {
 
         // Menambahkan event urutkan
         urutkanTextView.setOnClickListener{
+            if (isOverlayFilter)
+                sembunyikanOverlayFilter()
             tampilkanOverlayUrutkan()
+        }
+
+        // Menambahkan event filter
+        filterTextView.setOnClickListener{
+            if (isOverlayUrutkan)
+                sembunyikanOverlayUrutkan()
+            tampilkanOverlayFilter()
         }
 
         // Menambahkan event hitamTransparanLinearLayout
         hitamTransparanLinearLayout.setOnClickListener{
-            sembunyikanOverlayUrutkan()
+            if (isOverlayUrutkan)
+                sembunyikanOverlayUrutkan()
+            else
+                sembunyikanOverlayFilter()
         }
     }
 
@@ -388,10 +401,17 @@ class HasilFragment() : Fragment() {
     }
 
     // Menampilkan overlay urutkan
-    internal fun tampilkanOverlayUrutkan(){
+    private fun tampilkanOverlayUrutkan(){
         urutkanConstraintLayout.visibility = View.VISIBLE
         hitamTransparanLinearLayout.visibility = View.VISIBLE
         isOverlayUrutkan = true
+    }
+
+    // Menampilkan overlay filter
+    private fun tampilkanOverlayFilter(){
+        filterConstraintLayout.visibility = View.VISIBLE
+        hitamTransparanLinearLayout.visibility = View.VISIBLE
+        isOverlayFilter = true
     }
 
     // Menyembunyikan overlay urutkan
@@ -399,5 +419,12 @@ class HasilFragment() : Fragment() {
         urutkanConstraintLayout.visibility = View.GONE
         hitamTransparanLinearLayout.visibility = View.GONE
         isOverlayUrutkan = false
+    }
+
+    // Menyembunyikan overlay filter
+    internal fun sembunyikanOverlayFilter(){
+        filterConstraintLayout.visibility = View.GONE
+        hitamTransparanLinearLayout.visibility = View.GONE
+        isOverlayFilter = false
     }
 }
