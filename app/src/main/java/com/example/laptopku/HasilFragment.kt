@@ -99,9 +99,18 @@ class HasilFragment() : Fragment() {
         // Memanggil data yang diminta dari Firestore sekaligus ditampilkan
         when (extraType) {
             "cari" -> loadLaptopCari()
-            "brand" -> loadLaptopBrand()
-            "kategori" -> loadLaptopKategori()
-            "rekomendasi" -> loadLaptopRekomendasi()
+            "brand" -> {
+                loadLaptopBrand()
+                palingSesuaiButton.visibility = View.INVISIBLE
+            }
+            "kategori" -> {
+                loadLaptopKategori()
+                palingSesuaiButton.visibility = View.INVISIBLE
+            }
+            "rekomendasi" -> {
+                loadLaptopRekomendasi()
+                palingSesuaiButton.visibility = View.INVISIBLE
+            }
         }
 
         // Menambahkan event urutkan
@@ -174,6 +183,8 @@ class HasilFragment() : Fragment() {
                         listLaptop.sortBy{ it.name.compareTo(extra, true).absoluteValue }
                         showRecyclerList()
                         progressBar.visibility = View.GONE
+                        palingSesuaiButton.setBackgroundResource(R.drawable.bg_button_ungu)
+                        palingSesuaiButton.setTextColor(0xFF330099.toInt())
                     }
                 }
                 else
@@ -259,6 +270,22 @@ class HasilFragment() : Fragment() {
                 if(listLaptop.isNotEmpty()){
                     showRecyclerList()
                     progressBar.visibility = View.GONE
+                    if (extra == "Gaming"){
+                        gamingButton.setBackgroundResource(R.drawable.bg_button_ungu)
+                        gamingButton.setTextColor(0xFF330099.toInt())
+                    }
+                    else if (extra == "Pelajar"){
+                        pelajarButton.setBackgroundResource(R.drawable.bg_button_ungu)
+                        pelajarButton.setTextColor(0xFF330099.toInt())
+                    }
+                    else if (extra == "Profesional"){
+                        profesionalButton.setBackgroundResource(R.drawable.bg_button_ungu)
+                        profesionalButton.setTextColor(0xFF330099.toInt())
+                    }
+                    else{
+                        workstationButton.setBackgroundResource(R.drawable.bg_button_ungu)
+                        workstationButton.setTextColor(0xFF330099.toInt())
+                    }
                 }
                 else
                     loadLaptopKategori()
@@ -383,10 +410,16 @@ class HasilFragment() : Fragment() {
                 if (laptop.name != ""){
                     listLaptop.add(laptop)
                     if (listLaptop.count() == rekomenLaptop.count()){
-                        if (isPerforma)
+                        if (isPerforma){
                             listLaptop.sortByDescending{ it.performa }
-                        else
+                            performaButton.setBackgroundResource(R.drawable.bg_button_ungu)
+                            performaButton.setTextColor(0xFF330099.toInt())
+                        }
+                        else{
                             listLaptop.sortByDescending{ it.portabilitas }
+                            portabilitasButton.setBackgroundResource(R.drawable.bg_button_ungu)
+                            portabilitasButton.setTextColor(0xFF330099.toInt())
+                        }
                         progressBar.visibility = View.GONE
                         showRecyclerList()
                     }
