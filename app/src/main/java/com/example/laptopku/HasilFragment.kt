@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.android.synthetic.main.fragment_hasil.*
+import kotlin.math.absoluteValue
 
 // Konstruktor primer dipanggil ketika ingin menampilkan semua laptop
 class HasilFragment() : Fragment() {
@@ -170,6 +171,7 @@ class HasilFragment() : Fragment() {
                         toast.show()
                     }
                     else{
+                        listLaptop.sortBy{ it.name.compareTo(extra, true).absoluteValue }
                         showRecyclerList()
                         progressBar.visibility = View.GONE
                     }
