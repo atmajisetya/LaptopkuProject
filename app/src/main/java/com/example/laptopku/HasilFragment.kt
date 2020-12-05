@@ -39,6 +39,9 @@ class HasilFragment() : Fragment() {
     private val listLaptop: ArrayList<LaptopTerbaru> = arrayListOf()
     private val rekomenLaptop: ArrayList<RekomenLaptop> = arrayListOf()
 
+    // Boolean untuk mengetahui apakah overlay sedang tampil
+    internal var isOverlayUrutkan = false
+
     // Konstruktor sekunder dipanggil ketika pengguna meminta brand atau kategori tertentu
     constructor(extraType: String, extra: String) : this(){
         this.extraType = extraType
@@ -101,14 +104,12 @@ class HasilFragment() : Fragment() {
 
         // Menambahkan event urutkan
         urutkanTextView.setOnClickListener{
-            urutkanConstraintLayout.visibility = View.VISIBLE
-            hitamTransparanLinearLayout.visibility = View.VISIBLE
+            tampilkanOverlayUrutkan()
         }
 
         // Menambahkan event hitamTransparanLinearLayout
         hitamTransparanLinearLayout.setOnClickListener{
-            urutkanConstraintLayout.visibility = View.GONE
-            hitamTransparanLinearLayout.visibility = View.GONE
+            sembunyikanOverlayUrutkan()
         }
     }
 
@@ -384,5 +385,19 @@ class HasilFragment() : Fragment() {
         hasilRecyclerView.layoutManager = GridLayoutManager(activity, 2)
         val listLaptopTerbaruAdapter = ListLaptopTerbaruAdapter(activity, listLaptop)
         hasilRecyclerView.adapter = listLaptopTerbaruAdapter
+    }
+
+    // Menampilkan overlay urutkan
+    internal fun tampilkanOverlayUrutkan(){
+        urutkanConstraintLayout.visibility = View.VISIBLE
+        hitamTransparanLinearLayout.visibility = View.VISIBLE
+        isOverlayUrutkan = true
+    }
+
+    // Menyembunyikan overlay urutkan
+    internal fun sembunyikanOverlayUrutkan(){
+        urutkanConstraintLayout.visibility = View.GONE
+        hitamTransparanLinearLayout.visibility = View.GONE
+        isOverlayUrutkan = false
     }
 }

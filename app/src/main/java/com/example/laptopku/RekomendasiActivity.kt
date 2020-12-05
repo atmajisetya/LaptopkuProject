@@ -20,6 +20,7 @@ class RekomendasiActivity : AppCompatActivity(), View.OnClickListener {
     private lateinit var keperluanFragment: KeperluanFragment
     private lateinit var prioritasFragment: PrioritasFragment
     private lateinit var brandFragment: BrandFragment
+    private var hasilFragment = HasilFragment()
 
     // Variabel agar Activity dapat mengenali sedang memuat fragment yang mana
     private var currentFragment = "budget"
@@ -88,9 +89,6 @@ class RekomendasiActivity : AppCompatActivity(), View.OnClickListener {
                             transaction.commit()
                             sebelumnyaButton.setBackgroundResource(R.drawable.bg_button_biru)
                             currentFragment = "keperluan"
-                            // START DEBUGGING
-                            //showToast("min: " + budgetFragment.min.toString() + ", max: " + budgetFragment.max.toString())
-                            // END DEBUGGING
                         }
                     }
                     "keperluan" -> {
@@ -103,22 +101,6 @@ class RekomendasiActivity : AppCompatActivity(), View.OnClickListener {
                             transaction.addToBackStack(null)
                             transaction.commit()
                             currentFragment = "prioritas"
-                            // START DEBUGGING
-                            /*var keperluan = "keperluan: "
-                            if (keperluanFragment.gameBerat)
-                                keperluan += "game berat, "
-                            if (keperluanFragment.kalkulasiRumit)
-                                keperluan += "kalkulasi rumit, "
-                            if (keperluanFragment.grafis2D)
-                                keperluan += "grafis 2D, "
-                            if (keperluanFragment.grafis3D)
-                                keperluan += "grafis 3D, "
-                            if (keperluanFragment.editingVideo)
-                                keperluan += "editing video, "
-                            if (keperluanFragment.pekerjaanRingan)
-                                keperluan += "pekerjaan ringan."
-                            showToast(keperluan)*/
-                            // END DEBUGGING
                         }
                     }
                     "prioritas" -> {
@@ -143,30 +125,17 @@ class RekomendasiActivity : AppCompatActivity(), View.OnClickListener {
                             !brandFragment.isLenovo && !brandFragment.isMsi)
                             showToast("Harus ada minimal satu keperluan yang dipilih.")
                         else{
-                            transaction.replace(R.id.rekomendasiFrameLayout, HasilFragment(budgetFragment.min,
+                            hasilFragment = HasilFragment(budgetFragment.min,
                                 budgetFragment.max, keperluanFragment.gameBerat, keperluanFragment.kalkulasiRumit,
                                 keperluanFragment.grafis2D, keperluanFragment.grafis3D, keperluanFragment.editingVideo,
                                 keperluanFragment.pekerjaanRingan, prioritasFragment.isPerforma, brandFragment.isAcer,
-                                brandFragment.isAsus, brandFragment.isHp, brandFragment.isLenovo, brandFragment.isMsi))
+                                brandFragment.isAsus, brandFragment.isHp, brandFragment.isLenovo, brandFragment.isMsi)
+                            transaction.replace(R.id.rekomendasiFrameLayout, hasilFragment)
                             transaction.addToBackStack(null)
                             transaction.commit()
                             sebelumnyaButton.visibility = View.GONE
                             selanjutnyaButton.visibility = View.GONE
                             currentFragment = "hasil"
-                            // START DEBUGGING
-                            /*var brand = "keperluan: "
-                            if (brandFragment.isAcer)
-                                brand += "Acer, "
-                            if (brandFragment.isAsus)
-                                brand += "Asus, "
-                            if (brandFragment.isHp)
-                                brand += "HP, "
-                            if (brandFragment.isLenovo)
-                                brand += "Lenovo, "
-                            if (brandFragment.isMsi)
-                                brand += "MSI."
-                            showToast(brand)*/
-                            // END DEBUGGING
                         }
                     }
                 }
@@ -175,16 +144,24 @@ class RekomendasiActivity : AppCompatActivity(), View.OnClickListener {
                 if (currentFragment == "budget")
                     finish()
                 else {
-                    fragmentManager.popBackStack()
-                    sesuaikanCurrentFragmentKetikaKembali()
+                    if (hasilFragment.isOverlayUrutkan)
+                        hasilFragment.sembunyikanOverlayUrutkan()
+                    else{
+                        fragmentManager.popBackStack()
+                        sesuaikanCurrentFragmentKetikaKembali()
+                    }
                 }
             }
         }
     }
 
     override fun onBackPressed(){
-        super.onBackPressed()
-        sesuaikanCurrentFragmentKetikaKembali()
+        if (hasilFragment.isOverlayUrutkan)
+            hasilFragment.sembunyikanOverlayUrutkan()
+        else{
+            super.onBackPressed()
+            sesuaikanCurrentFragmentKetikaKembali()
+        }
     }
 
     fun showToast(text: String){
