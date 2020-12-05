@@ -97,6 +97,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         val db = FirebaseFirestore.getInstance()
         db.collection("spekLaptop")
             .orderBy("tanggalRilis", Query.Direction.DESCENDING)
+            .limit(5)
             .get()
             .addOnSuccessListener {result ->
                 for (document in result){

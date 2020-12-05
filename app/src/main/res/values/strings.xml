@@ -69,5 +69,12 @@
     <string name="ac_adapter">AC Adapter</string>
     <string name="dimensi">Dimensi</string>
     <string name="berat">Berat</string>
+    <string name="paling_sesuai">Paling Sesuai</string>
+    <string name="terbaru">Terbaru</string>
+    <string name="harga_tertinggi">Harga Tertinggi</string>
+    <string name="harga_terendah">Harga Terendah</string>
+    <string name="performa">Performa</string>
+    <string name="portabilitas">Portabilitas</string>
+    <string name="harga">Harga</string>
 
 </resources>

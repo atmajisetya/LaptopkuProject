@@ -7,6 +7,8 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
 import com.google.firebase.firestore.FirebaseFirestore
+import kotlinx.android.synthetic.main.fragment_hasil.*
+import kotlin.math.absoluteValue
 
 // Konstruktor primer dipanggil ketika ingin menampilkan semua laptop
 class HasilFragment() : Fragment() {
@@ -20,16 +22,13 @@ class HasilFragment() : Fragment() {
     private var grafis2D = true
     private var grafis3D = true
     private var editingVideo = true
-    private var pekerjaanRingan = true
+    private var pekerjaanRingan = false
     private var isPerforma = false
     private var isAcer = true
     private var isAsus = true
     private var isHp = true
     private var isLenovo = true
     private var isMsi = true
-
-    // Inisiasi variabel untuk menampilkan icon urutkan dan filter
-    private lateinit var textView: android.widget.TextView
 
     // Inisiasi variabel RecyclerView yang akan menampilkan grid laptop
     private lateinit var hasilRecyclerView: androidx.recyclerview.widget.RecyclerView
@@ -40,6 +39,10 @@ class HasilFragment() : Fragment() {
     // Inisiasi ArrayList untuk menampung data laptop yang diminta
     private val listLaptop: ArrayList<LaptopTerbaru> = arrayListOf()
     private val rekomenLaptop: ArrayList<RekomenLaptop> = arrayListOf()
+
+    // Boolean untuk mengetahui apakah overlay sedang tampil
+    internal var isOverlayUrutkan = false
+    internal var isOverlayFilter = false
 
     // Konstruktor sekunder dipanggil ketika pengguna meminta brand atau kategori tertentu
     constructor(extraType: String, extra: String) : this(){
@@ -77,13 +80,13 @@ class HasilFragment() : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        // Menampilkan icon urutkan dan filter
-        textView = view.findViewById(R.id.urutkanTextView)
-        textView.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_urutkan,0,0,0)
-        textView.compoundDrawablePadding = 32
-        textView = view.findViewById(R.id.filterTextView)
-        textView.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_filter,0,0,0)
-        textView.compoundDrawablePadding = 32
+        // Menampilkan icon urutkan
+        urutkanTextView.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_urutkan,0,0,0)
+        urutkanTextView.compoundDrawablePadding = 32
+
+        // Menampilkan icon filter
+        filterTextView.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_filter,0,0,0)
+        filterTextView.compoundDrawablePadding = 32
 
         // Menghubungkan variabel RecyclerView dengan RecyclerView sesungguhnya
         hasilRecyclerView = view.findViewById(R.id.hasilRecyclerView)
@@ -96,9 +99,70 @@ class HasilFragment() : Fragment() {
         // Memanggil data yang diminta dari Firestore sekaligus ditampilkan
         when (extraType) {
             "cari" -> loadLaptopCari()
-            "brand" -> loadLaptopBrand()
-            "kategori" -> loadLaptopKategori()
-            "rekomendasi" -> loadLaptopRekomendasi()
+            "brand" -> {
+                loadLaptopBrand()
+                palingSesuaiButton.visibility = View.INVISIBLE
+            }
+            "kategori" -> {
+                loadLaptopKategori()
+                palingSesuaiButton.visibility = View.INVISIBLE
+            }
+            "rekomendasi" -> {
+                loadLaptopRekomendasi()
+                palingSesuaiButton.visibility = View.INVISIBLE
+            }
+        }
+
+        // Menambahkan event urutkan
+        urutkanTextView.setOnClickListener{
+            if (isOverlayFilter)
+                sembunyikanOverlayFilter()
+            tampilkanOverlayUrutkan()
+        }
+        palingSesuaiButton.setOnClickListener{
+            pilihButtonUrutkan("Paling Sesuai")
+        }
+        terbaruButton.setOnClickListener{
+            pilihButtonUrutkan("Terbaru")
+        }
+        hargaTertinggiButton.setOnClickListener{
+            pilihButtonUrutkan("Harga Tertinggi")
+        }
+        hargaTerendahButton.setOnClickListener{
+            pilihButtonUrutkan("Harga Terendah")
+        }
+        performaButton.setOnClickListener{
+            pilihButtonUrutkan("Performa")
+        }
+        portabilitasButton.setOnClickListener{
+            pilihButtonUrutkan("Portabilitas")
+        }
+
+        // Menambahkan event filter
+        filterTextView.setOnClickListener{
+            if (isOverlayUrutkan)
+                sembunyikanOverlayUrutkan()
+            tampilkanOverlayFilter()
+        }
+        gamingButton.setOnClickListener{
+            pilihButtonFilter("Gaming")
+        }
+        profesionalButton.setOnClickListener{
+            pilihButtonFilter("Profesional")
+        }
+        pelajarButton.setOnClickListener{
+            pilihButtonFilter("Pelajar")
+        }
+        workstationButton.setOnClickListener{
+            pilihButtonFilter("Workstation")
+        }
+
+        // Menambahkan event hitamTransparanLinearLayout
+        hitamTransparanLinearLayout.setOnClickListener{
+            if (isOverlayUrutkan)
+                sembunyikanOverlayUrutkan()
+            else
+                sembunyikanOverlayFilter()
         }
     }
 
@@ -146,8 +210,11 @@ class HasilFragment() : Fragment() {
                         toast.show()
                     }
                     else{
+                        listLaptop.sortBy{ it.name.compareTo(extra, true).absoluteValue }
                         showRecyclerList()
                         progressBar.visibility = View.GONE
+                        palingSesuaiButton.setBackgroundResource(R.drawable.bg_button_ungu)
+                        palingSesuaiButton.setTextColor(-13434727) //biru
                     }
                 }
                 else
@@ -233,6 +300,22 @@ class HasilFragment() : Fragment() {
                 if(listLaptop.isNotEmpty()){
                     showRecyclerList()
                     progressBar.visibility = View.GONE
+                    if (extra == "Gaming"){
+                        gamingButton.setBackgroundResource(R.drawable.bg_button_ungu)
+                        gamingButton.setTextColor(-13434727) //biru
+                    }
+                    else if (extra == "Pelajar"){
+                        pelajarButton.setBackgroundResource(R.drawable.bg_button_ungu)
+                        pelajarButton.setTextColor(-13434727) //biru
+                    }
+                    else if (extra == "Profesional"){
+                        profesionalButton.setBackgroundResource(R.drawable.bg_button_ungu)
+                        profesionalButton.setTextColor(-13434727) //biru
+                    }
+                    else{
+                        workstationButton.setBackgroundResource(R.drawable.bg_button_ungu)
+                        workstationButton.setTextColor(-13434727) //biru
+                    }
                 }
                 else
                     loadLaptopKategori()
@@ -357,10 +440,16 @@ class HasilFragment() : Fragment() {
                 if (laptop.name != ""){
                     listLaptop.add(laptop)
                     if (listLaptop.count() == rekomenLaptop.count()){
-                        if (isPerforma)
+                        if (isPerforma){
                             listLaptop.sortByDescending{ it.performa }
-                        else
+                            performaButton.setBackgroundResource(R.drawable.bg_button_ungu)
+                            performaButton.setTextColor(-13434727) //biru
+                        }
+                        else{
                             listLaptop.sortByDescending{ it.portabilitas }
+                            portabilitasButton.setBackgroundResource(R.drawable.bg_button_ungu)
+                            portabilitasButton.setTextColor(-13434727) //biru
+                        }
                         progressBar.visibility = View.GONE
                         showRecyclerList()
                     }
@@ -374,5 +463,119 @@ class HasilFragment() : Fragment() {
         hasilRecyclerView.layoutManager = GridLayoutManager(activity, 2)
         val listLaptopTerbaruAdapter = ListLaptopTerbaruAdapter(activity, listLaptop)
         hasilRecyclerView.adapter = listLaptopTerbaruAdapter
+    }
+
+    private fun tampilkanOverlayUrutkan(){
+        urutkanTextView.setBackgroundColor(-6908266) //abu
+        urutkanConstraintLayout.visibility = View.VISIBLE
+        hitamTransparanLinearLayout.visibility = View.VISIBLE
+        isOverlayUrutkan = true
+    }
+
+    private fun tampilkanOverlayFilter(){
+        filterTextView.setBackgroundColor(-6908266) //abu
+        filterConstraintLayout.visibility = View.VISIBLE
+        hitamTransparanLinearLayout.visibility = View.VISIBLE
+        isOverlayFilter = true
+    }
+
+    internal fun sembunyikanOverlayUrutkan(){
+        urutkanTextView.setBackgroundColor(-1) //putih
+        urutkanConstraintLayout.visibility = View.GONE
+        hitamTransparanLinearLayout.visibility = View.GONE
+        isOverlayUrutkan = false
+    }
+
+    internal fun sembunyikanOverlayFilter(){
+        filterTextView.setBackgroundColor(-1) //putih
+        filterConstraintLayout.visibility = View.GONE
+        hitamTransparanLinearLayout.visibility = View.GONE
+        isOverlayFilter = false
+    }
+
+    private fun pilihButtonUrutkan(button: String){
+        if (button == "Paling Sesuai"){
+            palingSesuaiButton.setTextColor(-13434727) //biru
+            palingSesuaiButton.setBackgroundResource(R.drawable.bg_button_ungu)
+        }
+        else if (palingSesuaiButton.visibility == View.VISIBLE){
+            palingSesuaiButton.setTextColor(-6908266) //abu
+            palingSesuaiButton.setBackgroundResource(R.drawable.bg_button_putih)
+        }
+        if (button == "Terbaru"){
+            terbaruButton.setTextColor(-13434727) //biru
+            terbaruButton.setBackgroundResource(R.drawable.bg_button_ungu)
+        }
+        else{
+            terbaruButton.setTextColor(-6908266) //abu
+            terbaruButton.setBackgroundResource(R.drawable.bg_button_putih)
+        }
+        if (button == "Harga Tertinggi"){
+            hargaTertinggiButton.setTextColor(-13434727) //biru
+            hargaTertinggiButton.setBackgroundResource(R.drawable.bg_button_ungu)
+        }
+        else{
+            hargaTertinggiButton.setTextColor(-6908266) //abu
+            hargaTertinggiButton.setBackgroundResource(R.drawable.bg_button_putih)
+        }
+        if (button == "Harga Terendah"){
+            hargaTerendahButton.setTextColor(-13434727) //biru
+            hargaTerendahButton.setBackgroundResource(R.drawable.bg_button_ungu)
+        }
+        else{
+            hargaTerendahButton.setTextColor(-6908266) //abu
+            hargaTerendahButton.setBackgroundResource(R.drawable.bg_button_putih)
+        }
+        if (button == "Performa"){
+            performaButton.setTextColor(-13434727) //biru
+            performaButton.setBackgroundResource(R.drawable.bg_button_ungu)
+        }
+        else{
+            performaButton.setTextColor(-6908266) //abu
+            performaButton.setBackgroundResource(R.drawable.bg_button_putih)
+        }
+        if (button == "Portabilitas"){
+            portabilitasButton.setTextColor(-13434727)
+            portabilitasButton.setBackgroundResource(R.drawable.bg_button_ungu)
+        }
+        else{
+            portabilitasButton.setTextColor(-6908266) //abu
+            portabilitasButton.setBackgroundResource(R.drawable.bg_button_putih)
+        }
+    }
+
+    private fun pilihButtonFilter(button: String){
+        if (button == "Gaming"){
+            gamingButton.setTextColor(-13434727) //biru
+            gamingButton.setBackgroundResource(R.drawable.bg_button_ungu)
+        }
+        else{
+            gamingButton.setTextColor(-6908266) //abu
+            gamingButton.setBackgroundResource(R.drawable.bg_button_putih)
+        }
+        if (button == "Profesional"){
+            profesionalButton.setTextColor(-13434727) //biru
+            profesionalButton.setBackgroundResource(R.drawable.bg_button_ungu)
+        }
+        else{
+            profesionalButton.setTextColor(-6908266) //abu
+            profesionalButton.setBackgroundResource(R.drawable.bg_button_putih)
+        }
+        if (button == "Pelajar"){
+            pelajarButton.setTextColor(-13434727) //biru
+            pelajarButton.setBackgroundResource(R.drawable.bg_button_ungu)
+        }
+        else{
+            pelajarButton.setTextColor(-6908266) //abu
+            pelajarButton.setBackgroundResource(R.drawable.bg_button_putih)
+        }
+        if (button == "Workstation"){
+            workstationButton.setTextColor(-13434727) //biru
+            workstationButton.setBackgroundResource(R.drawable.bg_button_ungu)
+        }
+        else{
+            workstationButton.setTextColor(-6908266) //abu
+            workstationButton.setBackgroundResource(R.drawable.bg_button_putih)
+        }
     }
 }

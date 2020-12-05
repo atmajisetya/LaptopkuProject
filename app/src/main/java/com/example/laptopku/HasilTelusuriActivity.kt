@@ -7,7 +7,6 @@ import android.view.View
 import android.view.inputmethod.EditorInfo
 import android.widget.TextView
 import androidx.fragment.app.FragmentTransaction
-import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.header_cari_laptop.*
 
 class HasilTelusuriActivity : AppCompatActivity(), View.OnClickListener {
@@ -17,6 +16,7 @@ class HasilTelusuriActivity : AppCompatActivity(), View.OnClickListener {
     private var cari: String? = null
 
     // Variabel transaksi fragment
+    private lateinit var hasilFragment: HasilFragment
     private lateinit var transaction: FragmentTransaction
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -31,13 +31,20 @@ class HasilTelusuriActivity : AppCompatActivity(), View.OnClickListener {
         transaction = supportFragmentManager.beginTransaction()
         when {
             // Jika Activity dipanggil dari ImageView Kategori: menampilkan kategori tertentu
-            kategori != null -> transaction.add(R.id.hasilTelusuriFrameLayout, HasilFragment("kategori", kategori!!))
+            kategori != null -> {
+                hasilFragment = HasilFragment("kategori", kategori!!)
+                transaction.add(R.id.hasilTelusuriFrameLayout, hasilFragment)
+            }
             // Jika Activity dipanggil dari ImageView Brand: menampilkan brand tertentu
-            brand != null -> transaction.add(R.id.hasilTelusuriFrameLayout, HasilFragment("brand", brand!!))
+            brand != null -> {
+                hasilFragment = HasilFragment("brand", brand!!)
+                transaction.add(R.id.hasilTelusuriFrameLayout, hasilFragment)
+            }
             // Jika Activity dipanggil dari EditText Cari Laptop: menampilkan laptop yang dicari pengguna
             cari != null -> {
                 headerCariLaptopEditText.setText(cari, TextView.BufferType.EDITABLE)
-                transaction.add(R.id.hasilTelusuriFrameLayout, HasilFragment("cari", cari!!))
+                hasilFragment = HasilFragment("cari", cari!!)
+                transaction.add(R.id.hasilTelusuriFrameLayout, hasilFragment)
             }
         }
         transaction.commit()
@@ -82,22 +89,37 @@ class HasilTelusuriActivity : AppCompatActivity(), View.OnClickListener {
     override fun onClick(v: View?){
         when(v?.id){
             R.id.telusuriFooterTelusuriImageView ->{
-                val moveIntent = android.content.Intent(this@HasilTelusuriActivity, MainActivity::class.java)
+                val moveIntent = Intent(this@HasilTelusuriActivity, MainActivity::class.java)
                 startActivity(moveIntent)
             }
             R.id.telusuriFooterRekomendasiImageView ->{
-                val moveIntent = android.content.Intent(this@HasilTelusuriActivity, RekomendasiActivity::class.java)
+                val moveIntent = Intent(this@HasilTelusuriActivity, RekomendasiActivity::class.java)
                 startActivity(moveIntent)
             }
             R.id.telusuriFooterBandingkanImageView ->{
-                val moveIntent = android.content.Intent(this@HasilTelusuriActivity, BandingkanActivity::class.java)
+                val moveIntent = Intent(this@HasilTelusuriActivity, BandingkanActivity::class.java)
                 startActivity(moveIntent)
             }
             R.id.headerFavoriteImageView ->{
-                val moveIntent = android.content.Intent(this@HasilTelusuriActivity, FavoriteActivity::class.java)
+                val moveIntent = Intent(this@HasilTelusuriActivity, FavoriteActivity::class.java)
                 startActivity(moveIntent)
             }
-            R.id.headerKembaliImageView -> finish()
+            R.id.headerKembaliImageView -> {
+                when {
+                    hasilFragment.isOverlayUrutkan -> hasilFragment.sembunyikanOverlayUrutkan()
+                    hasilFragment.isOverlayFilter -> hasilFragment.sembunyikanOverlayFilter()
+                    else -> finish()
+                }
+            }
+        }
+    }
+
+    // Override event tombol back
+    override fun onBackPressed(){
+        when {
+            hasilFragment.isOverlayUrutkan -> hasilFragment.sembunyikanOverlayUrutkan()
+            hasilFragment.isOverlayFilter -> hasilFragment.sembunyikanOverlayFilter()
+            else -> super.onBackPressed()
         }
     }
 }
