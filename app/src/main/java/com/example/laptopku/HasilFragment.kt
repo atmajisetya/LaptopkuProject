@@ -119,12 +119,42 @@ class HasilFragment() : Fragment() {
                 sembunyikanOverlayFilter()
             tampilkanOverlayUrutkan()
         }
+        palingSesuaiButton.setOnClickListener{
+            pilihButtonUrutkan("Paling Sesuai")
+        }
+        terbaruButton.setOnClickListener{
+            pilihButtonUrutkan("Terbaru")
+        }
+        hargaTertinggiButton.setOnClickListener{
+            pilihButtonUrutkan("Harga Tertinggi")
+        }
+        hargaTerendahButton.setOnClickListener{
+            pilihButtonUrutkan("Harga Terendah")
+        }
+        performaButton.setOnClickListener{
+            pilihButtonUrutkan("Performa")
+        }
+        portabilitasButton.setOnClickListener{
+            pilihButtonUrutkan("Portabilitas")
+        }
 
         // Menambahkan event filter
         filterTextView.setOnClickListener{
             if (isOverlayUrutkan)
                 sembunyikanOverlayUrutkan()
             tampilkanOverlayFilter()
+        }
+        gamingButton.setOnClickListener{
+            pilihButtonFilter("Gaming")
+        }
+        profesionalButton.setOnClickListener{
+            pilihButtonFilter("Profesional")
+        }
+        pelajarButton.setOnClickListener{
+            pilihButtonFilter("Pelajar")
+        }
+        workstationButton.setOnClickListener{
+            pilihButtonFilter("Workstation")
         }
 
         // Menambahkan event hitamTransparanLinearLayout
@@ -435,7 +465,6 @@ class HasilFragment() : Fragment() {
         hasilRecyclerView.adapter = listLaptopTerbaruAdapter
     }
 
-    // Menampilkan overlay urutkan
     private fun tampilkanOverlayUrutkan(){
         urutkanTextView.setBackgroundColor(0xFF969696.toInt())
         urutkanConstraintLayout.visibility = View.VISIBLE
@@ -443,7 +472,6 @@ class HasilFragment() : Fragment() {
         isOverlayUrutkan = true
     }
 
-    // Menampilkan overlay filter
     private fun tampilkanOverlayFilter(){
         filterTextView.setBackgroundColor(0xFF969696.toInt())
         filterConstraintLayout.visibility = View.VISIBLE
@@ -451,7 +479,6 @@ class HasilFragment() : Fragment() {
         isOverlayFilter = true
     }
 
-    // Menyembunyikan overlay urutkan
     internal fun sembunyikanOverlayUrutkan(){
         urutkanTextView.setBackgroundColor(0xFFFFFFFF.toInt())
         urutkanConstraintLayout.visibility = View.GONE
@@ -459,11 +486,96 @@ class HasilFragment() : Fragment() {
         isOverlayUrutkan = false
     }
 
-    // Menyembunyikan overlay filter
     internal fun sembunyikanOverlayFilter(){
         filterTextView.setBackgroundColor(0xFFFFFFFF.toInt())
         filterConstraintLayout.visibility = View.GONE
         hitamTransparanLinearLayout.visibility = View.GONE
         isOverlayFilter = false
+    }
+
+    private fun pilihButtonUrutkan(button: String){
+        if (button == "Paling Sesuai"){
+            palingSesuaiButton.setTextColor(0xFF330099.toInt())
+            palingSesuaiButton.setBackgroundResource(R.drawable.bg_button_ungu)
+        }
+        else if (palingSesuaiButton.visibility == View.VISIBLE){
+            palingSesuaiButton.setTextColor(0xFF969696.toInt())
+            palingSesuaiButton.setBackgroundResource(R.drawable.bg_button_putih)
+        }
+        if (button == "Terbaru"){
+            terbaruButton.setTextColor(0xFF330099.toInt())
+            terbaruButton.setBackgroundResource(R.drawable.bg_button_ungu)
+        }
+        else{
+            terbaruButton.setTextColor(0xFF969696.toInt())
+            terbaruButton.setBackgroundResource(R.drawable.bg_button_putih)
+        }
+        if (button == "Harga Tertinggi"){
+            hargaTertinggiButton.setTextColor(0xFF330099.toInt())
+            hargaTertinggiButton.setBackgroundResource(R.drawable.bg_button_ungu)
+        }
+        else{
+            hargaTertinggiButton.setTextColor(0xFF969696.toInt())
+            hargaTertinggiButton.setBackgroundResource(R.drawable.bg_button_putih)
+        }
+        if (button == "Harga Terendah"){
+            hargaTerendahButton.setTextColor(0xFF330099.toInt())
+            hargaTerendahButton.setBackgroundResource(R.drawable.bg_button_ungu)
+        }
+        else{
+            hargaTerendahButton.setTextColor(0xFF969696.toInt())
+            hargaTerendahButton.setBackgroundResource(R.drawable.bg_button_putih)
+        }
+        if (button == "Performa"){
+            performaButton.setTextColor(0xFF330099.toInt())
+            performaButton.setBackgroundResource(R.drawable.bg_button_ungu)
+        }
+        else{
+            performaButton.setTextColor(0xFF969696.toInt())
+            performaButton.setBackgroundResource(R.drawable.bg_button_putih)
+        }
+        if (button == "Portabilitas"){
+            portabilitasButton.setTextColor(0xFF330099.toInt())
+            portabilitasButton.setBackgroundResource(R.drawable.bg_button_ungu)
+        }
+        else{
+            portabilitasButton.setTextColor(0xFF969696.toInt())
+            portabilitasButton.setBackgroundResource(R.drawable.bg_button_putih)
+        }
+    }
+
+    private fun pilihButtonFilter(button: String){
+        if (button == "Gaming"){
+            gamingButton.setTextColor(0xFF330099.toInt())
+            gamingButton.setBackgroundResource(R.drawable.bg_button_ungu)
+        }
+        else{
+            gamingButton.setTextColor(0xFF969696.toInt())
+            gamingButton.setBackgroundResource(R.drawable.bg_button_putih)
+        }
+        if (button == "Profesional"){
+            profesionalButton.setTextColor(0xFF330099.toInt())
+            profesionalButton.setBackgroundResource(R.drawable.bg_button_ungu)
+        }
+        else{
+            profesionalButton.setTextColor(0xFF969696.toInt())
+            profesionalButton.setBackgroundResource(R.drawable.bg_button_putih)
+        }
+        if (button == "Pelajar"){
+            pelajarButton.setTextColor(0xFF330099.toInt())
+            pelajarButton.setBackgroundResource(R.drawable.bg_button_ungu)
+        }
+        else{
+            pelajarButton.setTextColor(0xFF969696.toInt())
+            pelajarButton.setBackgroundResource(R.drawable.bg_button_putih)
+        }
+        if (button == "Workstation"){
+            workstationButton.setTextColor(0xFF330099.toInt())
+            workstationButton.setBackgroundResource(R.drawable.bg_button_ungu)
+        }
+        else{
+            workstationButton.setTextColor(0xFF969696.toInt())
+            workstationButton.setBackgroundResource(R.drawable.bg_button_putih)
+        }
     }
 }
