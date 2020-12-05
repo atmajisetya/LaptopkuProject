@@ -214,7 +214,7 @@ class HasilFragment() : Fragment() {
                         showRecyclerList()
                         progressBar.visibility = View.GONE
                         palingSesuaiButton.setBackgroundResource(R.drawable.bg_button_ungu)
-                        palingSesuaiButton.setTextColor(0xFF330099.toInt())
+                        palingSesuaiButton.setTextColor(-13434727) //biru
                     }
                 }
                 else
@@ -302,19 +302,19 @@ class HasilFragment() : Fragment() {
                     progressBar.visibility = View.GONE
                     if (extra == "Gaming"){
                         gamingButton.setBackgroundResource(R.drawable.bg_button_ungu)
-                        gamingButton.setTextColor(0xFF330099.toInt())
+                        gamingButton.setTextColor(-13434727) //biru
                     }
                     else if (extra == "Pelajar"){
                         pelajarButton.setBackgroundResource(R.drawable.bg_button_ungu)
-                        pelajarButton.setTextColor(0xFF330099.toInt())
+                        pelajarButton.setTextColor(-13434727) //biru
                     }
                     else if (extra == "Profesional"){
                         profesionalButton.setBackgroundResource(R.drawable.bg_button_ungu)
-                        profesionalButton.setTextColor(0xFF330099.toInt())
+                        profesionalButton.setTextColor(-13434727) //biru
                     }
                     else{
                         workstationButton.setBackgroundResource(R.drawable.bg_button_ungu)
-                        workstationButton.setTextColor(0xFF330099.toInt())
+                        workstationButton.setTextColor(-13434727) //biru
                     }
                 }
                 else
@@ -443,12 +443,12 @@ class HasilFragment() : Fragment() {
                         if (isPerforma){
                             listLaptop.sortByDescending{ it.performa }
                             performaButton.setBackgroundResource(R.drawable.bg_button_ungu)
-                            performaButton.setTextColor(0xFF330099.toInt())
+                            performaButton.setTextColor(-13434727) //biru
                         }
                         else{
                             listLaptop.sortByDescending{ it.portabilitas }
                             portabilitasButton.setBackgroundResource(R.drawable.bg_button_ungu)
-                            portabilitasButton.setTextColor(0xFF330099.toInt())
+                            portabilitasButton.setTextColor(-13434727) //biru
                         }
                         progressBar.visibility = View.GONE
                         showRecyclerList()
@@ -466,28 +466,28 @@ class HasilFragment() : Fragment() {
     }
 
     private fun tampilkanOverlayUrutkan(){
-        urutkanTextView.setBackgroundColor(0xFF969696.toInt())
+        urutkanTextView.setBackgroundColor(-6908266) //abu
         urutkanConstraintLayout.visibility = View.VISIBLE
         hitamTransparanLinearLayout.visibility = View.VISIBLE
         isOverlayUrutkan = true
     }
 
     private fun tampilkanOverlayFilter(){
-        filterTextView.setBackgroundColor(0xFF969696.toInt())
+        filterTextView.setBackgroundColor(-6908266) //abu
         filterConstraintLayout.visibility = View.VISIBLE
         hitamTransparanLinearLayout.visibility = View.VISIBLE
         isOverlayFilter = true
     }
 
     internal fun sembunyikanOverlayUrutkan(){
-        urutkanTextView.setBackgroundColor(0xFFFFFFFF.toInt())
+        urutkanTextView.setBackgroundColor(-1) //putih
         urutkanConstraintLayout.visibility = View.GONE
         hitamTransparanLinearLayout.visibility = View.GONE
         isOverlayUrutkan = false
     }
 
     internal fun sembunyikanOverlayFilter(){
-        filterTextView.setBackgroundColor(0xFFFFFFFF.toInt())
+        filterTextView.setBackgroundColor(-1) //putih
         filterConstraintLayout.visibility = View.GONE
         hitamTransparanLinearLayout.visibility = View.GONE
         isOverlayFilter = false
@@ -495,86 +495,86 @@ class HasilFragment() : Fragment() {
 
     private fun pilihButtonUrutkan(button: String){
         if (button == "Paling Sesuai"){
-            palingSesuaiButton.setTextColor(0xFF330099.toInt())
+            palingSesuaiButton.setTextColor(-13434727) //biru
             palingSesuaiButton.setBackgroundResource(R.drawable.bg_button_ungu)
         }
         else if (palingSesuaiButton.visibility == View.VISIBLE){
-            palingSesuaiButton.setTextColor(0xFF969696.toInt())
+            palingSesuaiButton.setTextColor(-6908266) //abu
             palingSesuaiButton.setBackgroundResource(R.drawable.bg_button_putih)
         }
         if (button == "Terbaru"){
-            terbaruButton.setTextColor(0xFF330099.toInt())
+            terbaruButton.setTextColor(-13434727) //biru
             terbaruButton.setBackgroundResource(R.drawable.bg_button_ungu)
         }
         else{
-            terbaruButton.setTextColor(0xFF969696.toInt())
+            terbaruButton.setTextColor(-6908266) //abu
             terbaruButton.setBackgroundResource(R.drawable.bg_button_putih)
         }
         if (button == "Harga Tertinggi"){
-            hargaTertinggiButton.setTextColor(0xFF330099.toInt())
+            hargaTertinggiButton.setTextColor(-13434727) //biru
             hargaTertinggiButton.setBackgroundResource(R.drawable.bg_button_ungu)
         }
         else{
-            hargaTertinggiButton.setTextColor(0xFF969696.toInt())
+            hargaTertinggiButton.setTextColor(-6908266) //abu
             hargaTertinggiButton.setBackgroundResource(R.drawable.bg_button_putih)
         }
         if (button == "Harga Terendah"){
-            hargaTerendahButton.setTextColor(0xFF330099.toInt())
+            hargaTerendahButton.setTextColor(-13434727) //biru
             hargaTerendahButton.setBackgroundResource(R.drawable.bg_button_ungu)
         }
         else{
-            hargaTerendahButton.setTextColor(0xFF969696.toInt())
+            hargaTerendahButton.setTextColor(-6908266) //abu
             hargaTerendahButton.setBackgroundResource(R.drawable.bg_button_putih)
         }
         if (button == "Performa"){
-            performaButton.setTextColor(0xFF330099.toInt())
+            performaButton.setTextColor(-13434727) //biru
             performaButton.setBackgroundResource(R.drawable.bg_button_ungu)
         }
         else{
-            performaButton.setTextColor(0xFF969696.toInt())
+            performaButton.setTextColor(-6908266) //abu
             performaButton.setBackgroundResource(R.drawable.bg_button_putih)
         }
         if (button == "Portabilitas"){
-            portabilitasButton.setTextColor(0xFF330099.toInt())
+            portabilitasButton.setTextColor(-13434727)
             portabilitasButton.setBackgroundResource(R.drawable.bg_button_ungu)
         }
         else{
-            portabilitasButton.setTextColor(0xFF969696.toInt())
+            portabilitasButton.setTextColor(-6908266) //abu
             portabilitasButton.setBackgroundResource(R.drawable.bg_button_putih)
         }
     }
 
     private fun pilihButtonFilter(button: String){
         if (button == "Gaming"){
-            gamingButton.setTextColor(0xFF330099.toInt())
+            gamingButton.setTextColor(-13434727) //biru
             gamingButton.setBackgroundResource(R.drawable.bg_button_ungu)
         }
         else{
-            gamingButton.setTextColor(0xFF969696.toInt())
+            gamingButton.setTextColor(-6908266) //abu
             gamingButton.setBackgroundResource(R.drawable.bg_button_putih)
         }
         if (button == "Profesional"){
-            profesionalButton.setTextColor(0xFF330099.toInt())
+            profesionalButton.setTextColor(-13434727) //biru
             profesionalButton.setBackgroundResource(R.drawable.bg_button_ungu)
         }
         else{
-            profesionalButton.setTextColor(0xFF969696.toInt())
+            profesionalButton.setTextColor(-6908266) //abu
             profesionalButton.setBackgroundResource(R.drawable.bg_button_putih)
         }
         if (button == "Pelajar"){
-            pelajarButton.setTextColor(0xFF330099.toInt())
+            pelajarButton.setTextColor(-13434727) //biru
             pelajarButton.setBackgroundResource(R.drawable.bg_button_ungu)
         }
         else{
-            pelajarButton.setTextColor(0xFF969696.toInt())
+            pelajarButton.setTextColor(-6908266) //abu
             pelajarButton.setBackgroundResource(R.drawable.bg_button_putih)
         }
         if (button == "Workstation"){
-            workstationButton.setTextColor(0xFF330099.toInt())
+            workstationButton.setTextColor(-13434727) //biru
             workstationButton.setBackgroundResource(R.drawable.bg_button_ungu)
         }
         else{
-            workstationButton.setTextColor(0xFF969696.toInt())
+            workstationButton.setTextColor(-6908266) //abu
             workstationButton.setBackgroundResource(R.drawable.bg_button_putih)
         }
     }
