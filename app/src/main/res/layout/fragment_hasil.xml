@@ -56,21 +56,6 @@
 
         <!-- Tombol-tombol urutkan -->
         <Button
-            android:id="@+id/palingSesuaiButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:minHeight="0dp"
-            android:minWidth="0dp"
-            android:paddingHorizontal="12dp"
-            android:paddingVertical="6dp"
-            android:text="@string/paling_sesuai"
-            android:textSize="16sp"
-            android:textColor="#969696"
-            android:textAllCaps="false"
-            android:background="@drawable/bg_button_putih"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintLeft_toLeftOf="parent"/>
-        <Button
             android:id="@+id/terbaruButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -78,14 +63,29 @@
             android:minWidth="0dp"
             android:paddingHorizontal="12dp"
             android:paddingVertical="6dp"
-            android:layout_marginLeft="6dp"
             android:text="@string/terbaru"
             android:textSize="16sp"
             android:textColor="#969696"
             android:textAllCaps="false"
             android:background="@drawable/bg_button_putih"
-            app:layout_constraintTop_toTopOf="@id/palingSesuaiButton"
-            app:layout_constraintLeft_toRightOf="@id/palingSesuaiButton"/>
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"/>
+        <Button
+            android:id="@+id/palingSesuaiButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:minHeight="0dp"
+            android:minWidth="0dp"
+            android:paddingHorizontal="12dp"
+            android:paddingVertical="6dp"
+            android:layout_marginLeft="6dp"
+            android:text="@string/paling_sesuai"
+            android:textSize="16sp"
+            android:textColor="#969696"
+            android:textAllCaps="false"
+            android:background="@drawable/bg_button_putih"
+            app:layout_constraintTop_toTopOf="@id/terbaruButton"
+            app:layout_constraintLeft_toRightOf="@id/terbaruButton"/>
         <Button
             android:id="@+id/hargaTertinggiButton"
             android:layout_width="wrap_content"
@@ -100,8 +100,8 @@
             android:textColor="#969696"
             android:textAllCaps="false"
             android:background="@drawable/bg_button_putih"
-            app:layout_constraintTop_toBottomOf="@id/palingSesuaiButton"
-            app:layout_constraintLeft_toLeftOf="@id/palingSesuaiButton"/>
+            app:layout_constraintTop_toBottomOf="@id/terbaruButton"
+            app:layout_constraintLeft_toLeftOf="@id/terbaruButton"/>
         <Button
             android:id="@+id/hargaTerendahButton"
             android:layout_width="wrap_content"
@@ -117,7 +117,7 @@
             android:textColor="#969696"
             android:textAllCaps="false"
             android:background="@drawable/bg_button_putih"
-            app:layout_constraintTop_toBottomOf="@id/terbaruButton"
+            app:layout_constraintTop_toBottomOf="@id/palingSesuaiButton"
             app:layout_constraintLeft_toRightOf="@id/hargaTertinggiButton"/>
         <Button
             android:id="@+id/performaButton"
@@ -134,7 +134,7 @@
             android:textAllCaps="false"
             android:background="@drawable/bg_button_putih"
             app:layout_constraintTop_toBottomOf="@id/hargaTertinggiButton"
-            app:layout_constraintLeft_toLeftOf="@id/palingSesuaiButton"/>
+            app:layout_constraintLeft_toLeftOf="@id/terbaruButton"/>
         <Button
             android:id="@+id/portabilitasButton"
             android:layout_width="wrap_content"
