@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
 import com.google.firebase.firestore.FirebaseFirestore
+import kotlinx.android.synthetic.main.fragment_hasil.*
 
 // Konstruktor primer dipanggil ketika ingin menampilkan semua laptop
 class HasilFragment() : Fragment() {
@@ -27,9 +28,6 @@ class HasilFragment() : Fragment() {
     private var isHp = true
     private var isLenovo = true
     private var isMsi = true
-
-    // Inisiasi variabel untuk menampilkan icon urutkan dan filter
-    private lateinit var textView: android.widget.TextView
 
     // Inisiasi variabel RecyclerView yang akan menampilkan grid laptop
     private lateinit var hasilRecyclerView: androidx.recyclerview.widget.RecyclerView
@@ -77,13 +75,13 @@ class HasilFragment() : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        // Menampilkan icon urutkan dan filter
-        textView = view.findViewById(R.id.urutkanTextView)
-        textView.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_urutkan,0,0,0)
-        textView.compoundDrawablePadding = 32
-        textView = view.findViewById(R.id.filterTextView)
-        textView.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_filter,0,0,0)
-        textView.compoundDrawablePadding = 32
+        // Menampilkan icon urutkan
+        urutkanTextView.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_urutkan,0,0,0)
+        urutkanTextView.compoundDrawablePadding = 32
+
+        // Menampilkan icon filter
+        filterTextView.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_filter,0,0,0)
+        filterTextView.compoundDrawablePadding = 32
 
         // Menghubungkan variabel RecyclerView dengan RecyclerView sesungguhnya
         hasilRecyclerView = view.findViewById(R.id.hasilRecyclerView)
@@ -99,6 +97,18 @@ class HasilFragment() : Fragment() {
             "brand" -> loadLaptopBrand()
             "kategori" -> loadLaptopKategori()
             "rekomendasi" -> loadLaptopRekomendasi()
+        }
+
+        // Menambahkan event urutkan
+        urutkanTextView.setOnClickListener{
+            urutkanConstraintLayout.visibility = View.VISIBLE
+            hitamTransparanLinearLayout.visibility = View.VISIBLE
+        }
+
+        // Menambahkan event hitamTransparanLinearLayout
+        hitamTransparanLinearLayout.setOnClickListener{
+            urutkanConstraintLayout.visibility = View.GONE
+            hitamTransparanLinearLayout.visibility = View.GONE
         }
     }
 
