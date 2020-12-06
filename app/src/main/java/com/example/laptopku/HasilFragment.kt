@@ -44,6 +44,10 @@ class HasilFragment() : Fragment() {
     internal var isOverlayUrutkan = false
     internal var isOverlayFilter = false
 
+    // String untuk mengetahui urutkan atau filter saat ini
+    private var urutkanBerdasar = "Tidak"
+    private var filterBerdasar = "Semua"
+
     // Konstruktor sekunder dipanggil ketika pengguna meminta brand atau kategori tertentu
     constructor(extraType: String, extra: String) : this(){
         this.extraType = extraType
@@ -115,34 +119,74 @@ class HasilFragment() : Fragment() {
 
         // Menambahkan event urutkan
         urutkanTextView.setOnClickListener{
-            if (isOverlayFilter)
-                sembunyikanOverlayFilter()
-            tampilkanOverlayUrutkan()
+            if (progressBar.visibility == View.GONE){
+                if (isOverlayFilter)
+                    sembunyikanOverlayFilter()
+                tampilkanOverlayUrutkan()
+            }
         }
         palingSesuaiButton.setOnClickListener{
-            pilihButtonUrutkan("Paling Sesuai")
+            if (urutkanBerdasar != "Paling Sesuai" && palingSesuaiButton.visibility == View.VISIBLE){
+                pilihButtonUrutkan("Paling Sesuai")
+                progressBar.visibility = View.VISIBLE
+                listLaptop.sortBy{ it.name.compareTo(extra, true).absoluteValue }
+                showRecyclerList()
+                progressBar.visibility = View.GONE
+            }
         }
         terbaruButton.setOnClickListener{
-            pilihButtonUrutkan("Terbaru")
+            if (urutkanBerdasar != "Terbaru"){
+                pilihButtonUrutkan("Terbaru")
+                progressBar.visibility = View.VISIBLE
+                listLaptop.sortByDescending{ it.tanggalRilis }
+                showRecyclerList()
+                progressBar.visibility = View.GONE
+            }
         }
         hargaTertinggiButton.setOnClickListener{
-            pilihButtonUrutkan("Harga Tertinggi")
+            if (urutkanBerdasar != "Harga Tertinggi"){
+                pilihButtonUrutkan("Harga Tertinggi")
+                progressBar.visibility = View.VISIBLE
+                listLaptop.sortByDescending{ l -> l.price.filter { it.isDigit() }.toInt() }
+                showRecyclerList()
+                progressBar.visibility = View.GONE
+            }
         }
         hargaTerendahButton.setOnClickListener{
-            pilihButtonUrutkan("Harga Terendah")
+            if (urutkanBerdasar != "Harga Terendah"){
+                pilihButtonUrutkan("Harga Terendah")
+                progressBar.visibility = View.VISIBLE
+                listLaptop.sortBy{ l -> l.price.filter { it.isDigit() }.toInt() }
+                showRecyclerList()
+                progressBar.visibility = View.GONE
+            }
         }
         performaButton.setOnClickListener{
-            pilihButtonUrutkan("Performa")
+            if (urutkanBerdasar != "Performa"){
+                pilihButtonUrutkan("Performa")
+                progressBar.visibility = View.VISIBLE
+                listLaptop.sortByDescending{ it.performa }
+                showRecyclerList()
+                progressBar.visibility = View.GONE
+            }
         }
         portabilitasButton.setOnClickListener{
-            pilihButtonUrutkan("Portabilitas")
+            if (urutkanBerdasar != "Portabilitas"){
+                pilihButtonUrutkan("Portabilitas")
+                progressBar.visibility = View.VISIBLE
+                listLaptop.sortByDescending{ it.portabilitas }
+                showRecyclerList()
+                progressBar.visibility = View.GONE
+            }
         }
 
         // Menambahkan event filter
         filterTextView.setOnClickListener{
-            if (isOverlayUrutkan)
-                sembunyikanOverlayUrutkan()
-            tampilkanOverlayFilter()
+            if (progressBar.visibility == View.GONE){
+                if (isOverlayUrutkan)
+                    sembunyikanOverlayUrutkan()
+                tampilkanOverlayFilter()
+            }
         }
         gamingButton.setOnClickListener{
             pilihButtonFilter("Gaming")
@@ -194,8 +238,9 @@ class HasilFragment() : Fragment() {
                         document.getString("os")!!,
                         document.getString("penyimpanan")!!,
                         document.getString("tanggalRilis")!!,
-                        document.getString("webcam")!!
-                    ))
+                        document.getString("webcam")!!,
+                        document.getLong("performa")!!.toInt(),
+                        document.getLong("portabilitas")!!.toInt()))
                 }
                 if(listLaptop.isNotEmpty()){
                     listLaptop.filter {l: LaptopTerbaru -> !l.name.contains(extra, true) }
@@ -213,6 +258,7 @@ class HasilFragment() : Fragment() {
                         listLaptop.sortBy{ it.name.compareTo(extra, true).absoluteValue }
                         showRecyclerList()
                         progressBar.visibility = View.GONE
+                        urutkanBerdasar = "Paling Sesuai"
                         palingSesuaiButton.setBackgroundResource(R.drawable.bg_button_ungu)
                         palingSesuaiButton.setTextColor(-13434727) //biru
                     }
@@ -301,18 +347,22 @@ class HasilFragment() : Fragment() {
                     showRecyclerList()
                     progressBar.visibility = View.GONE
                     if (extra == "Gaming"){
+                        filterBerdasar = "Gaming"
                         gamingButton.setBackgroundResource(R.drawable.bg_button_ungu)
                         gamingButton.setTextColor(-13434727) //biru
                     }
                     else if (extra == "Pelajar"){
+                        filterBerdasar = "Pelajar"
                         pelajarButton.setBackgroundResource(R.drawable.bg_button_ungu)
                         pelajarButton.setTextColor(-13434727) //biru
                     }
                     else if (extra == "Profesional"){
+                        filterBerdasar = "Profesional"
                         profesionalButton.setBackgroundResource(R.drawable.bg_button_ungu)
                         profesionalButton.setTextColor(-13434727) //biru
                     }
                     else{
+                        filterBerdasar = "Workstation"
                         workstationButton.setBackgroundResource(R.drawable.bg_button_ungu)
                         workstationButton.setTextColor(-13434727) //biru
                     }
@@ -442,11 +492,13 @@ class HasilFragment() : Fragment() {
                     if (listLaptop.count() == rekomenLaptop.count()){
                         if (isPerforma){
                             listLaptop.sortByDescending{ it.performa }
+                            urutkanBerdasar = "Performa"
                             performaButton.setBackgroundResource(R.drawable.bg_button_ungu)
                             performaButton.setTextColor(-13434727) //biru
                         }
                         else{
                             listLaptop.sortByDescending{ it.portabilitas }
+                            urutkanBerdasar = "Portabilitas"
                             portabilitasButton.setBackgroundResource(R.drawable.bg_button_ungu)
                             portabilitasButton.setTextColor(-13434727) //biru
                         }
@@ -494,6 +546,7 @@ class HasilFragment() : Fragment() {
     }
 
     private fun pilihButtonUrutkan(button: String){
+        urutkanBerdasar = button
         if (button == "Paling Sesuai"){
             palingSesuaiButton.setTextColor(-13434727) //biru
             palingSesuaiButton.setBackgroundResource(R.drawable.bg_button_ungu)
@@ -545,6 +598,7 @@ class HasilFragment() : Fragment() {
     }
 
     private fun pilihButtonFilter(button: String){
+        filterBerdasar = button
         if (button == "Gaming"){
             gamingButton.setTextColor(-13434727) //biru
             gamingButton.setBackgroundResource(R.drawable.bg_button_ungu)
