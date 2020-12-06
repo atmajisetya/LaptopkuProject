@@ -44,6 +44,10 @@ class HasilFragment() : Fragment() {
     internal var isOverlayUrutkan = false
     internal var isOverlayFilter = false
 
+    // String untuk mengetahui urutkan atau filter saat ini
+    private var urutkanBerdasar = "Tidak"
+    private var filterBerdasar = "Semua"
+
     // Konstruktor sekunder dipanggil ketika pengguna meminta brand atau kategori tertentu
     constructor(extraType: String, extra: String) : this(){
         this.extraType = extraType
@@ -120,10 +124,26 @@ class HasilFragment() : Fragment() {
             tampilkanOverlayUrutkan()
         }
         palingSesuaiButton.setOnClickListener{
-            pilihButtonUrutkan("Paling Sesuai")
+            if (urutkanBerdasar != "Paling Sesuai"){
+                urutkanBerdasar = "Paling Sesuai"
+                pilihButtonUrutkan("Paling Sesuai")
+                sembunyikanOverlayUrutkan()
+                progressBar.visibility = View.VISIBLE
+                listLaptop.sortBy{ it.name.compareTo(extra, true).absoluteValue }
+                showRecyclerList()
+                progressBar.visibility = View.GONE
+            }
         }
         terbaruButton.setOnClickListener{
-            pilihButtonUrutkan("Terbaru")
+            if (urutkanBerdasar != "Terbaru"){
+                urutkanBerdasar = "Terbaru"
+                pilihButtonUrutkan("Terbaru")
+                sembunyikanOverlayUrutkan()
+                progressBar.visibility = View.VISIBLE
+                listLaptop.sortByDescending{ it.tanggalRilis }
+                showRecyclerList()
+                progressBar.visibility = View.GONE
+            }
         }
         hargaTertinggiButton.setOnClickListener{
             pilihButtonUrutkan("Harga Tertinggi")
@@ -213,6 +233,7 @@ class HasilFragment() : Fragment() {
                         listLaptop.sortBy{ it.name.compareTo(extra, true).absoluteValue }
                         showRecyclerList()
                         progressBar.visibility = View.GONE
+                        urutkanBerdasar = "Paling Sesuai"
                         palingSesuaiButton.setBackgroundResource(R.drawable.bg_button_ungu)
                         palingSesuaiButton.setTextColor(-13434727) //biru
                     }
@@ -301,18 +322,22 @@ class HasilFragment() : Fragment() {
                     showRecyclerList()
                     progressBar.visibility = View.GONE
                     if (extra == "Gaming"){
+                        filterBerdasar = "Gaming"
                         gamingButton.setBackgroundResource(R.drawable.bg_button_ungu)
                         gamingButton.setTextColor(-13434727) //biru
                     }
                     else if (extra == "Pelajar"){
+                        filterBerdasar = "Pelajar"
                         pelajarButton.setBackgroundResource(R.drawable.bg_button_ungu)
                         pelajarButton.setTextColor(-13434727) //biru
                     }
                     else if (extra == "Profesional"){
+                        filterBerdasar = "Profesional"
                         profesionalButton.setBackgroundResource(R.drawable.bg_button_ungu)
                         profesionalButton.setTextColor(-13434727) //biru
                     }
                     else{
+                        filterBerdasar = "Workstation"
                         workstationButton.setBackgroundResource(R.drawable.bg_button_ungu)
                         workstationButton.setTextColor(-13434727) //biru
                     }
@@ -442,11 +467,13 @@ class HasilFragment() : Fragment() {
                     if (listLaptop.count() == rekomenLaptop.count()){
                         if (isPerforma){
                             listLaptop.sortByDescending{ it.performa }
+                            urutkanBerdasar = "Performa"
                             performaButton.setBackgroundResource(R.drawable.bg_button_ungu)
                             performaButton.setTextColor(-13434727) //biru
                         }
                         else{
                             listLaptop.sortByDescending{ it.portabilitas }
+                            urutkanBerdasar = "Portabilitas"
                             portabilitasButton.setBackgroundResource(R.drawable.bg_button_ungu)
                             portabilitasButton.setTextColor(-13434727) //biru
                         }
