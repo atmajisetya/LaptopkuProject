@@ -38,6 +38,7 @@ class HasilFragment() : Fragment() {
 
     // Inisiasi ArrayList untuk menampung data laptop yang diminta
     private val listLaptop: ArrayList<LaptopTerbaru> = arrayListOf()
+    private var listLaptopFilter: ArrayList<LaptopTerbaru> = arrayListOf()
     private val rekomenLaptop: ArrayList<RekomenLaptop> = arrayListOf()
 
     // Boolean untuk mengetahui apakah overlay sedang tampil
@@ -129,8 +130,15 @@ class HasilFragment() : Fragment() {
             if (urutkanBerdasar != "Paling Sesuai" && palingSesuaiButton.visibility == View.VISIBLE){
                 pilihButtonUrutkan("Paling Sesuai")
                 progressBar.visibility = View.VISIBLE
-                listLaptop.sortBy{ it.name.compareTo(extra, true).absoluteValue }
-                showRecyclerList()
+                if (listLaptopFilter.isEmpty()){
+                    listLaptop.sortBy{ it.name.compareTo(extra, true).absoluteValue }
+                    showRecyclerList()
+                }
+                else{
+                    listLaptop.sortBy{ it.name.compareTo(extra, true).absoluteValue }
+                    listLaptopFilter.sortBy{ it.name.compareTo(extra, true).absoluteValue }
+                    showRecyclerList(filterBerdasar)
+                }
                 progressBar.visibility = View.GONE
             }
         }
@@ -138,8 +146,15 @@ class HasilFragment() : Fragment() {
             if (urutkanBerdasar != "Terbaru"){
                 pilihButtonUrutkan("Terbaru")
                 progressBar.visibility = View.VISIBLE
-                listLaptop.sortByDescending{ it.tanggalRilis }
-                showRecyclerList()
+                if (listLaptopFilter.isEmpty()){
+                    listLaptop.sortByDescending{ it.tanggalRilis }
+                    showRecyclerList()
+                }
+                else{
+                    listLaptop.sortByDescending{ it.tanggalRilis }
+                    listLaptopFilter.sortByDescending{ it.tanggalRilis }
+                    showRecyclerList(filterBerdasar)
+                }
                 progressBar.visibility = View.GONE
             }
         }
@@ -147,8 +162,15 @@ class HasilFragment() : Fragment() {
             if (urutkanBerdasar != "Harga Tertinggi"){
                 pilihButtonUrutkan("Harga Tertinggi")
                 progressBar.visibility = View.VISIBLE
-                listLaptop.sortByDescending{ l -> l.price.filter { it.isDigit() }.toInt() }
-                showRecyclerList()
+                if (listLaptopFilter.isEmpty()){
+                    listLaptop.sortByDescending{ l -> l.price.filter { it.isDigit() }.toInt() }
+                    showRecyclerList()
+                }
+                else{
+                    listLaptop.sortByDescending{ l -> l.price.filter { it.isDigit() }.toInt() }
+                    listLaptopFilter.sortByDescending{ l -> l.price.filter { it.isDigit() }.toInt() }
+                    showRecyclerList(filterBerdasar)
+                }
                 progressBar.visibility = View.GONE
             }
         }
@@ -156,8 +178,15 @@ class HasilFragment() : Fragment() {
             if (urutkanBerdasar != "Harga Terendah"){
                 pilihButtonUrutkan("Harga Terendah")
                 progressBar.visibility = View.VISIBLE
-                listLaptop.sortBy{ l -> l.price.filter { it.isDigit() }.toInt() }
-                showRecyclerList()
+                if (listLaptopFilter.isEmpty()){
+                    listLaptop.sortBy{ l -> l.price.filter { it.isDigit() }.toInt() }
+                    showRecyclerList()
+                }
+                else{
+                    listLaptop.sortBy{ l -> l.price.filter { it.isDigit() }.toInt() }
+                    listLaptopFilter.sortBy{ l -> l.price.filter { it.isDigit() }.toInt() }
+                    showRecyclerList(filterBerdasar)
+                }
                 progressBar.visibility = View.GONE
             }
         }
@@ -165,8 +194,15 @@ class HasilFragment() : Fragment() {
             if (urutkanBerdasar != "Performa"){
                 pilihButtonUrutkan("Performa")
                 progressBar.visibility = View.VISIBLE
-                listLaptop.sortByDescending{ it.performa }
-                showRecyclerList()
+                if (listLaptopFilter.isEmpty()){
+                    listLaptop.sortByDescending{ it.performa }
+                    showRecyclerList()
+                }
+                else{
+                    listLaptop.sortByDescending{ it.performa }
+                    listLaptopFilter.sortByDescending{ it.performa }
+                    showRecyclerList(filterBerdasar)
+                }
                 progressBar.visibility = View.GONE
             }
         }
@@ -174,8 +210,15 @@ class HasilFragment() : Fragment() {
             if (urutkanBerdasar != "Portabilitas"){
                 pilihButtonUrutkan("Portabilitas")
                 progressBar.visibility = View.VISIBLE
-                listLaptop.sortByDescending{ it.portabilitas }
-                showRecyclerList()
+                if (listLaptopFilter.isEmpty()){
+                    listLaptop.sortByDescending{ it.portabilitas }
+                    showRecyclerList()
+                }
+                else{
+                    listLaptop.sortByDescending{ it.portabilitas }
+                    listLaptopFilter.sortByDescending{ it.portabilitas }
+                    showRecyclerList(filterBerdasar)
+                }
                 progressBar.visibility = View.GONE
             }
         }
@@ -189,16 +232,40 @@ class HasilFragment() : Fragment() {
             }
         }
         gamingButton.setOnClickListener{
-            filter("Gaming")
+            if (filterBerdasar != "Gaming")
+                filter("Gaming")
+            else{
+                gamingButton.setTextColor(-6908266) //abu
+                gamingButton.setBackgroundResource(R.drawable.bg_button_putih)
+                filter("Semua")
+            }
         }
         profesionalButton.setOnClickListener{
-            filter("Profesional")
+            if (filterBerdasar != "Profesional")
+                filter("Profesional")
+            else{
+                profesionalButton.setTextColor(-6908266) //abu
+                profesionalButton.setBackgroundResource(R.drawable.bg_button_putih)
+                filter("Semua")
+            }
         }
         pelajarButton.setOnClickListener{
-            filter("Pelajar")
+            if (filterBerdasar != "Pelajar")
+                filter("Pelajar")
+            else{
+                pelajarButton.setTextColor(-6908266) //abu
+                pelajarButton.setBackgroundResource(R.drawable.bg_button_putih)
+                filter("Semua")
+            }
         }
         workstationButton.setOnClickListener{
-            filter("Workstation")
+            if (filterBerdasar != "Workstation")
+                filter("Workstation")
+            else{
+                workstationButton.setTextColor(-6908266) //abu
+                workstationButton.setBackgroundResource(R.drawable.bg_button_putih)
+                filter("Semua")
+            }
         }
 
         // Menambahkan event hitamTransparanLinearLayout
@@ -514,10 +581,19 @@ class HasilFragment() : Fragment() {
 
     // Melakukan filter laptop
     private fun filter(filterBerdasar: String){
-        pilihButtonFilter(filterBerdasar)
-        progressBar.visibility = View.VISIBLE
-        showRecyclerList(filterBerdasar)
-        progressBar.visibility = View.GONE
+        if (filterBerdasar != "Semua"){
+            pilihButtonFilter(filterBerdasar)
+            progressBar.visibility = View.VISIBLE
+            showRecyclerList(filterBerdasar)
+            progressBar.visibility = View.GONE
+        }
+        else{
+            this.filterBerdasar = "Semua"
+            progressBar.visibility = View.VISIBLE
+            listLaptopFilter = arrayListOf()
+            showRecyclerList()
+            progressBar.visibility = View.GONE
+        }
     }
 
     // Menampilkan laptop-laptop yang diminta pada RecyclerView
@@ -530,7 +606,8 @@ class HasilFragment() : Fragment() {
     // Menampilkan laptop-laptop sesuai filter pada RecyclerView
     private fun showRecyclerList(filter: String){
         hasilRecyclerView.layoutManager = GridLayoutManager(activity, 2)
-        val listLaptopTerbaruAdapter = ListLaptopTerbaruAdapter(activity, ArrayList(listLaptop.filter{ it.kategori.contains(filter) }))
+        listLaptopFilter = ArrayList(listLaptop.filter{ it.kategori.contains(filter) })
+        val listLaptopTerbaruAdapter = ListLaptopTerbaruAdapter(activity, listLaptopFilter)
         hasilRecyclerView.adapter = listLaptopTerbaruAdapter
     }
 
