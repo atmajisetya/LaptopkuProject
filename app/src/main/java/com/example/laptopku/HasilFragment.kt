@@ -38,6 +38,7 @@ class HasilFragment() : Fragment() {
 
     // Inisiasi ArrayList untuk menampung data laptop yang diminta
     private val listLaptop: ArrayList<LaptopTerbaru> = arrayListOf()
+    private val listLaptopFilter: ArrayList<LaptopTerbaru> = arrayListOf()
     private val rekomenLaptop: ArrayList<RekomenLaptop> = arrayListOf()
 
     // Boolean untuk mengetahui apakah overlay sedang tampil
@@ -189,16 +190,40 @@ class HasilFragment() : Fragment() {
             }
         }
         gamingButton.setOnClickListener{
-            filter("Gaming")
+            if (filterBerdasar != "Gaming")
+                filter("Gaming")
+            else{
+                gamingButton.setTextColor(-6908266) //abu
+                gamingButton.setBackgroundResource(R.drawable.bg_button_putih)
+                filter("Semua")
+            }
         }
         profesionalButton.setOnClickListener{
-            filter("Profesional")
+            if (filterBerdasar != "Profesional")
+                filter("Profesional")
+            else{
+                profesionalButton.setTextColor(-6908266) //abu
+                profesionalButton.setBackgroundResource(R.drawable.bg_button_putih)
+                filter("Semua")
+            }
         }
         pelajarButton.setOnClickListener{
-            filter("Pelajar")
+            if (filterBerdasar != "Pelajar")
+                filter("Pelajar")
+            else{
+                pelajarButton.setTextColor(-6908266) //abu
+                pelajarButton.setBackgroundResource(R.drawable.bg_button_putih)
+                filter("Semua")
+            }
         }
         workstationButton.setOnClickListener{
-            filter("Workstation")
+            if (filterBerdasar != "Workstation")
+                filter("Workstation")
+            else{
+                workstationButton.setTextColor(-6908266) //abu
+                workstationButton.setBackgroundResource(R.drawable.bg_button_putih)
+                filter("Semua")
+            }
         }
 
         // Menambahkan event hitamTransparanLinearLayout
@@ -514,10 +539,18 @@ class HasilFragment() : Fragment() {
 
     // Melakukan filter laptop
     private fun filter(filterBerdasar: String){
-        pilihButtonFilter(filterBerdasar)
-        progressBar.visibility = View.VISIBLE
-        showRecyclerList(filterBerdasar)
-        progressBar.visibility = View.GONE
+        if (filterBerdasar != "Semua"){
+            pilihButtonFilter(filterBerdasar)
+            progressBar.visibility = View.VISIBLE
+            showRecyclerList(filterBerdasar)
+            progressBar.visibility = View.GONE
+        }
+        else{
+            this.filterBerdasar = "Semua"
+            progressBar.visibility = View.VISIBLE
+            showRecyclerList()
+            progressBar.visibility = View.GONE
+        }
     }
 
     // Menampilkan laptop-laptop yang diminta pada RecyclerView
