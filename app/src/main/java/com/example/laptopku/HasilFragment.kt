@@ -189,16 +189,16 @@ class HasilFragment() : Fragment() {
             }
         }
         gamingButton.setOnClickListener{
-            pilihButtonFilter("Gaming")
+            filter("Gaming")
         }
         profesionalButton.setOnClickListener{
-            pilihButtonFilter("Profesional")
+            filter("Profesional")
         }
         pelajarButton.setOnClickListener{
-            pilihButtonFilter("Pelajar")
+            filter("Pelajar")
         }
         workstationButton.setOnClickListener{
-            pilihButtonFilter("Workstation")
+            filter("Workstation")
         }
 
         // Menambahkan event hitamTransparanLinearLayout
@@ -314,7 +314,6 @@ class HasilFragment() : Fragment() {
     private fun loadLaptopKategori(){
         val db = FirebaseFirestore.getInstance()
         db.collection("spekLaptop")
-            .whereArrayContains("kategori", extra)
             .get()
             .addOnSuccessListener {result ->
                 for (document in result){
@@ -344,27 +343,29 @@ class HasilFragment() : Fragment() {
                         document.getLong("portabilitas")!!.toInt()))
                 }
                 if(listLaptop.isNotEmpty()){
-                    showRecyclerList()
+                    showRecyclerList(extra)
                     progressBar.visibility = View.GONE
-                    if (extra == "Gaming"){
-                        filterBerdasar = "Gaming"
-                        gamingButton.setBackgroundResource(R.drawable.bg_button_ungu)
-                        gamingButton.setTextColor(-13434727) //biru
-                    }
-                    else if (extra == "Pelajar"){
-                        filterBerdasar = "Pelajar"
-                        pelajarButton.setBackgroundResource(R.drawable.bg_button_ungu)
-                        pelajarButton.setTextColor(-13434727) //biru
-                    }
-                    else if (extra == "Profesional"){
-                        filterBerdasar = "Profesional"
-                        profesionalButton.setBackgroundResource(R.drawable.bg_button_ungu)
-                        profesionalButton.setTextColor(-13434727) //biru
-                    }
-                    else{
-                        filterBerdasar = "Workstation"
-                        workstationButton.setBackgroundResource(R.drawable.bg_button_ungu)
-                        workstationButton.setTextColor(-13434727) //biru
+                    when (extra) {
+                        "Gaming" -> {
+                            filterBerdasar = "Gaming"
+                            gamingButton.setBackgroundResource(R.drawable.bg_button_ungu)
+                            gamingButton.setTextColor(-13434727) //biru
+                        }
+                        "Pelajar" -> {
+                            filterBerdasar = "Pelajar"
+                            pelajarButton.setBackgroundResource(R.drawable.bg_button_ungu)
+                            pelajarButton.setTextColor(-13434727) //biru
+                        }
+                        "Profesional" -> {
+                            filterBerdasar = "Profesional"
+                            profesionalButton.setBackgroundResource(R.drawable.bg_button_ungu)
+                            profesionalButton.setTextColor(-13434727) //biru
+                        }
+                        else -> {
+                            filterBerdasar = "Workstation"
+                            workstationButton.setBackgroundResource(R.drawable.bg_button_ungu)
+                            workstationButton.setTextColor(-13434727) //biru
+                        }
                     }
                 }
                 else
@@ -510,10 +511,26 @@ class HasilFragment() : Fragment() {
                     getLaptop(namaLaptop)
             }
     }
+
+    // Melakukan filter laptop
+    private fun filter(filterBerdasar: String){
+        pilihButtonFilter(filterBerdasar)
+        progressBar.visibility = View.VISIBLE
+        showRecyclerList(filterBerdasar)
+        progressBar.visibility = View.GONE
+    }
+
     // Menampilkan laptop-laptop yang diminta pada RecyclerView
     private fun showRecyclerList(){
         hasilRecyclerView.layoutManager = GridLayoutManager(activity, 2)
         val listLaptopTerbaruAdapter = ListLaptopTerbaruAdapter(activity, listLaptop)
+        hasilRecyclerView.adapter = listLaptopTerbaruAdapter
+    }
+
+    // Menampilkan laptop-laptop sesuai filter pada RecyclerView
+    private fun showRecyclerList(filter: String){
+        hasilRecyclerView.layoutManager = GridLayoutManager(activity, 2)
+        val listLaptopTerbaruAdapter = ListLaptopTerbaruAdapter(activity, ArrayList(listLaptop.filter{ it.kategori.contains(filter) }))
         hasilRecyclerView.adapter = listLaptopTerbaruAdapter
     }
 
