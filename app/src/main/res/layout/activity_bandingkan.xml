@@ -169,16 +169,16 @@
                     <!-- Nama Laptop -->
                     <TextView
                         android:id="@+id/namaLaptopKiriTextView"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
                         android:textSize="24sp"
                         android:text="@string/cari_laptop_dulu"
                         android:textColor="#ffffff" />
                     <!-- Harga Laptop -->
                     <TextView
                         android:id="@+id/hargaLaptopKiriTextView"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
                         android:textSize="20sp"
                         android:text="@string/harga"
                         android:textColor="#ffffff"
@@ -199,16 +199,16 @@
                     <!-- Nama Laptop -->
                     <TextView
                         android:id="@+id/namaLaptopKananTextView"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
                         android:textSize="24sp"
                         android:text="@string/cari_laptop_dulu"
                         android:textColor="#ffffff" />
                     <!-- Harga Laptop -->
                     <TextView
                         android:id="@+id/hargaLaptopKananTextView"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
                         android:textSize="20sp"
                         android:text="@string/harga"
                         android:textColor="#ffffff"
