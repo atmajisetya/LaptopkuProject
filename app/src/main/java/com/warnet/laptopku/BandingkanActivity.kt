@@ -1,8 +1,9 @@
-package com.example.laptopku
+package com.warnet.laptopku
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import com.warnet.laptopku.*
 import kotlinx.android.synthetic.main.activity_bandingkan.*
 
 class BandingkanActivity : AppCompatActivity(), View.OnClickListener {

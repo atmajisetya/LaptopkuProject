@@ -1,4 +1,4 @@
-package com.example.laptopku
+package com.warnet.laptopku
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle

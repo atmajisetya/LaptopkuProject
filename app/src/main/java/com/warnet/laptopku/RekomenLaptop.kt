@@ -1,4 +1,4 @@
-package com.example.laptopku
+package com.warnet.laptopku
 
 import android.os.Parcelable
 import kotlinx.android.parcel.Parcelize

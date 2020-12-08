@@ -1,34 +1,33 @@
 {
   "project_info": {
-    "project_number": "405845888863",
-    "firebase_url": "https://laptopku-7f54a.firebaseio.com",
-    "project_id": "laptopku-7f54a",
-    "storage_bucket": "laptopku-7f54a.appspot.com"
+    "project_number": "143326705551",
+    "project_id": "laptopku-d51a1",
+    "storage_bucket": "laptopku-d51a1.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:405845888863:android:8f5417234026c7a52830ea",
+        "mobilesdk_app_id": "1:143326705551:android:1cef994abec3447f54bdfa",
         "android_client_info": {
-          "package_name": "com.example.laptopku"
+          "package_name": "com.warnet.laptopku"
         }
       },
       "oauth_client": [
         {
-          "client_id": "405845888863-qi4eil9v2ujsjdrimn3vsgrsf9er40sn.apps.googleusercontent.com",
+          "client_id": "143326705551-t2ksbu6jlu11tv0kouhm1jt6vjkfb0k5.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyASVDjAq4KDHS1BwEFL4zJSE6bhyfjaDCE"
+          "current_key": "AIzaSyBwVooA0KT8_Bo0lZqtLfC3Wjal5ePvthA"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "405845888863-qi4eil9v2ujsjdrimn3vsgrsf9er40sn.apps.googleusercontent.com",
+              "client_id": "143326705551-t2ksbu6jlu11tv0kouhm1jt6vjkfb0k5.apps.googleusercontent.com",
               "client_type": 3
             }
           ]
