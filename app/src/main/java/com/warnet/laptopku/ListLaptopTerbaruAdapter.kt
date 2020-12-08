@@ -44,7 +44,7 @@ class ListLaptopTerbaruAdapter(private val context: Context?, private val listLa
 
         // Mendaftarkan event klik pada masing-masing laptop untuk pindah ke Activity DeskripsiLaptop
         holder.itemView.itemKolomLaptop.setOnClickListener{
-            val intent = Intent(context, DeskripsiLaptopActivity::class.java)
+            val intent = Intent(context, DeskripsiLaptopActivity::class.java).apply { flags = Intent.FLAG_ACTIVITY_NEW_TASK }
             intent.putExtra("laptopTerbaru", laptopTerbaru)
             context?.startActivity(intent)
         }

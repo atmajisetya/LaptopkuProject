@@ -63,7 +63,7 @@ class DeskripsiLaptopActivity : AppCompatActivity(), View.OnClickListener {
                 tv_grafis.text = laptopTerbaru!!.grafis[i]
             }
             else{
-                tv_grafis.append(laptopTerbaru!!.grafis[i])
+                tv_grafis.append("\n" + laptopTerbaru!!.grafis[i])
             }
         }
         for(i in 0 until laptopTerbaru?.io!!.size){
@@ -71,7 +71,7 @@ class DeskripsiLaptopActivity : AppCompatActivity(), View.OnClickListener {
                 tv_io.text = laptopTerbaru!!.io[i]
             }
             else{
-                tv_io.append(laptopTerbaru!!.io[i])
+                tv_io.append("\n" + laptopTerbaru!!.io[i])
             }
         }
         for(i in 0 until laptopTerbaru?.komunikasi!!.size){
@@ -79,7 +79,7 @@ class DeskripsiLaptopActivity : AppCompatActivity(), View.OnClickListener {
                 tv_komunikasi.text = laptopTerbaru!!.komunikasi[i]
             }
             else{
-                tv_komunikasi.append(laptopTerbaru!!.komunikasi[i])
+                tv_komunikasi.append("\n" + laptopTerbaru!!.komunikasi[i])
             }
         }
 

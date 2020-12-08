@@ -9,6 +9,7 @@ import kotlinx.android.synthetic.main.activity_bandingkan.*
 class BandingkanActivity : AppCompatActivity(), View.OnClickListener {
     // Variabel untuk menerima operan dari Activity Favorite atau Acitivy Deskripsi Laptop (bila ada operan)
     private var laptopKiri: LaptopTerbaru? = null
+    private lateinit var laptopKanan: LaptopTerbaru
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -54,5 +55,9 @@ class BandingkanActivity : AppCompatActivity(), View.OnClickListener {
             }
             R.id.bandingkanKembaliImageView -> finish()
         }
+    }
+
+    fun muatLaptopKiri(){
+
     }
 }
