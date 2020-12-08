@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".BandingkanActivity">
+    tools:context="com.warnet.laptopku.BandingkanActivity">
 
     <!-- Header -->
     <androidx.constraintlayout.widget.ConstraintLayout

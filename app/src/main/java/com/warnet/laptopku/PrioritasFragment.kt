@@ -1,4 +1,4 @@
-package com.example.laptopku
+package com.warnet.laptopku
 
 import android.os.Bundle
 import android.view.LayoutInflater
