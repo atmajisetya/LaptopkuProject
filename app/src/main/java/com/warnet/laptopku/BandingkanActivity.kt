@@ -3,12 +3,19 @@ package com.warnet.laptopku
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import android.widget.TextView
+import com.bumptech.glide.Glide
+import com.bumptech.glide.load.DecodeFormat
+import com.bumptech.glide.request.RequestOptions
+import com.bumptech.glide.request.target.Target
 import com.warnet.laptopku.*
 import kotlinx.android.synthetic.main.activity_bandingkan.*
+import kotlinx.android.synthetic.main.activity_deskripsi_laptop.*
 
 class BandingkanActivity : AppCompatActivity(), View.OnClickListener {
     // Variabel untuk menerima operan dari Activity Favorite atau Acitivy Deskripsi Laptop (bila ada operan)
     private var laptopKiri: LaptopTerbaru? = null
+    private lateinit var laptopKanan: LaptopTerbaru
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -18,6 +25,7 @@ class BandingkanActivity : AppCompatActivity(), View.OnClickListener {
         laptopKiri = intent.getParcelableExtra("laptopKiri")
         if(laptopKiri != null){
             cariLaptopKiriEditText.setText(laptopKiri!!.name)
+            muatLaptopKiri()
         }
 
         // Mendaftarkan event klik untuk pindah ke Activity Telusuri
@@ -53,6 +61,61 @@ class BandingkanActivity : AppCompatActivity(), View.OnClickListener {
                 startActivity(moveIntent)
             }
             R.id.bandingkanKembaliImageView -> finish()
+        }
+    }
+
+    fun muatLaptopKiri(){
+// Mengisi ImageView dengan foto laptop
+        Glide.with(applicationContext)
+            .load(laptopKiri?.photo)
+            .apply(
+                RequestOptions().fitCenter().format(DecodeFormat.PREFER_ARGB_8888).override(
+                    Target.SIZE_ORIGINAL))
+            .into(laptopKiriImageView)
+
+        // Menampilkan nama dan harga laptop
+        namaLaptopKiriTextView.text = laptopKiri?.name
+        hargaLaptopKiriTextView.text = laptopKiri?.price
+
+        // Menampilkan spesifikasi-spesifikasi tunggal laptop
+        acAdapterKiriTextView.text = laptopKiri?.acadapter
+        audioKiriTextView.text = laptopKiri?.audio
+        bateraiKiriTextView.text = laptopKiri?.baterai
+        cpuKiriTextView.text = laptopKiri?.cpu
+        osKiriTextView.text = laptopKiri?.os
+        layarKiriTextView.text = laptopKiri?.layar
+        chipsetKiriTextView.text = laptopKiri?.chipset
+        memoriKiriTextView.text = laptopKiri?.memori
+        penyimpananKiriTextView.text = laptopKiri?.penyimpanan
+        webcamKiriTextView.text = laptopKiri?.webcam
+        keyboardKiriTextView.text = laptopKiri?.keyboard
+        dimensiKiriTextView.text = laptopKiri?.dimensi
+        beratKiriTextView.text = laptopKiri?.berat
+
+        // Menampilkan spesifikasi-spesifikasi ganda laptop
+        for(i in 0 until laptopKiri?.grafis!!.size){
+            if(i == 0){
+                grafisKiriTextView.text = laptopKiri!!.grafis[i]
+            }
+            else{
+                grafisKiriTextView.append("\n" + laptopKiri!!.grafis[i])
+            }
+        }
+        for(i in 0 until laptopKiri?.io!!.size){
+            if(i == 0){
+                ioPortsKiriTextView.text = laptopKiri!!.io[i]
+            }
+            else{
+                ioPortsKiriTextView.append("\n" + laptopKiri!!.io[i])
+            }
+        }
+        for(i in 0 until laptopKiri?.komunikasi!!.size){
+            if(i == 0){
+                komunikasiKiriTextView.text = laptopKiri!!.komunikasi[i]
+            }
+            else{
+                komunikasiKiriTextView.append("\n" + laptopKiri!!.komunikasi[i])
+            }
         }
     }
 }
