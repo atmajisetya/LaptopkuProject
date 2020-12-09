@@ -7,7 +7,6 @@ import android.view.View
 import android.view.inputmethod.EditorInfo
 import android.widget.TextView
 import androidx.fragment.app.FragmentTransaction
-import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.header_cari_laptop.*
 
 class HasilTelusuriActivity : AppCompatActivity(), View.OnClickListener {
