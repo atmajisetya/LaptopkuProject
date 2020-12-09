@@ -19,17 +19,17 @@
         android:src="@drawable/ic_kembali"
         android:contentDescription="@string/kembali_ke_layar_sebelumnya"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toLeftOf="@id/headerCariLaptopEditText"
+        app:layout_constraintRight_toLeftOf="@id/headerCariLaptopAutoCompleteTextView"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"/>
 
     <!-- EditText Cari Laptop -->
-    <EditText
-        android:id="@+id/headerCariLaptopEditText"
+    <AutoCompleteTextView
+        android:id="@+id/headerCariLaptopAutoCompleteTextView"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:paddingLeft="3dp"
-        android:background="#FFFFFF"
+        android:background="@drawable/bg_rounded_rectangle_putih"
         android:hint="@string/cari_laptop"
         android:textSize="18sp"
         android:importantForAutofill="no"
@@ -50,6 +50,6 @@
         android:contentDescription="@string/buka_laptop_favorit"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toRightOf="@id/headerCariLaptopEditText"
+        app:layout_constraintLeft_toRightOf="@id/headerCariLaptopAutoCompleteTextView"
         app:layout_constraintRight_toRightOf="parent"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -12,14 +12,18 @@ import androidx.recyclerview.widget.RecyclerView
 import com.warnet.laptopku.BandingkanActivity
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.Query
+import kotlinx.android.synthetic.main.activity_bandingkan.*
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.header_cari_laptop.*
 
 class MainActivity : AppCompatActivity(), View.OnClickListener {
     // Inisiasi variabel RecyclerView untuk menampilkan laptop rilis terbaru
     private lateinit var rvLaptop: RecyclerView
 
-    // Inisiasi list untuk menampung data laptop rilis terbaru
-    private val listTerbaru: ArrayList<LaptopTerbaru> = arrayListOf()
+    // Inisiasi list untuk menampung data laptop
+    private val listLaptop: ArrayList<LaptopTerbaru> = arrayListOf()
+    private lateinit var listTerbaru: ArrayList<LaptopTerbaru>
+    private val autoComplete: ArrayList<String> = arrayListOf()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -33,17 +37,21 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         rilisTerbaruProgressBar.visibility = View.VISIBLE
 
         // Memanggil data laptop rilis terbaru dari Firestore sekaligus ditampilkan
-        loadLaptopTerbaru()
+        muatLaptop()
+
+        // Membuat adapter untuk AutoCompleteTextView
+        val adapter = android.widget.ArrayAdapter(this, android.R.layout.simple_list_item_1, autoComplete)
+        cariLaptopAutoCompleteTextView.setAdapter(adapter)
 
         // Membuat event-event EditText Cari Laptop
-        cariLaptopEditText.isCursorVisible = false
-        cariLaptopEditText.setOnClickListener{
-            cariLaptopEditText.isCursorVisible = true
+        cariLaptopAutoCompleteTextView.isCursorVisible = false
+        cariLaptopAutoCompleteTextView.setOnClickListener{
+            cariLaptopAutoCompleteTextView.isCursorVisible = true
         }
-        cariLaptopEditText.setOnEditorActionListener(TextView.OnEditorActionListener { v, actionId, event ->
+        cariLaptopAutoCompleteTextView.setOnEditorActionListener(TextView.OnEditorActionListener { v, actionId, event ->
             if (actionId == EditorInfo.IME_ACTION_SEARCH){
                 val moveIntent = Intent(this@MainActivity, HasilTelusuriActivity::class.java)
-                moveIntent.putExtra("cari", cariLaptopEditText.text.toString())
+                moveIntent.putExtra("cari", cariLaptopAutoCompleteTextView.text.toString())
                 startActivity(moveIntent)
                 return@OnEditorActionListener true
             }
@@ -92,16 +100,15 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
     }
 
     // Memanggil data laptop rilis terbaru dari Firestore sekaligus ditampilkan
-    private fun loadLaptopTerbaru(){
+    private fun muatLaptop(){
         // listTerbaru.clear()
         val db = FirebaseFirestore.getInstance()
         db.collection("spekLaptop")
             .orderBy("tanggalRilis", Query.Direction.DESCENDING)
-            .limit(5)
             .get()
             .addOnSuccessListener {result ->
                 for (document in result){
-                    listTerbaru.add(LaptopTerbaru(document.getString("namaLaptop")!!,
+                    listLaptop.add(LaptopTerbaru(document.getString("namaLaptop")!!,
                         document.getString("hargaLaptop")!!,
                         document.getString("gambar")!!,
                         document.getString("acadapter")!!,
@@ -126,12 +133,14 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
                         document.getLong("performa")!!.toInt(),
                         document.getLong("portabilitas")!!.toInt()))
                 }
-                if(listTerbaru.isNotEmpty()){
+                if(listLaptop.isNotEmpty()){
+                    listTerbaru = listLaptop.take(5) as ArrayList<LaptopTerbaru>
                     showRecyclerList()
                     rilisTerbaruProgressBar.visibility = View.GONE
+                    listLaptop.forEach{ autoComplete.add(it.name) }
                 }
                 else
-                    loadLaptopTerbaru()
+                    muatLaptop()
             }
     }
     // Menampilkan laptop rilis terbaru pada RecyclerView

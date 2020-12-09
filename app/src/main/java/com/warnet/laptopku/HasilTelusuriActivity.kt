@@ -42,7 +42,7 @@ class HasilTelusuriActivity : AppCompatActivity(), View.OnClickListener {
             }
             // Jika Activity dipanggil dari EditText Cari Laptop: menampilkan laptop yang dicari pengguna
             cari != null -> {
-                headerCariLaptopEditText.setText(cari, TextView.BufferType.EDITABLE)
+                headerCariLaptopAutoCompleteTextView.setText(cari, TextView.BufferType.EDITABLE)
                 hasilFragment = HasilFragment("cari", cari!!)
                 transaction.add(R.id.hasilTelusuriFrameLayout, hasilFragment)
             }
@@ -50,14 +50,14 @@ class HasilTelusuriActivity : AppCompatActivity(), View.OnClickListener {
         transaction.commit()
 
         // Membuat event-event pada EditText Cari Laptop
-        headerCariLaptopEditText.isCursorVisible = false
-        headerCariLaptopEditText.setOnClickListener{
-            headerCariLaptopEditText.isCursorVisible = true
+        headerCariLaptopAutoCompleteTextView.isCursorVisible = false
+        headerCariLaptopAutoCompleteTextView.setOnClickListener{
+        headerCariLaptopAutoCompleteTextView.isCursorVisible = true
         }
-        headerCariLaptopEditText.setOnEditorActionListener(TextView.OnEditorActionListener { v, actionId, event ->
+        headerCariLaptopAutoCompleteTextView.setOnEditorActionListener(TextView.OnEditorActionListener { v, actionId, event ->
             if (actionId == EditorInfo.IME_ACTION_SEARCH){
                 transaction = supportFragmentManager.beginTransaction()
-                transaction.replace(R.id.hasilTelusuriFrameLayout, HasilFragment("cari", headerCariLaptopEditText.text.toString()))
+                transaction.replace(R.id.hasilTelusuriFrameLayout, HasilFragment("cari", headerCariLaptopAutoCompleteTextView.text.toString()))
                 transaction.commit()
                 return@OnEditorActionListener true
             }

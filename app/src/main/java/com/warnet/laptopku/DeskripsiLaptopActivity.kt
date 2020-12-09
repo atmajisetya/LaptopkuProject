@@ -84,14 +84,14 @@ class DeskripsiLaptopActivity : AppCompatActivity(), View.OnClickListener {
         }
 
         // Membuat event-event EditText Cari Laptop
-        headerCariLaptopEditText.isCursorVisible = false
-        headerCariLaptopEditText.setOnClickListener{
-            headerCariLaptopEditText.isCursorVisible = true
+        headerCariLaptopAutoCompleteTextView.isCursorVisible = false
+        headerCariLaptopAutoCompleteTextView.setOnClickListener{
+            headerCariLaptopAutoCompleteTextView.isCursorVisible = true
         }
-        headerCariLaptopEditText.setOnEditorActionListener(TextView.OnEditorActionListener { v, actionId, event ->
+        headerCariLaptopAutoCompleteTextView.setOnEditorActionListener(TextView.OnEditorActionListener { v, actionId, event ->
             if (actionId == EditorInfo.IME_ACTION_SEARCH){
                 val moveIntent = Intent(this@DeskripsiLaptopActivity, HasilTelusuriActivity::class.java)
-                moveIntent.putExtra("cari", headerCariLaptopEditText.text.toString())
+                moveIntent.putExtra("cari", headerCariLaptopAutoCompleteTextView.text.toString())
                 startActivity(moveIntent)
                 return@OnEditorActionListener true
             }
