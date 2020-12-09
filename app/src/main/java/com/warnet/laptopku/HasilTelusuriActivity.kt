@@ -7,10 +7,13 @@ import android.view.View
 import android.view.inputmethod.EditorInfo
 import android.widget.TextView
 import androidx.fragment.app.FragmentTransaction
+import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.header_cari_laptop.*
 
 class HasilTelusuriActivity : AppCompatActivity(), View.OnClickListener {
-    // Inisiasi variabel brand dan kategori untuk menerima operan dari Main Activity (bila ada)
+    // Inisiasi variabel untuk menerima operan dari activity lain
+    //private var listLaptop: ArrayList<LaptopTerbaru>? = null
+    private var autoComplete: ArrayList<String>? = null
     private var brand: String? = null
     private var kategori: String? = null
     private var cari: String? = null
@@ -23,11 +26,20 @@ class HasilTelusuriActivity : AppCompatActivity(), View.OnClickListener {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_hasil_telusuri)
 
-        // Memanggil Fragment Hasil
         // Assignment variabel operan
+        //listLaptop = intent.getSerializableExtra("listLaptop") as ArrayList<LaptopTerbaru>
+        autoComplete = intent.getSerializableExtra("autoComplete") as ArrayList<String>
         brand = intent.getStringExtra("brand")
         kategori = intent.getStringExtra("kategori")
         cari = intent.getStringExtra("cari")
+
+        // Membuat adapter untuk AutoCompleteTextView
+        if (autoComplete != null){
+            val adapter = android.widget.ArrayAdapter(this, android.R.layout.simple_list_item_1, autoComplete!!)
+            headerCariLaptopAutoCompleteTextView.setAdapter(adapter)
+        }
+
+        // Memanggil FragmentHasil
         transaction = supportFragmentManager.beginTransaction()
         when {
             // Jika Activity dipanggil dari ImageView Kategori: menampilkan kategori tertentu

@@ -9,12 +9,9 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.warnet.laptopku.BandingkanActivity
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.Query
-import kotlinx.android.synthetic.main.activity_bandingkan.*
 import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.android.synthetic.main.header_cari_laptop.*
 
 class MainActivity : AppCompatActivity(), View.OnClickListener {
     // Inisiasi variabel RecyclerView untuk menampilkan laptop rilis terbaru
@@ -48,10 +45,12 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         cariLaptopAutoCompleteTextView.setOnClickListener{
             cariLaptopAutoCompleteTextView.isCursorVisible = true
         }
-        cariLaptopAutoCompleteTextView.setOnEditorActionListener(TextView.OnEditorActionListener { v, actionId, event ->
+        cariLaptopAutoCompleteTextView.setOnEditorActionListener(TextView.OnEditorActionListener { _, actionId, _ ->
             if (actionId == EditorInfo.IME_ACTION_SEARCH){
                 val moveIntent = Intent(this@MainActivity, HasilTelusuriActivity::class.java)
                 moveIntent.putExtra("cari", cariLaptopAutoCompleteTextView.text.toString())
+                moveIntent.putExtra("autoComplete", autoComplete)
+                moveIntent.putExtra("listLaptop", listLaptop)
                 startActivity(moveIntent)
                 return@OnEditorActionListener true
             }
