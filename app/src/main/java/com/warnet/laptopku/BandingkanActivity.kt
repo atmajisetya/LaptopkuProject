@@ -8,25 +8,38 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.load.DecodeFormat
 import com.bumptech.glide.request.RequestOptions
 import com.bumptech.glide.request.target.Target
+import com.google.firebase.firestore.FirebaseFirestore
 import com.warnet.laptopku.*
 import kotlinx.android.synthetic.main.activity_bandingkan.*
 import kotlinx.android.synthetic.main.activity_deskripsi_laptop.*
+import kotlinx.android.synthetic.main.fragment_hasil.*
 
 class BandingkanActivity : AppCompatActivity(), View.OnClickListener {
-    // Variabel untuk menerima operan dari Activity Favorite atau Acitivy Deskripsi Laptop (bila ada operan)
-    private var laptopKiri: LaptopTerbaru? = null
+    // Variabel untuk menyimpan laptop kiri dan laptop kanan
+    private var laptopKiri: LaptopTerbaru? = null // Bisa jadi berupa operan dari Acitivity Favorite atau Activity Deskripsi Laptop
     private lateinit var laptopKanan: LaptopTerbaru
+
+    // Variabel untuk menyimpan semua data laptop
+    private val listLaptop: ArrayList<LaptopTerbaru> = arrayListOf()
+    private val autoComplete: ArrayList<String> = arrayListOf()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_bandingkan)
 
-        // Memunculkan nama laptopFavorite ke EditText cari laptop yang kiri
+        // Menampilkan laptop yang ingin dibandingkan di kiri, jika Activity ini dipanggil dari Activity Favorite atau Activity Deskripsi Laptop
         laptopKiri = intent.getParcelableExtra("laptopKiri")
         if(laptopKiri != null){
-            cariLaptopKiriEditText.setText(laptopKiri!!.name)
+            cariLaptopKiriAutoCompleteTextView.setText(laptopKiri!!.name)
             muatLaptopKiri()
         }
+
+        muatSemuaLaptop()
+
+        // Membuat adapter untuk AutoCompleteTextView
+        val adapter = android.widget.ArrayAdapter(this, android.R.layout.simple_list_item_1, autoComplete)
+        cariLaptopKiriAutoCompleteTextView.setAdapter(adapter)
+        cariLaptopKananAutoCompleteTextView.setAdapter(adapter)
 
         // Mendaftarkan event klik untuk pindah ke Activity Telusuri
         val telusuriImageView: android.widget.ImageView = findViewById(R.id.bandingkanFooterTelusuriImageView)
@@ -117,5 +130,44 @@ class BandingkanActivity : AppCompatActivity(), View.OnClickListener {
                 komunikasiKiriTextView.append("\n" + laptopKiri!!.komunikasi[i])
             }
         }
+    }
+
+    // Memanggil data laptop dengan brand tertentu dari Firestore sekaligus ditampilkan
+    private fun muatSemuaLaptop(){
+        val db = FirebaseFirestore.getInstance()
+        db.collection("spekLaptop")
+            .get()
+            .addOnSuccessListener {result ->
+                for (document in result){
+                    listLaptop.add(LaptopTerbaru(document.getString("namaLaptop")!!,
+                        document.getString("hargaLaptop")!!,
+                        document.getString("gambar")!!,
+                        document.getString("acadapter")!!,
+                        document.getString("audio")!!,
+                        document.getString("baterai")!!,
+                        document.getString("berat")!!,
+                        document.getString("brand")!!,
+                        document.getString("chipset")!!,
+                        document.getString("cpu")!!,
+                        document.getString("dimensi")!!,
+                        document.get("grafis")!! as ArrayList<String>,
+                        document.get("io")!! as ArrayList<String>,
+                        document.get("kategori")!! as ArrayList<String>,
+                        document.getString("keyboard")!!,
+                        document.get("komunikasi")!! as ArrayList<String>,
+                        document.getString("layar")!!,
+                        document.getString("memori")!!,
+                        document.getString("os")!!,
+                        document.getString("penyimpanan")!!,
+                        document.getString("tanggalRilis")!!,
+                        document.getString("webcam")!!,
+                        document.getLong("performa")!!.toInt(),
+                        document.getLong("portabilitas")!!.toInt()))
+                }
+                if(listLaptop.isNotEmpty())
+                    listLaptop.forEach{ autoComplete.add(it.name) }
+                else
+                    muatSemuaLaptop()
+            }
     }
 }
