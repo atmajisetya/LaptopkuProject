@@ -10,16 +10,29 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.load.DecodeFormat
 import com.bumptech.glide.request.RequestOptions
 import com.bumptech.glide.request.target.Target
+import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.Query
 import kotlinx.android.synthetic.main.activity_deskripsi_laptop.*
+import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.header_cari_laptop.*
 
 class DeskripsiLaptopActivity : AppCompatActivity(), View.OnClickListener {
     // Variabel untuk menerima operan data spesifikasi laptop dari Activity sebelumnya
     private var laptopTerbaru : LaptopTerbaru? = null
 
+    // Inisiasi list untuk Auto Complete
+    private val autoComplete: ArrayList<String> = arrayListOf()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_deskripsi_laptop)
+
+        // Memuat nama-nama laptop untuk Auto Complete
+        muatNamaLaptop()
+
+        // Membuat adapter untuk AutoCompleteTextView
+        val adapter = android.widget.ArrayAdapter(this, android.R.layout.simple_list_item_1, autoComplete)
+        headerCariLaptopAutoCompleteTextView.setAdapter(adapter)
 
         // Menampilkan icon bandingkan
         val bandingkanTextView: TextView = findViewById(R.id.deskripsiLaptopBandingkanTextView)
@@ -145,5 +158,20 @@ class DeskripsiLaptopActivity : AppCompatActivity(), View.OnClickListener {
             }
             R.id.headerKembaliImageView -> finish()
         }
+    }
+
+    // Memuat nama-nama laptop untuk Auto Complete
+    private fun muatNamaLaptop(){
+        val db = FirebaseFirestore.getInstance()
+        db.collection("spekLaptop")
+            .get()
+            .addOnSuccessListener { result ->
+                for (document in result) {
+                    autoComplete.add(document.getString("namaLaptop")!!)
+                }
+                if (autoComplete.isEmpty()) {
+                    muatNamaLaptop()
+                }
+            }
     }
 }

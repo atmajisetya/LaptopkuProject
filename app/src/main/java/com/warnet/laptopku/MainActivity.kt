@@ -48,8 +48,8 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
             if (actionId == EditorInfo.IME_ACTION_SEARCH){
                 val moveIntent = Intent(this@MainActivity, HasilTelusuriActivity::class.java)
                 moveIntent.putExtra("cari", cariLaptopAutoCompleteTextView.text.toString())
+                //moveIntent.putExtra("listLaptop", listLaptop)
                 moveIntent.putExtra("autoComplete", autoComplete)
-                moveIntent.putExtra("listLaptop", listLaptop)
                 startActivity(moveIntent)
                 return@OnEditorActionListener true
             }
@@ -152,54 +152,63 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
             R.id.gamingImageView ->{
                 val moveIntent = Intent(this@MainActivity, HasilTelusuriActivity::class.java)
                 moveIntent.putExtra("kategori", "Gaming")
+                //moveIntent.putExtra("listLaptop", listLaptop)
                 moveIntent.putExtra("autoComplete", autoComplete)
                 startActivity(moveIntent)
             }
             R.id.pelajarImageView ->{
                 val moveIntent = Intent(this@MainActivity, HasilTelusuriActivity::class.java)
                 moveIntent.putExtra("kategori", "Pelajar")
+                //moveIntent.putExtra("listLaptop", listLaptop)
                 moveIntent.putExtra("autoComplete", autoComplete)
                 startActivity(moveIntent)
             }
             R.id.profesionalImageView ->{
                 val moveIntent = Intent(this@MainActivity, HasilTelusuriActivity::class.java)
                 moveIntent.putExtra("kategori", "Profesional")
+                //moveIntent.putExtra("listLaptop", listLaptop)
                 moveIntent.putExtra("autoComplete", autoComplete)
                 startActivity(moveIntent)
             }
             R.id.workstationImageView ->{
                 val moveIntent = Intent(this@MainActivity, HasilTelusuriActivity::class.java)
                 moveIntent.putExtra("kategori", "Workstation")
+                //moveIntent.putExtra("listLaptop", listLaptop)
                 moveIntent.putExtra("autoComplete", autoComplete)
                 startActivity(moveIntent)
             }
             R.id.acerImageView ->{
                 val moveIntent = Intent(this@MainActivity, HasilTelusuriActivity::class.java)
                 moveIntent.putExtra("brand", "Acer")
+                //moveIntent.putExtra("listLaptop", listLaptop)
                 moveIntent.putExtra("autoComplete", autoComplete)
                 startActivity(moveIntent)
             }
             R.id.asusImageView ->{
                 val moveIntent = Intent(this@MainActivity, HasilTelusuriActivity::class.java)
                 moveIntent.putExtra("brand", "Asus")
+                //moveIntent.putExtra("listLaptop", listLaptop)
                 moveIntent.putExtra("autoComplete", autoComplete)
                 startActivity(moveIntent)
             }
             R.id.hpImageView ->{
                 val moveIntent = Intent(this@MainActivity, HasilTelusuriActivity::class.java)
                 moveIntent.putExtra("brand", "HP")
+                //moveIntent.putExtra("listLaptop", listLaptop)
                 moveIntent.putExtra("autoComplete", autoComplete)
                 startActivity(moveIntent)
             }
             R.id.lenovoImageView ->{
                 val moveIntent = Intent(this@MainActivity, HasilTelusuriActivity::class.java)
                 moveIntent.putExtra("brand", "Lenovo")
+                //moveIntent.putExtra("listLaptop", listLaptop)
                 moveIntent.putExtra("autoComplete", autoComplete)
                 startActivity(moveIntent)
             }
             R.id.msiImageView ->{
                 val moveIntent = Intent(this@MainActivity, HasilTelusuriActivity::class.java)
                 moveIntent.putExtra("brand", "MSI")
+                //moveIntent.putExtra("listLaptop", listLaptop)
                 moveIntent.putExtra("autoComplete", autoComplete)
                 startActivity(moveIntent)
             }
