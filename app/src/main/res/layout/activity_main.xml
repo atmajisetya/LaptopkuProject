@@ -31,12 +31,13 @@
                 app:layout_constraintTop_toTopOf="parent">
 
                 <!-- Search Box dan Logo Favorite -->
-                <EditText
-                    android:id="@+id/cariLaptopEditText"
+                <AutoCompleteTextView
+                    android:id="@+id/cariLaptopAutoCompleteTextView"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:paddingLeft="3dp"
-                    android:background="#FFFFFF"
+                    android:paddingVertical="4dp"
+                    android:background="@drawable/bg_rounded_rectangle_putih"
                     android:importantForAutofill="no"
                     android:inputType="text"
                     android:imeOptions="actionSearch"
@@ -53,7 +54,7 @@
                     android:layout_marginLeft="18dp"
                     android:src="@drawable/ic_favorite_putih"
                     android:contentDescription="@string/buka_laptop_favorit"
-                    app:layout_constraintLeft_toRightOf="@id/cariLaptopEditText"
+                    app:layout_constraintLeft_toRightOf="@id/cariLaptopAutoCompleteTextView"
                     app:layout_constraintRight_toRightOf="parent"
                     app:layout_constraintTop_toTopOf="parent"/>
 
@@ -67,7 +68,7 @@
                     android:textColor="#FFFFFF"
                     android:textSize="20sp"
                     app:layout_constraintLeft_toLeftOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/cariLaptopEditText"/>
+                    app:layout_constraintTop_toBottomOf="@id/cariLaptopAutoCompleteTextView"/>
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/rv_laptop"

@@ -10,7 +10,9 @@ import androidx.fragment.app.FragmentTransaction
 import kotlinx.android.synthetic.main.header_cari_laptop.*
 
 class HasilTelusuriActivity : AppCompatActivity(), View.OnClickListener {
-    // Inisiasi variabel brand dan kategori untuk menerima operan dari Main Activity (bila ada)
+    // Inisiasi variabel untuk menerima operan dari activity lain
+    private var listLaptop: ArrayList<LaptopTerbaru>? = null
+    private var autoComplete: ArrayList<String>? = null
     private var brand: String? = null
     private var kategori: String? = null
     private var cari: String? = null
@@ -23,41 +25,51 @@ class HasilTelusuriActivity : AppCompatActivity(), View.OnClickListener {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_hasil_telusuri)
 
-        // Memanggil Fragment Hasil
         // Assignment variabel operan
+        listLaptop = intent.getSerializableExtra("listLaptop") as ArrayList<LaptopTerbaru>?
+        autoComplete = intent.getSerializableExtra("autoComplete") as ArrayList<String>?
         brand = intent.getStringExtra("brand")
         kategori = intent.getStringExtra("kategori")
         cari = intent.getStringExtra("cari")
+
+        // Membuat adapter untuk AutoCompleteTextView
+        if (autoComplete != null){
+            val adapter = android.widget.ArrayAdapter(this, android.R.layout.simple_list_item_1, autoComplete!!)
+            headerCariLaptopAutoCompleteTextView.setAdapter(adapter)
+        }
+
+        // Memanggil FragmentHasil
         transaction = supportFragmentManager.beginTransaction()
         when {
             // Jika Activity dipanggil dari ImageView Kategori: menampilkan kategori tertentu
             kategori != null -> {
-                hasilFragment = HasilFragment("kategori", kategori!!)
+                hasilFragment = HasilFragment("kategori", kategori!!, ArrayList(listLaptop!!))
                 transaction.add(R.id.hasilTelusuriFrameLayout, hasilFragment)
             }
             // Jika Activity dipanggil dari ImageView Brand: menampilkan brand tertentu
             brand != null -> {
-                hasilFragment = HasilFragment("brand", brand!!)
+                hasilFragment = HasilFragment("brand", brand!!, ArrayList(listLaptop!!))
                 transaction.add(R.id.hasilTelusuriFrameLayout, hasilFragment)
             }
             // Jika Activity dipanggil dari EditText Cari Laptop: menampilkan laptop yang dicari pengguna
             cari != null -> {
-                headerCariLaptopEditText.setText(cari, TextView.BufferType.EDITABLE)
-                hasilFragment = HasilFragment("cari", cari!!)
+                headerCariLaptopAutoCompleteTextView.setText(cari, TextView.BufferType.EDITABLE)
+                hasilFragment = HasilFragment("cari", cari!!, ArrayList(listLaptop?: arrayListOf()))
                 transaction.add(R.id.hasilTelusuriFrameLayout, hasilFragment)
             }
         }
         transaction.commit()
 
         // Membuat event-event pada EditText Cari Laptop
-        headerCariLaptopEditText.isCursorVisible = false
-        headerCariLaptopEditText.setOnClickListener{
-            headerCariLaptopEditText.isCursorVisible = true
+        headerCariLaptopAutoCompleteTextView.isCursorVisible = false
+        headerCariLaptopAutoCompleteTextView.setOnClickListener{
+        headerCariLaptopAutoCompleteTextView.isCursorVisible = true
         }
-        headerCariLaptopEditText.setOnEditorActionListener(TextView.OnEditorActionListener { v, actionId, event ->
+        headerCariLaptopAutoCompleteTextView.setOnEditorActionListener(TextView.OnEditorActionListener { _, actionId, _ ->
             if (actionId == EditorInfo.IME_ACTION_SEARCH){
+                hasilFragment = HasilFragment("cari", headerCariLaptopAutoCompleteTextView.text.toString(), ArrayList(listLaptop?: arrayListOf()))
                 transaction = supportFragmentManager.beginTransaction()
-                transaction.replace(R.id.hasilTelusuriFrameLayout, HasilFragment("cari", headerCariLaptopEditText.text.toString()))
+                transaction.replace(R.id.hasilTelusuriFrameLayout, hasilFragment)
                 transaction.commit()
                 return@OnEditorActionListener true
             }
