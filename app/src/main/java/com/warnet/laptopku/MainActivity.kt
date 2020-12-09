@@ -19,7 +19,6 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
 
     // Inisiasi list untuk menampung data laptop
     private val listLaptop: ArrayList<LaptopTerbaru> = arrayListOf()
-    private lateinit var listTerbaru: ArrayList<LaptopTerbaru>
     private val autoComplete: ArrayList<String> = arrayListOf()
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -98,9 +97,8 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         favoriteImageView.setOnClickListener(this)
     }
 
-    // Memanggil data laptop rilis terbaru dari Firestore sekaligus ditampilkan
+    // Memanggil data laptop dari Firestore sekaligus ditampilkan
     private fun muatLaptop(){
-        // listTerbaru.clear()
         val db = FirebaseFirestore.getInstance()
         db.collection("spekLaptop")
             .orderBy("tanggalRilis", Query.Direction.DESCENDING)
@@ -133,7 +131,6 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
                         document.getLong("portabilitas")!!.toInt()))
                 }
                 if(listLaptop.isNotEmpty()){
-                    listTerbaru = listLaptop.take(5) as ArrayList<LaptopTerbaru>
                     showRecyclerList()
                     rilisTerbaruProgressBar.visibility = View.GONE
                     listLaptop.forEach{ autoComplete.add(it.name) }
@@ -145,7 +142,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
     // Menampilkan laptop rilis terbaru pada RecyclerView
     private fun showRecyclerList(){
         rvLaptop.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
-        val listLaptopTerbaruAdapter = ListLaptopTerbaruAdapter(applicationContext, listTerbaru)
+        val listLaptopTerbaruAdapter = ListLaptopTerbaruAdapter(applicationContext, listLaptop.take(5) as ArrayList<LaptopTerbaru>)
         rvLaptop.adapter = listLaptopTerbaruAdapter
     }
 
@@ -155,46 +152,55 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
             R.id.gamingImageView ->{
                 val moveIntent = Intent(this@MainActivity, HasilTelusuriActivity::class.java)
                 moveIntent.putExtra("kategori", "Gaming")
+                moveIntent.putExtra("autoComplete", autoComplete)
                 startActivity(moveIntent)
             }
             R.id.pelajarImageView ->{
                 val moveIntent = Intent(this@MainActivity, HasilTelusuriActivity::class.java)
                 moveIntent.putExtra("kategori", "Pelajar")
+                moveIntent.putExtra("autoComplete", autoComplete)
                 startActivity(moveIntent)
             }
             R.id.profesionalImageView ->{
                 val moveIntent = Intent(this@MainActivity, HasilTelusuriActivity::class.java)
                 moveIntent.putExtra("kategori", "Profesional")
+                moveIntent.putExtra("autoComplete", autoComplete)
                 startActivity(moveIntent)
             }
             R.id.workstationImageView ->{
                 val moveIntent = Intent(this@MainActivity, HasilTelusuriActivity::class.java)
                 moveIntent.putExtra("kategori", "Workstation")
+                moveIntent.putExtra("autoComplete", autoComplete)
                 startActivity(moveIntent)
             }
             R.id.acerImageView ->{
                 val moveIntent = Intent(this@MainActivity, HasilTelusuriActivity::class.java)
                 moveIntent.putExtra("brand", "Acer")
+                moveIntent.putExtra("autoComplete", autoComplete)
                 startActivity(moveIntent)
             }
             R.id.asusImageView ->{
                 val moveIntent = Intent(this@MainActivity, HasilTelusuriActivity::class.java)
                 moveIntent.putExtra("brand", "Asus")
+                moveIntent.putExtra("autoComplete", autoComplete)
                 startActivity(moveIntent)
             }
             R.id.hpImageView ->{
                 val moveIntent = Intent(this@MainActivity, HasilTelusuriActivity::class.java)
                 moveIntent.putExtra("brand", "HP")
+                moveIntent.putExtra("autoComplete", autoComplete)
                 startActivity(moveIntent)
             }
             R.id.lenovoImageView ->{
                 val moveIntent = Intent(this@MainActivity, HasilTelusuriActivity::class.java)
                 moveIntent.putExtra("brand", "Lenovo")
+                moveIntent.putExtra("autoComplete", autoComplete)
                 startActivity(moveIntent)
             }
             R.id.msiImageView ->{
                 val moveIntent = Intent(this@MainActivity, HasilTelusuriActivity::class.java)
                 moveIntent.putExtra("brand", "MSI")
+                moveIntent.putExtra("autoComplete", autoComplete)
                 startActivity(moveIntent)
             }
             R.id.telusuriFooterRekomendasiImageView ->{
