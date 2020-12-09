@@ -12,7 +12,7 @@ import kotlinx.android.synthetic.main.header_cari_laptop.*
 
 class HasilTelusuriActivity : AppCompatActivity(), View.OnClickListener {
     // Inisiasi variabel untuk menerima operan dari activity lain
-    //private var listLaptop: ArrayList<LaptopTerbaru>? = null
+    private var listLaptop: ArrayList<LaptopTerbaru>? = null
     private var autoComplete: ArrayList<String>? = null
     private var brand: String? = null
     private var kategori: String? = null
@@ -27,8 +27,8 @@ class HasilTelusuriActivity : AppCompatActivity(), View.OnClickListener {
         setContentView(R.layout.activity_hasil_telusuri)
 
         // Assignment variabel operan
-        //listLaptop = intent.getSerializableExtra("listLaptop") as ArrayList<LaptopTerbaru>
-        autoComplete = intent.getSerializableExtra("autoComplete") as ArrayList<String>
+        listLaptop = intent.getSerializableExtra("listLaptop") as ArrayList<LaptopTerbaru>?
+        autoComplete = intent.getSerializableExtra("autoComplete") as ArrayList<String>?
         brand = intent.getStringExtra("brand")
         kategori = intent.getStringExtra("kategori")
         cari = intent.getStringExtra("cari")
@@ -44,18 +44,18 @@ class HasilTelusuriActivity : AppCompatActivity(), View.OnClickListener {
         when {
             // Jika Activity dipanggil dari ImageView Kategori: menampilkan kategori tertentu
             kategori != null -> {
-                hasilFragment = HasilFragment("kategori", kategori!!)
+                hasilFragment = HasilFragment("kategori", kategori!!, ArrayList(listLaptop!!))
                 transaction.add(R.id.hasilTelusuriFrameLayout, hasilFragment)
             }
             // Jika Activity dipanggil dari ImageView Brand: menampilkan brand tertentu
             brand != null -> {
-                hasilFragment = HasilFragment("brand", brand!!)
+                hasilFragment = HasilFragment("brand", brand!!, ArrayList(listLaptop!!))
                 transaction.add(R.id.hasilTelusuriFrameLayout, hasilFragment)
             }
             // Jika Activity dipanggil dari EditText Cari Laptop: menampilkan laptop yang dicari pengguna
             cari != null -> {
                 headerCariLaptopAutoCompleteTextView.setText(cari, TextView.BufferType.EDITABLE)
-                hasilFragment = HasilFragment("cari", cari!!)
+                hasilFragment = HasilFragment("cari", cari!!, ArrayList(listLaptop?: arrayListOf()))
                 transaction.add(R.id.hasilTelusuriFrameLayout, hasilFragment)
             }
         }
@@ -66,10 +66,10 @@ class HasilTelusuriActivity : AppCompatActivity(), View.OnClickListener {
         headerCariLaptopAutoCompleteTextView.setOnClickListener{
         headerCariLaptopAutoCompleteTextView.isCursorVisible = true
         }
-        headerCariLaptopAutoCompleteTextView.setOnEditorActionListener(TextView.OnEditorActionListener { v, actionId, event ->
+        headerCariLaptopAutoCompleteTextView.setOnEditorActionListener(TextView.OnEditorActionListener { _, actionId, _ ->
             if (actionId == EditorInfo.IME_ACTION_SEARCH){
                 transaction = supportFragmentManager.beginTransaction()
-                transaction.replace(R.id.hasilTelusuriFrameLayout, HasilFragment("cari", headerCariLaptopAutoCompleteTextView.text.toString()))
+                transaction.replace(R.id.hasilTelusuriFrameLayout, HasilFragment("cari", headerCariLaptopAutoCompleteTextView.text.toString(), ArrayList(listLaptop?: arrayListOf())))
                 transaction.commit()
                 return@OnEditorActionListener true
             }
