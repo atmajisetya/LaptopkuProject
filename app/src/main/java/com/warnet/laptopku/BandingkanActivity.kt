@@ -1,8 +1,10 @@
 package com.warnet.laptopku
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import android.view.inputmethod.EditorInfo
 import android.widget.TextView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.DecodeFormat
@@ -12,12 +14,13 @@ import com.google.firebase.firestore.FirebaseFirestore
 import com.warnet.laptopku.*
 import kotlinx.android.synthetic.main.activity_bandingkan.*
 import kotlinx.android.synthetic.main.activity_deskripsi_laptop.*
+import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.fragment_hasil.*
 
 class BandingkanActivity : AppCompatActivity(), View.OnClickListener {
     // Variabel untuk menyimpan laptop kiri dan laptop kanan
     private var laptopKiri: LaptopTerbaru? = null // Bisa jadi berupa operan dari Acitivity Favorite atau Activity Deskripsi Laptop
-    private lateinit var laptopKanan: LaptopTerbaru
+    private var laptopKanan: LaptopTerbaru? = null
 
     // Variabel untuk menyimpan semua data laptop
     private val listLaptop: ArrayList<LaptopTerbaru> = arrayListOf()
@@ -40,6 +43,30 @@ class BandingkanActivity : AppCompatActivity(), View.OnClickListener {
         val adapter = android.widget.ArrayAdapter(this, android.R.layout.simple_list_item_1, autoComplete)
         cariLaptopKiriAutoCompleteTextView.setAdapter(adapter)
         cariLaptopKananAutoCompleteTextView.setAdapter(adapter)
+
+        // Mendaftarkan event cari
+        cariLaptopKiriAutoCompleteTextView.setOnEditorActionListener(TextView.OnEditorActionListener { _, actionId, _ ->
+            if (actionId == EditorInfo.IME_ACTION_SEARCH){
+                laptopKiri = listLaptop.find{ it.name.startsWith(cariLaptopKiriAutoCompleteTextView.text.toString(), true) }
+                if (laptopKiri != null)
+                    muatLaptopKiri()
+                else
+                    showToast()
+                return@OnEditorActionListener true
+            }
+            false
+        })
+        cariLaptopKananAutoCompleteTextView.setOnEditorActionListener(TextView.OnEditorActionListener { _, actionId, _ ->
+            if (actionId == EditorInfo.IME_ACTION_SEARCH){
+                laptopKanan = listLaptop.find{ it.name.startsWith(cariLaptopKananAutoCompleteTextView.text.toString(), true) }
+                if (laptopKanan != null)
+                    muatLaptopKanan()
+                else
+                    showToast()
+                return@OnEditorActionListener true
+            }
+            false
+        })
 
         // Mendaftarkan event klik untuk pindah ke Activity Telusuri
         val telusuriImageView: android.widget.ImageView = findViewById(R.id.bandingkanFooterTelusuriImageView)
@@ -78,7 +105,7 @@ class BandingkanActivity : AppCompatActivity(), View.OnClickListener {
     }
 
     fun muatLaptopKiri(){
-// Mengisi ImageView dengan foto laptop
+        // Mengisi ImageView dengan foto laptop
         Glide.with(applicationContext)
             .load(laptopKiri?.photo)
             .apply(
@@ -132,7 +159,62 @@ class BandingkanActivity : AppCompatActivity(), View.OnClickListener {
         }
     }
 
-    // Memanggil data laptop dengan brand tertentu dari Firestore sekaligus ditampilkan
+    fun muatLaptopKanan(){
+        // Mengisi ImageView dengan foto laptop
+        Glide.with(applicationContext)
+            .load(laptopKanan?.photo)
+            .apply(
+                RequestOptions().fitCenter().format(DecodeFormat.PREFER_ARGB_8888).override(
+                    Target.SIZE_ORIGINAL))
+            .into(laptopKananImageView)
+
+        // Menampilkan nama dan harga laptop
+        namaLaptopKananTextView.text = laptopKanan?.name
+        hargaLaptopKananTextView.text = laptopKanan?.price
+
+        // Menampilkan spesifikasi-spesifikasi tunggal laptop
+        acAdapterKananTextView.text = laptopKanan?.acadapter
+        audioKananTextView.text = laptopKanan?.audio
+        bateraiKananTextView.text = laptopKanan?.baterai
+        cpuKananTextView.text = laptopKanan?.cpu
+        osKananTextView.text = laptopKanan?.os
+        layarKananTextView.text = laptopKanan?.layar
+        chipsetKananTextView.text = laptopKanan?.chipset
+        memoriKananTextView.text = laptopKanan?.memori
+        penyimpananKananTextView.text = laptopKanan?.penyimpanan
+        webcamKananTextView.text = laptopKanan?.webcam
+        keyboardKananTextView.text = laptopKanan?.keyboard
+        dimensiKananTextView.text = laptopKanan?.dimensi
+        beratKananTextView.text = laptopKanan?.berat
+
+        // Menampilkan spesifikasi-spesifikasi ganda laptop
+        for(i in 0 until laptopKanan!!.grafis.size){
+            if(i == 0){
+                grafisKananTextView.text = laptopKanan!!.grafis[i]
+            }
+            else{
+                grafisKananTextView.append("\n" + laptopKanan!!.grafis[i])
+            }
+        }
+        for(i in 0 until laptopKanan!!.io.size){
+            if(i == 0){
+                ioPortsKananTextView.text = laptopKanan!!.io[i]
+            }
+            else{
+                ioPortsKananTextView.append("\n" + laptopKanan!!.io[i])
+            }
+        }
+        for(i in 0 until laptopKanan!!.komunikasi.size){
+            if(i == 0){
+                komunikasiKananTextView.text = laptopKanan!!.komunikasi[i]
+            }
+            else{
+                komunikasiKananTextView.append("\n" + laptopKanan!!.komunikasi[i])
+            }
+        }
+    }
+
+    // Memanggil data semua laptop
     private fun muatSemuaLaptop(){
         val db = FirebaseFirestore.getInstance()
         db.collection("spekLaptop")
@@ -169,5 +251,13 @@ class BandingkanActivity : AppCompatActivity(), View.OnClickListener {
                 else
                     muatSemuaLaptop()
             }
+    }
+
+    fun showToast(){
+        val toast = android.widget.Toast.makeText(this,
+            "Tidak ditemukan laptop tersebut pada basis data kami.",
+            android.widget.Toast.LENGTH_LONG)
+        //toast.setGravity(android.view.Gravity.BOTTOM,0,130)
+        toast.show()
     }
 }

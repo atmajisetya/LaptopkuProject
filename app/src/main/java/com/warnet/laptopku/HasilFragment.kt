@@ -377,7 +377,7 @@ class HasilFragment() : Fragment() {
             }
     }
 
-    // Memanggil data laptop dengan brand tertentu dari Firestore sekaligus ditampilkan
+    // Memanggil data laptop dengan kategori tertentu dari Firestore sekaligus ditampilkan
     private fun loadLaptopKategori(){
         val db = FirebaseFirestore.getInstance()
         db.collection("spekLaptop")
