@@ -68,8 +68,9 @@ class HasilTelusuriActivity : AppCompatActivity(), View.OnClickListener {
         }
         headerCariLaptopAutoCompleteTextView.setOnEditorActionListener(TextView.OnEditorActionListener { _, actionId, _ ->
             if (actionId == EditorInfo.IME_ACTION_SEARCH){
+                hasilFragment = HasilFragment("cari", headerCariLaptopAutoCompleteTextView.text.toString(), ArrayList(listLaptop?: arrayListOf()))
                 transaction = supportFragmentManager.beginTransaction()
-                transaction.replace(R.id.hasilTelusuriFrameLayout, HasilFragment("cari", headerCariLaptopAutoCompleteTextView.text.toString(), ArrayList(listLaptop?: arrayListOf())))
+                transaction.replace(R.id.hasilTelusuriFrameLayout, hasilFragment)
                 transaction.commit()
                 return@OnEditorActionListener true
             }
