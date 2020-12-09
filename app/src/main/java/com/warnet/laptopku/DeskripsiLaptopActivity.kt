@@ -105,6 +105,7 @@ class DeskripsiLaptopActivity : AppCompatActivity(), View.OnClickListener {
             if (actionId == EditorInfo.IME_ACTION_SEARCH){
                 val moveIntent = Intent(this@DeskripsiLaptopActivity, HasilTelusuriActivity::class.java)
                 moveIntent.putExtra("cari", headerCariLaptopAutoCompleteTextView.text.toString())
+                moveIntent.putExtra("autoComplete", autoComplete)
                 startActivity(moveIntent)
                 return@OnEditorActionListener true
             }
