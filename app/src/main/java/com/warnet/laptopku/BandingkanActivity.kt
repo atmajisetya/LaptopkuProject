@@ -10,12 +10,7 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.load.DecodeFormat
 import com.bumptech.glide.request.RequestOptions
 import com.bumptech.glide.request.target.Target
-import com.google.firebase.firestore.FirebaseFirestore
-import com.warnet.laptopku.*
 import kotlinx.android.synthetic.main.activity_bandingkan.*
-import kotlinx.android.synthetic.main.activity_deskripsi_laptop.*
-import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.android.synthetic.main.fragment_hasil.*
 
 class BandingkanActivity : AppCompatActivity(), View.OnClickListener {
     // Variabel untuk menyimpan laptop kiri dan laptop kanan
@@ -23,8 +18,8 @@ class BandingkanActivity : AppCompatActivity(), View.OnClickListener {
     private var laptopKanan: LaptopTerbaru? = null
 
     // Variabel untuk menyimpan semua data laptop
-    private val listLaptop: ArrayList<LaptopTerbaru> = arrayListOf()
-    private val autoComplete: ArrayList<String> = arrayListOf()
+    private lateinit var listLaptop: ArrayList<LaptopTerbaru>
+    private lateinit var autoComplete: ArrayList<String>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -37,7 +32,8 @@ class BandingkanActivity : AppCompatActivity(), View.OnClickListener {
             muatLaptopKiri()
         }
 
-        muatSemuaLaptop()
+        listLaptop = intent.getSerializableExtra("listLaptop") as ArrayList<LaptopTerbaru>
+        autoComplete = intent.getSerializableExtra("autoComplete") as ArrayList<String>
 
         // Membuat adapter untuk AutoCompleteTextView
         val adapter = android.widget.ArrayAdapter(this, android.R.layout.simple_list_item_1, autoComplete)
@@ -89,15 +85,16 @@ class BandingkanActivity : AppCompatActivity(), View.OnClickListener {
     override fun onClick(v: View?) {
         when(v?.id){
             R.id.bandingkanFooterTelusuriImageView ->{
-                val moveIntent = android.content.Intent(this@BandingkanActivity, MainActivity::class.java)
+                val moveIntent = Intent(this@BandingkanActivity, MainActivity::class.java)
                 startActivity(moveIntent)
             }
             R.id.bandingkanFooterRekomendasiImageView ->{
-                val moveIntent = android.content.Intent(this@BandingkanActivity, RekomendasiActivity::class.java)
+                val moveIntent = Intent(this@BandingkanActivity, RekomendasiActivity::class.java)
+                moveIntent.putExtra("listLaptop", listLaptop)
                 startActivity(moveIntent)
             }
             R.id.bandingkanFavoriteImageView ->{
-                val moveIntent = android.content.Intent(this@BandingkanActivity, FavoriteActivity::class.java)
+                val moveIntent = Intent(this@BandingkanActivity, FavoriteActivity::class.java)
                 startActivity(moveIntent)
             }
             R.id.bandingkanKembaliImageView -> finish()
@@ -212,45 +209,6 @@ class BandingkanActivity : AppCompatActivity(), View.OnClickListener {
                 komunikasiKananTextView.append("\n" + laptopKanan!!.komunikasi[i])
             }
         }
-    }
-
-    // Memanggil data semua laptop
-    private fun muatSemuaLaptop(){
-        val db = FirebaseFirestore.getInstance()
-        db.collection("spekLaptop")
-            .get()
-            .addOnSuccessListener {result ->
-                for (document in result){
-                    listLaptop.add(LaptopTerbaru(document.getString("namaLaptop")!!,
-                        document.getString("hargaLaptop")!!,
-                        document.getString("gambar")!!,
-                        document.getString("acadapter")!!,
-                        document.getString("audio")!!,
-                        document.getString("baterai")!!,
-                        document.getString("berat")!!,
-                        document.getString("brand")!!,
-                        document.getString("chipset")!!,
-                        document.getString("cpu")!!,
-                        document.getString("dimensi")!!,
-                        document.get("grafis")!! as ArrayList<String>,
-                        document.get("io")!! as ArrayList<String>,
-                        document.get("kategori")!! as ArrayList<String>,
-                        document.getString("keyboard")!!,
-                        document.get("komunikasi")!! as ArrayList<String>,
-                        document.getString("layar")!!,
-                        document.getString("memori")!!,
-                        document.getString("os")!!,
-                        document.getString("penyimpanan")!!,
-                        document.getString("tanggalRilis")!!,
-                        document.getString("webcam")!!,
-                        document.getLong("performa")!!.toInt(),
-                        document.getLong("portabilitas")!!.toInt()))
-                }
-                if(listLaptop.isNotEmpty())
-                    listLaptop.forEach{ autoComplete.add(it.name) }
-                else
-                    muatSemuaLaptop()
-            }
     }
 
     fun showToast(){

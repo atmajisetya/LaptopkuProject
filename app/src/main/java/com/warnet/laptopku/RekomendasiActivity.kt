@@ -7,6 +7,9 @@ import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentTransaction
 
 class RekomendasiActivity : AppCompatActivity(), View.OnClickListener {
+    // inisiasi variabel untuk menyimpan data semua laptop (operan dari Main Activity)
+    private lateinit var listLaptop: ArrayList<LaptopTerbaru>
+
     // fragmentManager beserta transaction untuk mengatur pergantian fragment
     private lateinit var fragmentManager: FragmentManager
     private lateinit var transaction: FragmentTransaction
@@ -29,10 +32,14 @@ class RekomendasiActivity : AppCompatActivity(), View.OnClickListener {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_rekomendasi)
 
+        // Memuat fragment budget
         fragmentManager = supportFragmentManager
         transaction = fragmentManager.beginTransaction()
         transaction.add(R.id.rekomendasiFrameLayout, budgetFragment)
         transaction.commit()
+
+        // Menerima operan data laptop
+        listLaptop = intent.getSerializableExtra("listLaptop") as ArrayList<LaptopTerbaru>
 
         // Digunakan untuk pindah ke tampilan telusuri
         val telusuriImageView: android.widget.ImageView = findViewById(R.id.rekomendasiFooterTelusuriImageView)
@@ -123,7 +130,8 @@ class RekomendasiActivity : AppCompatActivity(), View.OnClickListener {
                                 budgetFragment.max, keperluanFragment.gameBerat, keperluanFragment.kalkulasiRumit,
                                 keperluanFragment.grafis2D, keperluanFragment.grafis3D, keperluanFragment.editingVideo,
                                 keperluanFragment.pekerjaanRingan, prioritasFragment.isPerforma, brandFragment.isAcer,
-                                brandFragment.isAsus, brandFragment.isHp, brandFragment.isLenovo, brandFragment.isMsi)
+                                brandFragment.isAsus, brandFragment.isHp, brandFragment.isLenovo, brandFragment.isMsi,
+                                ArrayList(listLaptop))
                             transaction.replace(R.id.rekomendasiFrameLayout, hasilFragment)
                             transaction.addToBackStack(null)
                             transaction.commit()

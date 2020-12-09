@@ -214,10 +214,13 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
             }
             R.id.telusuriFooterRekomendasiImageView ->{
                 val moveIntent = Intent(this@MainActivity, RekomendasiActivity::class.java)
+                moveIntent.putExtra("listLaptop", listLaptop)
                 startActivity(moveIntent)
             }
             R.id.telusuriFooterBandingkanImageView ->{
                 val moveIntent = Intent(this@MainActivity, BandingkanActivity::class.java)
+                moveIntent.putExtra("listLaptop", listLaptop)
+                moveIntent.putExtra("autoComplete", autoComplete)
                 startActivity(moveIntent)
             }
             R.id.mainActivityFavoriteImageView ->{
